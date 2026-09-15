@@ -1,0 +1,80 @@
+<?php
+namespace App\Http\Controllers\Traits;
+
+use Illuminate\Support\Facades\DB;
+
+trait Visitas
+{   
+    private function gestionVisitas($contentId, $content)
+    {
+       try {
+        
+        $default = 1;
+
+        $getContent = DB::table('visitas')->select('id','cantidad')
+            ->where('content_id', $contentId)->where('content', $content)->first();
+
+        $cantVisit = ($getContent) ? $getContent->cantidad  + 1: $default;
+
+        $data = [
+            'cantidad'=>$cantVisit,
+            'content_id'=>$contentId,
+            'content'=>$content
+        ];
+
+        DB::beginTransaction();
+
+        DB::table('visitas')
+            ->updateOrInsert(['content_id'=>$contentId, 'content'=>$content], $data);
+        
+        DB::commit();
+
+       } catch (\Throwable $th) {
+         DB::rollBack();
+       }
+        
+    }
+
+    private function getSectionVisitas($content)
+    {
+        $visitas = DB::table('visitas as v');
+
+        switch ($content) {
+            case 'notasGenerales':
+
+                $visitas->select('v.id','v.cantidad','n.titulo','n.slug', 'content', 'content_id')
+                    ->join('notas as n', 'v.content_id', '=', 'n.id');
+
+                break;
+
+            case 'tramitesServicios':
+
+                $visitas->select('v.id','v.cantidad','ts.title', 'content','content_id')
+                    ->join('tramites_servicios as ts', 'v.content_id', '=', 'ts.id');
+
+                break;
+            case 'gobierno':
+
+                $visitas->select('v.id','v.cantidad','a.nombre','a.area_id','ag.area', 'content', 'content_id')
+                    ->join('administraciones as a', 'v.content_id', '=', 'a.id')
+                    ->join('areas_gobiernos as ag','a.area_id','=','ag.id');
+
+                break;
+            default:
+                return null;
+                break;
+        }
+
+        $result = $visitas->where('content', $content)
+            ->orderBy('v.cantidad', 'DESC')
+            ->groupBy('v.content_id')
+            ->limit(3)
+            ->get()
+            ->toArray();
+
+        return $result;
+
+    }
+    
+}
+

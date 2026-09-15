@@ -1,0 +1,18 @@
+{
+    "id": 117,
+    "nombre": "Dirección de Señalización y Cartelería",
+    "slug": "direccion-de-senalizacion-y-carteleria",
+    "autoridad": "Sr. Juan José Artigas",
+    "foto": null,
+    "domicilio": "Av. Ejército del Norte 410",
+    "telefono": null,
+    "email": "@",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 109,
+        "nombre": "Secretaría de Ordenamiento y Convivencia",
+        "slug": "secretaria-de-ordenamiento-y-convivencia"
+    },
+    "dependencias": []
+}

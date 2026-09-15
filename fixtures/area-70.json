@@ -1,0 +1,18 @@
+{
+    "id": 70,
+    "nombre": "Dirección de Cementerios",
+    "slug": "direccion-de-cementerios",
+    "autoridad": "Arq. Humberto Salazar",
+    "foto": null,
+    "domicilio": "Asunción 150 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "dircementerios@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 27,
+        "nombre": "Subsecretaría de Servicios Públicos",
+        "slug": "subsecretaria-de-servicios-publicos"
+    },
+    "dependencias": []
+}

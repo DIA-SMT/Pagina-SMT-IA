@@ -1,0 +1,47 @@
+{
+    "id": 10,
+    "nombre": "Secretaría de Ambiente y Desarrollo Sustentable",
+    "slug": "secretaria-de-ambiente-y-desarrollo-sustentable",
+    "autoridad": "Ing. Julieta Migliavacca",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/bU4uhDEuGmfvyF2ULz8L.jpeg",
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "sambiente@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": "https://smt.gob.ar/storage/administraciones/September2026/WcbimzZedBOyvwmFmkr5.pdf",
+    "padre": {
+        "id": 1,
+        "nombre": "Intendencia",
+        "slug": "intendencia"
+    },
+    "dependencias": [
+        {
+            "id": 79,
+            "nombre": "Dirección de Despacho de Ambiente y Desarrollo Sustentable",
+            "slug": "direccion-de-despacho-de-ambiente-y-desarrollo-sustentable",
+            "autoridad": "Dra. Romina Constanza Aguilar Bianchi",
+            "email": "ddsambiente@smt.gob.ar"
+        },
+        {
+            "id": 80,
+            "nombre": "Dirección de Salud Ambiental",
+            "slug": "direccion-de-salud-ambiental",
+            "autoridad": "Lic. Clara Saslaver",
+            "email": "saludambiental@smt.gob.ar"
+        },
+        {
+            "id": 81,
+            "nombre": "Dirección de Ambiente",
+            "slug": "direccion-de-ambiente",
+            "autoridad": "Sr. Fortuna Kiyoshi",
+            "email": "ambiente@smt.gob.ar"
+        },
+        {
+            "id": 82,
+            "nombre": "Dirección de Bromatología",
+            "slug": "direccion-de-bromatologia",
+            "autoridad": "Sra. María Emilia Cruz",
+            "email": "bromatologia@smt.gob.ar"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "id": 44,
+    "nombre": "Dirección de Educación",
+    "slug": "direccion-de-educacion",
+    "autoridad": "Lic. Isabel Cristina Amate Pérez",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/A4r22I9Wp2aNbC5jQ1SY.jpg",
+    "domicilio": "Jujuy 259 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "educacion@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 20,
+        "nombre": "Subsecretaría de Desarrollo Humano",
+        "slug": "subsecretaria-de-desarrollo-humano"
+    },
+    "dependencias": []
+}

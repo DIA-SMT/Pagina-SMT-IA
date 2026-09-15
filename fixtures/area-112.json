@@ -1,0 +1,18 @@
+{
+    "id": 112,
+    "nombre": "Dirección de Inteligencia Artificial",
+    "slug": "direccion-de-inteligencia-artificial",
+    "autoridad": "Dr. Marco Rossi",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/SJnBwvm0mTCEuVKXbbM7.jpg",
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "direccionia@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 9,
+        "nombre": "Secretaría de Innovación Tecnológica",
+        "slug": "secretaria-de-innovacion-tecnologica"
+    },
+    "dependencias": []
+}

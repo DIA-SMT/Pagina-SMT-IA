@@ -1,0 +1,18 @@
+{
+    "id": 78,
+    "nombre": "Dirección de Política Fiscal",
+    "slug": "direccion-de-politica-fiscal",
+    "autoridad": "Ing. Edgardo Federico Barrionuevo",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/iLhXum4QyLoZqtf6BIES.jpg",
+    "domicilio": "24 de Septiembre 334 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "politicafiscal@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 128,
+        "nombre": "Subsecretaría de Planificación Financiera",
+        "slug": "subsecretaria-de-planificacion-financiera"
+    },
+    "dependencias": []
+}

@@ -1,0 +1,18 @@
+{
+    "id": 86,
+    "nombre": "Dirección Gestión Cultural",
+    "slug": "direccion-gestion-cultural",
+    "autoridad": "Sr. Emiliano Bernardo Alonso",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/M2VLVEULB970Q3fPjrmv.jpg",
+    "domicilio": "Av. Cap. Caceres - Parque 9 de Julio  - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "cultura@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 13,
+        "nombre": "Subsecretaría de Cultura",
+        "slug": "subsecretaria-de-cultura"
+    },
+    "dependencias": []
+}

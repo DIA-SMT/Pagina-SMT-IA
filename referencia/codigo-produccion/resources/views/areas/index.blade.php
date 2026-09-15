@@ -1,0 +1,133 @@
+@extends('layouts.app')
+
+@section('jsheader')
+    <meta name="title"
+        content="@if ($area) {{ $area->area }}@else{{ 'Sin area seleccionada' }} @endif">
+    <title>
+        @if ($area)
+            {{ $area->area }}@else{{ 'Sin area seleccionada' }}
+        @endif
+    </title>
+@stop
+
+
+@section('content')
+
+    <section class="container-custom">
+        <div class="sub-barra">
+            <p class="px-3">Inicio > Gobierno >
+                @if ($area)
+                    {{ $area->area }}@else{{ 'Sin area seleccionada' }}
+                @endif
+            </p>
+        </div>
+        <div class="pt-15 pb-60">
+            <div class="row w-100 mx-auto">
+                <div class="col-12 col-lg-9">
+                    <div class="px-2">
+                        <h3 class="tp-section-title mb-20">
+                            @if ($area)
+                                {{ $area->area }}@else{{ 'Sin area seleccionada' }}
+                            @endif
+                        </h3>
+                        @if ($area->administracion->count() > 0)
+                            @foreach ($area->administracion as $administraciones)
+                                <div class="row">
+                                    @if ($administraciones->foto)
+                                        <div class="col-12 col-md-4 mb-30">
+                                            <img class="w-100" src="/storage/{{ $administraciones->foto }}"
+                                                alt="{{ $administraciones->nombre }}">
+                                        </div>
+                                    @endif
+                                    <div class="col-12 col-md-8 icon-up">
+                                        @if ($administraciones->nombre)
+                                            <p class="cargo-p">
+                                                @if ($area)
+                                                    {{ $area->area }}@else{{ 'Sin area seleccionada' }}
+                                                @endif: {{ $administraciones->nombre }}
+                                            </p>
+                                        @else
+                                            <p class="cargo-p">{{ $area->area }}</p>
+                                        @endif
+                                        <p><i class="fas fa-location-dot"></i>Domicilio: {{ $administraciones->domicilio }}
+                                        </p>
+                                        <p><i class="fas fa-phone-alt"></i>Teléfono: {{ $administraciones->telefono }}</p>
+                                        <p><i class="fas fa-envelope"></i>Correo Electrónico:
+                                            {{ $administraciones->email }}</p>
+                                        @if ($administraciones->archivo)
+                                            @php
+                                                $file_info = json_decode($administraciones->archivo, true);
+                                                if (is_array($file_info) && count($file_info) > 0) {
+                                                    $download_link = $file_info[0]['download_link'];
+                                                } else {
+                                                    $download_link = null;
+                                                }
+                                            @endphp
+                                            @if ($download_link)
+                                                <p><i class="fas fa-sitemap"></i><a href="/storage/{{ $download_link }}"
+                                                        target="_blank" rel="noopener noreferrer">Descargar Organigrama</a>
+                                                </p>
+                                            @endif
+                                        @endif
+                                        @if ($administraciones->descripcion)
+                                            <div>
+                                                {!! $administraciones->descripcion !!}
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <div class="mt-50">
+                                    <h5 class="tp-section-sub mb-20">Estructura Dependiente:</h5>
+                                    <div class="row d-flex justify-content-center justify-content-md-start">
+                                        @if ($areasRelacionadas->count() > 0)
+                                            <?php
+                                            $n = 1;
+                                            ?>
+                                            @foreach ($areasRelacionadas as $estructuras)
+                                                <?php
+                                                $administracion = $estructuras->administracion->first();
+                                                ?>
+
+                                                <div class="col-10 col-sm-8 col-md-6 col-xl-4 wow tpfadeUp "
+                                                    data-wow-duration=".9s" data-wow-delay=".{{ $n }}s">
+                                                    <a
+                                                        href="/area/{{ str_slug($estructuras->area) }}/{{ $estructuras->id }}">
+                                                        <div class="tp-feature-item mb-30 icon-estruc">
+                                                            <p class="title">{{ $estructuras->area }}</p>
+                                                            @if (is_object($administracion))
+                                                                <p class="p-envelope"><i
+                                                                        class="fas fa-envelope"></i>{{ $administracion->email }}
+                                                                </p>
+                                                                <p><i
+                                                                        class="fas fa-phone-alt"></i>{{ $administracion->telefono }}
+                                                                </p>
+                                                            @else
+                                                                <p><i class="fas fa-envelope"></i>No disponible</p>
+                                                                <p><i class="fas fa-phone-alt"></i>No disponible</p>
+                                                            @endif
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            @endforeach
+                                        @else
+                                            <div class="alert alert-info">No hay estructura para esta seccion..</div>
+                                        @endif
+                                    </div>
+                                </div>
+                            @endforeach
+                        @else
+                            <div class="alert alert-info">No se encontraron Administracion para esta Area.</div>
+                        @endif
+
+
+                    </div>
+                </div>
+                <!-- banners -->
+                @include('shared.banner-sidebar')
+
+            </div>
+        </div>
+    </section>
+
+@endsection

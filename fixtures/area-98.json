@@ -1,0 +1,18 @@
+{
+    "id": 98,
+    "nombre": "Dirección de Licencias de Conducir",
+    "slug": "direccion-de-licencias-de-conducir",
+    "autoridad": "Sra. Viviana Paola Tirone",
+    "foto": null,
+    "domicilio": "Av. Avellaneda 663 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "dirlicenciasdeconducir@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 122,
+        "nombre": "Subsecretaría de Seguridad Vial y Licencias de Conducir",
+        "slug": "subsecretaria-de-seguridad-vial-y-licencias-de-conducir"
+    },
+    "dependencias": []
+}

@@ -1,0 +1,25 @@
+{
+    "id": 5,
+    "nombre": "Teatro Municipal",
+    "slug": "teatro-municipal",
+    "fotos": [
+        {
+            "id": 17,
+            "descripcion": null,
+            "imagen": "https://smt.gob.ar/storage/galeria/August2024/cqWaDiIIA056VgugLUMq.jpg",
+            "miniatura": "https://smt.gob.ar/storage/galeria/August2024/cqWaDiIIA056VgugLUMq-cropped.jpg"
+        },
+        {
+            "id": 18,
+            "descripcion": null,
+            "imagen": "https://smt.gob.ar/storage/galeria/August2024/m5dDjOvWcN8UMuge6mmw.jpg",
+            "miniatura": "https://smt.gob.ar/storage/galeria/August2024/m5dDjOvWcN8UMuge6mmw-cropped.jpg"
+        },
+        {
+            "id": 19,
+            "descripcion": null,
+            "imagen": "https://smt.gob.ar/storage/galeria/August2024/hZKsfg8IXFm0oDDY9K9i.jpg",
+            "miniatura": "https://smt.gob.ar/storage/galeria/August2024/hZKsfg8IXFm0oDDY9K9i-cropped.jpg"
+        }
+    ]
+}

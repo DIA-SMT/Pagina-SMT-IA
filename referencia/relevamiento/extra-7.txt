@@ -1,0 +1,105 @@
+﻿## Noticias en dominio principal (/noticias) [roto aparente]
+URL: https://smt.gob.ar/noticias
+Devuelve HTTP 404. El portal principal no tiene mÃ³dulo de noticias propio: la home enlaza 'Noticias' directamente al subdominio comunicacionsmt.gob.ar.
+
+## Portal de noticias â€” home/listado [verificado]
+URL: https://comunicacionsmt.gob.ar/
+Portal de noticias oficial (DirCom). Listado en grilla de cards con imagen, tÃ­tulo, fecha DD/MM/AAAA, autor 'RedacciÃ³n DirCom' y categorÃ­a. Secciones: Noticias (cat. 177), Novedades (cat. 2), buscador (/buscar), agenda (/eventos), historial (/historial), suscripciÃ³n a newsletter, enlaces a redes (FB, IG, X, YouTube, LinkedIn, TikTok) y enlace de vuelta a smt.gob.ar.
+
+## Portal de noticias â€” categorÃ­a [verificado]
+URL: https://comunicacionsmt.gob.ar/categoria/177/noticias
+Listado por categorÃ­a: ~20 notas por pÃ¡gina con miniatura, titular, autor, categorÃ­a y fecha; paginaciÃ³n numerada con botÃ³n '>>'; sin filtros por fecha/tema; bloque 'Lo mÃ¡s visto' con 6 destacadas al pie.
+
+## Portal de noticias â€” ficha de noticia [verificado]
+URL: https://comunicacionsmt.gob.ar/contenido/16790/pianos-sobre-ruedas-la-nueva-experiencia-musical-para-conocer-y-disfrutar-de-la
+Ficha con tÃ­tulo, subtÃ­tulo, categorÃ­a, fecha, autor, cuerpo con subtÃ­tulos, galerÃ­a de imÃ¡genes, botones de compartir (Facebook, X, LinkedIn, Pinterest, WhatsApp, Telegram), temas relacionados, bloque 'Te puede interesar' con 4 notas y footer con contacto/newsletter. PatrÃ³n de URL: /contenido/{id}/{slug}.
+
+## Portal de noticias â€” RSS [roto aparente]
+URL: https://comunicacionsmt.gob.ar/feed
+No existe feed RSS detectable: /feed y /rss devuelven 404 tanto en comunicacionsmt.gob.ar como en smt.gob.ar. Ninguna pÃ¡gina expone enlace a feed.
+
+## Portal de noticias â€” agenda de eventos [verificado]
+URL: https://comunicacionsmt.gob.ar/eventos
+PÃ¡gina 'Agenda de eventos' con estructura (navegaciÃ³n, footer, newsletter) pero el contenido principal llega vacÃ­o en el HTML: sin eventos, fechas ni horarios; aparenta carga dinÃ¡mica sin datos publicados.
+
+## Subdominio comunicacion.smt.gob.ar [pendiente de verificaciÃ³n]
+URL: https://comunicacion.smt.gob.ar/
+El dominio existe en DNS pero la conexiÃ³n HTTPS falla (SSLV3_ALERT_HANDSHAKE_FAILURE). No se pudo obtener contenido. Posible vhost abandonado o con TLS mal configurado en Plesk.
+
+## Subdominio prensa.smt.gob.ar [pendiente de verificaciÃ³n]
+URL: https://prensa.smt.gob.ar/
+No resuelve en DNS (ENOTFOUND). No se pudo verificar contenido.
+
+## Portal de datos SMT en Datos [verificado]
+URL: https://smtendatos.gob.ar/
+Portal de datos e informaciÃ³n pÃºblica. Secciones: Datos (GestiÃ³n / Personas / Ciudad), Estrategia de datos, Descargables, Autoridades, Intranet y Contacto. Publica mapas interactivos (recolecciÃ³n de residuos, obras, cortes de trÃ¡nsito, pavimentaciÃ³n), tableros estadÃ­sticos ('dato de la semana'), notas con foco en datos y documentos descargables. Enlaza a cortes.smt.gob.ar, ciudaddigital.smt.gob.ar y boletinoficial.smt.gob.ar.
+
+## Sistema de licitaciones [pendiente de verificaciÃ³n]
+URL: https://licitaciones.smt.gob.ar/
+Responde 200 (nginx/Plesk) pero el HTML solo entrega el tÃ­tulo 'Licitaciones': es una aplicaciÃ³n con render en cliente (SPA JS), por lo que no se pudo confirmar listados, estados, pliegos ni filtros sin navegador. EstÃ¡ enlazado desde la home, desde la categorÃ­a Transparencia y desde transparencia.smt.gob.ar.
+
+## BoletÃ­n Oficial Municipal (sistema) [pendiente de verificaciÃ³n]
+URL: https://boletinoficial.smt.gob.ar/
+Responde 200 (nginx/Plesk) con tÃ­tulo 'Boletin Oficial Municipal', pero el contenido se renderiza en cliente (SPA JS): no se pudo confirmar buscador, listado por fecha ni descargas PDF sin navegador. La ficha institucional enlaza con parÃ¡metro https://boletinoficial.smt.gob.ar/?destino=boletin.
+
+## Ficha BoletÃ­n Oficial Digital [verificado]
+URL: https://smt.gob.ar/nota/boletin-oficial-digital/56
+Ficha informativa (patrÃ³n /nota/slug/id) que presenta el BoletÃ­n Oficial Digital, declara validez oficial equivalente a la versiÃ³n impresa y enlaza a boletinoficial.smt.gob.ar/?destino=boletin. Sin requisitos ni pasos. PÃ¡gina tambiÃ©n enlaza a la Ordenanza Tributaria 2026 alojada en Google Drive.
+
+## Ficha Digesto Municipal [verificado]
+URL: https://smt.gob.ar/nota/digesto-municipal/27
+Ficha que ofrece el Digesto Municipal como un Ãºnico PDF descargable alojado en el propio servidor: https://smt.gob.ar/storage/tramites-items-notas/May2024/pTcyEDXqYdOBMFgxdSzn.pdf (subido en mayo 2024). Sin buscador de normas.
+
+## Digesto Normativo (planificaciÃ³n urbana) 1Âª y 2Âª parte [pendiente de verificaciÃ³n]
+URL: https://drive.google.com/file/d/1rYMWOehcfF69s9nmM1MUE5C1YdavChiL/view?usp=sharing
+Aparecen como resultados del buscador interno (secciÃ³n TrÃ¡mites & Servicios): dos PDFs de normativa de planificaciÃ³n urbana y construcciÃ³n alojados en Google Drive (2Âª parte: drive.google.com/file/d/1aVWRerGyw6wke4JaIz5r4g-q-5AqOMBW/view). No se abrieron los archivos.
+
+## CategorÃ­a Transparencia y ParticipaciÃ³n [verificado]
+URL: https://smt.gob.ar/tramite/transparencia-y-participacion/10
+CategorÃ­a de trÃ¡mites (patrÃ³n /tramite/slug/id) que agrupa: Precios de obra pÃºblica (/nota/precios-oficiales-de-obras-publicas-y-servicios/85), BoletÃ­n Oficial Digital (/nota/boletin-oficial-digital/56), Plan Rector (/nota/plan-rector/32) y enlaces externos a uspp.smt.gob.ar, /presupuestoparticipativo, www.smtendatos.com.ar (dominio que NO responde), transparencia.smt.gob.ar, ces.smt.gob.ar y licitaciones.smt.gob.ar. Incluye un formulario de Google de participaciÃ³n ciudadana.
+
+## Portal de Transparencia (ContadurÃ­a) [verificado]
+URL: https://transparencia.smt.gob.ar/
+Portal de la ContadurÃ­a General: ejecuciÃ³n presupuestaria (al 31/07/26: 56,6% gastos ejecutados, 54,6% recursos percibidos), cuentas de inversiÃ³n (/contenido/cuentas-de-inversion/36), auditorÃ­as, precios de obra pÃºblica, acceso a licitaciones y al portal de datos. Estructura tipo CMS con rutas /presupuesto y /contenido/{slug}/{id}.
+
+## Presupuesto Participativo (pÃ¡gina institucional) [verificado]
+URL: https://smt.gob.ar/presupuestoparticipativo
+PÃ¡gina informativa: describe la polÃ­tica (1Âª ediciÃ³n 2025, 20 distritos, temas elegibles: infraestructura, espacios pÃºblicos, servicios comunitarios, cultura, deporte) y deriva al portal dedicado presupuestoparticipativo.smt.gob.ar. Sin formularios, sin resultados de votaciÃ³n ni listado de proyectos.
+
+## Portal Presupuesto Participativo (app dedicada) [pendiente de verificaciÃ³n]
+URL: https://presupuestoparticipativo.smt.gob.ar/
+Responde 200 con tÃ­tulo 'Presupuesto Participativo SMT'; corre sobre Node.js (X-Powered-By: Express) y el contenido se renderiza en cliente: no se pudo confirmar proyectos, votaciÃ³n ni mapa sin navegador.
+
+## CategorÃ­a Actividades Ciudadanas [verificado]
+URL: https://smt.gob.ar/tramite/actividades-ciudadanas/12
+CategorÃ­a con programas comunitarios: Ciudad Activa (/nota/plazas-ciudad-activa/63), Complejos Deportivos (/nota/complejos-deportivos/55), CIC (/nota/centro-integrador-comunitariocic/23), Programa Proteger (/nota/programa-proteger/75), Programas Sociales (/nota/programas-sociales/74), Centro de InformaciÃ³n a Vecinos (/nota/centro-de-informacion-a-vecinos/76), mÃ¡s rutas especiales /talleres y /catalogo/catalogo-de-emprendedores. Enlaza a agendaculturalsmt.com y redes.
+
+## Centro de InformaciÃ³n a Vecinos [verificado]
+URL: https://smt.gob.ar/nota/centro-de-informacion-a-vecinos/76
+Ficha del punto de atenciÃ³n presencial (9 de Julio 570, Casa Central, 8 a 18 hs) para consultas y reclamos; promueve CiDiTuc (ciudaddigital.smt.gob.ar) y da telÃ©fonos de Asistencia PÃºblica 4308393 / 4212329. Sin formulario web propio.
+
+## Portal de AtenciÃ³n Ciudadana (reclamos) [verificado]
+URL: https://smt.gob.ar/nota/portal-de-atencion-ciudadana/7
+Ficha del sistema de reclamos: el canal principal es WhatsApp con 9 lÃ­neas por Ã¡rea (Ambiente 3812230563, Bacheo 3812230569, Arbolado 3812230567, Alumbrado 3812230570, Basurales 3812230568, SemÃ¡foros 3812230571, Transporte 3812195650, VÃ­a PÃºblica 3812230573, Veredas 3813647181) que generan tickets con seguimiento; email direccionderespuestarapida@gmail.com; call center presencial en San Lorenzo 1270 (L-V 8-20, fin de semana 8-12). Deriva a https://atencionciudadana.smt.gob.ar/. NO hay formulario web propio en el portal.
+
+## Sistema AtenciÃ³n Ciudadana (app) [pendiente de verificaciÃ³n]
+URL: https://atencionciudadana.smt.gob.ar/
+Responde 200 con tÃ­tulo 'AtenciÃ³n Ciudadana' pero el HTML llega sin contenido (render en cliente / SPA): no se pudo confirmar si tiene formulario, login o listado de canales.
+
+## CiDiTuc / Ciudad Digital [pendiente de verificaciÃ³n]
+URL: https://ciudaddigital.smt.gob.ar/
+Responde 200 (nginx/Plesk) con tÃ­tulo 'Ciudad Digital' pero contenido renderizado en cliente (SPA): no se pudo confirmar funciones (trÃ¡mites, reclamos, login). Es referenciado desde mÃºltiples fichas del portal como plataforma de trÃ¡mites/consultas digitales.
+
+## PÃ¡gina de contacto del portal [roto aparente]
+URL: https://smt.gob.ar/contacto
+Devuelve HTTP 404: el portal principal no tiene pÃ¡gina de contacto propia. El contacto se resuelve en el footer (direcciÃ³n 9 de Julio 598, tel. 4516500, Asistencia PÃºblica 4308393/4212329) y en las fichas de atenciÃ³n ciudadana.
+
+## Buscador del portal [verificado]
+URL: https://smt.gob.ar/search/result?q=reclamos
+Buscador interno funcional (GET /search/result?q=): devuelve notas y trÃ¡mites con tÃ­tulo, descripciÃ³n y URL; indexa tambiÃ©n Ã­tems con enlaces externos (p. ej. resultados de 'digesto' devuelven la nota interna y dos PDFs en Google Drive). Verificado con q=reclamos y q=digesto.
+
+## USPP â€” Servicios PÃºblicos Privatizados [verificado]
+URL: https://uspp.smt.gob.ar/
+Panel de seguimiento de contratos de servicios pÃºblicos privatizados: inventario de 2.475 conexiones en cuatro servicios, consumos mensuales de energÃ­a/gas/agua (ene-mar 2026), desglose de infraestructura (alumbrado, cÃ¡maras, semÃ¡foros, paradas inteligentes). Datos actualizados a mayo 2026. No incluye reclamos ni tarifas. Enlazado desde la categorÃ­a Transparencia.
+
+NOTAS: HALLAZGOS CLAVE DEL ÃMBITO NOTICIAS/COMUNICACIÃ“N/TRANSPARENCIA: (1) Las noticias NO viven en smt.gob.ar (Laravel/Voyager) sino en comunicacionsmt.gob.ar â€” sin punto entre 'comunicacion' y 'smt' â€” un CMS de terceros llamado MediosCMS detrÃ¡s de Cloudflare, con patrones /contenido/{id}/{slug} y /categoria/{id}/{slug}. Los subdominios 'clÃ¡sicos' estÃ¡n muertos: comunicacion.smt.gob.ar resuelve en DNS pero falla el handshake TLS, y prensa.smt.gob.ar no existe en DNS (ENOTFOUND). smt.gob.ar/noticias devuelve 404. (2) NO existe feed RSS: /feed y /rss devuelven 404 tanto en smt.gob.ar como en comunicacionsmt.gob.ar; si el rediseÃ±o quiere embeber noticias habrÃ¡ que pedir API/feed al proveedor de MediosCMS. (3) DATO CONTRADICTORIO: la categorÃ­a /tramite/transparencia-y-participacion/10 enlaza el portal de datos como www.smtendatos.com.ar (dominio que no responde), mientras la home usa el correcto smtendatos.gob.ar (WordPress, PHP 8.2, hosting con header 'Server: hcdn', distinto al Plesk municipal). Corregir ese enlace. (4) Cinco subdominios devuelven 200 pero son SPAs con render en cliente y no pudieron describirse funcionalmente sin navegador: licitaciones.smt.gob.ar, boletinoficial.smt.gob.ar, ciudaddigital.smt.gob.ar (CiDiTuc) y atencionciudadana.smt.gob.ar (nginx/Plesk) y presupuestoparticipativo.smt.gob.ar (Node/Express, stack distinto). Requieren relevamiento con navegador real o acceso al servidor. (5) RECLAMOS: no hay formulario web propio en el portal; el canal oficial es WhatsApp con 9 nÃºmeros por Ã¡rea + call center presencial (San Lorenzo 1270) + CiDiTuc; el email publicado de reclamos es un Gmail no institucional (direccionderespuestarapida@gmail.com). smt.gob.ar/contacto no existe (404). (6) DIGESTO duplicado/fragmentado: la nota /nota/digesto-municipal/27 ofrece un PDF en /storage subido en mayo 2024, y el buscador devuelve ademÃ¡s 'Digesto Normativo 1Âª/2Âª parte' como PDFs en Google Drive; tambiÃ©n la Ordenanza Tributaria 2026 vive en Google Drive. Conviene consolidar documentos normativos en el servidor propio. (7) transparencia.smt.gob.ar corre en el mismo stack PHP 7.4/nginx/Plesk que el portal principal (posible segunda instancia Laravel/Voyager) y muestra ejecuciÃ³n presupuestaria al 31/07/26 (56,6% gastos / 54,6% recursos). (8) La agenda /eventos del portal de noticias responde pero llega sin eventos cargados (carga dinÃ¡mica vacÃ­a). (9) uspp.smt.gob.ar muestra datos actualizados a mayo 2026 con consumos solo hasta marzo 2026. (10) Fechas de noticias verificadas coherentes con la fecha actual (ficha del 12/09/2026), portal de noticias activo y con publicaciÃ³n frecuente.

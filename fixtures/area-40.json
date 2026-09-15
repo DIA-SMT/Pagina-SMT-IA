@@ -1,0 +1,18 @@
+{
+    "id": 40,
+    "nombre": "Dirección de Centros Vecinales",
+    "slug": "direccion-de-centros-vecinales",
+    "autoridad": "Lic. Bruno Rafael Medina",
+    "foto": null,
+    "domicilio": "Av. Ejército del Norte 410",
+    "telefono": null,
+    "email": "centrosvecinales@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 19,
+        "nombre": "Subsecretaría de Gestión Estratégica y Documentación",
+        "slug": "subsecretaria-de-gestion-estrategica-y-documentacion"
+    },
+    "dependencias": []
+}

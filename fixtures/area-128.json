@@ -1,0 +1,33 @@
+{
+    "id": 128,
+    "nombre": "Subsecretaría de Planificación Financiera",
+    "slug": "subsecretaria-de-planificacion-financiera",
+    "autoridad": "..",
+    "foto": null,
+    "domicilio": ".",
+    "telefono": null,
+    "email": ".",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 8,
+        "nombre": "Secretaría de Ingresos Municipales",
+        "slug": "secretaria-de-ingresos-municipales"
+    },
+    "dependencias": [
+        {
+            "id": 78,
+            "nombre": "Dirección de Política Fiscal",
+            "slug": "direccion-de-politica-fiscal",
+            "autoridad": "Ing. Edgardo Federico Barrionuevo",
+            "email": "politicafiscal@smt.gob.ar"
+        },
+        {
+            "id": 129,
+            "nombre": "Oficina de Crédito Público",
+            "slug": "oficina-de-credito-publico",
+            "autoridad": "Cr. Jorge Fabián Martínez",
+            "email": "creditopublico@smt.gob.ar"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "id": 63,
+    "nombre": "Dirección de Planificación Urbanística",
+    "slug": "direccion-de-planificacion-urbanistica",
+    "autoridad": "María Guadalupe Rearte",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/pzC10i1WboGJsOmA7EIx.jpg",
+    "domicilio": "General Paz 576 5° Piso - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "dpua@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 26,
+        "nombre": "Subsecretaría de Planificación Urbana",
+        "slug": "subsecretaria-de-planificacion-urbana"
+    },
+    "dependencias": []
+}

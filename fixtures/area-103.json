@@ -1,0 +1,18 @@
+{
+    "id": 103,
+    "nombre": "Tesorería General",
+    "slug": "tesoreria-general",
+    "autoridad": "C.P.N. Silvina Usandivaras",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/aEDNq9T2LZvzJtknLqXd.jpg",
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "tesoreria@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 15,
+        "nombre": "Subsecretaría de Economía y Hacienda",
+        "slug": "subsecretaria-de-economia-y-hacienda"
+    },
+    "dependencias": []
+}

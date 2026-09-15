@@ -1,0 +1,17 @@
+{
+    "id": 28,
+    "categoria": 8,
+    "item": 31,
+    "titulo": "Patrimonio Urbano",
+    "bajada": null,
+    "cuerpo": "<p style=\"text-align: justify;\"><span style=\"color: #000000;\">El patrimonio urbano de San Miguel de Tucum&aacute;n resalta, destacando su rica historia y relevancia cultural. Describe sitios hist&oacute;ricos y arquitect&oacute;nicos que reflejan su pasado colonial y su participaci&oacute;n en eventos importantes de la historia argentina. Se enfatiza la importancia de preservar este patrimonio para impulsar el desarrollo tur&iacute;stico, econ&oacute;mico y cultural, invitando a la comunidad a unirse en este esfuerzo colectivo.&nbsp;</span></p>\r\n<p style=\"text-align: justify;\"><span style=\"color: #000000;\">Se podr&aacute; descargar una gu&iacute;a del digesto urbano para conocer m&aacute;s a fondo el patrimonio y las regulaciones urbanas de la ciudad.</span></p>\r\n<p style=\"text-align: justify;\"><span style=\"color: #000000;\">Acceda a la informaci&oacute;n de Patrimonio Urbanoa trav&eacute;s de este documento en formato PDF.</span></p>\r\n<p style=\"text-align: justify;\">&nbsp;</p>",
+    "imagen": null,
+    "archivos": [
+        {
+            "url": "https://smt.gob.ar/storage/tramites-items-notas/May2024/AhSW5nfZWHQ2ddGJJLZk.pdf",
+            "nombre": "Patrimonio-Urbano.pdf",
+            "extension": "pdf"
+        }
+    ],
+    "actualizado": "2025-03-25 21:58:08"
+}

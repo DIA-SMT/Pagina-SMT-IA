@@ -1,0 +1,18 @@
+{
+    "id": 64,
+    "nombre": "Dirección de Catrastro y Edificación",
+    "slug": "direccion-de-catrastro-y-edificacion",
+    "autoridad": "Arq. Nora Elvira Belloni",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/f7NVOehkKJSfO10QP2hU.jpg",
+    "domicilio": "Crisóstomo Álvarez 229 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "catastro@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 26,
+        "nombre": "Subsecretaría de Planificación Urbana",
+        "slug": "subsecretaria-de-planificacion-urbana"
+    },
+    "dependencias": []
+}

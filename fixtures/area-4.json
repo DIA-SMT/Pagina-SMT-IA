@@ -1,0 +1,33 @@
+{
+    "id": 4,
+    "nombre": "Secretaría de Economía y Hacienda",
+    "slug": "secretaria-de-economia-y-hacienda",
+    "autoridad": "Cr. Sebastián Ruiz Toscano",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/TbiI78UGBkVU8sBN7rXh.jpg",
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "seh@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": "https://smt.gob.ar/storage/administraciones/September2026/Wuc5KVUf7TwJ1qCCvIUf.pdf",
+    "padre": {
+        "id": 1,
+        "nombre": "Intendencia",
+        "slug": "intendencia"
+    },
+    "dependencias": [
+        {
+            "id": 58,
+            "nombre": "Dirección de Despacho de Economía y Hacienda",
+            "slug": "direccion-de-despacho-de-economia-y-hacienda",
+            "autoridad": "Dr. Esteban Buriek",
+            "email": "ddseh@smt.gob.ar"
+        },
+        {
+            "id": 15,
+            "nombre": "Subsecretaría de Economía y Hacienda",
+            "slug": "subsecretaria-de-economia-y-hacienda",
+            "autoridad": "C.P.N. Nora Liz Rabini",
+            "email": "sseh@smt.gob.ar"
+        }
+    ]
+}

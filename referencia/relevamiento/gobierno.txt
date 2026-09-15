@@ -1,0 +1,89 @@
+﻿## Estructura de Gobierno MSMT / Intendencia (raÃ­z del Ã¡rbol de Ã¡reas) [verificado]
+URL: https://smt.gob.ar/area/intendencia/1
+Ficha raÃ­z de la secciÃ³n Gobierno (Ãºnico destino del menÃº desplegable 'Gobierno'). Muestra autoridad (Dra. Rossana Chahla) con foto, domicilio (9 de Julio 570, C.P. 4000), email intendencia@smt.gob.ar, campo TelÃ©fono vacÃ­o, sin biografÃ­a ni texto descriptivo. Lista ~14 dependencias directas como tarjetas clickeables (nombre + email + enlace /area/slug/id): 9 secretarÃ­as, FiscalÃ­a Municipal, Sec. de Ordenamiento y Convivencia, Dir. Gral. de Intendencia y Dir. de Ceremonial. Ofrece descarga de Organigrama en PDF. Breadcrumb Inicio > Gobierno > Intendencia; sin navegaciÃ³n lateral entre Ã¡reas.
+
+## Ficha de secretarÃ­a (plantilla nivel 1) â€” ej. SecretarÃ­a General [verificado]
+URL: https://smt.gob.ar/area/secretaria-general/2
+Plantilla estÃ¡ndar de Ã¡rea nivel 1: autoridad (Dr. Rodrigo GÃ³mez Tortosa, Secretario General) con foto desde /storage/administraciones/..., domicilio, email sgeneral@smt.gob.ar, telÃ©fono no cargado. Lista 6 dependencias hijas como tarjetas con email y enlace /area/ (Despacho, Subsec. Prensa, Subsec. GestiÃ³n EstratÃ©gica, Subsec. Desarrollo Humano, Subsec. Cultura, Dir. PromociÃ³n de Eventos). Organigrama propio descargable: /storage/administraciones/September2026/4neRrxagR81YkNv46ry2.pdf
+
+## SecretarÃ­a de Gobierno [verificado]
+URL: https://smt.gob.ar/area/secretaria-de-gobierno/3
+Misma plantilla de Ã¡rea: Mg. Camila Giuliano (Secretaria), foto, 9 de Julio 570, sgobierno@smt.gob.ar. 4 hijas: Despacho de Gobierno /52, Subsec. de Gobierno /16, Subsec. de Seguridad Ciudadana /106, Tribunal Municipal de Faltas /55. Organigrama: /storage/administraciones/September2026/uEe5s0UVQ3KY2QX3sugD.pdf
+
+## SecretarÃ­a de EconomÃ­a y Hacienda [verificado]
+URL: https://smt.gob.ar/area/secretaria-de-economia-y-hacienda/4
+Plantilla de Ã¡rea: Cr. SebastiÃ¡n Ruiz Toscano (Secretario), foto, seh@smt.gob.ar. 2 hijas: Despacho /58 y SubsecretarÃ­a /15. Organigrama: /storage/administraciones/September2026/Wuc5KVUf7TwJ1qCCvIUf.pdf. Enlaza a /tramite/gestion-tributaria-y-comercial/1
+
+## SecretarÃ­a de Obras PÃºblicas [verificado]
+URL: https://smt.gob.ar/area/secretaria-de-obras-publicas/5
+Plantilla de Ã¡rea: Ing. Claudio Fernando Bravo (Secretario), obraspublicas@smt.gob.ar. 3 hijas: Despacho /59, Subsec. de Obras PÃºblicas /23, Subsec. de PlanificaciÃ³n Urbana /26. Organigrama: /storage/administraciones/September2026/QhEatoUB4zpUjsU9gWOD.pdf
+
+## FiscalÃ­a Municipal [verificado]
+URL: https://smt.gob.ar/area/fiscalia-municipal/6
+Plantilla de Ã¡rea: Dr. Conrado Mosqueira (Fiscal Municipal) con foto, fiscalia@smt.gob.ar. 2 hijas: Despacho de FiscalÃ­a /65 y FiscalÃ­a Adjunta /24. Organigrama: /storage/administraciones/September2026/1K4u2kszbpkm8BXrjFkG.pdf
+
+## SecretarÃ­a de Servicios PÃºblicos [verificado]
+URL: https://smt.gob.ar/area/secretaria-de-servicios-publicos/7
+Plantilla de Ã¡rea: Sr. Luciano Chincarini (Secretario) con foto, sservicios@smt.gob.ar. 2 hijas: Despacho /105 y SubsecretarÃ­a /27. Organigrama: /storage/administraciones/September2026/ZJHAy481bA9vtiggGWVH.pdf. Sidebar/bloques con enlaces a Programa SUBEM, SUBE, Recorridos de Colectivos, Mapa Interactivo
+
+## SecretarÃ­a de Ingresos Municipales [verificado]
+URL: https://smt.gob.ar/area/secretaria-de-ingresos-municipales/8
+Plantilla de Ã¡rea: Cr. MarÃ­a Fernanda Herrera (Secretaria), sim@smt.gob.ar. 3 hijas: Despacho /74, Subsec. de Ingresos Municipales /25, Subsec. de PlanificaciÃ³n Financiera /128 (esta Ãºltima sin email cargado). Organigrama: /storage/administraciones/September2026/SXGWvQLOT63pnDZR5aJY.pdf
+
+## SecretarÃ­a de InnovaciÃ³n TecnolÃ³gica [verificado]
+URL: https://smt.gob.ar/area/secretaria-de-innovacion-tecnologica/9
+Plantilla de Ã¡rea: Ing. Omar Abraham (Secretario), sitec@smt.gob.ar. 3 hijas: Despacho /51, Dir. de InnovaciÃ³n TecnolÃ³gica /28, Dir. de Inteligencia Artificial /112. Organigrama: /storage/administraciones/August2026/hNb7hkEtHodZfjGYfOMN.pdf
+
+## SecretarÃ­a de Ambiente y Desarrollo Sustentable [verificado]
+URL: https://smt.gob.ar/area/secretaria-de-ambiente-y-desarrollo-sustentable/10
+Plantilla de Ã¡rea: Ing. Julieta Migliavacca (Secretaria), sambiente@smt.gob.ar. 4 hijas: Despacho /79, Dir. de Salud Ambiental /80, Dir. de Ambiente /81, Dir. de BromatologÃ­a /82. Organigrama: /storage/administraciones/September2026/WcbimzZedBOyvwmFmkr5.pdf
+
+## SecretarÃ­a de AtenciÃ³n al Ciudadano [verificado]
+URL: https://smt.gob.ar/area/secretaria-de-atencion-al-ciudadano/11
+Plantilla de Ã¡rea: Dra. MarÃ­a SofÃ­a Prado Budeguer (Secretaria) con foto, satencionciudadana@smt.gob.ar. 3 hijas: Despacho /91, Dir. de Programas Sociales /92, Dir. de Familia /93. Organigrama: /storage/administraciones/August2026/eNbiwCMBWMiMECMfc9Ic.pdf
+
+## SecretarÃ­a de Movilidad Urbana [verificado]
+URL: https://smt.gob.ar/area/secretaria-de-movilidad-urbana/12
+Plantilla de Ã¡rea con sede propia (Av. Avellaneda 663): Sr. Carlos Roberto Arnedo (Secretario), smovilidad@smt.gob.ar. 5 hijas: Despacho /83, Subsec. de Movilidad Urbana /118 (sin email), Subsec. de Seguridad Vial y Licencias de Conducir /122, Dir. Centro de Monitoreo CeMMU /119, Dir. de Transporte /127. Organigrama: /storage/administraciones/September2026/p7dAw2rZew1qWB3kKKvm.pdf
+
+## SecretarÃ­a de Ordenamiento y Convivencia [verificado]
+URL: https://smt.gob.ar/area/secretaria-de-ordenamiento-y-convivencia/109
+Plantilla de Ã¡rea con sede propia (9 de Julio 229): Dr. Javier Eduardo GonzÃ¡lez (Secretario), email cargado como 'ordenamientoyconvivnecia@smt.gob.ar' (typo aparente). 4 hijas: Despacho /120, Dir. de la VÃ­a PÃºblica /99, Dir. de SeÃ±alizaciÃ³n y CartelerÃ­a /117 (sin email), FiscalÃ­a Ambiental Municipal /121. Organigrama: /storage/administraciones/September2026/D8vw3OmOI6o8BSe1JNe5.pdf
+
+## SubsecretarÃ­a de Cultura (plantilla nivel 2 con hijas) [verificado]
+URL: https://smt.gob.ar/area/subsecretaria-de-cultura/13
+Misma plantilla en nivel intermedio: Ana LÃ­a Carbonell (Subsecretaria), sin foto cargada, subscultura@smt.gob.ar. 3 hijas: Dir. GestiÃ³n Cultural /86, Dir. Gral. de Museos y Teatros /88, Dir. de Turismo /89. Sin organigrama PDF propio. Breadcrumb Inicio > Gobierno > SubsecretarÃ­a de Cultura (no enlaza al padre SecretarÃ­a General)
+
+## DirecciÃ³n de Turismo (plantilla nivel 3, hoja) [verificado]
+URL: https://smt.gob.ar/area/direccion-de-turismo/89
+Plantilla de Ã¡rea hoja: Sr. Pablo Gerstenfeld (Director) con foto, sede propia (Congreso y CrisÃ³stomo Ãlvarez), turismo@smt.gob.ar. Sin hijas: muestra el texto literal 'No hay estructura para esta seccion..'. Sin descargas. Enlaza a trÃ¡mites populares y a /nota/ (HabilitaciÃ³n Comercial)
+
+## DirecciÃ³n General de Intendencia (hoja dependiente directa de Intendencia) [verificado]
+URL: https://smt.gob.ar/area/direccion-general-de-intendencia/110
+Plantilla de Ã¡rea hoja: Sra. Mirta Olivera (Directora), dirgeneral@smt.gob.ar, 9 de Julio 570. Sin hijas ('No hay estructura para esta seccion') y sin organigrama PDF
+
+## DirecciÃ³n de Ceremonial (hoja dependiente directa de Intendencia) [verificado]
+URL: https://smt.gob.ar/area/direccion-de-ceremonial/111
+Plantilla de Ã¡rea hoja: Lic. BelÃ©n Bonilla (Directora), ceremonial@smt.gob.ar, 9 de Julio 570. Sin hijas ni descargas
+
+## Tribunal Municipal de Faltas (hallazgo singular: organismo jurisdiccional dentro del Ã¡rbol de Ã¡reas) [verificado]
+URL: https://smt.gob.ar/area/tribunal-municipal-de-faltas/55
+Usa la misma plantilla genÃ©rica de Ã¡rea: Dr. MatÃ­as TomÃ¡s Balardini con foto, sede Jujuy 259, tmfdireccion@smt.gob.ar. Sin hijas, sin descripciÃ³n de competencias, sin horarios de atenciÃ³n ni vÃ­nculo a trÃ¡mites de faltas/multas pese a ser organismo de alto trÃ¡fico ciudadano
+
+## Organigrama descargable (PDF por Ã¡rea, subido vÃ­a Voyager) [verificado]
+URL: https://smt.gob.ar/storage/administraciones/August2026/CzqK1MgeJjUn6ggHv8ys.pdf
+Descarga directa del organigrama de Intendencia (application/pdf, ~36,6 KB, responde correctamente). Cada secretarÃ­a tiene su propio PDF con nombre hash bajo /storage/administraciones/{Mes}{AÃ±o}/. No existe organigrama HTML navegable ni un PDF consolidado Ãºnico enlazado como tal
+
+## MenÃº 'Gobierno' del portal (navegaciÃ³n de entrada a la secciÃ³n) [verificado]
+URL: https://smt.gob.ar/
+El menÃº desplegable 'Gobierno' de la home tiene un Ãºnico Ã­tem: 'Estructura de Gobierno MSMT' que apunta a /area/intendencia/1. No hay enlaces a Concejo Deliberante, Tribunal de Cuentas, BoletÃ­n Oficial ni listado de autoridades en el menÃº ni en el footer (el footer solo trae direcciÃ³n, telÃ©fonos de urgencia, herramientas internas de expedientes/empleados/catastro y redes sociales)
+
+## Buscador ante contenido institucional inexistente (bÃºsqueda 'concejo') [verificado]
+URL: https://smt.gob.ar/search/result?q=concejo
+El buscador responde pero devuelve una secciÃ³n vacÃ­a con el texto 'Seccion sin contenido': no existe en el portal ninguna pÃ¡gina del Concejo Deliberante, boletÃ­n oficial ni listado unificado de autoridades. La Ãºnica vÃ­a institucional es el Ã¡rbol /area/
+
+## Manejo de error en rutas /area/ con id inexistente [roto aparente]
+URL: https://smt.gob.ar/area/prueba-inexistente/9999
+Una URL /area/ con id inexistente devuelve HTTP 500 Internal Server Error en lugar de 404: el controlador Laravel no maneja el registro no encontrado (probable ausencia de findOrFail/abort(404))
+
+NOTAS: Se visitaron 18 pÃ¡ginas /area/ y la plantilla es Ãºnica para los 3 niveles (intendencia > secretarÃ­a > subsecretarÃ­a > direcciÃ³n): autoridad con cargo, foto opcional (/storage/administraciones/...), domicilio, email, campo TelÃ©fono presente pero vacÃ­o en TODAS las fichas visitadas, tarjetas de dependencias hijas con email + enlace, y organigrama PDF opcional por Ã¡rea. Datos contradictorios/desactualizados detectados: (1) email con errata en SecretarÃ­a de Ordenamiento y Convivencia: 'ordenamientoyconvivnecia@smt.gob.ar' ('convivnecia' en lugar de 'convivencia'); (2) texto con erratas en Ã¡reas sin hijas: 'No hay estructura para esta seccion..' (sin tilde y doble punto); (3) el resumen de Intendencia habla de 13 dependencias pero se enumeran 14 enlaces; (4) algunas hijas no tienen email cargado (Subsec. de PlanificaciÃ³n Financiera /128, Subsec. de Movilidad Urbana /118, Dir. de SeÃ±alizaciÃ³n y CartelerÃ­a /117); (5) breadcrumb siempre es 'Inicio > Gobierno > [Ã¡rea actual]' sin reflejar la jerarquÃ­a real (una direcciÃ³n de nivel 3 no muestra a su secretarÃ­a padre). Ausencias institucionales: no existe pÃ¡gina del intendente con biografÃ­a (solo la ficha /area/intendencia/1), no hay listado unificado de autoridades (habrÃ­a que recorrer el Ã¡rbol), no hay pÃ¡gina del Concejo Deliberante ni enlace externo a Ã©l, ni BoletÃ­n Oficial ni Tribunal de Cuentas; la bÃºsqueda 'concejo' devuelve 'Seccion sin contenido'. Los organigramas son PDFs por secretarÃ­a subidos vÃ­a Voyager con fechas August/September2026 (carga reciente y mantenida). Robustez: /area/ con id inexistente devuelve HTTP 500 (no 404). Ninguna ficha muestra telÃ©fono ni horario de atenciÃ³n. Sedes distintas de 9 de Julio 570: Movilidad Urbana (Av. Avellaneda 663), Ordenamiento y Convivencia (9 de Julio 229), Tribunal de Faltas (Jujuy 259), Dir. de Turismo (Congreso y CrisÃ³stomo Ãlvarez). Las ~43 Ã¡reas hijas no visitadas quedan como pendientes en urls_no_visitadas; por consistencia de plantilla es esperable que respondan igual, pero no se verificÃ³ una por una.

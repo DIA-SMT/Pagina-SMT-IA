@@ -1,0 +1,18 @@
+{
+    "id": 94,
+    "nombre": "Dirección de Comunicación Digital",
+    "slug": "direccion-de-comunicacion-digital",
+    "autoridad": "Lic. Marcos Esteban Gómez Palmas",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/8Z1GxTfQVv6vnN6GZYkW.jpg",
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "comunicaciondigital@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 18,
+        "nombre": "Subsecretaría de Prensa y Comunicación Institucional",
+        "slug": "subsecretaria-de-prensa-y-comunicacion-institucional"
+    },
+    "dependencias": []
+}

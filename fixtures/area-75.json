@@ -1,0 +1,18 @@
+{
+    "id": 75,
+    "nombre": "Dirección de Ingresos Municipales",
+    "slug": "direccion-de-ingresos-municipales",
+    "autoridad": "CPN Julio César Mazziotti",
+    "foto": null,
+    "domicilio": "24 de Septiembre 334 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "dim@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 25,
+        "nombre": "Subsecretaría de Ingresos Municipales",
+        "slug": "subsecretaria-de-ingresos-municipales"
+    },
+    "dependencias": []
+}

@@ -1,0 +1,18 @@
+{
+    "id": 58,
+    "nombre": "Dirección de Despacho de Economía y Hacienda",
+    "slug": "direccion-de-despacho-de-economia-y-hacienda",
+    "autoridad": "Dr. Esteban Buriek",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/1Xekr4PuOYTFFzrGzbhQ.jpg",
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "ddseh@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 4,
+        "nombre": "Secretaría de Economía y Hacienda",
+        "slug": "secretaria-de-economia-y-hacienda"
+    },
+    "dependencias": []
+}

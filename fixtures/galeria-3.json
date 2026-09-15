@@ -1,0 +1,91 @@
+{
+    "id": 3,
+    "nombre": "Fotos de SMT",
+    "slug": "fotos-de-smt",
+    "fotos": [
+        {
+            "id": 3,
+            "descripcion": "Monumento al Bicentenario",
+            "imagen": "https://smt.gob.ar/storage/galeria/May2024/yVQWWmDXpUVGCvDm7tO1.jpg",
+            "miniatura": "https://smt.gob.ar/storage/galeria/May2024/yVQWWmDXpUVGCvDm7tO1-cropped.jpg"
+        },
+        {
+            "id": 6,
+            "descripcion": "Puente peatonal Mate de luna",
+            "imagen": "https://smt.gob.ar/storage/galeria/May2024/yZMt7RfEnz1eq3ycEquT.jpg",
+            "miniatura": "https://smt.gob.ar/storage/galeria/May2024/yZMt7RfEnz1eq3ycEquT-cropped.jpg"
+        },
+        {
+            "id": 7,
+            "descripcion": "Atardecer en la ciudad",
+            "imagen": "https://smt.gob.ar/storage/galeria/May2024/jR7l85FyFWcFuZBTQbkK.jpg",
+            "miniatura": "https://smt.gob.ar/storage/galeria/May2024/jR7l85FyFWcFuZBTQbkK-cropped.jpg"
+        },
+        {
+            "id": 8,
+            "descripcion": "vista área de la ciudad de san miguel de Tucumán",
+            "imagen": "https://smt.gob.ar/storage/galeria/May2024/KFWnaS95jRBivzISDVk3.jpg",
+            "miniatura": "https://smt.gob.ar/storage/galeria/May2024/KFWnaS95jRBivzISDVk3-cropped.jpg"
+        },
+        {
+            "id": 12,
+            "descripcion": "Puente peatonal Mate de luna",
+            "imagen": "https://smt.gob.ar/storage/galeria/May2024/Qm65aKNIkV08Dg7VbMZW.jpg",
+            "miniatura": "https://smt.gob.ar/storage/galeria/May2024/Qm65aKNIkV08Dg7VbMZW-cropped.jpg"
+        },
+        {
+            "id": 14,
+            "descripcion": "Vista nocturna de San Miguel de Tucuman",
+            "imagen": "https://smt.gob.ar/storage/galeria/May2024/YzwaM0y9UJQzhiMyAPoN.jpg",
+            "miniatura": "https://smt.gob.ar/storage/galeria/May2024/YzwaM0y9UJQzhiMyAPoN-cropped.jpg"
+        },
+        {
+            "id": 15,
+            "descripcion": "Estación terminal ferroviaria del Ferrocarril Gral Bartolomé Mitre",
+            "imagen": "https://smt.gob.ar/storage/galeria/May2024/IqBkpq1JyyCmtJs4QXth.jpg",
+            "miniatura": "https://smt.gob.ar/storage/galeria/May2024/IqBkpq1JyyCmtJs4QXth-cropped.jpg"
+        },
+        {
+            "id": 16,
+            "descripcion": "Peatonal Muñecas",
+            "imagen": "https://smt.gob.ar/storage/galeria/May2024/m5gAhCxzhHu3zVisi9Id.jpg",
+            "miniatura": "https://smt.gob.ar/storage/galeria/May2024/m5gAhCxzhHu3zVisi9Id-cropped.jpg"
+        },
+        {
+            "id": 37,
+            "descripcion": null,
+            "imagen": "https://smt.gob.ar/storage/galeria/November2024/5t6s7NCRTK04RolJVBHk.jpg",
+            "miniatura": "https://smt.gob.ar/storage/galeria/November2024/5t6s7NCRTK04RolJVBHk-cropped.jpg"
+        },
+        {
+            "id": 38,
+            "descripcion": null,
+            "imagen": "https://smt.gob.ar/storage/galeria/November2024/dxVKF89U6yr7ucHKuZri.jpeg",
+            "miniatura": "https://smt.gob.ar/storage/galeria/November2024/dxVKF89U6yr7ucHKuZri-cropped.jpeg"
+        },
+        {
+            "id": 39,
+            "descripcion": null,
+            "imagen": "https://smt.gob.ar/storage/galeria/November2024/RxxVdtLwxaXzyAINhUJ7.jpeg",
+            "miniatura": "https://smt.gob.ar/storage/galeria/November2024/RxxVdtLwxaXzyAINhUJ7-cropped.jpeg"
+        },
+        {
+            "id": 40,
+            "descripcion": null,
+            "imagen": "https://smt.gob.ar/storage/galeria/November2024/aneNje1W3830Ewq5yEQz.jpeg",
+            "miniatura": "https://smt.gob.ar/storage/galeria/November2024/aneNje1W3830Ewq5yEQz-cropped.jpeg"
+        },
+        {
+            "id": 57,
+            "descripcion": null,
+            "imagen": "https://smt.gob.ar/storage/galeria/November2024/n2IdPNkG2BwRLmxGRK9r.jpeg",
+            "miniatura": "https://smt.gob.ar/storage/galeria/November2024/n2IdPNkG2BwRLmxGRK9r-cropped.jpeg"
+        },
+        {
+            "id": 58,
+            "descripcion": null,
+            "imagen": "https://smt.gob.ar/storage/galeria/November2024/vAQhDcFUSSV7RAi4IcnT.jpg",
+            "miniatura": "https://smt.gob.ar/storage/galeria/November2024/vAQhDcFUSSV7RAi4IcnT-cropped.jpg"
+        }
+    ]
+}

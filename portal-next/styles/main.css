@@ -1,0 +1,1451 @@
+/* ============================================================
+   Municipalidad de San Miguel de Tucumán — Sistema visual v2
+   Requiere tokens.css. Sin dependencias externas.
+   ============================================================
+   Índice:
+   01 Reset y base          07 Tarjetas y grillas
+   02 Accesibilidad         08 Listados y fichas
+   03 Layout                09 Galería y filtros
+   04 Encabezado y nav      10 Formularios y búsqueda
+   05 Hero                  11 Footer
+   06 Secciones             12 Utilidades y estados
+   ============================================================ */
+
+/* ---- 01 Reset y base ---- */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+[hidden] { display: none !important; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--alto-header) + 1rem);
+}
+
+body {
+  font-family: var(--f-sans);
+  font-size: var(--fs-base);
+  line-height: var(--lh-base);
+  color: var(--c-ink);
+  background: var(--c-fondo);
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg, video { display: block; max-width: 100%; height: auto; }
+
+h1, h2, h3, h4 {
+  color: var(--c-ink);
+  text-wrap: balance;
+}
+h1 { font-size: var(--fs-2xl); font-weight: var(--fw-fuerte); line-height: var(--lh-titular); }
+h2 { font-size: var(--fs-xl);  font-weight: var(--fw-fuerte); line-height: var(--lh-titular); }
+h3 { font-size: var(--fs-lg);  font-weight: var(--fw-semi);   line-height: var(--lh-titulo); }
+h4 { font-size: var(--fs-md);  font-weight: var(--fw-semi);   line-height: var(--lh-titulo); }
+
+/* La medida se aplica al texto corrido, no a todo <p>: había párrafos usados
+   como contenedor de botones que quedaban descentrados por heredar el tope. */
+.prosa p,
+.bajada,
+.seccion__cabecera p,
+.aviso p,
+.pagina-error p { max-width: var(--ancho-texto); }
+.estado-vacio p { max-width: var(--ancho-texto); margin-inline: auto; }
+
+a { color: var(--c-azul-700); text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
+a:hover { color: var(--c-azul-800); }  /* 9,68:1 sobre blanco */
+
+ul, ol { padding-left: 1.4em; }
+
+strong { font-weight: 700; }
+
+::selection { background: var(--c-celeste-200); color: var(--c-ink); }
+
+/* ---- 02 Accesibilidad ----
+   Anillo de foco de dos tonos: el outline claro se apoya sobre el halo oscuro
+   del box-shadow. Así siempre hay un borde con al menos 3:1 contra el fondo,
+   sea claro u oscuro (WCAG 2.4.7 y 1.4.11), incluso en una tarjeta blanca
+   dentro de una sección azul. Tanto el outline como el box-shadow siguen el
+   border-radius propio del elemento, así que no se fuerza ningún radio acá. */
+:focus-visible {
+  outline: 3px solid var(--foco-interior);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 6px var(--foco-exterior);
+}
+
+.visualmente-oculto {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+
+.saltar-contenido {
+  position: absolute;
+  left: var(--sp-4); top: -100px;
+  z-index: 200;
+  padding: var(--sp-2) var(--sp-4);
+  background: var(--c-azul-600); color: #fff;
+  border-radius: var(--r-sm);
+  font-weight: 600;
+  transition: top var(--t-rapida);
+}
+.saltar-contenido:focus { top: var(--sp-3); color: #fff; }
+
+/* ---- 03 Layout ---- */
+.contenedor {
+  width: min(100% - 2.5rem, var(--ancho-max));
+  margin-inline: auto;
+}
+
+.seccion { padding-block: var(--seccion-y); }
+.seccion--blanca { background: var(--c-blanco); }
+/* Un escalón más oscuro que antes (900→700 en vez de 800→600): en el punto
+   más claro el blanco pasaba 4,6:1 y ahora da 6,82:1, y el celeste-100 sube de
+   3,7 a 4,55. De paso la banda se acerca al azul del pie, así que las dos zonas
+   oscuras leen como un marco institucional y no como una franja suelta. */
+.seccion--azul {
+  background:
+    radial-gradient(90rem 40rem at 110% -20%, rgba(46, 177, 255, 0.20), transparent 60%),
+    linear-gradient(135deg, var(--c-azul-900), var(--c-azul-700));
+  color: #fff;
+}
+.seccion--azul h2, .seccion--azul h3 { color: #fff; }
+
+.seccion__cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-7);
+}
+/* El :not() es necesario, no cosmético: el kicker se escribe como <p> en la
+   mayoría de las páginas, y sin excluirlo esta regla le gana por especificidad
+   (0,1,1 contra 0,1,0) y lo pinta gris. El mismo componente salía azul en la
+   portada, gris en las internas y amarillo en las secciones azules. */
+.seccion__cabecera p:not(.seccion__kicker) { color: var(--c-ink-soft); margin-top: var(--sp-2); }
+.seccion--azul .seccion__cabecera p:not(.seccion__kicker) { color: var(--c-celeste-100); }
+
+/* Vincha decorativa: trazo curvo inspirado en los pétalos del logo */
+.seccion__kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-azul-700);
+  margin-bottom: var(--sp-2);
+}
+.seccion__kicker::before {
+  content: "";
+  width: 1.4rem; height: 0.85rem;
+  background: var(--c-azul-600);
+  border-radius: 0 100% 0 100%;
+  flex: none;
+}
+.seccion--azul .seccion__kicker { color: var(--c-amarillo-400); }
+.seccion--azul .seccion__kicker::before { background: var(--c-amarillo-400); }
+
+/* ---- 04 Encabezado y navegación ---- */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--c-borde-objeto);
+  /* Sin esto la barra fija no tiene canto cuando debajo pasa una sección blanca. */
+  box-shadow: 0 1px 3px rgba(23, 41, 60, 0.05);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-5);
+  min-height: var(--alto-header);
+}
+
+.header__logo img { height: 2.6rem; width: auto; }
+.header__logo:focus-visible { outline-offset: 4px; }
+
+.nav { display: none; }
+
+.header__acciones {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  margin-left: auto;
+}
+
+.boton-buscar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  width: 2.75rem; height: 2.75rem;
+  border: 1px solid var(--c-borde-campo);
+  border-radius: var(--r-full);
+  background: var(--c-blanco);
+  color: var(--c-ink);
+  cursor: pointer;
+  transition: border-color var(--t-rapida), background var(--t-rapida);
+}
+.boton-buscar:hover { border-color: var(--c-azul-300); background: var(--c-azul-50); }
+
+.boton-menu {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 0.55rem 0.9rem;
+  border: 1px solid var(--c-borde-campo);
+  border-radius: var(--r-full);
+  background: var(--c-blanco);
+  color: var(--c-ink);
+  font: inherit;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* 64rem es su propio umbral y no uno de los tres escalones de grilla: es el
+   ancho a partir del cual entra el menú completo sin apretarse. Lo comparten
+   el encabezado, el hero y .solo-desktop. */
+@media (min-width: 64rem) {
+  .boton-menu { display: none; }
+
+  .nav { display: flex; align-items: center; gap: var(--sp-1); }
+
+  .nav > ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    gap: var(--sp-1);
+  }
+
+  .nav__enlace {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.55rem 0.85rem;
+    border: 0;
+    border-radius: var(--r-full);
+    background: none;
+    color: var(--c-ink);
+    text-decoration: none;
+    font: inherit;
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background var(--t-rapida), color var(--t-rapida);
+  }
+  .nav__enlace:hover, .nav__enlace[aria-expanded="true"] {
+    background: var(--c-azul-50);
+    color: var(--c-azul-700);
+  }
+  .nav__enlace[aria-current="page"] {
+    background: var(--c-azul-600);
+    color: #fff;
+  }
+  .nav__enlace svg { transition: transform var(--t-rapida); }
+  .nav__enlace[aria-expanded="true"] svg { transform: rotate(180deg); }
+
+  .nav__item { position: relative; }
+
+  .nav__submenu {
+    position: absolute;
+    top: calc(100% + 0.4rem);
+    left: 0;
+    min-width: 17rem;
+    background: var(--c-blanco);
+    border: 1px solid var(--c-borde-suave);
+    border-radius: var(--r-md);
+    box-shadow: var(--sombra-2);
+    padding: var(--sp-2);
+    list-style: none;
+    display: none;
+  }
+  .nav__item--abierto .nav__submenu { display: block; }
+  .nav__submenu a {
+    display: block;
+    padding: 0.55rem 0.75rem;
+    border-radius: var(--r-sm);
+    color: var(--c-ink);
+    text-decoration: none;
+    font-size: var(--fs-sm);
+  }
+  .nav__submenu a:hover { background: var(--c-azul-50); color: var(--c-azul-700); }
+}
+
+.boton-cidituc {
+  display: none;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 0.55rem 1.1rem;
+  background: var(--c-azul-600);
+  color: #fff;
+  border-radius: var(--r-full);
+  text-decoration: none;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  transition: background var(--t-rapida), box-shadow var(--t-rapida), transform var(--t-rapida);
+}
+.boton-cidituc:hover {
+  background: var(--c-azul-700);
+  color: #fff;
+  transform: translateY(-1px);
+}
+@media (min-width: 40rem) { .boton-cidituc { display: inline-flex; } }
+
+/* Menú móvil (panel deslizante) */
+.panel-movil {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  display: none;
+}
+.panel-movil[data-abierto] { display: block; }
+.panel-movil__fondo {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 24, 40, 0.5);
+  cursor: pointer;
+}
+.panel-movil__caja {
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  width: min(22rem, 88vw);
+  background: var(--c-blanco);
+  box-shadow: var(--sombra-3);
+  padding: var(--sp-5);
+  overflow-y: auto;
+  animation: entrar-derecha 0.25s cubic-bezier(0.2, 0, 0.2, 1);
+}
+@keyframes entrar-derecha {
+  from { transform: translateX(2rem); opacity: 0; }
+  to   { transform: none; opacity: 1; }
+}
+.panel-movil__cierre {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--sp-5);
+}
+.panel-movil nav ul { list-style: none; padding: 0; }
+.panel-movil nav > ul > li { border-bottom: 1px solid var(--c-borde-suave); }
+.panel-movil nav a, .panel-movil .acordeon__boton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.85rem 0.25rem;
+  color: var(--c-ink);
+  text-decoration: none;
+  font-weight: 600;
+  background: none;
+  border: 0;
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+.acordeon__boton svg { transition: transform var(--t-rapida); }
+.acordeon__boton[aria-expanded="true"] svg { transform: rotate(180deg); }
+.acordeon__panel { padding: 0 0 var(--sp-3) var(--sp-4); }
+.acordeon__panel a { font-weight: 400; font-size: var(--fs-sm); padding-block: 0.5rem; }
+.acordeon__panel[hidden] { display: none; }
+
+/* ---- 05 Hero ----
+   Banda panorámica de ancho completo. Las fotografías municipales disponibles
+   son panorámicas (3:1), así que el hero se adapta al material en vez de
+   recortarlo: antes se metía una 3:1 en un recuadro de 1,4:1 y se veía una
+   franja del centro.
+
+   El título va sobre la foto con un velo de azul institucional — no un negro
+   genérico — que garantiza contraste sin importar si la foto es un amanecer
+   o una toma nocturna. El buscador baja a una tarjeta que monta sobre el
+   borde inferior: queda sobre fondo sólido, que es donde más se lee, y de
+   paso le da profundidad y anclaje a la portada. */
+
+.hero {
+  position: relative;
+  background: var(--c-blanco);
+}
+
+.hero__banda {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 2;          /* móvil: más alto para que la foto se lea */
+  /* Sin este mínimo, en un teléfono angosto la banda queda tan baja que el
+     bloque de texto ocupa el 75% de su alto y se sale de la zona cubierta
+     por el velo. */
+  min-height: 26rem;
+  overflow: hidden;
+  background: var(--c-azul-900);
+}
+.hero__banda img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Velo en azul institucional: sube desde abajo y deja limpia la parte alta
+   de la foto.
+
+   Los puntos del degradado van en rem y NO en porcentaje. Con porcentajes la
+   zona opaca se mide contra el alto de la banda, pero el bloque de texto mide
+   siempre lo mismo en píxeles: en escritorio ocupaba el 36% inferior y caía
+   dentro de la zona cubierta, pero en un teléfono ocupaba el 75% y la primera
+   línea del título quedaba sobre una parte casi transparente. Medido sobre las
+   siete fotos, a 375px daba entre 1,6:1 y 2,4:1, o sea por debajo del mínimo
+   de 3:1 para texto grande. En rem la zona opaca cubre el alto real del texto
+   sea cual sea el tamaño de pantalla. */
+.hero__velo {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10, 46, 110, 0.94) 0,
+    rgba(10, 46, 110, 0.88) 13rem,
+    rgba(10, 46, 110, 0.35) 17rem,
+    rgba(10, 46, 110, 0.06) 100%
+  );
+}
+
+.hero__texto {
+  position: absolute;
+  inset: auto 0 0 0;
+  /* Tiene que superar el solape de la tarjeta del buscador, o la bajada queda
+     cortada por debajo. */
+  padding-bottom: var(--sp-9);
+}
+
+.hero__titulo {
+  font-weight: var(--fw-titular);
+  line-height: var(--lh-display);
+  font-size: var(--fs-3xl);
+  letter-spacing: -0.015em;
+  color: #fff;
+  text-wrap: balance;
+  max-width: 20ch;
+}
+/* El acento va en amarillo pleno en vez de subrayado: sobre la foto, un
+   subrayado se pierde y el color del logo se lee mejor. */
+.hero__titulo em {
+  font-style: normal;
+  color: var(--c-amarillo-400);
+}
+
+.hero__bajada {
+  margin-top: var(--sp-3);
+  font-size: var(--fs-md);
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 44ch;
+}
+
+/* El epígrafe da contexto de la foto, pero es secundario: en pantallas
+   angostas compite con el título y se oculta. El alt de la imagen conserva
+   la descripción para quien use lector de pantalla. */
+.hero__epigrafe { display: none; }
+
+@media (min-width: 40rem) {
+  .hero__epigrafe {
+    display: block;
+    position: absolute;
+    top: var(--sp-4);
+    right: var(--sp-4);
+    z-index: 1;
+    max-width: 22rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: var(--r-full);
+    background: rgba(10, 24, 40, 0.55);
+    backdrop-filter: blur(6px);
+    color: rgba(255, 255, 255, 0.92);
+    font-size: var(--fs-xs);
+    text-align: right;
+  }
+}
+
+/* La tarjeta del buscador monta sobre la foto y ancla la portada. */
+.hero__panel {
+  position: relative;
+  margin-top: calc(var(--sp-7) * -1);
+  background: var(--c-blanco);
+  border: 1px solid var(--c-borde-objeto);
+  border-radius: var(--r-lg);
+  box-shadow: var(--sombra-3);
+  padding: var(--sp-5);
+}
+
+.hero__panel .buscador-hero { margin-top: 0; max-width: none; }
+
+.hero__sugerencias {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--sp-2) var(--sp-3);
+  margin-top: var(--sp-4);
+}
+.hero__sugerencias > span {
+  font-size: var(--fs-sm);
+  color: var(--c-ink-muted);
+  flex: none;
+}
+.hero__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+@media (min-width: 40rem) {
+  .hero__banda { aspect-ratio: 21 / 9; }
+  .hero__texto { padding-bottom: var(--sp-7); }
+  .hero__panel { padding: var(--sp-5) var(--sp-6); }
+}
+
+@media (min-width: 64rem) {
+  /* Cerca de la proporción nativa de las fotos, para no recortarlas. */
+  .hero__banda { aspect-ratio: 2.8 / 1; max-height: 34rem; }
+  .hero__texto { padding-bottom: var(--sp-8); }
+  .hero__panel {
+    margin-top: calc(var(--sp-8) * -1);
+    padding: var(--sp-6);
+  }
+  /* El buscador va en su propia fila, a todo lo que necesite. Se probó
+     compartiendo fila con los chips y no funciona: la columna de chips pide
+     unos 1030px de los 1216 disponibles y deja el campo en 97px. El buscador
+     es el elemento más usado de la portada y no puede ceder ancho. */
+  .hero__panel .buscador-hero { max-width: 40rem; }
+  .hero__sugerencias { margin-top: var(--sp-4); }
+}
+
+
+/* Estas reglas vivían en el bloque del hero anterior y se usan también fuera
+   de él (el buscador está en el menú móvil y en /buscar; los chips y la
+   corrección de grillas, en varias plantillas). Se conservan tal cual. */
+
+/* Sin esto una celda de grilla toma el ancho de su contenido más largo y
+   desborda la fila. Es la corrección estándar para grid y flex. */
+.grilla > *,
+.layout-ficha > *,
+.footer__grid > *,
+.hero__panel > * { min-width: 0; }
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.9rem;
+  background: var(--c-azul-50);
+  color: var(--c-azul-800);
+  border: 1px solid var(--c-azul-100);
+  border-radius: var(--r-full);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background var(--t-rapida), border-color var(--t-rapida);
+}
+.chip:hover { background: var(--c-azul-100); border-color: var(--c-azul-200); color: var(--c-azul-800); }
+
+/* Buscador grande */
+.buscador-hero { margin-top: var(--sp-6); max-width: 34rem; }
+.buscador-hero form,
+form.buscador-hero {
+  display: flex;
+  background: var(--c-blanco);
+  border: 2px solid var(--c-borde-campo);
+  border-radius: var(--r-full);
+  padding: 0.3rem;
+  transition: border-color var(--t-rapida), box-shadow var(--t-rapida);
+}
+.buscador-hero form:focus-within,
+form.buscador-hero:focus-within {
+  border-color: var(--c-azul-600);
+  box-shadow: 0 0 0 4px var(--c-azul-100);
+}
+.buscador-hero input {
+  /* width:0 + flex-grow anula el ancho intrínseco del input (~20ch). Solo con
+     min-width:0 el formulario seguía aportando 336px de min-content y
+     desbordaba el hero a 320px. */
+  flex: 1 1 0;
+  width: 0;
+  min-width: 0;
+  border: 0;
+  background: none;
+  padding: 0.6rem 1rem;
+  font: inherit;
+  color: var(--c-ink);
+}
+.buscador-hero input:focus { outline: none; }
+.buscador-hero input::placeholder { color: var(--c-ink-muted); }
+
+/* ---- 06 Botones ---- */
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  padding: 0.7rem 1.5rem;
+  border-radius: var(--r-full);
+  border: 2px solid transparent;
+  font: inherit;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--t-rapida), color var(--t-rapida), border-color var(--t-rapida), box-shadow var(--t-media), transform var(--t-rapida);
+}
+.boton--primario { background: var(--c-azul-600); color: #fff; }
+.boton--primario:hover { background: var(--c-azul-700); color: #fff; transform: translateY(-1px); }
+.boton--secundario { background: var(--c-blanco); color: var(--c-azul-700); border-color: var(--c-borde-campo); }
+.boton--secundario:hover { border-color: var(--c-azul-600); color: var(--c-azul-700); background: var(--c-azul-50); }
+.boton--blanco { background: var(--c-blanco); color: var(--c-azul-800); }
+.boton--blanco:hover { background: var(--c-celeste-50); color: var(--c-azul-800); }
+
+/* ---- 07 Tarjetas y grillas ---- */
+/* La calle entre tarjetas tiene que ser mayor que el margen interno, o el
+   grupo se lee como un bloque continuo en vez de como piezas separadas. */
+.grilla { display: grid; gap: var(--sp-5); }
+
+/* TRES ESCALONES PARA TODO EL SISTEMA. Las media queries no aceptan var(), así
+   que quedan escritos a mano, pero el criterio es uno solo:
+     40rem  entra la 2ª columna
+     60rem  entra la 3ª
+     72rem  escritorio pleno, entra la 4ª
+   Con esto una tarjeta va de 266 a 419px en vez de 266 a 856px. */
+@media (min-width: 40rem) {
+  .grilla--2, .grilla--3, .grilla--4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 60rem) {
+  .grilla--3, .grilla--4 { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 72rem) {
+  .grilla--4 { grid-template-columns: repeat(4, 1fr); }
+}
+
+.tarjeta {
+  background: var(--c-blanco);
+  border: 1px solid var(--c-borde-objeto);
+  border-radius: var(--r-lg);
+  padding: var(--sp-5);
+  position: relative;
+  transition: box-shadow var(--t-media), border-color var(--t-media), transform var(--t-media);
+  box-shadow: var(--sombra-1);
+}
+.tarjeta:hover {
+  box-shadow: var(--sombra-2);
+  /* azul-200 daba 1,55:1 contra el borde en reposo: no se percibía el cambio */
+  border-color: var(--c-azul-300);
+}
+.tarjeta h3 { font-size: var(--fs-md); }
+.tarjeta h3 a {
+  color: var(--c-ink);
+  text-decoration: none;
+}
+/* La tarjeta entera es clicable a través del pseudo-elemento del enlace del título */
+.tarjeta h3 a::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.tarjeta h3 a:hover { color: var(--c-azul-700); }
+.tarjeta p { font-size: var(--fs-sm); color: var(--c-ink-soft); margin-top: var(--sp-2); }
+
+.tarjeta__icono {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem; height: 3rem;
+  border-radius: 0 var(--r-full) 0 var(--r-full); /* forma de pétalo */
+  background: var(--c-azul-50);
+  color: var(--c-azul-600);
+  margin-bottom: var(--sp-4);
+  transition: background var(--t-media), color var(--t-media);
+}
+.tarjeta:hover .tarjeta__icono { background: var(--c-azul-600); color: #fff; }
+
+/* Acceso destacado: tarjeta compacta horizontal */
+.acceso {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  background: var(--c-blanco);
+  border: 1px solid var(--c-borde-objeto);
+  border-radius: var(--r-md);
+  padding: var(--sp-4);
+  text-decoration: none;
+  color: var(--c-ink);
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  transition: box-shadow var(--t-media), border-color var(--t-media), transform var(--t-media);
+  box-shadow: var(--sombra-1);
+}
+.acceso:hover {
+  box-shadow: var(--sombra-2);
+  border-color: var(--c-azul-300);
+  color: var(--c-azul-700);
+}
+.acceso__icono {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem; height: 2.75rem;
+  border-radius: var(--r-full);
+  background: var(--c-celeste-50);
+  color: var(--c-celeste-600);
+}
+.acceso small { display: block; font-weight: 400; color: var(--c-ink-muted); font-size: var(--fs-xs); }
+
+/* Tarjeta con imagen (noticias, ciudad) */
+.tarjeta-media {
+  background: var(--c-blanco);
+  border: 1px solid var(--c-borde-objeto);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow var(--t-media), transform var(--t-media);
+  box-shadow: var(--sombra-1);
+}
+.tarjeta-media:hover { box-shadow: var(--sombra-2); }
+.tarjeta-media__img {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--c-fondo-alt);
+}
+.tarjeta-media__img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform var(--t-media);
+}
+
+.tarjeta-media__cuerpo { padding: var(--sp-4) var(--sp-5) var(--sp-5); display: flex; flex-direction: column; gap: var(--sp-2); flex: 1; }
+.tarjeta-media__meta { font-size: var(--fs-xs); color: var(--c-ink-muted); display: flex; gap: var(--sp-3); align-items: center; }
+.tarjeta-media h3 { font-size: var(--fs-md); }
+.tarjeta-media h3 a { color: var(--c-ink); text-decoration: none; }
+.tarjeta-media h3 a::after { content: ""; position: absolute; inset: 0; }
+.tarjeta-media h3 a:hover { color: var(--c-azul-700); }
+.tarjeta-media p { font-size: var(--fs-sm); color: var(--c-ink-soft); }
+
+.etiqueta {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.7rem;
+  border-radius: var(--r-full);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  background: var(--c-celeste-50);
+  color: var(--c-celeste-700); /* 4.7:1 sobre celeste-50 */
+}
+.etiqueta--amarilla { background: var(--c-amarillo-100); color: var(--c-amarillo-700); }
+.etiqueta--azul { background: var(--c-azul-50); color: var(--c-azul-700); }
+
+/* ---- 08 Migas, listados y fichas ---- */
+.migas {
+  padding-block: var(--sp-4);
+  font-size: var(--fs-sm);
+}
+.migas ol {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+.migas li { display: flex; align-items: center; gap: var(--sp-2); }
+.migas li + li::before { content: "/"; color: var(--c-borde-campo); }
+.migas a { color: var(--c-ink-muted); text-decoration: none; }
+.migas a:hover { color: var(--c-azul-700); text-decoration: underline; }
+.migas [aria-current="page"] { color: var(--c-ink); font-weight: 600; }
+
+.cabecera-pagina {
+  background:
+    radial-gradient(60rem 30rem at 100% 0%, rgba(46, 177, 255, 0.12), transparent 55%),
+    var(--c-blanco);
+  border-bottom: 1px solid var(--c-borde-suave);
+  padding-block: var(--sp-2) var(--sp-7);
+}
+.cabecera-pagina h1 { max-width: var(--ancho-titular); }
+.cabecera-pagina .bajada {
+  margin-top: var(--sp-3);
+  font-size: var(--fs-md);
+  color: var(--c-ink-soft);
+}
+
+.layout-ficha {
+  display: grid;
+  gap: var(--sp-7);
+  padding-block: var(--sp-7);
+}
+@media (min-width: 60rem) {
+  /* La columna de contenido no se estira a los 856px disponibles: se queda en
+     la medida de lectura y el sobrante va a la calle entre columnas. */
+  .layout-ficha {
+    grid-template-columns: minmax(0, var(--ancho-texto)) minmax(0, 20rem);
+    justify-content: space-between;
+    align-items: start;
+  }
+}
+.ficha-aside { display: grid; gap: var(--sp-4); position: sticky; top: calc(var(--alto-header) + 1rem); }
+.panel-lateral {
+  background: var(--c-blanco);
+  border: 1px solid var(--c-borde-objeto);
+  border-radius: var(--r-lg);
+  padding: var(--sp-5);
+  box-shadow: var(--sombra-1);
+}
+/* Salían al tamaño exacto del cuerpo, más chicos que un h3 de tarjeta que
+   está jerárquicamente por debajo. Se les da el mismo tratamiento de rótulo
+   que ya funciona en el pie. */
+.panel-lateral h2, .panel-lateral h3 {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-fuerte);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-ink-soft);
+  margin-bottom: var(--sp-3);
+}
+.panel-lateral--accion h2, .panel-lateral--accion h3 { color: rgba(255, 255, 255, 0.9); }
+.panel-lateral ul { list-style: none; padding: 0; display: grid; gap: var(--sp-2); font-size: var(--fs-sm); }
+.panel-lateral--accion { background: var(--c-azul-900); color: #fff; border: 0; }
+.panel-lateral--accion h2, .panel-lateral--accion h3 { color: #fff; }
+.panel-lateral--accion p { color: var(--c-celeste-100); font-size: var(--fs-sm); margin-bottom: var(--sp-4); }
+
+.prosa { max-width: var(--ancho-texto); line-height: var(--lh-prosa); }
+.prosa > * + * { margin-top: var(--sp-4); }
+.prosa h2 { margin-top: var(--sp-7); padding-top: var(--sp-2); }
+.prosa h3 { margin-top: var(--sp-6); }
+.prosa img { border-radius: var(--r-lg); }
+.prosa table { width: 100%; border-collapse: collapse; font-size: var(--fs-sm); }
+.prosa th, .prosa td { text-align: left; padding: var(--sp-3); border-bottom: 1px solid var(--c-borde-suave); }
+.prosa th { background: var(--c-fondo); }
+.tabla-scroll { overflow-x: auto; }
+
+/* Documento descargable */
+.documento {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  background: var(--c-blanco);
+  border: 1px solid var(--c-borde);
+  border-radius: var(--r-md);
+  padding: var(--sp-4);
+  text-decoration: none;
+  color: var(--c-ink);
+  transition: border-color var(--t-rapida), box-shadow var(--t-media);
+  box-shadow: var(--sombra-1);
+}
+.documento:hover { border-color: var(--c-azul-300); box-shadow: var(--sombra-1); color: var(--c-ink); }
+.documento__icono {
+  flex: none;
+  width: 2.75rem; height: 2.75rem;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--c-error);
+  color: #fff;
+  border-radius: var(--r-sm);
+  font-size: var(--fs-xs);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+.documento__icono--doc { background: var(--c-azul-700); }
+.documento__icono--xls { background: var(--c-exito); }
+.documento strong { display: block; font-size: var(--fs-sm); }
+.documento small { color: var(--c-ink-muted); font-size: var(--fs-xs); }
+
+/* Lista de pasos (fichas de trámites) */
+.pasos { list-style: none; padding: 0; counter-reset: paso; display: grid; gap: var(--sp-4); }
+.pasos li {
+  counter-increment: paso;
+  display: flex;
+  gap: var(--sp-4);
+  align-items: flex-start;
+}
+.pasos li::before {
+  content: counter(paso);
+  flex: none;
+  width: 2.1rem; height: 2.1rem;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--c-azul-600);
+  color: #fff;
+  font-weight: 800;
+  font-size: var(--fs-sm);
+  border-radius: 0 var(--r-full) var(--r-full) var(--r-full);
+}
+
+.lista-check { list-style: none; padding: 0; display: grid; gap: var(--sp-3); }
+.lista-check li { display: flex; gap: var(--sp-3); align-items: flex-start; }
+.lista-check li::before {
+  content: "";
+  flex: none;
+  width: 1.35rem; height: 1.35rem;
+  margin-top: 0.15em;
+  background-color: var(--c-exito);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 11.08V12a10 10 0 1 1-5.93-9.14'/%3E%3Cpath d='m9 11 3 3L22 4'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 11.08V12a10 10 0 1 1-5.93-9.14'/%3E%3Cpath d='m9 11 3 3L22 4'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* ---- 09 Galería y filtros ---- */
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  align-items: center;
+}
+.filtro {
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--c-borde-campo);
+  border-radius: var(--r-full);
+  background: var(--c-blanco);
+  color: var(--c-ink-soft);
+  font: inherit;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background var(--t-rapida), color var(--t-rapida), border-color var(--t-rapida);
+}
+.filtro:hover { border-color: var(--c-azul-300); color: var(--c-azul-700); }
+.filtro[aria-current="page"], .filtro--activo {
+  background: var(--c-azul-600);
+  border-color: var(--c-azul-600);
+  color: #fff;
+}
+
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+  gap: var(--sp-4);
+}
+
+.galeria figure {
+  margin-bottom: var(--sp-4);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  position: relative;
+  background: var(--c-fondo-alt);
+}
+.galeria img { width: 100%; transition: transform var(--t-media); }
+
+.galeria figcaption {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: var(--sp-5) var(--sp-4) var(--sp-3);
+  /* El velo llega al 88% antes de donde empieza el texto: un degradado que
+     recién se oscurece abajo dejaba el texto blanco sobre zonas claras de la
+     foto (cielo, fachadas) por debajo de 4.5:1. */
+  background: linear-gradient(to top,
+    rgba(10, 24, 40, 0.92) 0%,
+    rgba(10, 24, 40, 0.88) 65%,
+    rgba(10, 24, 40, 0) 100%);
+  color: #fff;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+
+/* ---- 10 Formularios y búsqueda ---- */
+.campo { display: grid; gap: var(--sp-2); }
+.campo label { font-weight: 600; font-size: var(--fs-sm); }
+.campo .ayuda { font-size: var(--fs-xs); color: var(--c-ink-muted); }
+.campo input, .campo select, .campo textarea {
+  font: inherit;
+  color: var(--c-ink);
+  background: var(--c-blanco);
+  border: 1.5px solid var(--c-borde-campo);
+  border-radius: var(--r-sm);
+  padding: 0.65rem 0.9rem;
+  width: 100%;
+  transition: border-color var(--t-rapida), box-shadow var(--t-rapida);
+}
+.campo input:focus, .campo select:focus, .campo textarea:focus {
+  outline: none;
+  border-color: var(--c-azul-600);
+  box-shadow: 0 0 0 3px var(--c-azul-100);
+}
+.campo--error input, .campo--error select, .campo--error textarea { border-color: var(--c-error); }
+.campo__error { color: var(--c-error); font-size: var(--fs-xs); font-weight: 600; }
+
+.aviso {
+  display: flex;
+  gap: var(--sp-3);
+  padding: var(--sp-4);
+  border-radius: var(--r-md);
+  font-size: var(--fs-sm);
+  border: 1px solid;
+  max-width: var(--ancho-texto);
+}
+.aviso--info   { background: var(--c-celeste-50);  border-color: var(--c-azul-300); color: var(--c-ink); }
+.aviso--exito  { background: #EAF7EF; border-color: #BCE3CB; color: var(--c-ink); }
+.aviso--alerta { background: #FDF6E3; border-color: #F0DFA6; color: var(--c-ink); }
+.aviso--error  { background: #FBEDEC; border-color: #F2C4C0; color: var(--c-ink); }
+
+/* Barra de búsqueda interna de listados */
+.barra-filtros {
+  background: var(--c-blanco);
+  border: 1px solid var(--c-borde-objeto);
+  border-radius: var(--r-lg);
+  padding: var(--sp-4);
+  display: grid;
+  gap: var(--sp-3);
+  box-shadow: var(--sombra-1);
+}
+@media (min-width: 60rem) {
+  .barra-filtros { grid-template-columns: 1fr auto; align-items: end; }
+  .barra-filtros__campos { display: flex; gap: var(--sp-3); flex-wrap: wrap; }
+  .barra-filtros__campos .campo { min-width: 12rem; flex: 1; }
+}
+
+/* Paginación (paginador Laravel) */
+.paginacion { display: flex; justify-content: center; margin-top: var(--sp-7); }
+.paginacion ul { list-style: none; padding: 0; display: flex; gap: var(--sp-1); flex-wrap: wrap; }
+.paginacion a, .paginacion span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.6rem;
+  height: 2.6rem;
+  padding-inline: 0.6rem;
+  border-radius: var(--r-sm);
+  text-decoration: none;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--c-ink-soft);
+  border: 1px solid transparent;
+}
+.paginacion a:hover { background: var(--c-azul-50); color: var(--c-azul-700); }
+.paginacion [aria-current="page"] { background: var(--c-azul-600); color: #fff; }
+.paginacion .deshabilitado { color: var(--c-borde-campo); }
+
+/* ---- 11 Footer ---- */
+.footer {
+  background: var(--c-azul-900);
+  color: var(--c-celeste-100);
+  padding-block: var(--sp-9) var(--sp-5);
+  position: relative;
+  overflow: hidden;
+}
+.footer::before {
+  /* pétalo decorativo, curva del logo */
+  content: "";
+  position: absolute;
+  right: -6rem; top: -8rem;
+  width: 24rem; height: 24rem;
+  background: radial-gradient(circle, rgba(46, 177, 255, 0.16), transparent 70%);
+  border-radius: 0 100% 0 100%;
+  pointer-events: none;
+}
+.footer__grid {
+  display: grid;
+  gap: var(--sp-7);
+  position: relative;
+}
+@media (min-width: 60rem) { .footer__grid { grid-template-columns: 1.4fr 1fr 1fr 1fr; } }
+.footer h2 {
+  color: #fff;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--sp-4);
+}
+.footer ul { list-style: none; padding: 0; display: grid; gap: var(--sp-2); font-size: var(--fs-sm); }
+.footer a { color: var(--c-celeste-100); text-decoration: none; }
+.footer a:hover { color: #fff; text-decoration: underline; }
+.footer__logo img { height: 3rem; width: auto; margin-bottom: var(--sp-4); }
+.footer__direccion { font-style: normal; font-size: var(--fs-sm); display: grid; gap: var(--sp-2); }
+
+.footer__emergencias {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-top: var(--sp-3);
+}
+.tel-emergencia {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff !important;
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--r-full);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  text-decoration: none !important;
+}
+.tel-emergencia:hover { background: rgba(255, 255, 255, 0.16); }
+.tel-emergencia strong { color: var(--c-amarillo-400); }
+
+.footer__redes { display: flex; gap: var(--sp-3); margin-top: var(--sp-4); }
+.footer__redes a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem; height: 2.5rem;
+  border-radius: var(--r-full);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  transition: background var(--t-rapida), transform var(--t-rapida);
+}
+.footer__redes a:hover { background: var(--c-azul-600); }
+
+.footer__legal {
+  margin-top: var(--sp-8);
+  padding-top: var(--sp-5);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+  justify-content: space-between;
+  font-size: var(--fs-xs);
+  color: rgba(212, 238, 255, 0.75);
+  position: relative;
+}
+
+/* ---- 12 Utilidades y estados ---- */
+.solo-desktop { display: none; }
+@media (min-width: 64rem) { .solo-desktop { display: initial; } }
+
+.estado-vacio {
+  text-align: center;
+  padding: var(--sp-9) var(--sp-5);
+  background: var(--c-blanco);
+  border: 1px dashed var(--c-borde);
+  border-radius: var(--r-lg);
+  color: var(--c-ink-soft);
+}
+.estado-vacio svg { margin-inline: auto; color: var(--c-celeste-600); margin-bottom: var(--sp-4); }
+/* El h2 del estado vacío ("No encontramos resultados para…") salía al tamaño
+   de un título de tarjeta cualquiera, 12px menos que el h2 de la sección de al
+   lado. Es el mensaje principal de esa pantalla. */
+.estado-vacio h2 { font-size: var(--fs-lg); color: var(--c-ink); margin-bottom: var(--sp-2); }
+.estado-vacio h3 { font-size: var(--fs-md); color: var(--c-ink); margin-bottom: var(--sp-2); }
+
+.pagina-error {
+  min-height: 60vh;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  padding: var(--sp-9) var(--sp-5);
+}
+.pagina-error .codigo {
+  font-size: clamp(4rem, 12vw, 7rem);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--c-azul-600);
+}
+.pagina-error p { margin: var(--sp-4) auto var(--sp-6); color: var(--c-ink-soft); }
+
+/* Aparición suave al hacer scroll (con JS progresivo; sin JS todo es visible) */
+@media (prefers-reduced-motion: reduce) {
+}
+
+/* Skeleton de carga */
+
+@media print {
+  .header, .footer, .boton, .buscador-hero, .panel-movil, .migas,
+  .banda-seccion { display: none !important; }
+  body { background: #fff; }
+}
+
+/* ---- Ajustes para React ---- */
+/* Iconos que acompañan texto en línea (footer, paneles laterales). */
+.icono-en-linea { display: inline; vertical-align: -2px; margin-right: 0.15em; }
+
+/* En pantallas angostas el boton del buscador le come el espacio al campo y
+   el placeholder queda cortado. Se compacta el boton para devolverle ancho. */
+@media (max-width: 26rem) {
+  .buscador-hero form { padding: 0.25rem; }
+  .buscador-hero input { padding: 0.6rem 0.7rem; font-size: var(--fs-sm); }
+  .buscador-hero .boton { padding: 0.6rem 0.9rem; font-size: var(--fs-xs); gap: 0.3rem; }
+  .buscador-hero .boton svg { width: 16px; height: 16px; }
+}
+
+/* ---- Contenido administrado que viene pegado desde Word ----------------
+   El texto del CMS trae estilos inline de Word: font-family Poppins (844
+   veces), color negro fijo (688), justificado (677), tamaños en puntos y
+   propiedades mso-*. Todo eso pelea con el sistema visual.
+
+   Se neutraliza acá y no en el CMS: el contenido lo administra el municipio
+   y no depende de que alguien limpie el HTML al cargarlo. Se usan selectores
+   por atributo para tocar SOLO lo que Word impuso y respetar lo intencional. */
+
+.prosa [style] {
+  font-family: inherit !important;
+  line-height: inherit !important;
+}
+
+/* El justificado sin partición de palabras abre ríos de espacio en pantallas
+   angostas. Se corrige donde Word lo impuso; los 15 centrados a propósito
+   quedan intactos. */
+.prosa [style*="justify"] { text-align: left !important; }
+
+/* Word fija el negro puro; el sistema usa un tinte que descansa más la vista. */
+.prosa [style*="color"] { color: inherit !important; }
+
+/* Los enlaces de Word vienen con su azul en un span: se les da el del sistema.
+   La especificidad es mayor que la regla de arriba, por eso gana. */
+.prosa a,
+.prosa a[style],
+.prosa a [style] { color: var(--c-azul-700) !important; }
+
+/* Tamaños en puntos de Word. Los encabezados reales conservan el suyo. */
+.prosa p[style],
+.prosa span[style],
+.prosa li[style],
+.prosa div[style],
+.prosa td[style] { font-size: inherit !important; }
+
+/* ---- Banners de campaña ----
+   Piezas gráficas del municipio, con el texto incrustado en la imagen. No se
+   recortan nunca: llegan con proporciones de 4,4:1 a 10,8:1 y cualquier
+   recorte les comería el mensaje. Van en dos columnas alineadas arriba, así
+   las alturas dispares no dejan huecos raros. */
+.banners {
+  display: grid;
+  gap: var(--sp-4);
+  align-items: start;
+}
+
+.banner {
+  display: block;
+  border-radius: var(--r-md);
+  overflow: hidden;
+  border: 1px solid var(--c-borde-objeto);
+  background: var(--c-blanco);
+  transition: box-shadow var(--t-media), border-color var(--t-media), transform var(--t-media);
+}
+a.banner:hover {
+  box-shadow: var(--sombra-2);
+  border-color: var(--c-azul-300);
+}
+
+
+.banner picture,
+.banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (min-width: 60rem) {
+  .banners { grid-template-columns: repeat(2, 1fr); gap: var(--sp-5); }
+}
+
+/* ---- Foco en elementos con enlace estirado ----
+   Las tarjetas y las figuras de galería hacen clicable toda su superficie con
+   un ::after inset:0 o con un <a> absoluto. Pero el anillo de foco seguía la
+   caja en línea del título, y en la galería directamente no se veía: el
+   overflow:hidden de la figura recorta el outline del enlace que tiene adentro.
+   Tabulando una galería no aparecía nada, que es un incumplimiento liso y
+   llano de WCAG 2.4.7.
+
+   La solución es dibujar el anillo en el CONTENEDOR: el outline de un elemento
+   no lo recorta su propio overflow. No cambia el diseño del anillo, cambia de
+   elemento. */
+.tarjeta:has(h3 a:focus-visible),
+.tarjeta-media:has(h3 a:focus-visible),
+.galeria figure:has(a:focus-visible) {
+  outline: 3px solid var(--foco-interior);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 6px var(--foco-exterior);
+}
+
+.tarjeta h3 a:focus-visible,
+.tarjeta-media h3 a:focus-visible,
+.galeria figure a:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+/* ---- Color anclado en las superficies claras ----
+   Sin esto, una tarjeta blanca dentro de .seccion--azul hereda color:#fff y su
+   texto desaparece. Se ancla en el contenedor en vez de repetirlo por título. */
+.tarjeta,
+.tarjeta-media,
+.panel-lateral:not(.panel-lateral--accion),
+.barra-filtros,
+.estado-vacio { color: var(--c-ink); }
+
+.tarjeta :is(h2, h3, h4),
+.tarjeta-media :is(h2, h3, h4),
+.panel-lateral:not(.panel-lateral--accion) :is(h2, h3, h4),
+.barra-filtros :is(h2, h3, h4),
+.estado-vacio :is(h2, h3, h4) { color: var(--c-ink); }
+
+/* ---- Enlaces que salen del portal ----
+   El vecino tiene derecho a saber, antes de hacer clic, que va a salir del
+   sitio del municipio hacia otro sistema. Regla de comportamiento: pestaña
+   nueva sólo en los sistemas transaccionales donde puede tener sesión abierta
+   (CiDiTuc, DIM, multas, expedientes); el resto en la misma pestaña, que es lo
+   que recomienda gov.uk porque no rompe el botón de volver. */
+a[data-externo]::after {
+  content: "↗";
+  margin-left: 0.25em;
+  font-size: 0.85em;
+  color: var(--c-ink-muted);
+}
+.footer a[data-externo]::after { color: var(--c-celeste-200); }
+
+/* En el pie legal los enlaces eran indistinguibles del texto de al lado: mismo
+   color, apenas 1,3:1 entre sí. Distinguir sólo por color incumple 1.4.1. */
+.footer__legal a {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+}
+
+/* ---- Tarjetas de acceso: el aire pasa a tener función ----
+   Sobraba un hueco a la derecha del texto. Ahora ese espacio es la distancia
+   entre la etiqueta y su destino, marcado con una flecha que además dice si
+   el destino está dentro o fuera del portal. */
+.acceso {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+}
+.acceso::after {
+  content: "→";
+  color: var(--c-ink-muted);
+  font-size: var(--fs-md);
+  transition: color var(--t-rapida), transform var(--t-rapida);
+}
+.acceso[data-externo]::after { content: "↗"; }
+
+@media (hover: hover) {
+  .acceso:hover::after { color: var(--c-azul-700); transform: translateX(3px); }
+}
+
+/* ---- El sitio en el teléfono ----
+   Tres cosas que faltaban y que son la mitad del tráfico de un portal
+   municipal: respuesta al toque, movimiento sólo donde hay puntero de verdad,
+   y áreas de toque de 44px como pide WCAG 2.5.8. */
+
+/* a) Respuesta al pulsado, por color y sin rebotes. El transform:none cancela
+      el hover que iOS deja pegado después del toque. */
+.boton--primario:active { background: var(--c-azul-800); box-shadow: none; transform: none; }
+.boton--secundario:active,
+.boton--blanco:active,
+.chip:active,
+.filtro:active,
+.boton-buscar:active,
+.boton-menu:active { background: var(--c-azul-100); }
+.tarjeta:active,
+.tarjeta-media:active,
+.acceso:active { box-shadow: var(--sombra-1); transform: none; }
+.panel-movil nav a:active,
+.acordeon__boton:active { background: var(--c-azul-50); }
+.footer a:active,
+.tel-emergencia:active { background: rgba(255, 255, 255, 0.22); }
+
+/* b) El movimiento existe sólo donde hay un puntero que pueda salir del
+      elemento. En táctil no hay "salir", por eso el hover se queda pegado. */
+@media (hover: hover) {
+  .tarjeta:hover,
+  .tarjeta-media:hover,
+  .acceso:hover,
+  .footer__redes a:hover,
+  a.banner:hover { transform: translateY(-2px); }
+  .tarjeta-media:hover .tarjeta-media__img img { transform: scale(1.04); }
+  .galeria figure:hover img { transform: scale(1.03); }
+}
+
+/* c) Áreas de toque. No toca el escritorio: sólo se aplica con puntero grueso. */
+@media (pointer: coarse) {
+  .chip,
+  .filtro,
+  .tel-emergencia { min-height: 2.75rem; }
+  .footer ul { gap: 0; }
+  .footer ul a { display: flex; align-items: center; min-height: 2.75rem; }
+  .footer__redes a { width: 2.75rem; height: 2.75rem; }
+  .paginacion a,
+  .paginacion span { min-width: 2.75rem; height: 2.75rem; }
+  .acordeon__panel a { padding-block: 0.65rem; }
+  .migas { padding-block: var(--sp-2); }
+  .migas ol { row-gap: 0; }
+  .migas a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+}
+
+/* d) El menú móvil no tenía ningún estado, mientras que el de escritorio sí:
+      era una asimetría heredada. */
+.boton-menu:hover { border-color: var(--c-azul-300); background: var(--c-azul-50); }
+.panel-movil nav a:hover,
+.acordeon__boton:hover { color: var(--c-azul-700); }
+
+/* ---- Peso y cifras ----
+   500 para lo que está por debajo del cuerpo y en gris: a ese tamaño el 400
+   se desarma, sobre todo en pantallas de baja densidad. */
+.tarjeta-media__meta,
+.acceso small,
+.documento small,
+.campo .ayuda,
+.migas,
+.footer__legal { font-weight: var(--fw-media); }
+
+/* Cifras de ancho fijo donde se leen como datos en columna. NO en el cuerpo:
+   dentro de una oración las proporcionales se leen mejor. */
+.tel-emergencia,
+.footer__direccion,
+.paginacion a,
+.paginacion span,
+.tarjeta-media__meta,
+time { font-variant-numeric: tabular-nums; }
+
+/* ---- Banda de sección ----
+   Una foto de la ciudad arriba del título de cada índice. Corta a propósito:
+   identifica la sección sin empujar el contenido debajo de la línea de
+   flotación, que es lo que hace un hero grande en una página interna.
+
+   Alto fijo y no aspect-ratio: la banda tiene que medir lo mismo en todas las
+   secciones para que el sitio no cambie de ritmo al navegar, y con proporción
+   el alto seguiría al ancho de la pantalla y en una tablet se comería media
+   pantalla. */
+.banda-seccion {
+  position: relative;
+  width: 100%;
+  height: 7rem;
+  overflow: hidden;
+  /* Color de reserva mientras carga la foto: la banda nunca aparece en blanco
+     y después salta, que es el salto de layout más molesto. */
+  background: var(--c-azul-900);
+}
+.banda-seccion img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Velo muy tenue. No está para dar contraste —acá no hay texto encima— sino
+   para que siete fotos distintas compartan una misma temperatura y el portal
+   no parezca siete sitios. Por eso es un lavado y no una cortina: los valores
+   más altos apagaban las fotos, que es justo lo que no queremos. */
+.banda-seccion__velo {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 46, 110, 0.18),
+    rgba(10, 46, 110, 0.04) 40%,
+    rgba(10, 46, 110, 0.12)
+  );
+}
+
+@media (min-width: 60rem) {
+  .banda-seccion { height: 10rem; }
+}
+
+/* El chip de teléfono de emergencia nació para el pie, donde el fondo es
+   --c-azul-900 sólido y un 8% de blanco encima alcanza para despegarlo. En una
+   .seccion--azul el degradado llega hasta --c-azul-700 y con ese mismo 8% el
+   número amarillo queda en 3,40:1: es texto de 13px, así que AA le pide 4,5 y
+   no cumple. Acá el chip pone su propio fondo oscuro y deja de depender de lo
+   que tenga detrás. */
+.seccion--azul .tel-emergencia {
+  background: var(--c-azul-900);
+  border-color: rgba(255, 255, 255, 0.28);
+}
+.seccion--azul .tel-emergencia:hover { background: var(--c-azul-800); }

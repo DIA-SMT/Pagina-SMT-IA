@@ -1,0 +1,33 @@
+{
+    "id": 25,
+    "nombre": "Subsecretaría de Ingresos Municipales",
+    "slug": "subsecretaria-de-ingresos-municipales",
+    "autoridad": null,
+    "foto": null,
+    "domicilio": "24 de Septiembre 334 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "subsim@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 8,
+        "nombre": "Secretaría de Ingresos Municipales",
+        "slug": "secretaria-de-ingresos-municipales"
+    },
+    "dependencias": [
+        {
+            "id": 75,
+            "nombre": "Dirección de Ingresos Municipales",
+            "slug": "direccion-de-ingresos-municipales",
+            "autoridad": "CPN Julio César Mazziotti",
+            "email": "dim@smt.gob.ar"
+        },
+        {
+            "id": 116,
+            "nombre": "Dirección de Informática Tributaria",
+            "slug": "direccion-de-informatica-tributaria",
+            "autoridad": "Ing. Gabriel Trevisán",
+            "email": "informaticatributaria@smt.gob.ar"
+        }
+    ]
+}

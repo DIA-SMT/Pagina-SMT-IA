@@ -1,0 +1,57 @@
+{
+    "id": 3,
+    "titulo": "Cultura, Arte  y Turismo Local",
+    "texto": "Actividades y servicios culturales, asistencia para artistas y espacios de la cultura.",
+    "icono": "fa-solid fa-theater-masks",
+    "slug": "cultura-arte-y-turismo-local",
+    "items": [
+        {
+            "id": 9,
+            "titulo": "Registro Municipal de Artistas",
+            "texto": "Registro para trabajadores de la cultura de la Capital y del Gran San Miguel de Tucumán.",
+            "icono": "fa-solid fa-palette",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 20,
+            "titulo": "Circuitos Turístico",
+            "texto": "Recorridos por la Ciudad Histórica de San Miguel de Tucumán, para explorar sus circuitos turísticos-culturales",
+            "icono": "fa-solid fa-route",
+            "enlace": "https://smt.gob.ar/circuitos-turisticos",
+            "orden": null
+        },
+        {
+            "id": 23,
+            "titulo": "Espacios Culturales",
+            "texto": "Donde vivir la riqueza artística y patrimonial de San Miguel de Tucumán",
+            "icono": "fa-solid fa-masks-theater",
+            "enlace": "https://agendaculturalsmt.com/espacios-culturales/",
+            "orden": null
+        },
+        {
+            "id": 111,
+            "titulo": "Hoteles",
+            "texto": "Encontrá el alojamiento ideal en San Miguel de Tucumán",
+            "icono": "fa-solid fa-hotel",
+            "enlace": "https://agendaculturalsmt.com/planifica-tu-viaje/",
+            "orden": null
+        },
+        {
+            "id": 112,
+            "titulo": "Gastronomia",
+            "texto": "Sabores auténticos del norte argentino",
+            "icono": "fa-solid fa-utensils",
+            "enlace": "https://agendaculturalsmt.com/donde-y-que-comer/",
+            "orden": null
+        },
+        {
+            "id": 119,
+            "titulo": "Agenda Cultural",
+            "texto": "Eventos en la ciudad",
+            "icono": "fa-solid fa-city",
+            "enlace": "https://agendaculturalsmt.com/",
+            "orden": null
+        }
+    ]
+}

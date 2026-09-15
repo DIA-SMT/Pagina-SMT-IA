@@ -1,0 +1,54 @@
+{
+    "id": 16,
+    "nombre": "Subsecretaría de Gobierno",
+    "slug": "subsecretaria-de-gobierno",
+    "autoridad": ".",
+    "foto": null,
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "subsgobierno@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 3,
+        "nombre": "Secretaría de Gobierno",
+        "slug": "secretaria-de-gobierno"
+    },
+    "dependencias": [
+        {
+            "id": 53,
+            "nombre": "Dirección Operativa de Móviles",
+            "slug": "direccion-operativa-de-moviles",
+            "autoridad": ".",
+            "email": "moviles@smt.gob.ar"
+        },
+        {
+            "id": 54,
+            "nombre": "Dirección de Capital Humano",
+            "slug": "direccion-de-capital-humano",
+            "autoridad": "Dra. María Lorena Radrizzani",
+            "email": "dircapitalh@smt.gob.ar"
+        },
+        {
+            "id": 101,
+            "nombre": "Dirección de Relaciones Institucionales e Internacionales",
+            "slug": "direccion-de-relaciones-institucionales-e-internacionales",
+            "autoridad": "Lic. Ana Carolina Oliver",
+            "email": "rrii@smt.gob.ar"
+        },
+        {
+            "id": 50,
+            "nombre": "Dirección de Empleo y Emprendimientos",
+            "slug": "direccion-de-empleo-y-emprendimientos",
+            "autoridad": "Sr. Osvaldo Luis Chalín",
+            "email": "empleo@smt.gob.ar"
+        },
+        {
+            "id": 87,
+            "nombre": "Dirección Deportes y Recreación",
+            "slug": "direccion-deportes-y-recreacion",
+            "autoridad": "Sr. Pablo Guillermo Sosa",
+            "email": "dirdeportes@smt.gob.ar"
+        }
+    ]
+}

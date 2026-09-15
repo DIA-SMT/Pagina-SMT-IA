@@ -1,0 +1,18 @@
+{
+    "id": 47,
+    "nombre": "Dirección de Inclusión, Género y Diversidad",
+    "slug": "direccion-de-inclusion-genero-y-diversidad",
+    "autoridad": "Sra. Ana Carolina Peralta",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/gdcQwzvopskBVGHOUEmH.jpg",
+    "domicilio": "Juan B. Justo 965 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "inclusion@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 20,
+        "nombre": "Subsecretaría de Desarrollo Humano",
+        "slug": "subsecretaria-de-desarrollo-humano"
+    },
+    "dependencias": []
+}

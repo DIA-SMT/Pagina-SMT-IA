@@ -1,0 +1,18 @@
+{
+    "id": 49,
+    "nombre": "Dirección de Asistencia Pública",
+    "slug": "direccion-de-asistencia-publica",
+    "autoridad": "Dra. Karina Mirta Faccioli",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/IQU3WjLppQJT02dykJV7.jpg",
+    "domicilio": "Chacabuco 239 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "asistenciapublica@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 20,
+        "nombre": "Subsecretaría de Desarrollo Humano",
+        "slug": "subsecretaria-de-desarrollo-humano"
+    },
+    "dependencias": []
+}

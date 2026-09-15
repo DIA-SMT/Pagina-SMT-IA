@@ -1,0 +1,13 @@
+{
+    "consulta": "habilitacion",
+    "total": 1,
+    "resultados": [
+        {
+            "tipo": "ficha",
+            "id": 5,
+            "titulo": "Habilitación comercial",
+            "bajada": "Habilitación online de negocios",
+            "categoria": 1
+        }
+    ]
+}

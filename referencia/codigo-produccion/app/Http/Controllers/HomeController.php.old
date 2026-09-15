@@ -1,0 +1,149 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Voyager;
+use \App\Http\Controllers\Traits\Banners;
+use App\Http\Controllers\WebScrapingController;
+use App\Models\Notas;
+use Illuminate\Support\Facades\Cache;
+use App\Models\AreasGobiernos;
+use App\Models\Administracion;
+use App\Models\TramitesServicios;
+use App\Models\TramitesServiciosItem;
+use App\Http\Controllers\Traits\Visitas;
+use App\Models\TramitesNotas;
+
+class HomeController extends Controller
+{   
+    use Banners;
+    use Visitas;
+
+    public function index()
+    {   
+        
+
+        $sliders = DB::table('sliders')->where('active', 1)->orderBy('orden','ASC')->get()->toArray();
+
+        $tramites = DB::table('tramites_servicios')->select("id",'title','texto', 'icon')->orderBy('orden','ASC')->get();
+
+        $bannersHorizontal = $this->getBanners("inicio");
+        $webscraping = new WebScrapingController();
+
+        $scrapeWebsite = Cache::remember('scrape', 60 * 60, function() use ($webscraping) {
+            return $webscraping->scrapeWebsite();
+         });
+
+        $multiple = $this->getBanners("fin");
+
+        return view('home.index', [
+            'sliders'=>$sliders,
+            'tramites'=>$tramites,
+            'multiple'=>$multiple,
+            'scrapeWebsite'=>$scrapeWebsite,
+            'phones'=>$this->phones(),
+            'bannersHorizontal'=>$bannersHorizontal,
+            
+        ]);
+            
+    }
+
+
+
+    public function search(Request $request)
+    {   
+        
+        if (!$request->q) {
+            return redirect()->back()->with(['status'=>'info', 'message'=>'Escriba algo para buscar']);
+        }
+
+        $cadena = str_slug($request->q, ' ');
+        $array = explode(" ", $cadena);
+ 
+        //Notas generales tablas ( notas )
+        $queryNotas = Notas::select('id', 'titulo', 'imagen')->where('status', 1);
+        $queryTramitesNotas = TramitesNotas::select('id','title','image');
+        $queryAdministracion = Administracion::select('id','nombre','area_id','foto');
+        $queryTramite = TramitesServicios::select('id','title','icon');
+        $queryTramiteServicios = TramitesServiciosItem::select('id','title','icon','texto');
+
+        foreach ($array as $valores) {
+            #Notas generales
+            $aNotas[] = ["titulo", "LIKE", "%".$valores."%"];
+            $aNotasBody[] = ["texto", "LIKE", "%".$valores."%"];
+
+            $aAdministracion[] = ["nombre", "LIKE", "%".$valores."%"];
+
+            #Tramites Servicios
+            $aTramiteServicios[] = ["title", "LIKE", "%".$valores."%"];
+            $aTramiteServiciosTexto[] = ["texto", "LIKE", "%".$valores."%"];
+            
+            #Notas de tramites
+            $aTramiteNotas[] = ["title", "LIKE", "%".$valores."%"];
+            $aTramiteNotasBody[] = ["body", "LIKE", "%".$valores."%"];
+
+            $aTramiteItems[] = ["tramites_servicios_items.title", "LIKE", "%".$valores."%"];
+            $aTramiteItemsTexto[] = ["tramites_servicios_items.texto", "LIKE", "%".$valores."%"];
+        }
+
+        #Query Notas de Tramites
+        $queryNotasTramites = $queryTramitesNotas->where($aTramiteNotas);
+        if ($queryNotasTramites->count() == 0) {
+            $queryTramitesNotas->orWhere($aTramiteNotasBody);
+        }
+        $notasTramites = $queryNotasTramites->get();
+
+        #Query Notas Generales
+        $queryNotasGenerales = $queryNotas->where($aNotas);
+        if ($queryNotasGenerales->count() == 0) {
+            $queryNotas->orWhere($aNotasBody);
+        }
+        $notas = $queryNotas->get();
+
+        #Query Tramites Servicios
+        $tramitesQueryContent = $queryTramite->where($aTramiteServicios);
+        if ($tramitesQueryContent->count() == 0) {
+            $queryNotas->orWhere($aTramiteServiciosTexto);
+        }
+        $tramites = $queryTramite->get();
+
+
+
+        $administracion = $queryAdministracion->where($aAdministracion)->get();
+
+
+        $tramitesItems = $queryTramiteServicios->select('tramites_servicios_items.id','tramites_servicios_items.title',
+        'tramites_servicios_items.texto', 'tramites_servicios_items.tramite_id',
+        'tin.id as nota_id', 'tin.title as nota_title','tramites_servicios_items.icon','tramites_servicios_items.link')
+        ->leftJoin('tramites_items_notas as tin', 'tramites_servicios_items.id', '=', 'tin.item_id')
+        ->groupBy('tramites_servicios_items.id')
+        ->orderBy('tramites_servicios_items.created_at','DESC')->where($aTramiteItems);
+
+        if ($tramitesItems->count() == 0) {
+            $queryTramiteServicios->orWhere($aTramiteItemsTexto);
+        }
+
+        $tramitesItems = $queryTramiteServicios->get();
+
+
+        $sidebarBanner = $this->getBanners("colder");
+        $visitas = $this->allVisitContent();
+        
+        return view('home.search', [
+            'phones'=>$this->phones(),
+            'busqueda'=> str_slug($request->q, " "),
+            'phones'=>$this->phones(),
+            'notas'=> $notas,
+            'notasTramites'=>$notasTramites,
+            'visitas'=>$visitas,
+            'tramitesItems'=>$tramitesItems,
+            'administracion'=> $administracion,
+            'tramites'=> $tramites,
+            'sidebarBanner'=>$sidebarBanner,
+        ]);
+    }
+
+
+}

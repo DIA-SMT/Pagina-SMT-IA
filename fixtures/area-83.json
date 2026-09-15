@@ -1,0 +1,18 @@
+{
+    "id": 83,
+    "nombre": "Dirección de Despacho de Movilidad Urbana",
+    "slug": "direccion-de-despacho-de-movilidad-urbana",
+    "autoridad": "CPN. Raúl Adrián González Iturbe",
+    "foto": null,
+    "domicilio": "Av. Avellaneda 663 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "ddsmovilidad@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 12,
+        "nombre": "Secretaría de Movilidad Urbana",
+        "slug": "secretaria-de-movilidad-urbana"
+    },
+    "dependencias": []
+}

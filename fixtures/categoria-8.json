@@ -1,0 +1,217 @@
+{
+    "id": 8,
+    "titulo": "Biblioteca Digital",
+    "texto": "Biblioteca digital en la que podrás conocer nuestros documentos de políticas públicas",
+    "icono": "fa-solid fa-book",
+    "slug": "biblioteca-digital",
+    "items": [
+        {
+            "id": 35,
+            "titulo": "Plan Rector",
+            "texto": "Plan de gobierno con los lineamientos estratégicos de nuestra gestión",
+            "icono": "fa-solid fa-book-atlas",
+            "enlace": "https://smt.gob.ar/nota/plan-rector/32",
+            "orden": null
+        },
+        {
+            "id": 41,
+            "titulo": "SE-PA-RÁ",
+            "texto": "Programa municipal de Separación de Residuos Sólidos Urbanos (RSU)",
+            "icono": "fa-solid fa-book-atlas",
+            "enlace": "https://smt.gob.ar/nota/se-pa-ra/42",
+            "orden": null
+        },
+        {
+            "id": 44,
+            "titulo": "180 días de la ciudad que queremos",
+            "texto": "Publicación con la rendición de cuentas de los primeros 6 meses de gestión",
+            "icono": "fa-solid fa-book-atlas",
+            "enlace": "https://smt.gob.ar/nota/180-dias-de-la-ciudad-que-queremos/44",
+            "orden": null
+        },
+        {
+            "id": 45,
+            "titulo": "GIRSU",
+            "texto": "Plan municipal para la Gestión Integral de los Residuos Sólidos Urbanos",
+            "icono": "fa-solid fa-book-atlas",
+            "enlace": "https://smt.gob.ar/nota/girsu/43",
+            "orden": null
+        },
+        {
+            "id": 62,
+            "titulo": "E-DU-CÁ",
+            "texto": "Programa municipal sobre Educación Ambiental  para los establecimientos educativos",
+            "icono": "fa-solid fa-book-atlas",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 63,
+            "titulo": "TRANS-FOR-MÁ",
+            "texto": "Programa de Transformación Simbólica de Basurales de nuestra ciudad, que busca resignificar los espacios de acumulación de basura urbana, en otros de identificación simbólica por parte de los vecinos.",
+            "icono": "fa-solid fa-book-atlas",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 64,
+            "titulo": "MASTER PLAN",
+            "texto": "Government plan with the strategic guidelines of our management",
+            "icono": "fa-solid fa-book-atlas",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 69,
+            "titulo": "PLAN VEREDAS SANAS",
+            "texto": "Plan municipal de recuperación y revalorización de las veredas de la ciudad",
+            "icono": "fa-solid fa-book-atlas",
+            "enlace": "https://smt.gob.ar/nota/plan-veredas-sanas/66",
+            "orden": null
+        },
+        {
+            "id": 70,
+            "titulo": "PROGRAMA CONTROLÁ",
+            "texto": "Programa de Control Municipal sobre gestión integral de RSU, ruidos molestos y bromatología.",
+            "icono": "fa-solid fa-book-atlas",
+            "enlace": "https://smt.gob.ar/nota/programa-controla/67",
+            "orden": null
+        },
+        {
+            "id": 74,
+            "titulo": "Meisterplan",
+            "texto": "Regierungsplan mit den strategischen Leitlinien unseres Managements",
+            "icono": "fa-solid fa-book-atlas",
+            "enlace": "https://smt.gob.ar/Meisterplan",
+            "orden": null
+        },
+        {
+            "id": 95,
+            "titulo": "CES - INTERCOMISIÓN DE MOVILIDAD URBANA",
+            "texto": "Propuestas y recomendaciones para una mejora de la movilidad urbana y el transporte público de pasajeros en San Miguel de Tucumán",
+            "icono": "fa-solid fa-book-atlas",
+            "enlace": "https://drive.google.com/file/d/1N1DkKiCiQFUvOb-w-Uo4tMt11kTVSFNx/view?usp=sharing",
+            "orden": null
+        },
+        {
+            "id": 97,
+            "titulo": "La Cuidad que Dialoga",
+            "texto": "Construyendo consensos en San Miguel de Tucumán",
+            "icono": "fa-solid fa-book-atlas",
+            "enlace": "https://drive.google.com/file/d/1Yzbz19vKGmUACU9jPmTra4iLXOVsZDH6/view?usp=drive_link",
+            "orden": null
+        },
+        {
+            "id": 100,
+            "titulo": "Informe del primer año de gestión",
+            "texto": "Rendición de cuentas del primer año de gestión",
+            "icono": "fa-solid fa-book-atlas",
+            "enlace": "https://drive.google.com/file/d/1P2J15ylAbHNuqrT4_NvafsvCmpXJclMt/view?usp=sharing",
+            "orden": null
+        },
+        {
+            "id": 103,
+            "titulo": "Informe IGEI",
+            "texto": "Inventario de Gases de Efecto Invernadero (IGEI) 2023",
+            "icono": "fa-solid fa-book-atlas",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 110,
+            "titulo": "Azul es tambien el amor",
+            "texto": "Cartas de los papás de Casa Azul a sus niños en el Día de las Infancias",
+            "icono": "fa-solid fa-book-atlas",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 117,
+            "titulo": "Plan de Contingencia ante Inundaciones",
+            "texto": "Plan de contingencia ante inundaciones – San Miguel de Tucumán",
+            "icono": "fa-solid fa-book-atlas",
+            "enlace": "https://smt.gob.ar/PlandeContingenciaanteInundaciones",
+            "orden": null
+        },
+        {
+            "id": 118,
+            "titulo": "Informes de Emergencia Sanitaria y Ambiental",
+            "texto": "Informe en respuesta a la ordenanza de Emergencia Sanitaria y Ambiental",
+            "icono": "fa-solid fa-book-atlas",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 120,
+            "titulo": "Programa CIM CEA – Casa Azul",
+            "texto": "Programa sobre el Centro Interdisciplinario Municipal para el diagnóstico y tratamiento de la Condición del Espectro Autista (CIM CEA)",
+            "icono": "fa-solid fa-book-atlas",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 121,
+            "titulo": "Diez mesas, una juventud en diálogo",
+            "texto": "Publicación sobre los aportes del Primer Encuentro Provincial de Presidentes y Presidentas de Centros de Estudiantes",
+            "icono": "fa-solid fa-book-atlas",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 122,
+            "titulo": "Plan TRADI",
+            "texto": "Plan de Transformación Digital de la ciudad",
+            "icono": "fa-solid fa-book-atlas",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 123,
+            "titulo": "Sistema de gestión de ferias municipales",
+            "texto": "Sistema de gestión municipal de ferias ordenadas, inclusivas y sustentables",
+            "icono": "fa-solid fa-book-atlas",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 124,
+            "titulo": "Programa CIRCULÁ",
+            "texto": "Programa que impulsa la economía circular desde la reutilización de residuos",
+            "icono": "fa-solid fa-book-atlas",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 125,
+            "titulo": "Programa sello de aptitud bromatológica",
+            "texto": "Programa para la certificación de locales de alimentos",
+            "icono": "fa-solid fa-book-atlas",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 126,
+            "titulo": "Concurso hiperbólico",
+            "texto": "Propuestas del Concurso Nacional de Ideas para la Nueva Confitería del Lago",
+            "icono": "fa-solid fa-book-atlas",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 129,
+            "titulo": "Plan Local de Acción Climática (PLAC)",
+            "texto": "Hoja de ruta climática local",
+            "icono": "fa-solid fa-book-atlas",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 135,
+            "titulo": "El transporte público en San Miguel de Tucumán",
+            "texto": "Conocé la propuesta de transporte",
+            "icono": "fa-solid fa-book-atlas",
+            "enlace": "https://smt.gob.ar/transporte_publico",
+            "orden": null
+        }
+    ]
+}

@@ -1,0 +1,25 @@
+{
+    "id": 18,
+    "titulo": "Catrastro y Edificación",
+    "texto": "Realizar Tramites y consultas en el portal de catastro",
+    "icono": "fa-solid fa-house",
+    "slug": "catrastro-y-edificacion",
+    "items": [
+        {
+            "id": 93,
+            "titulo": "Carteleria reglamentaria de obra",
+            "texto": "Avisos y señales obligatorios para obras de construcción.",
+            "icono": "fa-solid fa-sign-hanging",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 94,
+            "titulo": "Trámites de Catastro Digital",
+            "texto": "Realizar gestiones y consultas en el Portal de Catastro",
+            "icono": "fas fa-tasks",
+            "enlace": "https://catastro.smt.gob.ar/?destino=catastro",
+            "orden": null
+        }
+    ]
+}

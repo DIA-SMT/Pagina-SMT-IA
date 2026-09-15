@@ -1,0 +1,18 @@
+{
+    "id": 35,
+    "nombre": "Dirección de Defensa Civil",
+    "slug": "direccion-de-defensa-civil",
+    "autoridad": ".",
+    "foto": null,
+    "domicilio": "Italia 2754 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": "3814238907",
+    "email": "dc@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 106,
+        "nombre": "Subsecretaría de Seguridad Ciudadana",
+        "slug": "subsecretaria-de-seguridad-ciudadana"
+    },
+    "dependencias": []
+}

@@ -1,0 +1,73 @@
+{
+    "id": 12,
+    "titulo": "Actividades Ciudadanas",
+    "texto": "Se promueve la participación, el bienestar y el emprendimiento en un entorno colaborativo para fortalecer las relaciones comunitarias y el crecimiento colectivo.",
+    "icono": "fa-solid fa-icons",
+    "slug": "actividades-ciudadanas",
+    "items": [
+        {
+            "id": 24,
+            "titulo": "Centro Integrador Comunitario(C.I.C.)",
+            "texto": "Promover el bienestar y el desarrollo integral de nuestra comunidad.",
+            "icono": "fa-solid fa-hand-holding-heart",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 56,
+            "titulo": "Centros Deportivos",
+            "texto": "Nuestros centros ofrecen instalaciones de primer nivel y actividades para todas las edades y capacidades, incluyendo deportes adaptados.",
+            "icono": "fa-solid fa-person-swimming",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 66,
+            "titulo": "Programa \"Ciudad Activa\"",
+            "texto": "Promover la salud física, mental y nutricional de cada una de las personas.",
+            "icono": "fa-solid fa-dumbbell",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 80,
+            "titulo": "Programas Sociales",
+            "texto": "promover el desarrollo social y el acceso a servicios del municipio",
+            "icono": "fa-solid fa-users",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 81,
+            "titulo": "Programa Proteger",
+            "texto": "Brinda asistencia integral a personas vulnerables y en situación de calle.",
+            "icono": "fa-solid fa-house-user",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 82,
+            "titulo": "Centro de Información a Vecinos",
+            "texto": "brindar un servicio de calidad, excelencia y sobre todo inclusivo a todo ciudadano.",
+            "icono": "fa-solid fa-circle-info",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 106,
+            "titulo": "Mi Feria Digital",
+            "texto": "Un espacio de visibilidad y apoyo para emprendedores locales",
+            "icono": "fa-solid fa-shop",
+            "enlace": "https://smt.gob.ar/catalogo/catalogo-de-emprendedores",
+            "orden": null
+        },
+        {
+            "id": 116,
+            "titulo": "Talleres",
+            "texto": "Talleres Gratuitos para la Comunidad",
+            "icono": "fa-solid fa-screwdriver-wrench",
+            "enlace": "https://smt.gob.ar/talleres",
+            "orden": null
+        }
+    ]
+}

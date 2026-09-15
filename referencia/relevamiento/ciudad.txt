@@ -1,0 +1,49 @@
+﻿## La Ciudad â€” Historia [verificado]
+URL: https://smt.gob.ar/historia
+PÃ¡gina editorial estÃ¡tica con reseÃ±a histÃ³rica (fundaciones 1565/1685, Independencia 1816, Batalla de TucumÃ¡n 1812), etimologÃ­a de 'TucumÃ¡n', lÃ­nea del tiempo e historia de la industria azucarera. Banner de imagen al inicio e imagen de la Casa HistÃ³rica al pie. Sin formularios, filtros, paginaciÃ³n ni descargas. NavegaciÃ³n y footer estÃ¡ndar del sitio.
+
+## La Ciudad â€” Circuitos TurÃ­sticos (hub) [verificado]
+URL: https://smt.gob.ar/circuitos-turisticos
+PÃ¡gina puente que presenta dos modalidades con enlaces propios: Circuito a Pie (https://smt.gob.ar/circuitosturisticospie) y Bus TurÃ­stico (https://smt.gob.ar/busturistico). Imagen ilustrativa en /storage/notas/January2026/. Botones de compartir (WhatsApp, Twitter, Telegram), bloque 'Lo mÃ¡s leÃ­do' y banners. Sin formularios ni filtros.
+
+## La Ciudad â€” Circuito TurÃ­stico a Pie [verificado]
+URL: https://smt.gob.ar/circuitosturisticospie
+Nota individual ('Circuitos Turisticos a Pie') con un Ãºnico recorrido por el casco histÃ³rico: inicio 09:30 en Museo Casa HistÃ³rica, museos, Catedral, iglesia San Francisco, Plaza Independencia (Lola Mora), Casa de Gobierno, Museo Padilla, Jockey Club y refrigerio final. Imagen de cabecera en /storage/notas/January2026/. InscripciÃ³n vÃ­a Google Forms (https://docs.google.com/forms/d/e/1FAIpQLScFPxpR8GtBqR8TLQaRJlUFs_xOa0o0BKh6-uvQSrJkAg1zgg/viewform). Botones de compartir. Sin PDF descargable.
+
+## La Ciudad â€” Bus TurÃ­stico [verificado]
+URL: https://smt.gob.ar/busturistico
+Nota individual (breadcrumb Inicio > Notas > Bus TurÃ­stico): city tour guiado gratuito de ~2 horas con 3 circuitos: 1) HistÃ³rico Cultural (12 paradas desde Plaza Independencia), 2) Lugares Notables (15+ paradas, Teatro San MartÃ­n, Parque Avellaneda, Monumento del Bicentenario), 3) La Ciudadela (6 paradas). Contacto/inscripciÃ³n: oficina Congreso 101, turismo@smt.gob.ar, enlace de ubicaciÃ³n a maps.app.goo.gl. No publica horarios ni tarifas. Sin formulario propio ni descargas; botones de compartir.
+
+## La Ciudad â€” Lugares de InterÃ©s [verificado]
+URL: https://smt.gob.ar/lugares-de-interes
+PÃ¡gina informativa de texto corrido, NO es un listado con fichas: describe ~8 atracciones en pÃ¡rrafos (Casa HistÃ³rica, Catedral, Parque 9 de Julio, Cerro San Javier, Plaza Independencia, Museo FolklÃ³rico, Casa de Gobierno, Museo de la Industria Azucarera) sin enlaces a fichas individuales ni imÃ¡genes propias de los lugares (verificado en DOM: cero enlaces /nota/ en el contenido). Botones de compartir. Sin filtros, paginaciÃ³n ni mapa embebido.
+
+## La Ciudad â€” GalerÃ­a de Fotos [verificado]
+URL: https://smt.gob.ar/galeria/imagenes
+Grilla Bootstrap de 38 imÃ¡genes (figure.mg-gallery-item, 4 columnas en desktop: col-12/col-md-6/col-lg-3) bajo un Ãºnico tÃ­tulo 'ImÃ¡genes'. SIN FILTROS: la inspecciÃ³n del DOM no encontrÃ³ ningÃºn control de filtrado (cero elementos [data-filter], sin selects ni tabs); isotope-pkgd.js se carga en el bundle global pero no se usa aquÃ­. Sin paginaciÃ³n. Cada miniatura es un <a data-lightbox-gallery='rooms'> que abre la imagen completa en Nivo Lightbox (todas en un solo grupo). PatrÃ³n de URLs: miniatura https://smt.gob.ar/storage/galeria/{Mes}{AÃ±o}/{hash}-cropped.{jpg|jpeg|JPG} y original sin '-cropped' (ej: /storage/galeria/May2024/yVQWWmDXpUVGCvDm7tO1-cropped.jpg â†’ /storage/galeria/May2024/yVQWWmDXpUVGCvDm7tO1.jpg). Carpetas observadas: May2024, August2024, November2024 (patrÃ³n del media manager de Voyager). Todas las imÃ¡genes sin atributo alt.
+
+## La Ciudad â€” Mapa Interactivo (Mapa SMT) [verificado]
+URL: https://mapa.smt.gob.ar/
+SPA standalone en subdominio: bundle Ãºnico tipo Vite (assets/index-Cp0Ryx3q.js + index-Bafual2E.css), Leaflet 1.9.4 con teselas de OpenStreetMap (a.tile.openstreetmap.org). Panel lateral 'CAPAS E INFORMACIÃ“N' con grupo 'PUNTOS DE INTERÃ‰S' y capas activables: Municipalidad, Ciudad, EducaciÃ³n, Salud, Espacios Verdes, Servicios, Cultura, Ambiente, Cortes TrÃ¡nsito. Caja de bÃºsqueda ('Buscar...'), botÃ³n 'Ocultar puntos', botÃ³n colapsar panel. 846 marcadores renderizados al cargar, mÃ¡s polÃ­gono de lÃ­mite de la ciudad. No se observaron llamadas a API/GeoJSON en red: los datos de puntos parecen empaquetados dentro del bundle JS. AtribuciÃ³n: 'DirecciÃ³n de InnovaciÃ³n TecnolÃ³gica Â© 2026'. Embebible por iframe: la respuesta no envÃ­a X-Frame-Options ni Content-Security-Policy (server: nginx).
+
+## La Ciudad â€” Patrimonio Cultural (categorÃ­a) [verificado]
+URL: https://smt.gob.ar/tramite/patrimonio-cultural/13
+PÃ¡gina de categorÃ­a (patrÃ³n /tramite/{slug}/{id}) con 4 cards hacia notas (verificado en DOM): Espacios EmblemÃ¡ticos (/nota/espacios-emblematicos-del-parque-9-de-julio/87), Patrimonio HistÃ³rico (/nota/proceres/59), Patrimonio ArquitectÃ³nico (/nota/patrimonio-arquitectonico/58) y Patrimonio ArtÃ­stico (/nota/obras-de-arte-del-parque/57). Sin filtros, paginaciÃ³n ni descargas.
+
+## Patrimonio â€” Espacios EmblemÃ¡ticos del Parque 9 de Julio [verificado]
+URL: https://smt.gob.ar/nota/espacios-emblematicos-del-parque-9-de-julio/87
+Ficha /nota/ (breadcrumb Inicio > TrÃ¡mite y Servicios > Patrimonio Cultural) que describe 6 espacios del Parque 9 de Julio: Lago San Miguel, La PÃ©rgola y el Rosedal, Casa de la AdministraciÃ³n, Casa del Obispo, Museo a Cielo Abierto, El Reloj. ImÃ¡genes en /storage/tramites-items-notas/January2026/. Cada espacio enlaza a un micrositio en Google Sites (https://sites.google.com/smt.gob.ar/{espacio}/inicio). Botones de compartir; sin descargas.
+
+## Patrimonio â€” Patrimonio ArquitectÃ³nico [verificado]
+URL: https://smt.gob.ar/nota/patrimonio-arquitectonico/58
+Ficha /nota/ con introducciÃ³n sobre estilos arquitectÃ³nicos y listado de ~13 edificios patrimoniales (Casa HistÃ³rica, Centro Cultural RougÃ©s, Iglesia San Francisco, Biblioteca Sarmiento, La Merced, CamarÃ­n de la Virgen, Catedral, Casa de Gobierno, Casa Padilla, Ex Hotel Plaza, Ex Casa FrÃ­as Helguera, Caja Popular de Ahorros, etc.), cada uno con imagen (/storage/tramites-items-notas/June2024/) y enlace a micrositio Google Sites. Botones de compartir; sin descargas.
+
+## Patrimonio â€” PrÃ³ceres (Patrimonio HistÃ³rico) [verificado]
+URL: https://smt.gob.ar/nota/proceres/59
+Ficha /nota/ sobre los monumentos de la 'Avda. de los PrÃ³ceres' (13 estatuas, un busto y un obelisco segÃºn el texto): Roca, BernabÃ© ArÃ¡oz, Marcos Paz, Alberdi, Heredia, Ãlvarez Condarco, Fray de las MuÃ±ecas, Monteagudo, Lucas CÃ³rdoba, Lamadrid, Obispo Colombres, CrisÃ³stomo Ãlvarez, Avellaneda, busto de Soldati, PirÃ¡mide y relieves. ImÃ¡genes en /storage/tramites-items-notas/{Mes}/. Cada monumento enlaza a micrositio Google Sites. Sin descargas.
+
+## Patrimonio â€” Obras de Arte del Parque (Patrimonio ArtÃ­stico) [verificado]
+URL: https://smt.gob.ar/nota/obras-de-arte-del-parque/57
+Ficha /nota/ que cataloga la colecciÃ³n de esculturas del Parque 9 de Julio ('mÃ¡s de 20 piezas' segÃºn el texto introductorio, con ~47 Ã­tems listados): Diana y EndimiÃ³n, Atleta Griego, Laocoonte, Apolo Belvedere, Venus de Milo, DiscÃ³bolo, Monumento a la Madre, bustos (Obispo Colombres, Lola Mora, GarcÃ­a Lorca), etc. RÃ©plicas traÃ­das en 1926 y emplazadas en 1928, en hierro y mÃ¡rmol de Carrara. ImÃ¡genes /storage/tramites-items-notas/{Mes}{AÃ±o}/{nombre}.jpeg; cada obra enlaza a micrositio Google Sites. Sin descargas.
+
+NOTAS: CONTRADICCIÃ“N IMPORTANTE (galerÃ­a): un primer resumen automatizado del HTML sugiriÃ³ filtros por categorÃ­as ('Todas', 'Fotos de SMT', 'Parques y Plazas', 'Teatro Municipal', 'Museo Mercedes Sosa', 'Asistencia PÃºblica'), pero la inspecciÃ³n directa del DOM en navegador NO encontrÃ³ ningÃºn control de filtro (cero [data-filter], sin tabs, selects ni enlaces de categorÃ­a; 'Asistencia PÃºblica: 107' es el telÃ©fono de urgencia del footer). La galerÃ­a real es una grilla plana de 38 imÃ¡genes sin filtros ni paginaciÃ³n, con Nivo Lightbox (data-lightbox-gallery='rooms'). Isotope.js e imagesloaded se cargan en el bundle global del sitio pero no se usan en esta pÃ¡gina â€” conviene verificar en el admin Voyager si existe un campo de categorÃ­a de galerÃ­a no renderizado. OTRAS OBSERVACIONES: (1) Inconsistencia de IA: las fichas de patrimonio cuelgan del breadcrumb 'TrÃ¡mite y Servicios > Patrimonio Cultural' aunque temÃ¡ticamente pertenecen a 'La Ciudad'. (2) Fuerte dependencia de Google: micrositios de patrimonio en sites.google.com/smt.gob.ar (cada edificio/monumento/obra), inscripciÃ³n al circuito a pie por Google Forms, ubicaciÃ³n del bus por maps.app.goo.gl. (3) Bus TurÃ­stico no publica horarios ni tarifas; solo dice 'gratuito, ~2 horas' e inscripciÃ³n presencial (Congreso 101) o por turismo@smt.gob.ar. (4) 'Lugares de InterÃ©s' es texto plano sin fichas ni fotos de los lugares, pese a que el mapa (mapa.smt.gob.ar) ya tiene 846 puntos categorizados: oportunidad obvia de unificar en el rediseÃ±o. (5) Mapa SMT: Leaflet 1.9.4 + OSM, SPA con bundle Vite; no se observaron llamadas a API/GeoJSON, por lo que los puntos parecen compilados dentro del JS (actualizar datos requerirÃ­a rebuild) â€” verificar en servidor. Es embebible por iframe (sin X-Frame-Options ni CSP). AtribuciÃ³n 'Â© 2026 DirecciÃ³n de InnovaciÃ³n TecnolÃ³gica'. (6) Accesibilidad: las imÃ¡genes de la galerÃ­a no tienen atributo alt. (7) Frescura de contenido: imÃ¡genes de circuitos con carpeta January2026 (recientes); galerÃ­a con carpetas May/August/November2024."

@@ -1,0 +1,18 @@
+{
+    "id": 110,
+    "nombre": "Dirección General de Intendencia",
+    "slug": "direccion-general-de-intendencia",
+    "autoridad": "Sra. Mirta Olivera",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/NWucxGPBDvPPGKIvGEoe.jpg",
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "dirgeneral@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 1,
+        "nombre": "Intendencia",
+        "slug": "intendencia"
+    },
+    "dependencias": []
+}

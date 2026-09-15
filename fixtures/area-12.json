@@ -1,0 +1,54 @@
+{
+    "id": 12,
+    "nombre": "Secretaría de Movilidad Urbana",
+    "slug": "secretaria-de-movilidad-urbana",
+    "autoridad": "Sr. Carlos Roberto Arnedo",
+    "foto": null,
+    "domicilio": "Av. Avellaneda 663 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "smovilidad@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": "https://smt.gob.ar/storage/administraciones/September2026/p7dAw2rZew1qWB3kKKvm.pdf",
+    "padre": {
+        "id": 1,
+        "nombre": "Intendencia",
+        "slug": "intendencia"
+    },
+    "dependencias": [
+        {
+            "id": 83,
+            "nombre": "Dirección de Despacho de Movilidad Urbana",
+            "slug": "direccion-de-despacho-de-movilidad-urbana",
+            "autoridad": "CPN. Raúl Adrián González Iturbe",
+            "email": "ddsmovilidad@smt.gob.ar"
+        },
+        {
+            "id": 118,
+            "nombre": "Subsecretaría de Movilidad Urbana",
+            "slug": "subsecretaria-de-movilidad-urbana",
+            "autoridad": ".",
+            "email": "@"
+        },
+        {
+            "id": 122,
+            "nombre": "Subsecretaría de Seguridad Vial y Licencias de Conducir",
+            "slug": "subsecretaria-de-seguridad-vial-y-licencias-de-conducir",
+            "autoridad": "Dr. Benjamín Nieva",
+            "email": "subsseguridadvial@smt.gob.ar"
+        },
+        {
+            "id": 119,
+            "nombre": "Dirección Centro de Monitoreo de Movilidad Urbana (CeMMU)",
+            "slug": "direccion-centro-de-monitoreo-de-movilidad-urbana-cemmu",
+            "autoridad": "Dra. Mariela del Valle Cortez",
+            "email": "cemmu@smt.gob.ar"
+        },
+        {
+            "id": 127,
+            "nombre": "Dirección de Transporte",
+            "slug": "direccion-de-transporte",
+            "autoridad": "Dr. Máximo Ramón Stenvers",
+            "email": "transporte@smt.gob.ar"
+        }
+    ]
+}

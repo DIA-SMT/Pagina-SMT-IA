@@ -1,0 +1,18 @@
+{
+    "id": 116,
+    "nombre": "Dirección de Informática Tributaria",
+    "slug": "direccion-de-informatica-tributaria",
+    "autoridad": "Ing. Gabriel Trevisán",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/41xoAeasLPlskfcz5t09.jpg",
+    "domicilio": "24 de Septiembre 334 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "informaticatributaria@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 25,
+        "nombre": "Subsecretaría de Ingresos Municipales",
+        "slug": "subsecretaria-de-ingresos-municipales"
+    },
+    "dependencias": []
+}

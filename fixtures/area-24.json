@@ -1,0 +1,33 @@
+{
+    "id": 24,
+    "nombre": "Fiscalía Adjunta",
+    "slug": "fiscalia-adjunta",
+    "autoridad": "Dr. Sergio Gastón Emilio Cipriani",
+    "foto": "https://smt.gob.ar/storage/administraciones/April2026/djncYWAmM1xYbiF58muY.jpg",
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "fiscaliaadjunta@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 6,
+        "nombre": "Fiscalía Municipal",
+        "slug": "fiscalia-municipal"
+    },
+    "dependencias": [
+        {
+            "id": 66,
+            "nombre": "Dirección de Control y Asesoramiento",
+            "slug": "direccion-de-control-y-asesoramiento",
+            "autoridad": ".",
+            "email": "casesoramiento@smt.gob.ar"
+        },
+        {
+            "id": 130,
+            "nombre": "Dirección de Control Judicial",
+            "slug": "direccion-de-control-judicial",
+            "autoridad": ".",
+            "email": "@"
+        }
+    ]
+}

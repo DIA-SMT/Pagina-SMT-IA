@@ -1,0 +1,33 @@
+{
+    "id": 1,
+    "titulo": "Gestión Tributaria y Comercial",
+    "texto": "Trámites y consultas relacionados con tasas, comercios",
+    "icono": "fa-solid fa-file-invoice-dollar",
+    "slug": "gestion-tributaria-y-comercial",
+    "items": [
+        {
+            "id": 3,
+            "titulo": "Ingresos Municipales",
+            "texto": "Realizar trámites, consultas y pago de sus contribuciones con el municipio",
+            "icono": "fa-solid fa-receipt",
+            "enlace": null,
+            "orden": 1
+        },
+        {
+            "id": 6,
+            "titulo": "Habilitación de Comercios",
+            "texto": "Habilitación on line de comercios de hasta 300 metros cuadrados",
+            "icono": "fas fa-store",
+            "enlace": null,
+            "orden": 2
+        },
+        {
+            "id": 132,
+            "titulo": "Portal para Proveedores",
+            "texto": "Plataforma Virtual de Consulta Para Proveedores",
+            "icono": "fa-solid fa-cash-register",
+            "enlace": "https://smt.gob.ar/portalproveedores",
+            "orden": null
+        }
+    ]
+}

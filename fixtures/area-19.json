@@ -1,0 +1,61 @@
+{
+    "id": 19,
+    "nombre": "Subsecretaría de Gestión Estratégica y Documentación",
+    "slug": "subsecretaria-de-gestion-estrategica-y-documentacion",
+    "autoridad": "Mg. Lic. Humberto Ponce de León",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/MRrKS6B0MBCi4g7vrMOJ.jpg",
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "subsgestion@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 2,
+        "nombre": "Secretaría General",
+        "slug": "secretaria-general"
+    },
+    "dependencias": [
+        {
+            "id": 36,
+            "nombre": "Dirección de Planificación Estratégica",
+            "slug": "direccion-de-planificacion-estrategica",
+            "autoridad": "Lic. Juan Pablo Pinna",
+            "email": "planificacionestrategica@smt.gob.ar"
+        },
+        {
+            "id": 37,
+            "nombre": "Dirección de Información Estratégica",
+            "slug": "direccion-de-informacion-estrategica",
+            "autoridad": "Dr. Luis Enrique Colmenares Martínez",
+            "email": "informacionestrategica@smt.gob.ar"
+        },
+        {
+            "id": 39,
+            "nombre": "Dirección de Documentación Estratégica",
+            "slug": "direccion-de-documentacion-estrategica",
+            "autoridad": "Lic. Silvana Firpo",
+            "email": "documentacionestrategica@smt.gob.ar"
+        },
+        {
+            "id": 40,
+            "nombre": "Dirección de Centros Vecinales",
+            "slug": "direccion-de-centros-vecinales",
+            "autoridad": "Lic. Bruno Rafael Medina",
+            "email": "centrosvecinales@smt.gob.ar"
+        },
+        {
+            "id": 41,
+            "nombre": "Dirección de Respuesta Rápida",
+            "slug": "direccion-de-respuesta-rapida",
+            "autoridad": "Sra. María Belén Pereyra Colombano",
+            "email": "respuestarapida@smt.gob.ar"
+        },
+        {
+            "id": 42,
+            "nombre": "Dirección de Gerencia de Datos",
+            "slug": "direccion-de-gerencia-de-datos",
+            "autoridad": "Ing. Marcelo Alejandro Dulci",
+            "email": "gerenciadedatos@smt.gob.ar"
+        }
+    ]
+}

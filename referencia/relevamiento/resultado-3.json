@@ -1,0 +1,160 @@
+﻿{
+    "type":  "result",
+    "key":  "v2:de84fcdb51ea01396d2aef80fa1b6c081e6b62dd0d7b92756186f1e1b643d63b",
+    "agentId":  "a2807f8ed63a8801f",
+    "result":  {
+                   "rows":  [
+                                {
+                                    "seccion":  "CategorÃ­a 1: GestiÃ³n Tributaria y Comercial",
+                                    "url":  "https://smt.gob.ar/tramite/gestion-tributaria-y-comercial/1",
+                                    "comportamiento":  "Listado de categorÃ­a con 3 Ã­tems en tarjetas con imagen, tÃ­tulo y bajada, sin paginaciÃ³n, filtros ni buscador propio. Ãtems: (1) \u0027Portal para Proveedores\u0027 â€” https://smt.gob.ar/portalproveedores (\u0027Plataforma Virtual de Consulta Para Proveedores\u0027); (2) \u0027Ingresos Municipales\u0027 â€” https://smt.gob.ar/nota/direccion-de-ingresos-municipales/2 (\u0027Realizar trÃ¡mites, consultas y pago de sus contribuciones\u0027); (3) \u0027HabilitaciÃ³n de Comercios\u0027 â€” https://smt.gob.ar/nota/habilitacion-comercial/5 (\u0027HabilitaciÃ³n on line de comercios de hasta 300 metros cuadrados\u0027). Incluye barra lateral \u0027Lo mÃ¡s leÃ­do\u0027 con 9 enlaces y banners a otros servicios.",
+                                    "origen_datos":  "CMS Voyager (tabla de categorÃ­as de trÃ¡mites)",
+                                    "dependencia":  "interna (el Ã­tem Portal para Proveedores deriva a ruta interna /portalproveedores)",
+                                    "propuesta":  "Re-plantillar Blade como listado de categorÃ­a genÃ©rico alimentado por Voyager",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "CategorÃ­a 2: Medio Ambiente y Espacios PÃºblicos",
+                                    "url":  "https://smt.gob.ar/tramite/medio-ambiente-y-espacios-publicos/2",
+                                    "comportamiento":  "Listado de categorÃ­a con 4 Ã­tems, sin paginaciÃ³n, filtros ni buscador. Ãtems: (1) \u0027Proyectos ClimÃ¡ticos\u0027 â€” https://smt.gob.ar/jovenesporelclima; (2) \u0027Empresas de FumigaciÃ³n\u0027 â€” enlace EXTERNO a Google Drive: https://drive.google.com/file/d/1rjfkY2gcWP5nPY5I-AvcLun3rn6mqE5A/view?usp=drive_link (listado de empresas de fumigaciÃ³n); (3) \u0027WIFISMT\u0027 â€” https://smt.gob.ar/nota/wifismt/83; (4) \u0027Ecopuntos\u0027 â€” https://smt.gob.ar/nota/ecopuntos-fijos/80. Barra \u0027Lo mÃ¡s leÃ­do\u0027 (9 enlaces), banners a mapa interactivo/agenda cultural/reportes viales y enlaces WhatsApp para reportes.",
+                                    "origen_datos":  "CMS Voyager; un Ã­tem apunta a archivo en Google Drive externo",
+                                    "dependencia":  "mixta: interna + externa: drive.google.com",
+                                    "propuesta":  "Re-plantillar Blade; migrar el PDF de fumigaciÃ³n desde Google Drive al storage propio del CMS",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "CategorÃ­a 3: Cultura, Arte y Turismo Local",
+                                    "url":  "https://smt.gob.ar/tramite/cultura-arte-y-turismo-local/3",
+                                    "comportamiento":  "Listado de categorÃ­a con 6 Ã­tems, sin paginaciÃ³n, filtros ni buscador; 4 de los 6 apuntan al sitio externo agendaculturalsmt.com. Ãtems: (1) \u0027Agenda Cultural\u0027 (\u0027Eventos en la ciudad\u0027) â€” https://agendaculturalsmt.com/; (2) \u0027GastronomÃ­a\u0027 (\u0027Sabores autÃ©nticos del norte argentino\u0027) â€” https://agendaculturalsmt.com/donde-y-que-comer/; (3) \u0027Hoteles\u0027 â€” https://agendaculturalsmt.com/planifica-tu-viaje/; (4) \u0027Espacios Culturales\u0027 â€” https://agendaculturalsmt.com/espacios-culturales/; (5) \u0027Circuitos TurÃ­stico\u0027 (\u0027Recorridos por la Ciudad HistÃ³rica\u0027) â€” https://smt.gob.ar/circuitos-turisticos; (6) \u0027Registro Municipal de Artistas\u0027 â€” https://smt.gob.ar/nota/registro-municipal-de-artistas/11. Barra \u0027Lo mÃ¡s leÃ­do\u0027 con 9 enlaces y banners grÃ¡ficos.",
+                                    "origen_datos":  "CMS Voyager; la mayorÃ­a de destinos en sitio externo agendaculturalsmt.com",
+                                    "dependencia":  "mixta: interna + externa: agendaculturalsmt.com",
+                                    "propuesta":  "Re-plantillar Blade; mantener enlaces externos a agendaculturalsmt.com y verificar vigencia de ese dominio",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "CategorÃ­a 4: PrevenciÃ³n y Servicios de Salud",
+                                    "url":  "https://smt.gob.ar/tramite/prevencion-y-servicios-de-salud/4",
+                                    "comportamiento":  "Listado de categorÃ­a con 7 Ã­tems, sin paginaciÃ³n, filtros, buscador ni descargas. Ãtems: (1) \u0027Recomendaciones Sanitarias\u0027 â€” https://smt.gob.ar/recomendaciones_sanitarias; (2) \u0027Centro Integral de la Mujer\u0027 â€” https://smt.gob.ar/nota/el-centro-integral-para-la-mujer-cipm/79; (3) \u0027Asistencia PÃºblica\u0027 â€” https://smt.gob.ar/nota/prestaciones-asistencia-publica/78; (4) \u0027Servicio de PoblaciÃ³n Animal\u0027 â€” https://smt.gob.ar/nota/servicio-de-poblacion-animal/81; (5) \u0027Centros de AtenciÃ³n Comunitarias (C.A.C.)\u0027 â€” https://smt.gob.ar/nota/centros-de-atencion-comunitarias-cac/31; (6) \u0027Casa Azul\u0027 â€” https://smt.gob.ar/nota/casa-azul/20; (7) \u0027Carnet de Sanidad\u0027 â€” https://smt.gob.ar/nota/emision-del-carnet-de-sanidad/14.",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade como listado de categorÃ­a genÃ©rico",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "CategorÃ­a 5: Seguridad Ciudadana y Emergencias",
+                                    "url":  "https://smt.gob.ar/tramite/seguridad-ciudadana-y-emergencias/5",
+                                    "comportamiento":  "Listado de categorÃ­a con 2 Ã­tems, sin paginaciÃ³n, filtros ni buscador. Ãtems: (1) \u0027Defensa Civil\u0027 â€” https://smt.gob.ar/nota/defensa-civil-municipal/64 (\u0027previene, mitiga y atiende emergencias y desastres naturales en la ciudad\u0027); (2) \u0027Sistema de AtenciÃ³n Ciudadana\u0027 â€” https://smt.gob.ar/nota/portal-de-atencion-ciudadana/7 (\u0027Denuncias, reclamos y solicitudes vecinales\u0027). Muestra ademÃ¡s telÃ©fonos de emergencia destacados (911, 100, 102, 103, 105, 107) y accesos a herramientas municipales (expedientes, catastro, webmail) en el layout comÃºn.",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade; conservar bloque de telÃ©fonos de emergencia en el layout global",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Ficha: DirecciÃ³n de Ingresos Municipales (cat. 1)",
+                                    "url":  "https://smt.gob.ar/nota/direccion-de-ingresos-municipales/2",
+                                    "comportamiento":  "Ficha de dependencia/trÃ¡mite con: sedes y horarios (24 de Septiembre NÂ° 334, lun-vie 8:00-13:00, tel. 4524670/71/72; SubdirecciÃ³n de HabilitaciÃ³n en CrisÃ³stomo Ãlvarez NÂ° 229, tel. 2605967/2604164), trÃ¡mites divididos en online (boletas CISI, constancias de inscripciÃ³n, DDJJ vÃ­a www.dimsmt.gob.ar) y presenciales (exenciones, libre deuda, habilitaciones), 9 nÃºmeros de WhatsApp por departamento (constancias, TEM, bajas, CISI, informÃ¡tica, agentes, control bancario, habilitaciÃ³n de negocios), enlaces a Google Maps por sede, botones compartir WhatsApp/Twitter/Telegram y bloque \u0027Lo mÃ¡s leÃ­do\u0027.",
+                                    "origen_datos":  "CMS Voyager (contenido HTML de nota)",
+                                    "dependencia":  "externa: dimsmt.gob.ar, google.com/maps, api.whatsapp.com",
+                                    "propuesta":  "Re-plantillar Blade (plantilla de ficha estÃ¡ndar); mantener enlace externo a dimsmt.gob.ar y verificar vigencia de los 9 WhatsApp",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Ficha: HabilitaciÃ³n Comercial (cat. 1)",
+                                    "url":  "https://smt.gob.ar/nota/habilitacion-comercial/5",
+                                    "comportamiento":  "Ficha de trÃ¡mite con subtÃ­tulo \u0027HabilitaciÃ³n online de negocios\u0027: 6 pasos numerados (acceso al portal, formularios, requisitos documentales, pago de tasas, inspecciÃ³n y seguimiento), requisitos (foto de fachada, DNI, constancias AFIP y Rentas, acreditaciÃ³n de derecho de uso del inmueble, seguro de responsabilidad civil), formularios descargables FHN 1 (Uso Conforme) y FHN 2 (Solicitud de HabilitaciÃ³n) alojados en dimsmt.gob.ar, y botÃ³n al portal de habilitaciones munidigital.com/citizenv2/sanmigueldetucuman/login. Enlaces externos a afip.gob.ar y rentastucuman.gob.ar. Contactos: 9 de Julio 598 Sur; Municipalidad 4516500; Asistencia PÃºblica 4308393 / 4212329.",
+                                    "origen_datos":  "CMS Voyager; formularios alojados en subdominio/sitio dimsmt.gob.ar",
+                                    "dependencia":  "externa: munidigital.com, dimsmt.gob.ar, afip.gob.ar, rentastucuman.gob.ar",
+                                    "propuesta":  "Re-plantillar Blade; mantener enlaces externos a MuniDigital/DIM y verificar en servidor la disponibilidad de los formularios FHN 1 y FHN 2",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Ficha: WIFISMT (cat. 2)",
+                                    "url":  "https://smt.gob.ar/nota/wifismt/83",
+                                    "comportamiento":  "Ficha informativa del programa de internet gratuito en espacios pÃºblicos (pilar de la estrategia TRADI): secciÃ³n \u0027Â¿QuÃ© es?\u0027, beneficios (meta de 60 puntos de conexiÃ³n hacia 2025), listado de 6 plazas con enlaces a Google Maps (San MartÃ­n, Libertad, Belgrano, Decididos, HipÃ³lito Yrigoyen, El Provincial), enlaces a CIDITUC (https://ciudaddigital.smt.gob.ar/), guÃ­a de trÃ¡mites (https://guiadetramites.smt.gob.ar) y mapa interactivo (https://mapa.smt.gob.ar/); botones compartir WhatsApp/Twitter/Telegram. Contactos de pie: 9 de Julio 598 Sur, tel. 4516500, Asistencia PÃºblica 4308393/4212329, Emergencia 107. Sin PDFs ni formularios.",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "mixta: interna + externa: ciudaddigital.smt.gob.ar, guiadetramites.smt.gob.ar, mapa.smt.gob.ar (subdominios), google maps",
+                                    "propuesta":  "Re-plantillar Blade; actualizar el texto de la meta 2025 con la direcciÃ³n del programa",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Ficha: Ecopuntos fijos (cat. 2)",
+                                    "url":  "https://smt.gob.ar/nota/ecopuntos-fijos/80",
+                                    "comportamiento":  "Ficha informativa sobre separaciÃ³n en origen y reciclaje; la ubicaciÃ³n de los ecopuntos NO estÃ¡ listada en la pÃ¡gina, sino que deriva a un mapa de Google My Maps: https://www.google.com/maps/d/viewer?mid=1SiYo01NCPo2FION3gsJLbvKhjFRPccA (la URL arrastra parÃ¡metros fbclid). Botones compartir WhatsApp/Twitter/Telegram apuntando a la propia URL. Contactos de pie estÃ¡ndar (9 de Julio 598 Sur, 4516500, 4308393/4212329). Sin requisitos, pasos, horarios ni PDFs.",
+                                    "origen_datos":  "CMS Voyager; datos de ubicaciones en Google My Maps externo",
+                                    "dependencia":  "externa: google.com/maps (My Maps)",
+                                    "propuesta":  "Re-plantillar Blade; considerar migrar las ubicaciones al mapa propio mapa.smt.gob.ar o embeber el My Maps; limpiar parÃ¡metros fbclid",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Ficha: Registro Municipal de Artistas (cat. 3)",
+                                    "url":  "https://smt.gob.ar/nota/registro-municipal-de-artistas/11",
+                                    "comportamiento":  "Ficha con descripciÃ³n breve del registro para artistas individuales y grupos, imagen destacada (/storage/tramites-items-notas/April2024/mpz5SXsv4ShiDlTQHG1H.jpg) y un botÃ³n de inscripciÃ³n que sale a Linktree: https://linktr.ee/registrodeartistassmt (con fbclid incrustado). Sin formulario propio, sin PDFs, sin requisitos ni pasos. Botones compartir WhatsApp/Twitter/Telegram. Contacto de pie: 9 de Julio 570, tel. 4516500, Asistencia PÃºblica 4308393/4212329, Emergencia 107.",
+                                    "origen_datos":  "CMS Voyager; inscripciÃ³n tercerizada en Linktree",
+                                    "dependencia":  "externa: linktr.ee",
+                                    "propuesta":  "Re-plantillar Blade; reemplazar Linktree por formulario propio o al menos verificar que el enlace siga activo y limpiar fbclid",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Ficha: EmisiÃ³n del Carnet de Sanidad (cat. 4)",
+                                    "url":  "https://smt.gob.ar/nota/emision-del-carnet-de-sanidad/14",
+                                    "comportamiento":  "Ficha de trÃ¡mite: describe el carnet de sanidad digital (equivalente al impreso, con foto del titular y estado de vigencia), requisito Ãºnico (concurrir con DNI), horarios (lun-vie 08:00-16:30, guardias 24 hs), direcciÃ³n Av. Juan B. Justo 965 con enlace a Google Maps, y botÃ³n \u0027Consultar tu Carnet Sanidad\u0027 que apunta a una IP sin dominio ni TLS: http://181.105.6.205:82/cs/index_cd.php. Botones compartir WhatsApp/Twitter/Telegram. Contactos de pie estÃ¡ndar (4516500, 4308393/4212329, 107).",
+                                    "origen_datos":  "CMS Voyager; sistema de consulta en servidor externo por IP",
+                                    "dependencia":  "externa: 181.105.6.205:82 (IP directa, HTTP sin cifrar)",
+                                    "propuesta":  "Verificar en servidor: asignar dominio/subdominio y HTTPS al sistema de consulta del carnet antes del rediseÃ±o; re-plantillar Blade la ficha",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Ficha: Prestaciones Asistencia PÃºblica (cat. 4)",
+                                    "url":  "https://smt.gob.ar/nota/prestaciones-asistencia-publica/78",
+                                    "comportamiento":  "Ficha extensa con 13 servicios mÃ©dicos en formato repetido (nombre, prestaciones, horarios, edad mÃ­nima 15 aÃ±os, cÃ³mo pedir turno): Guardia ClÃ­nica 24/7, Guardia OdontolÃ³gica 24/7, AtenciÃ³n ClÃ­nica, OdontolÃ³gica, GinecolÃ³gica (\u0027Piso Rosa\u0027), DermatolÃ³gica, OftalmolÃ³gica, PsicolÃ³gica (general y para mujeres), CardiolÃ³gica, Nutricional, UrolÃ³gica, OtorrinolaringolÃ³gica. DirecciÃ³n Ãºnica: Batalla de Chacabuco 239 (Google Maps: https://maps.app.goo.gl/ShhKQdkHXQmWgVE17). Enlace al portal https://asistenciapublica.smt.gob.ar/. TelÃ©fonos 4308393/4212329 y 107. Botones compartir; sin PDFs; se observÃ³ una imagen placeholder vacÃ­a.",
+                                    "origen_datos":  "CMS Voyager; portal de turnos en subdominio",
+                                    "dependencia":  "mixta: interna + externa: asistenciapublica.smt.gob.ar (subdominio), maps.app.goo.gl",
+                                    "propuesta":  "Re-plantillar Blade con componente repetible de \u0027servicio mÃ©dico\u0027; mantener enlace al subdominio asistenciapublica; corregir imagen placeholder vacÃ­a",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Ficha: Casa Azul (cat. 4)",
+                                    "url":  "https://smt.gob.ar/nota/casa-azul/20",
+                                    "comportamiento":  "Ficha informativa del centro municipal de atenciÃ³n integral gratuita para personas con CondiciÃ³n del Espectro Autista (CEA), sus familias y cuidadores: servicios (atenciÃ³n mÃ©dica y terapÃ©utica: psicologÃ­a, fonoaudiologÃ­a, kinesiologÃ­a, nutriciÃ³n; consultorios adaptados, sala multisensorial, sala motora; acompaÃ±amiento familiar y escuela de padres; asesoramiento legal; capacitaciÃ³n gratuita), descripciÃ³n del equipo multidisciplinario, fotografÃ­a de instalaciones. Sin PDFs ni formularios; enlaces del layout a guiadetramites.smt.gob.ar y ciudaddigital.smt.gob.ar. Contactos de pie estÃ¡ndar (9 de Julio 598 Sur, 4516500, 4308393/4212329). No detalla direcciÃ³n ni telÃ©fono propios del centro.",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade; completar con la dependencia direcciÃ³n/telÃ©fono propios de Casa Azul (hoy solo figuran contactos genÃ©ricos del pie)",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Ficha: Defensa Civil Municipal (cat. 5)",
+                                    "url":  "https://smt.gob.ar/nota/defensa-civil-municipal/64",
+                                    "comportamiento":  "Ficha de dependencia: secciÃ³n \u0027QuiÃ©nes somos\u0027 (dependencia de la SecretarÃ­a de Gobierno, prevenciÃ³n y actuaciÃ³n en desastres), telÃ©fonos (Mesa de Entradas 3814238907; Guardia 24 hs fijo 3814239199; Guardia 24 hs WhatsApp 3812232140), direcciÃ³n Italia 2754 (Google Maps: maps.app.goo.gl/hJAVViCoQ58B9X3r5), email dc@smt.gob.ar. PDF descargable \u0027Requisitos_DocumentaciÃ³n_TÃ©cnica_Defensa_Civil.pdf\u0027 en /storage/tramites-items-notas/January2025/807XZ6Hnw4tyP2DLVuXn.pdf. Botones de WhatsApp directo y compartir Twitter/Telegram.",
+                                    "origen_datos":  "CMS Voyager (PDF en storage del CMS)",
+                                    "dependencia":  "interna (enlaces auxiliares a maps.app.goo.gl y api.whatsapp.com)",
+                                    "propuesta":  "Re-plantillar Blade; migrar el PDF del storage Voyager al nuevo repositorio de archivos con nombre legible",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Ficha: Portal de AtenciÃ³n Ciudadana (cat. 5)",
+                                    "url":  "https://smt.gob.ar/nota/portal-de-atencion-ciudadana/7",
+                                    "comportamiento":  "Ficha del sistema de reclamos: describe el flujo por WhatsApp (envÃ­o de reclamo con fotos, generaciÃ³n de ticket, seguimiento y notificaciÃ³n por WhatsApp), 8 categorÃ­as de servicio (Ambiente, Alumbrado, Bacheo, Poda, Residuos, SemÃ¡foro, Transporte, Vereda), call center con 9 nÃºmeros de WhatsApp por Ã¡rea (ej. Ambiente 3812230563, Bacheo 3812230569) en formato wa.link, direcciÃ³n San Lorenzo 1270, horarios (lun-vie 8:00-20:00; fines de semana y feriados 8:00-12:00), email direccionderespuestarapida@gmail.com y enlace de consulta de reclamos https://atencionciudadana.smt.gob.ar/. Imagen identificativa (April2024/i1NGvqC5rPsxchUXUg5w.png), botones compartir.",
+                                    "origen_datos":  "CMS Voyager; sistema de tickets en subdominio",
+                                    "dependencia":  "mixta: interna + externa: atencionciudadana.smt.gob.ar (subdominio), wa.link, api.whatsapp.com",
+                                    "propuesta":  "Re-plantillar Blade; mantener enlace al subdominio de tickets; reemplazar el email de Gmail por casilla institucional @smt.gob.ar",
+                                    "estado":  "verificado"
+                                }
+                            ],
+                   "urls_no_visitadas":  [
+                                             "https://smt.gob.ar/portalproveedores",
+                                             "https://smt.gob.ar/jovenesporelclima",
+                                             "https://smt.gob.ar/recomendaciones_sanitarias",
+                                             "https://smt.gob.ar/circuitos-turisticos",
+                                             "https://smt.gob.ar/nota/el-centro-integral-para-la-mujer-cipm/79",
+                                             "https://smt.gob.ar/nota/servicio-de-poblacion-animal/81",
+                                             "https://smt.gob.ar/nota/centros-de-atencion-comunitarias-cac/31",
+                                             "https://smt.gob.ar/storage/tramites-items-notas/January2025/807XZ6Hnw4tyP2DLVuXn.pdf",
+                                             "https://asistenciapublica.smt.gob.ar/",
+                                             "https://atencionciudadana.smt.gob.ar/",
+                                             "https://ciudaddigital.smt.gob.ar/",
+                                             "https://guiadetramites.smt.gob.ar",
+                                             "https://mapa.smt.gob.ar/"
+                                         ],
+                   "notas":  "Hallazgos transversales del Ã¡mbito (categorÃ­as 1-5): (1) Plantilla de ficha /nota/ uniforme y compatible con Voyager: imagen hero desde /storage/tramites-items-notas/{Mes}{AÃ±o}/..., cuerpo HTML libre del CMS, botones compartir WhatsApp/Twitter/Telegram, bloque \u0027Lo mÃ¡s leÃ­do\u0027 (9 enlaces) y footer con contactos generales â€” se presta a una Ãºnica vista Blade parametrizada. (2) Riesgo crÃ­tico: el botÃ³n \u0027Consultar tu Carnet Sanidad\u0027 apunta a una IP directa sin dominio ni HTTPS (http://181.105.6.205:82/cs/index_cd.php); verificar en servidor y dar dominio+TLS antes del rediseÃ±o. (3) Datos institucionales inconsistentes: el email de AtenciÃ³n Ciudadana es una cuenta de Gmail (direccionderespuestarapida@gmail.com) en lugar de @smt.gob.ar; la direcciÃ³n del footer varÃ­a entre fichas (\u00279 de Julio 598 Sur\u0027 en la mayorÃ­a vs \u00279 de Julio 570\u0027 en Registro de Artistas) â€” revisar cuÃ¡l es la vigente. (4) Contenido posiblemente desactualizado: WIFISMT anuncia meta de \u002760 puntos de conexiÃ³n para 2025\u0027 (hoy 2026). (5) Dependencias externas frÃ¡giles: listado de empresas de fumigaciÃ³n en un Google Drive con enlace de compartir; inscripciÃ³n del Registro de Artistas vÃ­a Linktree con fbclid incrustado; ecopuntos en Google My Maps tambiÃ©n con fbclid. (6) La categorÃ­a 3 (Cultura) es casi toda externa: 4 de 6 Ã­tems van a agendaculturalsmt.com (dominio no gubernamental .com). (7) Los Ã­tems de categorÃ­a mezclan destinos /nota/, rutas internas sueltas (/portalproveedores, /jovenesporelclima, /recomendaciones_sanitarias, /circuitos-turisticos) y enlaces externos: el modelo de datos del listado admite URL libre, no solo notas. (8) Discrepancia menor: en la categorÃ­a 4 el conteo enunciado fue de 6 Ã­tems pero se listaron 7 (conteo real: 7). (9) La habilitaciÃ³n comercial depende del SaaS externo munidigital.com y de formularios FHN 1/FHN 2 alojados en dimsmt.gob.ar â€” confirmar continuidad de ambos en el rediseÃ±o. Todas las URLs del Ã¡mbito respondieron; no se detectaron enlaces rotos evidentes, aunque los destinos externos (Drive, Linktree, My Maps, IP del carnet) no fueron verificados individualmente."
+               }
+}

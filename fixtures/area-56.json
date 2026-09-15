@@ -1,0 +1,18 @@
+{
+    "id": 56,
+    "nombre": "Dirección de Planeamiento y Presupuesto",
+    "slug": "direccion-de-planeamiento-y-presupuesto",
+    "autoridad": "CPN. María del Pilar Varela",
+    "foto": null,
+    "domicilio": "9 de Julio 598  - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "presupuesto@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 15,
+        "nombre": "Subsecretaría de Economía y Hacienda",
+        "slug": "subsecretaria-de-economia-y-hacienda"
+    },
+    "dependencias": []
+}

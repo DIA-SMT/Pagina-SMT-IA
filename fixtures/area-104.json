@@ -1,0 +1,18 @@
+{
+    "id": 104,
+    "nombre": "Patrulla Protección Ciudadana",
+    "slug": "patrulla-proteccion-ciudadana",
+    "autoridad": null,
+    "foto": null,
+    "domicilio": "Italia 2754 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "ppc@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 106,
+        "nombre": "Subsecretaría de Seguridad Ciudadana",
+        "slug": "subsecretaria-de-seguridad-ciudadana"
+    },
+    "dependencias": []
+}

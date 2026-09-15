@@ -1,0 +1,18 @@
+{
+    "id": 99,
+    "nombre": "Dirección de la Vía Pública",
+    "slug": "direccion-de-la-via-publica",
+    "autoridad": "Sr. Juan Roberto Rojas",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/qJvcBQHXPv2d10WtVbmn.jpg",
+    "domicilio": "Av. Roque Sáenz Peña 56 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "viapublica@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 109,
+        "nombre": "Secretaría de Ordenamiento y Convivencia",
+        "slug": "secretaria-de-ordenamiento-y-convivencia"
+    },
+    "dependencias": []
+}

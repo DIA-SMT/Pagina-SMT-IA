@@ -1,0 +1,18 @@
+{
+    "id": 92,
+    "nombre": "Dirección de Programas Sociales",
+    "slug": "direccion-de-programas-sociales",
+    "autoridad": "Sra. María Fernanda Prado Budeguer",
+    "foto": null,
+    "domicilio": "Av. Juan B. Justo 965  - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "programassociales@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 11,
+        "nombre": "Secretaría de Atención al Ciudadano",
+        "slug": "secretaria-de-atencion-al-ciudadano"
+    },
+    "dependencias": []
+}

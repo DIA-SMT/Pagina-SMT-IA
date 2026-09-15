@@ -1,0 +1,18 @@
+{
+    "id": 65,
+    "nombre": "Dirección de Despacho de Fiscalía Municipal",
+    "slug": "direccion-de-despacho-de-fiscalia-municipal",
+    "autoridad": "Dra. María Josefina Van Gelderen",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/h9qjxXeXftChJE3Wt4hA.jpg",
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "ddfm@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 6,
+        "nombre": "Fiscalía Municipal",
+        "slug": "fiscalia-municipal"
+    },
+    "dependencias": []
+}

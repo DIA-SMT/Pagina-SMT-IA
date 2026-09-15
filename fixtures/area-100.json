@@ -1,0 +1,18 @@
+{
+    "id": 100,
+    "nombre": "Centro de Monitoreo Municipal",
+    "slug": "centro-de-monitoreo-municipal",
+    "autoridad": ".",
+    "foto": null,
+    "domicilio": "9 de Julio 229  - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "direccion.comm@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 106,
+        "nombre": "Subsecretaría de Seguridad Ciudadana",
+        "slug": "subsecretaria-de-seguridad-ciudadana"
+    },
+    "dependencias": []
+}

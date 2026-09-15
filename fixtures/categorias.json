@@ -1,0 +1,128 @@
+[
+    {
+        "id": 1,
+        "titulo": "Gestión Tributaria y Comercial",
+        "texto": "Trámites y consultas relacionados con tasas, comercios",
+        "icono": "fa-solid fa-file-invoice-dollar",
+        "orden": null,
+        "items": 3,
+        "slug": "gestion-tributaria-y-comercial"
+    },
+    {
+        "id": 2,
+        "titulo": "Medio Ambiente y Espacios Públicos",
+        "texto": "Trámites vinculados a Espacios Urbanos Públicos y Privados. Cuidado del Medio Ambiente",
+        "icono": "fa -solid fa-recycle",
+        "orden": null,
+        "items": 4,
+        "slug": "medio-ambiente-y-espacios-publicos"
+    },
+    {
+        "id": 3,
+        "titulo": "Cultura, Arte  y Turismo Local",
+        "texto": "Actividades y servicios culturales, asistencia para artistas y espacios de la cultura.",
+        "icono": "fa-solid fa-theater-masks",
+        "orden": null,
+        "items": 6,
+        "slug": "cultura-arte-y-turismo-local"
+    },
+    {
+        "id": 4,
+        "titulo": "Prevención y Servicios de Salud",
+        "texto": "Servicios de prevención y cuidados para la salud.",
+        "icono": "fa-solid fa-heart-pulse",
+        "orden": null,
+        "items": 7,
+        "slug": "prevencion-y-servicios-de-salud"
+    },
+    {
+        "id": 5,
+        "titulo": "Seguridad Ciudadana y Emergencias",
+        "texto": "Reclamos, denuncias y solicitudes. Situaciones irregulares. Emergencias.",
+        "icono": "fa-solid fa-shield",
+        "orden": null,
+        "items": 2,
+        "slug": "seguridad-ciudadana-y-emergencias"
+    },
+    {
+        "id": 6,
+        "titulo": "Educación y Formación",
+        "texto": "Servicios de educación formal y formación laboral para la ciudadanía.",
+        "icono": "fa-solid fa-school",
+        "orden": null,
+        "items": 2,
+        "slug": "educacion-y-formacion"
+    },
+    {
+        "id": 7,
+        "titulo": "Transporte y Movilidad",
+        "texto": "Representa servicios de transporte y seguridad vial.",
+        "icono": "fa-solid fa-car",
+        "orden": null,
+        "items": 7,
+        "slug": "transporte-y-movilidad"
+    },
+    {
+        "id": 8,
+        "titulo": "Biblioteca Digital",
+        "texto": "Biblioteca digital en la que podrás conocer nuestros documentos de políticas públicas",
+        "icono": "fa-solid fa-book",
+        "orden": null,
+        "items": 26,
+        "slug": "biblioteca-digital"
+    },
+    {
+        "id": 10,
+        "titulo": "Transparencia y Participación",
+        "texto": "Enfoque de gobierno que promueve los principios de transparencia, innovación, rendición de cuentas y participación ciudadana en apoyo de la democracia",
+        "icono": "fa-solid fa-lock-open",
+        "orden": null,
+        "items": 10,
+        "slug": "transparencia-y-participacion"
+    },
+    {
+        "id": 11,
+        "titulo": "Normativa",
+        "texto": "Recopilacion de Normativas y disposiciones legales.",
+        "icono": "fa-solid fa-flag",
+        "orden": null,
+        "items": 10,
+        "slug": "normativa"
+    },
+    {
+        "id": 12,
+        "titulo": "Actividades Ciudadanas",
+        "texto": "Se promueve la participación, el bienestar y el emprendimiento en un entorno colaborativo para fortalecer las relaciones comunitarias y el crecimiento colectivo.",
+        "icono": "fa-solid fa-icons",
+        "orden": null,
+        "items": 8,
+        "slug": "actividades-ciudadanas"
+    },
+    {
+        "id": 13,
+        "titulo": "Patrimonio Cultural",
+        "texto": "Edificios, obras artisticas, lugares historicos que forman el acervo cultural de la ciudad",
+        "icono": "fa-solid fa-landmark",
+        "orden": null,
+        "items": 6,
+        "slug": "patrimonio-cultural"
+    },
+    {
+        "id": 16,
+        "titulo": "Justicia Municipal",
+        "texto": "Gestión y Administración de la Justicia municipal y de faltas",
+        "icono": "fa-solid fa-scale-balanced",
+        "orden": null,
+        "items": 1,
+        "slug": "justicia-municipal"
+    },
+    {
+        "id": 18,
+        "titulo": "Catrastro y Edificación",
+        "texto": "Realizar Tramites y consultas en el portal de catastro",
+        "icono": "fa-solid fa-house",
+        "orden": null,
+        "items": 2,
+        "slug": "catrastro-y-edificacion"
+    }
+]

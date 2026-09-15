@@ -1,0 +1,47 @@
+{
+    "id": 109,
+    "nombre": "Secretaría de Ordenamiento y Convivencia",
+    "slug": "secretaria-de-ordenamiento-y-convivencia",
+    "autoridad": "Dr. Javier Eduardo González",
+    "foto": null,
+    "domicilio": "9 de Julio 229 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "ordenamientoyconvivnecia@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": "https://smt.gob.ar/storage/administraciones/September2026/D8vw3OmOI6o8BSe1JNe5.pdf",
+    "padre": {
+        "id": 1,
+        "nombre": "Intendencia",
+        "slug": "intendencia"
+    },
+    "dependencias": [
+        {
+            "id": 120,
+            "nombre": "Dirección de Despacho de Ordenamiento y Convivencia",
+            "slug": "direccion-de-despacho-de-ordenamiento-y-convivencia",
+            "autoridad": "Dr. Pedro David Arréguez",
+            "email": "ddsordenamientoyconvivencia@smt.gob.ar"
+        },
+        {
+            "id": 99,
+            "nombre": "Dirección de la Vía Pública",
+            "slug": "direccion-de-la-via-publica",
+            "autoridad": "Sr. Juan Roberto Rojas",
+            "email": "viapublica@smt.gob.ar"
+        },
+        {
+            "id": 117,
+            "nombre": "Dirección de Señalización y Cartelería",
+            "slug": "direccion-de-senalizacion-y-carteleria",
+            "autoridad": "Sr. Juan José Artigas",
+            "email": "@"
+        },
+        {
+            "id": 121,
+            "nombre": "Fiscalía Ambiental Municipal",
+            "slug": "fiscalia-ambiental-municipal",
+            "autoridad": ".",
+            "email": "fiscaliaambiental@smt.gob.ar"
+        }
+    ]
+}

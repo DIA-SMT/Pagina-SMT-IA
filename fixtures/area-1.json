@@ -1,0 +1,113 @@
+{
+    "id": 1,
+    "nombre": "Intendencia",
+    "slug": "intendencia",
+    "autoridad": "Dra. Rossana Chahla",
+    "foto": "https://smt.gob.ar/storage/administraciones/April2024/Jq5o6mm1oLRu8xKSV11J.jpg",
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "intendencia@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": "https://smt.gob.ar/storage/administraciones/August2026/CzqK1MgeJjUn6ggHv8ys.pdf",
+    "padre": null,
+    "dependencias": [
+        {
+            "id": 2,
+            "nombre": "Secretaría General",
+            "slug": "secretaria-general",
+            "autoridad": "Dr. Rodrigo Gómez Tortosa",
+            "email": "sgeneral@smt.gob.ar"
+        },
+        {
+            "id": 3,
+            "nombre": "Secretaría de Gobierno",
+            "slug": "secretaria-de-gobierno",
+            "autoridad": "Mg. Camila Giuliano",
+            "email": "sgobierno@smt.gob.ar"
+        },
+        {
+            "id": 4,
+            "nombre": "Secretaría de Economía y Hacienda",
+            "slug": "secretaria-de-economia-y-hacienda",
+            "autoridad": "Cr. Sebastián Ruiz Toscano",
+            "email": "seh@smt.gob.ar"
+        },
+        {
+            "id": 5,
+            "nombre": "Secretaría de Obras Públicas",
+            "slug": "secretaria-de-obras-publicas",
+            "autoridad": "Ing. Claudio Fernando Bravo",
+            "email": "obraspublicas@smt.gob.ar"
+        },
+        {
+            "id": 6,
+            "nombre": "Fiscalía Municipal",
+            "slug": "fiscalia-municipal",
+            "autoridad": "Dr. Conrado Mosqueira",
+            "email": "fiscalia@smt.gob.ar"
+        },
+        {
+            "id": 7,
+            "nombre": "Secretaría de Servicios Públicos",
+            "slug": "secretaria-de-servicios-publicos",
+            "autoridad": "Sr. Luciano Chincarini",
+            "email": "sservicios@smt.gob.ar"
+        },
+        {
+            "id": 8,
+            "nombre": "Secretaría de Ingresos Municipales",
+            "slug": "secretaria-de-ingresos-municipales",
+            "autoridad": "Cr. María Fernanda Herrera",
+            "email": "sim@smt.gob.ar"
+        },
+        {
+            "id": 9,
+            "nombre": "Secretaría de Innovación Tecnológica",
+            "slug": "secretaria-de-innovacion-tecnologica",
+            "autoridad": "Ing. Omar Abraham",
+            "email": "sitec@smt.gob.ar"
+        },
+        {
+            "id": 10,
+            "nombre": "Secretaría de Ambiente y Desarrollo Sustentable",
+            "slug": "secretaria-de-ambiente-y-desarrollo-sustentable",
+            "autoridad": "Ing. Julieta Migliavacca",
+            "email": "sambiente@smt.gob.ar"
+        },
+        {
+            "id": 11,
+            "nombre": "Secretaría de Atención al Ciudadano",
+            "slug": "secretaria-de-atencion-al-ciudadano",
+            "autoridad": "Dra. María Sofía Prado Budeguer",
+            "email": "satencionciudadana@smt.gob.ar"
+        },
+        {
+            "id": 12,
+            "nombre": "Secretaría de Movilidad Urbana",
+            "slug": "secretaria-de-movilidad-urbana",
+            "autoridad": "Sr. Carlos Roberto Arnedo",
+            "email": "smovilidad@smt.gob.ar"
+        },
+        {
+            "id": 109,
+            "nombre": "Secretaría de Ordenamiento y Convivencia",
+            "slug": "secretaria-de-ordenamiento-y-convivencia",
+            "autoridad": "Dr. Javier Eduardo González",
+            "email": "ordenamientoyconvivnecia@smt.gob.ar"
+        },
+        {
+            "id": 110,
+            "nombre": "Dirección General de Intendencia",
+            "slug": "direccion-general-de-intendencia",
+            "autoridad": "Sra. Mirta Olivera",
+            "email": "dirgeneral@smt.gob.ar"
+        },
+        {
+            "id": 111,
+            "nombre": "Dirección de Ceremonial",
+            "slug": "direccion-de-ceremonial",
+            "autoridad": "Lic. Belén Bonilla",
+            "email": "ceremonial@smt.gob.ar"
+        }
+    ]
+}

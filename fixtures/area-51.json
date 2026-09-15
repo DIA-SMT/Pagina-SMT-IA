@@ -1,0 +1,18 @@
+{
+    "id": 51,
+    "nombre": "Dirección de Despacho de Innovación Tecnológica",
+    "slug": "direccion-de-despacho-de-innovacion-tecnologica",
+    "autoridad": "CPN. María Florencia Borsotto",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/tUfpkWfbn9i5O7vut4oU.jpg",
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "ddsitec@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 9,
+        "nombre": "Secretaría de Innovación Tecnológica",
+        "slug": "secretaria-de-innovacion-tecnologica"
+    },
+    "dependencias": []
+}

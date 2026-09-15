@@ -1,0 +1,17 @@
+{
+    "id": 77,
+    "categoria": 11,
+    "item": 83,
+    "titulo": "Ciudadano Digital San Miguel de Tucumán",
+    "bajada": "Ciudad Digital es una plataforma tecnológica que posibilita a los ciudadanos acceder de forma simple, en un único lugar y con una misma cuenta de usuario a los trámites y servicios digitales que brinda la ciudad de San Miguel de Tucumán. Descubrí todos los servicios y beneficios de ser un Ciudadano Digital.",
+    "cuerpo": "<h3 style=\"text-align: center;\">&nbsp;</h3>\r\n<h3 style=\"text-align: center;\">CIUDADANO DIGITAL</h3>\r\n<p>&nbsp;</p>\r\n<p class=\"MsoNormal\" style=\"text-align: justify;\"><span style=\"font-family: Poppins; color: #000000;\">El acceso a la p&aacute;gina requiere el registro del usuario causante como ciudadano digital, para ello deber&aacute;n consignarse datos personales tales como: nombre, apellido, cuil, mail, g&eacute;nero, fecha de nacimiento, n&uacute;mero de celular y clave de usuario, la cual deber&aacute; ser generada por el usuario. Cabe destacar que la clave generada por el usuario es intransferible, toda vez que ser&aacute; encriptada y el municipio no podr&aacute; tener acceso a ella, por lo cual no asumir&aacute; la responsabilidad en caso de extrav&iacute;o, olvido o utilizaci&oacute;n de la clave por terceros. La registraci&oacute;n exitosa implicar&aacute; que el usuario ha le&iacute;do y aceptado los T&eacute;rminos y Condiciones de Acceso en el presente documento, el cual tendr&aacute; el car&aacute;cter de Declaraci&oacute;n Jurada. A partir de su registraci&oacute;n el ciudadano digital queda habilitado para acceder al sitio web de la Municipalidad y realizar diferentes tr&aacute;mites, los mismos est&aacute;n sujetos a un proceso de confirmaci&oacute;n, verificaci&oacute;n y validaci&oacute;n. En algunos casos puede que se requiera una verificaci&oacute;n por medio de correo electr&oacute;nico.</span></p>\r\n<p class=\"MsoNormal\" style=\"text-align: justify;\"><span style=\"font-family: Poppins;\"><span style=\"color: #000000;\">Acceda a la reglamentaci&oacute;n de CiDiTuc a trav&eacute;s de este documento en formato PDF.</span></span></p>\r\n<p class=\"mt-4\" style=\"font-family: Poppins; box-sizing: border-box; padding: 0px 25px; color: #000000; font-size: 16px; text-align: left; margin: 1.5rem !important 0px 1rem 0px;\">&nbsp;</p>",
+    "imagen": null,
+    "archivos": [
+        {
+            "url": "https://smt.gob.ar/storage/tramites-items-notas/October2024/VZaBHm2PUdGTq5TOCDmF.pdf",
+            "nombre": "CIDITUC_Dcto 870SIT2024.pdf",
+            "extension": "pdf"
+        }
+    ],
+    "actualizado": "2025-03-25 22:03:05"
+}

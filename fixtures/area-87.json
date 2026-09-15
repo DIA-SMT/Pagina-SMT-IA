@@ -1,0 +1,18 @@
+{
+    "id": 87,
+    "nombre": "Dirección Deportes y Recreación",
+    "slug": "direccion-deportes-y-recreacion",
+    "autoridad": "Sr. Pablo Guillermo Sosa",
+    "foto": null,
+    "domicilio": "25 de Mayo 971 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "dirdeportes@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 16,
+        "nombre": "Subsecretaría de Gobierno",
+        "slug": "subsecretaria-de-gobierno"
+    },
+    "dependencias": []
+}

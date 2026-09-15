@@ -1,0 +1,18 @@
+{
+    "id": 31,
+    "nombre": "Dirección de Despacho de Intendencia",
+    "slug": "direccion-de-despacho-de-intendencia",
+    "autoridad": "Dr. Pablo Martín Pérez Ledesma",
+    "foto": "https://smt.gob.ar/storage/administraciones/March2026/msyrWpV7N6UAmsI7r2Pg.jpg",
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "ddsgeneral@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 2,
+        "nombre": "Secretaría General",
+        "slug": "secretaria-general"
+    },
+    "dependencias": []
+}

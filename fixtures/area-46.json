@@ -1,0 +1,18 @@
+{
+    "id": 46,
+    "nombre": "Dirección de Adulto Mayor",
+    "slug": "direccion-de-adulto-mayor",
+    "autoridad": "Dr. Luis Emiliano Ramírez",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/WO8Fa49AMVf3e6gSgC9H.jpg",
+    "domicilio": "Av. Adolfo de la Vega 505 (Casa del Bicentenario) - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "adultos@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 20,
+        "nombre": "Subsecretaría de Desarrollo Humano",
+        "slug": "subsecretaria-de-desarrollo-humano"
+    },
+    "dependencias": []
+}

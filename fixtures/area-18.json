@@ -1,0 +1,47 @@
+{
+    "id": 18,
+    "nombre": "Subsecretaría de Prensa y Comunicación Institucional",
+    "slug": "subsecretaria-de-prensa-y-comunicacion-institucional",
+    "autoridad": "Lic. Pablo Fernando Haro Rodríguez",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/jMHOjQyUm8vuwa7wpW0H.jpg",
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "subsecprensa@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 2,
+        "nombre": "Secretaría General",
+        "slug": "secretaria-general"
+    },
+    "dependencias": [
+        {
+            "id": 32,
+            "nombre": "Dirección de Comunicación",
+            "slug": "direccion-de-comunicacion",
+            "autoridad": "Sr. Sebastián Ignacio Ángel Zazzali",
+            "email": "comunicacion@smt.gob.ar"
+        },
+        {
+            "id": 94,
+            "nombre": "Dirección de Comunicación Digital",
+            "slug": "direccion-de-comunicacion-digital",
+            "autoridad": "Lic. Marcos Esteban Gómez Palmas",
+            "email": "comunicaciondigital@smt.gob.ar"
+        },
+        {
+            "id": 33,
+            "nombre": "Dirección de Comunicación no Tradicional",
+            "slug": "direccion-de-comunicacion-no-tradicional",
+            "autoridad": "Sr. Gabriel Lemme",
+            "email": "comunicaciónnotradicional@smt.gob.ar"
+        },
+        {
+            "id": 34,
+            "nombre": "Dirección Radio Municipal",
+            "slug": "direccion-radio-municipal",
+            "autoridad": "Sr. Rodrigo Gerardo Rodríguez",
+            "email": "radiociudad@smt.gob.ar"
+        }
+    ]
+}

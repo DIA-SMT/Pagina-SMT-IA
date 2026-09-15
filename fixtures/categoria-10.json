@@ -1,0 +1,89 @@
+{
+    "id": 10,
+    "titulo": "Transparencia y Participación",
+    "texto": "Enfoque de gobierno que promueve los principios de transparencia, innovación, rendición de cuentas y participación ciudadana en apoyo de la democracia",
+    "icono": "fa-solid fa-lock-open",
+    "slug": "transparencia-y-participacion",
+    "items": [
+        {
+            "id": 55,
+            "titulo": "Licitaciones y Concursos",
+            "texto": "Convocatoria para la contratación de bienes, obras y servicios.",
+            "icono": "fa-solid fa-comments-dollar",
+            "enlace": "https://licitaciones.smt.gob.ar/",
+            "orden": null
+        },
+        {
+            "id": 57,
+            "titulo": "Plan Rector",
+            "texto": "Plan de gobierno con los lineamientos estratégicos de nuestra gestión",
+            "icono": "fa-solid fa-book-atlas",
+            "enlace": "https://smt.gob.ar/nota/plan-rector/32",
+            "orden": null
+        },
+        {
+            "id": 58,
+            "titulo": "Boletín Oficial",
+            "texto": "Publicación Digital que contiene la normativa municipal y actos de gobierno",
+            "icono": "fa-regular fa-newspaper",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 68,
+            "titulo": "C.E.S.",
+            "texto": "Es un organismo colegiado y de participación sectorial que busca construir consensos sobre las prioridades estratégicas para el desarrollo de nuestra ciudad.",
+            "icono": "fa-solid fa-users",
+            "enlace": "https://ces.smt.gob.ar/",
+            "orden": null
+        },
+        {
+            "id": 88,
+            "titulo": "Participación Ciudadana",
+            "texto": "Contamos con vos para seguir construyendo un mejor futuro para San Miguel de Tucumán.Te invitamos a compartir tus ideas y propuestas.",
+            "icono": "fa-solid fa-user-group",
+            "enlace": "https://docs.google.com/forms/d/1M2ghY-ZJ-yHRKEh5lYUpsfeAcB-SPdWo25TbmLNWQR0/edit",
+            "orden": null
+        },
+        {
+            "id": 96,
+            "titulo": "Transparencia y datos abiertos",
+            "texto": "A través de la Contaduría General, ponemos a disposición un portal de datos abiertos diseñado para promover la transparencia y accesibilidad en la gestión pública. Encontrarás información sobre la ejecución presupuestaria, normativa aplicable, auditorías",
+            "icono": "fa-solid fa-lock-open",
+            "enlace": "https://transparencia.smt.gob.ar/",
+            "orden": null
+        },
+        {
+            "id": 108,
+            "titulo": "Portal de Datos de la Ciudad",
+            "texto": "Portal de información de la ciudad y la gestión",
+            "icono": "fa-solid fa-chart-simple",
+            "enlace": "https://www.smtendatos.com.ar/",
+            "orden": null
+        },
+        {
+            "id": 109,
+            "titulo": "Precios de obra pública",
+            "texto": "Publicación de los precios unitarios oficiales obras públicas",
+            "icono": "fa-solid fa-road",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 115,
+            "titulo": "Presupuesto Participativo",
+            "texto": "Participación para construir la ciudad",
+            "icono": "fa-solid fa-users",
+            "enlace": "https://smt.gob.ar/presupuestoparticipativo",
+            "orden": null
+        },
+        {
+            "id": 130,
+            "titulo": "Servicios Públicos",
+            "texto": "Consumo para servicios públicos",
+            "icono": "fa-solid fa-traffic-light",
+            "enlace": "https://uspp.smt.gob.ar/",
+            "orden": null
+        }
+    ]
+}

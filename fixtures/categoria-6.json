@@ -1,0 +1,25 @@
+{
+    "id": 6,
+    "titulo": "Educación y Formación",
+    "texto": "Servicios de educación formal y formación laboral para la ciudadanía.",
+    "icono": "fa-solid fa-school",
+    "slug": "educacion-y-formacion",
+    "items": [
+        {
+            "id": 2,
+            "titulo": "Portal de Educación",
+            "texto": "Desarrollo de tareas vinculadas a la educación formal",
+            "icono": "fa-solid fa-school",
+            "enlace": "https://educacion.smt.gob.ar/",
+            "orden": null
+        },
+        {
+            "id": 71,
+            "titulo": "Estudiantes al Aire",
+            "texto": "Taller gratuito de Producción Radial y Periodismo para estudiantes del secundario de la Escuela Municipal Alfonsina Storni.",
+            "icono": "fa-solid fa-microphone",
+            "enlace": null,
+            "orden": null
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "id": 41,
+    "nombre": "Dirección de Respuesta Rápida",
+    "slug": "direccion-de-respuesta-rapida",
+    "autoridad": "Sra. María Belén Pereyra Colombano",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/tz5C8BeejlaIV50BBNDe.jpg",
+    "domicilio": "San Lorenzo 1270 - San Miguel de Tucumán  (C.P. 4000)",
+    "telefono": null,
+    "email": "respuestarapida@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 19,
+        "nombre": "Subsecretaría de Gestión Estratégica y Documentación",
+        "slug": "subsecretaria-de-gestion-estrategica-y-documentacion"
+    },
+    "dependencias": []
+}

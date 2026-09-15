@@ -1,0 +1,54 @@
+{
+    "id": 27,
+    "nombre": "Subsecretaría de Servicios Públicos",
+    "slug": "subsecretaria-de-servicios-publicos",
+    "autoridad": "Dra. Lorena Luz María Málaga Barros Sosa",
+    "foto": null,
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "subsservicios@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 7,
+        "nombre": "Secretaría de Servicios Públicos",
+        "slug": "secretaria-de-servicios-publicos"
+    },
+    "dependencias": [
+        {
+            "id": 115,
+            "nombre": "Dirección de Espacios Verdes",
+            "slug": "direccion-de-espacios-verdes",
+            "autoridad": "Ing. Álvaro M. Costilla",
+            "email": "espaciosverdes@smt.gob.ar"
+        },
+        {
+            "id": 69,
+            "nombre": "Dirección de Limpieza Urbana",
+            "slug": "direccion-de-limpieza-urbana",
+            "autoridad": "Sr. Carlos Javier Montoya",
+            "email": "limpiezaurbana@smt.gob.ar"
+        },
+        {
+            "id": 70,
+            "nombre": "Dirección de Cementerios",
+            "slug": "direccion-de-cementerios",
+            "autoridad": "Arq. Humberto Salazar",
+            "email": "dircementerios@smt.gob.ar"
+        },
+        {
+            "id": 72,
+            "nombre": "Dirección de Arbolado",
+            "slug": "direccion-de-arbolado",
+            "autoridad": "Ing. Guillermo Ignacio Olivera Leiva",
+            "email": "arbolado@smt.gob.ar"
+        },
+        {
+            "id": 73,
+            "nombre": "Dirección de Parque 9 de Julio",
+            "slug": "direccion-de-parque-9-de-julio",
+            "autoridad": null,
+            "email": "parque9dejulio@smt.gob.ar"
+        }
+    ]
+}

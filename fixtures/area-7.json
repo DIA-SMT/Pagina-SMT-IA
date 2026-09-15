@@ -1,0 +1,33 @@
+{
+    "id": 7,
+    "nombre": "Secretaría de Servicios Públicos",
+    "slug": "secretaria-de-servicios-publicos",
+    "autoridad": "Sr. Luciano Chincarini",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/mhniWCJfMutJZPrGPaZS.jpg",
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "sservicios@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": "https://smt.gob.ar/storage/administraciones/September2026/ZJHAy481bA9vtiggGWVH.pdf",
+    "padre": {
+        "id": 1,
+        "nombre": "Intendencia",
+        "slug": "intendencia"
+    },
+    "dependencias": [
+        {
+            "id": 105,
+            "nombre": "Dirección de Despacho de Servicios Públicos",
+            "slug": "direccion-de-despacho-de-servicios-publicos",
+            "autoridad": "Dra. María Mercedes Koch",
+            "email": "ddsservicios@smt.gob.ar"
+        },
+        {
+            "id": 27,
+            "nombre": "Subsecretaría de Servicios Públicos",
+            "slug": "subsecretaria-de-servicios-publicos",
+            "autoridad": "Dra. Lorena Luz María Málaga Barros Sosa",
+            "email": "subsservicios@smt.gob.ar"
+        }
+    ]
+}

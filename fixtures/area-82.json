@@ -1,0 +1,18 @@
+{
+    "id": 82,
+    "nombre": "Dirección de Bromatología",
+    "slug": "direccion-de-bromatologia",
+    "autoridad": "Sra. María Emilia Cruz",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/hgTDUQqB9zug24JvJGYc.jpg",
+    "domicilio": ".San Martín 1009 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "bromatologia@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 10,
+        "nombre": "Secretaría de Ambiente y Desarrollo Sustentable",
+        "slug": "secretaria-de-ambiente-y-desarrollo-sustentable"
+    },
+    "dependencias": []
+}

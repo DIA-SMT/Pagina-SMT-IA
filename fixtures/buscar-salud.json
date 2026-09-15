@@ -1,0 +1,18 @@
+{
+    "consulta": "salud",
+    "total": 2,
+    "resultados": [
+        {
+            "tipo": "area",
+            "id": 43,
+            "titulo": "Dirección de Salud",
+            "autoridad": "Dr. Alejandro Roque Bonari"
+        },
+        {
+            "tipo": "area",
+            "id": 80,
+            "titulo": "Dirección de Salud Ambiental",
+            "autoridad": "Lic. Clara Saslaver"
+        }
+    ]
+}

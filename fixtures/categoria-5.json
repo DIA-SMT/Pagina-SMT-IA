@@ -1,0 +1,25 @@
+{
+    "id": 5,
+    "titulo": "Seguridad Ciudadana y Emergencias",
+    "texto": "Reclamos, denuncias y solicitudes. Situaciones irregulares. Emergencias.",
+    "icono": "fa-solid fa-shield",
+    "slug": "seguridad-ciudadana-y-emergencias",
+    "items": [
+        {
+            "id": 11,
+            "titulo": "Sistema de Atención Ciudadana",
+            "texto": "Denuncias, reclamos y solicitudes vecinales",
+            "icono": "fa-solid fa-comment-sms",
+            "enlace": "https://smt.gob.ar/nota/portal-de-atencion-ciudadana/7",
+            "orden": null
+        },
+        {
+            "id": 67,
+            "titulo": "Defensa Civil",
+            "texto": "La Defensa Civil de San Miguel de Tucumán previene, mitiga y atiende emergencias y desastres naturales en la ciudad, en colaboración con otras instituciones.",
+            "icono": "fa-solid fa-shield",
+            "enlace": null,
+            "orden": null
+        }
+    ]
+}

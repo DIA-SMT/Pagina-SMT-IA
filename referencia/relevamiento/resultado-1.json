@@ -1,0 +1,328 @@
+﻿{
+    "type":  "result",
+    "key":  "v2:8391a52ec06265ac8bdc298d001831c696763b82bebc491802ee4ae46d1217bf",
+    "agentId":  "ab5357a418860648c",
+    "result":  {
+                   "rows":  [
+                                {
+                                    "seccion":  "Home / Portada",
+                                    "url":  "https://smt.gob.ar/",
+                                    "comportamiento":  "Portada institucional: header con menÃº desplegable (Gobierno, TrÃ¡mites y servicios, La ciudad, Noticias, botÃ³n CiDiTuc), hero con slider de imÃ¡genes, grilla de 14 categorÃ­as de trÃ¡mites, fila de banners destacados, footer con contacto, herramientas, telÃ©fonos de urgencia y redes. No tiene feed de noticias propio (Noticias enlaza a subdominio externo).",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade como layout base del rediseÃ±o; conservar todos los bloques y jerarquÃ­a de navegaciÃ³n.",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "MenÃº header â€“ Inicio",
+                                    "url":  "https://smt.gob.ar",
+                                    "comportamiento":  "Ãtem de menÃº que vuelve a la portada.",
+                                    "origen_datos":  "CMS Voyager (menÃº Voyager)",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade; mantener.",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "MenÃº header â€“ Gobierno \u003e Estructura de Gobierno MSMT",
+                                    "url":  "https://smt.gob.ar/area/intendencia/1",
+                                    "comportamiento":  "Ãšnico sub-Ã­tem del desplegable Gobierno (el Ã­tem padre enlaza a la home). Ficha de la Intendencia: autoridad (Dra. Rossana Chahla), direcciÃ³n 9 de Julio 570, mail intendencia@smt.gob.ar, listado de 11 secretarÃ­as dependientes con mail y enlace interno a cada /area/{slug}/{id}, organigrama descargable.",
+                                    "origen_datos":  "CMS Voyager (tabla Ã¡reas)",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade; mantener la ruta /area/{slug}/{id} y el Ã¡rbol de dependencias.",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "MenÃº header â€“ TrÃ¡mites y servicios \u003e GuÃ­a de TrÃ¡mites Municipales",
+                                    "url":  "https://guiadetramites.smt.gob.ar",
+                                    "comportamiento":  "GuÃ­a de trÃ¡mites en subdominio propio: filtros por categorÃ­a/subcategorÃ­a/nota con botÃ³n Aplicar, top 10 de trÃ¡mites mÃ¡s visitados, 16 categorÃ­as temÃ¡ticas.",
+                                    "origen_datos":  "subdominio externo (app propia)",
+                                    "dependencia":  "externa: guiadetramites.smt.gob.ar",
+                                    "propuesta":  "Mantener enlace externo o evaluar integraciÃ³n al nuevo portal; verificar en servidor quÃ© stack corre.",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "MenÃº header â€“ TrÃ¡mites y servicios \u003e Portal de TesorerÃ­a para Proveedores",
+                                    "url":  "http://tesoreria.smt.gob.ar/",
+                                    "comportamiento":  "Enlace del desplegable al portal de proveedores (login proveedores, consulta de retenciones y comprobantes). Ojo: el menÃº usa http:// sin TLS. No visitado directamente.",
+                                    "origen_datos":  "subdominio externo",
+                                    "dependencia":  "externa: tesoreria.smt.gob.ar",
+                                    "propuesta":  "Mantener enlace externo; corregir a https:// en el menÃº; verificar en servidor.",
+                                    "estado":  "pendiente de verificaciÃ³n"
+                                },
+                                {
+                                    "seccion":  "MenÃº header â€“ TrÃ¡mites y servicios \u003e Ingresos municipales (DIM)",
+                                    "url":  "https://www.dimsmt.gob.ar/",
+                                    "comportamiento":  "Enlace del desplegable a la DirecciÃ³n de Ingresos Municipales (dominio propio). No visitado.",
+                                    "origen_datos":  "subdominio externo",
+                                    "dependencia":  "externa: dimsmt.gob.ar",
+                                    "propuesta":  "Mantener enlace externo.",
+                                    "estado":  "pendiente de verificaciÃ³n"
+                                },
+                                {
+                                    "seccion":  "MenÃº header â€“ TrÃ¡mites y servicios \u003e Habilitaciones de negocios",
+                                    "url":  "https://smt.gob.ar/nota/habilitacion-comercial/5",
+                                    "comportamiento":  "Ficha de nota con guÃ­a paso a paso de habilitaciÃ³n comercial: 6 pasos online, formularios FHN 1 y FHN 2, requisitos (DNI, AFIP, Rentas, seguro RC, foto de fachada), habilitaciÃ³n provisoria 60 dÃ­as. Enlaza a munidigital.com/citizenv2, dimsmt.gob.ar, afip.gob.ar y rentastucuman.gob.ar.",
+                                    "origen_datos":  "CMS Voyager (tabla notas)",
+                                    "dependencia":  "interna (con enlaces externos: munidigital.com, dimsmt.gob.ar, afip.gob.ar, rentastucuman.gob.ar)",
+                                    "propuesta":  "Re-plantillar Blade (ruta /nota/{slug}/{id}); revisar vigencia de requisitos con el Ã¡rea antes de migrar.",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "MenÃº header â€“ TrÃ¡mites y servicios \u003e Licitaciones",
+                                    "url":  "https://licitaciones.smt.gob.ar/",
+                                    "comportamiento":  "Enlace del desplegable al portal de licitaciones. No visitado.",
+                                    "origen_datos":  "subdominio externo",
+                                    "dependencia":  "externa: licitaciones.smt.gob.ar",
+                                    "propuesta":  "Mantener enlace externo; verificar en servidor.",
+                                    "estado":  "pendiente de verificaciÃ³n"
+                                },
+                                {
+                                    "seccion":  "MenÃº header â€“ La ciudad \u003e Historia",
+                                    "url":  "https://smt.gob.ar/historia",
+                                    "comportamiento":  "PÃ¡gina de contenido histÃ³rico: fundaciones 1565/1685, Independencia 1816, Batalla de TucumÃ¡n, etimologÃ­a, lÃ­nea de tiempo, industria azucarera; imÃ¡genes servidas desde /storage/notas/ (CMS).",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade; ruta amigable sin id, verificar en servidor cÃ³mo estÃ¡ ruteada.",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "MenÃº header â€“ La ciudad \u003e Circuitos TurÃ­sticos",
+                                    "url":  "https://smt.gob.ar/circuitos-turisticos",
+                                    "comportamiento":  "PÃ¡gina Ã­ndice con dos opciones: Circuito a Pie y Bus TurÃ­stico, cada una con enlace interno propio (circuitosturisticospie y busturistico); sidebar \u0027Lo mÃ¡s leÃ­do\u0027.",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade; conservar subpÃ¡ginas hijas.",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "MenÃº header â€“ La ciudad \u003e Patrimonio Cultural",
+                                    "url":  "https://smt.gob.ar/tramite/patrimonio-cultural/13",
+                                    "comportamiento":  "Sub-Ã­tem del menÃº que apunta a la categorÃ­a de trÃ¡mites 13 (misma URL que la tarjeta de la grilla de la home). No visitada individualmente.",
+                                    "origen_datos":  "CMS Voyager (tabla categorÃ­as de trÃ¡mites)",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade con la plantilla genÃ©rica /tramite/{slug}/{id}.",
+                                    "estado":  "pendiente de verificaciÃ³n"
+                                },
+                                {
+                                    "seccion":  "MenÃº header â€“ La ciudad \u003e GalerÃ­a de Fotos",
+                                    "url":  "https://smt.gob.ar/galeria/imagenes",
+                                    "comportamiento":  "GalerÃ­a en grid de miniaturas con enlace a imagen en alta resoluciÃ³n; categorÃ­as seleccionables (Fotos de SMT, Parques y Plazas, Teatro Municipal, Museo Mercedes Sosa, Asistencia PÃºblica); fotos fechadas 2024; sin paginaciÃ³n visible.",
+                                    "origen_datos":  "CMS Voyager / media library",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade; migrar los assets de /storage y optimizar pesos de imagen.",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "MenÃº header â€“ La ciudad \u003e Lugares de InterÃ©s",
+                                    "url":  "https://smt.gob.ar/lugares-de-interes",
+                                    "comportamiento":  "GuÃ­a turÃ­stica con 8 lugares destacados (Casa HistÃ³rica, Catedral, Parque 9 de Julio, Cerro San Javier, Plaza Independencia, museos, Casa de Gobierno); botones para compartir en redes; enlaza a /area/direccion-de-turismo/89, mapa.smt.gob.ar y agendaculturalsmt.com.",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna (enlaces externos: mapa.smt.gob.ar, agendaculturalsmt.com)",
+                                    "propuesta":  "Re-plantillar Blade.",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "MenÃº header â€“ La ciudad \u003e Mapa Interactivo",
+                                    "url":  "https://mapa.smt.gob.ar/",
+                                    "comportamiento":  "Enlace del desplegable al mapa interactivo de la ciudad. No visitado.",
+                                    "origen_datos":  "subdominio externo",
+                                    "dependencia":  "externa: mapa.smt.gob.ar",
+                                    "propuesta":  "Mantener enlace externo; verificar en servidor la app de mapas.",
+                                    "estado":  "pendiente de verificaciÃ³n"
+                                },
+                                {
+                                    "seccion":  "MenÃº header â€“ Noticias",
+                                    "url":  "https://comunicacionsmt.gob.ar/",
+                                    "comportamiento":  "Ãtem de menÃº de primer nivel que sale a un portal de noticias en dominio aparte: listado de noticias destacadas, \u0027Lo mÃ¡s visto\u0027, newsletter con formulario de suscripciÃ³n, secciones Institucional / TrÃ¡mites y Servicios, redes (incluye LinkedIn y TikTok que la home no lista); aparenta CMS tipo WordPress; telÃ©fono 0381-4516500.",
+                                    "origen_datos":  "subdominio externo (CMS propio, aparenta WordPress)",
+                                    "dependencia":  "externa: comunicacionsmt.gob.ar",
+                                    "propuesta":  "Mantener enlace externo, o integrar feed de noticias en la nueva home vÃ­a API/RSS; decidir con ComunicaciÃ³n.",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "MenÃº header â€“ Ingresar a CiDiTuc",
+                                    "url":  "https://ciudaddigital.smt.gob.ar/",
+                                    "comportamiento":  "BotÃ³n destacado del header hacia la plataforma Ciudadano Digital (login ciudadano, trÃ¡mites autenticados). No visitado (plataforma con login).",
+                                    "origen_datos":  "subdominio externo (plataforma CiDiTuc)",
+                                    "dependencia":  "externa: ciudaddigital.smt.gob.ar",
+                                    "propuesta":  "Mantener enlace externo prominente; no re-plantillar.",
+                                    "estado":  "pendiente de verificaciÃ³n"
+                                },
+                                {
+                                    "seccion":  "Home â€“ Hero / slider",
+                                    "url":  "https://smt.gob.ar/",
+                                    "comportamiento":  "Bloque hero con tÃ­tulo \u0027San Miguel de TucumÃ¡n â€“ La ciudad que queremos\u0027 y slider/galerÃ­a de 7 imÃ¡genes de sitios emblemÃ¡ticos (Campus Educativo Ambiental, Casa HistÃ³rica, Catedral, Puente Peatonal Mate de Luna, Parque 9 de Julio, Fuente de los Leones, Plaza Independencia). Sin CTA aparente por imagen.",
+                                    "origen_datos":  "CMS Voyager / media library",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade con slider administrable desde el CMS.",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Home â€“ Grilla de categorÃ­as de trÃ¡mites y servicios",
+                                    "url":  "https://smt.gob.ar/",
+                                    "comportamiento":  "14 tarjetas hacia /tramite/{slug}/{id}: gestion-tributaria-y-comercial/1, medio-ambiente-y-espacios-publicos/2, cultura-arte-y-turismo-local/3, prevencion-y-servicios-de-salud/4, seguridad-ciudadana-y-emergencias/5, educacion-y-formacion/6, transporte-y-movilidad/7, biblioteca-digital/8, transparencia-y-participacion/10, normativa/11, actividades-ciudadanas/12, patrimonio-cultural/13, justicia-municipal/16, catrastro-y-edificacion/18 (sic: slug con typo \u0027catrastro\u0027). Los ids 9, 14, 15 y 17 no aparecen en la home.",
+                                    "origen_datos":  "CMS Voyager (tabla categorÃ­as)",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade; corregir slug \u0027catrastro\u0027 con redirecciÃ³n 301; confirmar si los ids faltantes estÃ¡n despublicados.",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Home â€“ Banner Concurso FotogrÃ¡fico",
+                                    "url":  "https://docs.google.com/forms/d/1pAIgRDHjyCWw2xGWlIKSeYmYK_6oLsv_XTee7HF8IWk/viewform",
+                                    "comportamiento":  "Banner de la home hacia un Google Form de inscripciÃ³n a concurso fotogrÃ¡fico. No visitado; probablemente campaÃ±a temporal.",
+                                    "origen_datos":  "externo (Google Forms)",
+                                    "dependencia":  "externa: docs.google.com",
+                                    "propuesta":  "Revisar vigencia; si la campaÃ±a terminÃ³, retirar el banner en el rediseÃ±o.",
+                                    "estado":  "pendiente de verificaciÃ³n"
+                                },
+                                {
+                                    "seccion":  "Home â€“ Banner RecolecciÃ³n de residuos",
+                                    "url":  "https://smtendatos.gob.ar/mapa-interactivo-de-recoleccion-de-residuos-por-turno/",
+                                    "comportamiento":  "Banner hacia mapa interactivo de recolecciÃ³n de residuos por turno, alojado en el portal de datos. No visitado.",
+                                    "origen_datos":  "subdominio externo (portal de datos)",
+                                    "dependencia":  "externa: smtendatos.gob.ar",
+                                    "propuesta":  "Mantener enlace externo.",
+                                    "estado":  "pendiente de verificaciÃ³n"
+                                },
+                                {
+                                    "seccion":  "Home â€“ Banner Sistema de Registros del Transporte",
+                                    "url":  "https://smt.gob.ar/Registros%20_Transporte%20_Individual_Pasajeros",
+                                    "comportamiento":  "PÃ¡gina informativa del registro digital del transporte individual de pasajeros (Ordenanzas 5483 y 5484): registros de conductores, licencias, agencias y plataformas; acceso vÃ­a CiDiTuc en https://movilidad.smt.gob.ar; soporte WhatsApp 381 219 5650. La URL contiene espacios codificados (%20) y existe una variante sin espacios /Registros_Transporte_Individual_Pasajeros enlazada desde el buscador.",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna (deriva a movilidad.smt.gob.ar)",
+                                    "propuesta":  "Re-plantillar Blade con slug limpio y redirecciones desde ambas variantes actuales.",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Home â€“ Banner Portal Proveedores",
+                                    "url":  "https://smt.gob.ar/portalproveedores",
+                                    "comportamiento":  "PÃ¡gina informativa de la Plataforma Virtual de Proveedores: consulta de retenciones, descarga de comprobantes; alta de usuario y login en https://tesoreria.smt.gob.ar/#/; contactos tesoreria@smt.gob.ar y ditec@smt.gob.ar.",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna (deriva a tesoreria.smt.gob.ar)",
+                                    "propuesta":  "Re-plantillar Blade; unificar con el Ã­tem de menÃº \u0027Portal de TesorerÃ­a\u0027.",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Home â€“ Banner Portal de Datos del Municipio",
+                                    "url":  "https://smtendatos.gob.ar/",
+                                    "comportamiento":  "Banner hacia el portal de datos abiertos del municipio. No visitado.",
+                                    "origen_datos":  "subdominio externo",
+                                    "dependencia":  "externa: smtendatos.gob.ar",
+                                    "propuesta":  "Mantener enlace externo.",
+                                    "estado":  "pendiente de verificaciÃ³n"
+                                },
+                                {
+                                    "seccion":  "Home â€“ Banner Turno Asistencia PÃºblica",
+                                    "url":  "https://smt.gob.ar/turno-asistencia",
+                                    "comportamiento":  "PÃ¡gina informativa de turnos de Asistencia PÃºblica: turno online vÃ­a Portal Asistencia PÃºblica con credenciales de Ciudadano Digital, o presencial en Batalla de Chacabuco 239, lun-vie 7 a 17 h.",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna (deriva a CiDiTuc)",
+                                    "propuesta":  "Re-plantillar Blade.",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Home â€“ Banner SUBEM (Boleto Educativo Municipal)",
+                                    "url":  "https://smt.gob.ar/SUBEM",
+                                    "comportamiento":  "PÃ¡gina informativa del programa SUBEM: viajes gratuitos en lÃ­neas urbanas 1-19 para +40.000 estudiantes; inscripciÃ³n en DirecciÃ³n de Respuesta RÃ¡pida (San Lorenzo 1270, 8-18 h); menciona inicio de inscripciÃ³n \u00279 de febrero de 2026\u0027 (fecha ya pasada) y reposiciÃ³n $1.500.",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade; actualizar contenido con el Ã¡rea antes de migrar (fechas vencidas).",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Home â€“ Banner Multas",
+                                    "url":  "https://cidituc.smt.gob.ar/?destino=derivador#/multas",
+                                    "comportamiento":  "Banner hacia el mÃ³dulo de multas dentro de la plataforma CiDiTuc (SPA con routing por hash). No visitado (requiere plataforma).",
+                                    "origen_datos":  "subdominio externo (CiDiTuc)",
+                                    "dependencia":  "externa: cidituc.smt.gob.ar",
+                                    "propuesta":  "Mantener enlace externo; verificar que el parÃ¡metro destino=derivador siga vigente.",
+                                    "estado":  "pendiente de verificaciÃ³n"
+                                },
+                                {
+                                    "seccion":  "Buscador global",
+                                    "url":  "https://smt.gob.ar/search/result?q=licencia",
+                                    "comportamiento":  "Ruta GET /search/result?q={tÃ©rmino}. Devuelve resultados agrupados en secciones fijas: \u0027Notas Generales\u0027 (tarjetas con tÃ­tulo e imagen hacia /nota/{slug}/{id} o pÃ¡ginas sueltas), \u0027TrÃ¡mites \u0026 Servicios\u0027 (tÃ­tulo + descripciÃ³n) y \u0027Gobierno\u0027; una secciÃ³n sin coincidencias muestra el texto \u0027Seccion sin contenido\u0027 (sin tilde). Con q=licencia devolviÃ³ 2 notas (/nota/licencia-de-conducir/8 y /Registros_Transporte_Individual_Pasajeros) y 1 trÃ¡mite. Sin paginaciÃ³n aparente.",
+                                    "origen_datos":  "CMS Voyager (consulta sobre tablas notas/trÃ¡mites/Ã¡reas)",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade; mantener la ruta o migrar a un buscador unificado con paginaciÃ³n; corregir textos de estado vacÃ­o.",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Buscador global â€“ prueba q=tramite",
+                                    "url":  "https://smt.gob.ar/search/result?q=tramite",
+                                    "comportamiento":  "Con q=tramite devuelve ~9 notas generales en tarjetas, secciÃ³n TrÃ¡mites \u0026 Servicios y bloque \u0027Lo mÃ¡s leÃ­do\u0027 (10 enlaces). Ejemplos: /gestiononlinecatastro, /tramite/transporte-y-movilidad/7, /tramite/gestion-tributaria-y-comercial/1, /nota/patrimonio-arquitectonico/58. Sin paginaciÃ³n; la cobertura parece limitada a tÃ­tulos/contenido del CMS, no indexa subdominios externos.",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "En el rediseÃ±o, evaluar indexar tambiÃ©n la guÃ­a de trÃ¡mites externa o unificar contenidos para que el buscador cubra todo.",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Footer â€“ Contacto y telÃ©fonos de urgencia",
+                                    "url":  "https://smt.gob.ar/",
+                                    "comportamiento":  "Bloque de contacto: direcciÃ³n 9 de Julio 570 T4000; \u0027Municipalidad\u0027 figura sin nÃºmero de telÃ©fono visible; Asistencia PÃºblica 107. TelÃ©fonos de urgencia como enlaces tel:: 911 PolicÃ­a, 100 Bomberos, 102 Ayuda al NiÃ±o, 103 Defensa Civil, 105 Emergencia Ambiental, 107 Salud.",
+                                    "origen_datos":  "plantilla Blade (estÃ¡tico) o CMS Voyager",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade; completar el telÃ©fono de la Municipalidad (en comunicacionsmt figura 0381-4516500).",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Footer â€“ Herramientas",
+                                    "url":  "https://smt.gob.ar/",
+                                    "comportamiento":  "Bloque de enlaces: Expedientes (https://expediente.smt.gob.ar/index.jsp), GestiÃ³n de Empleados (https://personal.smt.gob.ar/), Catastro y EdificaciÃ³n (https://ciudaddigital.smt.gob.ar/?destino=catastro), Webmail (https://webmail.smt.gob.ar/login.php), Recursos GrÃ¡ficos (Google Drive: https://drive.google.com/drive/folders/1ehHDkPFjrtmZPIBaQ8ZxRO-Z7loaoRFp?usp=drive_link), CIDITUC (https://ciudaddigital.smt.gob.ar/). Mezcla herramientas internas de empleados con accesos ciudadanos; destinos no visitados.",
+                                    "origen_datos":  "plantilla Blade / subdominios externos",
+                                    "dependencia":  "externa: expediente.smt.gob.ar, personal.smt.gob.ar, ciudaddigital.smt.gob.ar, webmail.smt.gob.ar, drive.google.com",
+                                    "propuesta":  "Mantener enlaces externos pero separar en el rediseÃ±o accesos de empleados (intranet) de accesos ciudadanos; evaluar sacar el Drive pÃºblico del footer.",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Footer â€“ Redes sociales",
+                                    "url":  "https://smt.gob.ar/",
+                                    "comportamiento":  "Ãconos hacia Facebook (https://www.facebook.com/MuniSMTucuman), YouTube (https://www.youtube.com/user/MuniSMTucuman), Instagram (https://instagram.com/munismtucuman) y Twitter (https://twitter.com/MuniSMT). No incluye LinkedIn ni TikTok, que sÃ­ lista el portal de noticias.",
+                                    "origen_datos":  "plantilla Blade (estÃ¡tico)",
+                                    "dependencia":  "externa: redes sociales",
+                                    "propuesta":  "Mantener enlaces; unificar el set de redes con comunicacionsmt.gob.ar y actualizar Twitterâ†’X.",
+                                    "estado":  "verificado"
+                                }
+                            ],
+                   "urls_no_visitadas":  [
+                                             "https://smt.gob.ar/tramite/gestion-tributaria-y-comercial/1",
+                                             "https://smt.gob.ar/tramite/medio-ambiente-y-espacios-publicos/2",
+                                             "https://smt.gob.ar/tramite/cultura-arte-y-turismo-local/3",
+                                             "https://smt.gob.ar/tramite/prevencion-y-servicios-de-salud/4",
+                                             "https://smt.gob.ar/tramite/seguridad-ciudadana-y-emergencias/5",
+                                             "https://smt.gob.ar/tramite/educacion-y-formacion/6",
+                                             "https://smt.gob.ar/tramite/transporte-y-movilidad/7",
+                                             "https://smt.gob.ar/tramite/biblioteca-digital/8",
+                                             "https://smt.gob.ar/tramite/transparencia-y-participacion/10",
+                                             "https://smt.gob.ar/tramite/normativa/11",
+                                             "https://smt.gob.ar/tramite/actividades-ciudadanas/12",
+                                             "https://smt.gob.ar/tramite/patrimonio-cultural/13",
+                                             "https://smt.gob.ar/tramite/justicia-municipal/16",
+                                             "https://smt.gob.ar/tramite/catrastro-y-edificacion/18",
+                                             "https://smt.gob.ar/nota/licencia-de-conducir/8",
+                                             "https://smt.gob.ar/nota/patrimonio-arquitectonico/58",
+                                             "https://smt.gob.ar/gestiononlinecatastro",
+                                             "https://smt.gob.ar/circuitosturisticospie",
+                                             "https://smt.gob.ar/busturistico",
+                                             "https://smt.gob.ar/area/direccion-de-turismo/89",
+                                             "https://smt.gob.ar/Registros_Transporte_Individual_Pasajeros",
+                                             "https://movilidad.smt.gob.ar",
+                                             "https://tesoreria.smt.gob.ar/#/",
+                                             "https://www.dimsmt.gob.ar/",
+                                             "https://licitaciones.smt.gob.ar/",
+                                             "https://mapa.smt.gob.ar/",
+                                             "https://ciudaddigital.smt.gob.ar/",
+                                             "https://ciudaddigital.smt.gob.ar/?destino=catastro",
+                                             "https://cidituc.smt.gob.ar/?destino=derivador#/multas",
+                                             "https://smtendatos.gob.ar/",
+                                             "https://smtendatos.gob.ar/mapa-interactivo-de-recoleccion-de-residuos-por-turno/",
+                                             "https://agendaculturalsmt.com/",
+                                             "https://expediente.smt.gob.ar/index.jsp",
+                                             "https://personal.smt.gob.ar/",
+                                             "https://webmail.smt.gob.ar/login.php",
+                                             "https://drive.google.com/drive/folders/1ehHDkPFjrtmZPIBaQ8ZxRO-Z7loaoRFp?usp=drive_link",
+                                             "https://docs.google.com/forms/d/1pAIgRDHjyCWw2xGWlIKSeYmYK_6oLsv_XTee7HF8IWk/viewform"
+                                         ],
+                   "notas":  "Hallazgos y contradicciones: (1) El slug /tramite/catrastro-y-edificacion/18 tiene error tipogrÃ¡fico (\u0027catrastro\u0027 por \u0027catastro\u0027); conviene redirecciÃ³n 301 en el rediseÃ±o. (2) La URL del banner de transporte contiene espacios codificados: /Registros%20_Transporte%20_Individual_Pasajeros; el buscador enlaza a la variante sin espacios /Registros_Transporte_Individual_Pasajeros â€” ambas parecen resolver la misma pÃ¡gina; normalizar y redirigir. (3) La pÃ¡gina SUBEM menciona inscripciÃ³n que \u0027comienza el 9 de febrero de 2026\u0027, fecha ya pasada al 14-09-2026: contenido probablemente desactualizado. (4) En la grilla de categorÃ­as de la home faltan los ids 9, 14, 15 y 17 de /tramite/: verificar en el admin Voyager si estÃ¡n despublicados o eliminados. (5) La extracciÃ³n de la home no detectÃ³ el form del buscador (posible input oculto tras Ã­cono o cargado por JS), pero la ruta GET /search/result?q= funciona; verificar en las plantillas Blade dÃ³nde vive el form. (6) Los resultados del buscador se agrupan en secciones fijas (Notas Generales, TrÃ¡mites \u0026 Servicios, Gobierno) y una secciÃ³n vacÃ­a muestra el literal \u0027Seccion sin contenido\u0027 (sin tilde); no hay paginaciÃ³n; no indexa subdominios (guiadetramites, comunicacionsmt). (7) Los Ã­tems padre de menÃº Gobierno / TrÃ¡mites y servicios / La ciudad tienen href a la home (https://smt.gob.ar): son solo contenedores de dropdown. (8) El Ã­tem de menÃº \u0027Portal de TesorerÃ­a para Proveedores\u0027 usa http:// sin TLS (http://tesoreria.smt.gob.ar/) mientras el banner /portalproveedores enlaza a https://tesoreria.smt.gob.ar/#/. (9) El footer de smt.gob.ar muestra \u0027Municipalidad\u0027 sin nÃºmero telefÃ³nico visible; el portal de noticias comunicacionsmt.gob.ar publica 0381-4516500. (10) Redes sociales inconsistentes entre home (Facebook, YouTube, Instagram, Twitter) y comunicacionsmt (agrega LinkedIn y TikTok, usa X). (11) Las noticias no viven en smt.gob.ar sino en comunicacionsmt.gob.ar (CMS aparte, aparenta WordPress, con newsletter propio): decidir si el rediseÃ±o integra un feed. (12) La ficha de habilitaciÃ³n comercial deriva a un proveedor SaaS externo (munidigital.com/citizenv2), dependencia a documentar. (13) El footer \u0027Herramientas\u0027 mezcla sistemas internos de empleados (expedientes JSP, personal, webmail) con accesos ciudadanos y un Google Drive pÃºblico de recursos grÃ¡ficos. Descripciones de pÃ¡ginas obtenidas vÃ­a WebFetch (resumen automatizado); los textos exactos de requisitos deben validarse contra el HTML original antes de migrar contenido."
+               }
+}

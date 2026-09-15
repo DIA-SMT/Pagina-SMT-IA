@@ -1,0 +1,18 @@
+{
+    "id": 53,
+    "nombre": "Dirección Operativa de Móviles",
+    "slug": "direccion-operativa-de-moviles",
+    "autoridad": ".",
+    "foto": null,
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "moviles@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 16,
+        "nombre": "Subsecretaría de Gobierno",
+        "slug": "subsecretaria-de-gobierno"
+    },
+    "dependencias": []
+}

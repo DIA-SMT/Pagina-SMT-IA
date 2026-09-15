@@ -1,0 +1,33 @@
+{
+    "id": 26,
+    "nombre": "Subsecretaría de Planificación Urbana",
+    "slug": "subsecretaria-de-planificacion-urbana",
+    "autoridad": "Ing. Hebe Amparo Jezabel Espinosa Rojas",
+    "foto": null,
+    "domicilio": ".",
+    "telefono": null,
+    "email": "subsplanurbana@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 5,
+        "nombre": "Secretaría de Obras Públicas",
+        "slug": "secretaria-de-obras-publicas"
+    },
+    "dependencias": [
+        {
+            "id": 63,
+            "nombre": "Dirección de Planificación Urbanística",
+            "slug": "direccion-de-planificacion-urbanistica",
+            "autoridad": "María Guadalupe Rearte",
+            "email": "dpua@smt.gob.ar"
+        },
+        {
+            "id": 64,
+            "nombre": "Dirección de Catrastro y Edificación",
+            "slug": "direccion-de-catrastro-y-edificacion",
+            "autoridad": "Arq. Nora Elvira Belloni",
+            "email": "catastro@smt.gob.ar"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "id": 124,
+    "nombre": "Dirección SUTRAPA",
+    "slug": "direccion-sutrapa",
+    "autoridad": "CPN. Nilda Valeria Amaya",
+    "foto": null,
+    "domicilio": "Av. Roque Sáenz Peña 56 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "sutrapa@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 118,
+        "nombre": "Subsecretaría de Movilidad Urbana",
+        "slug": "subsecretaria-de-movilidad-urbana"
+    },
+    "dependencias": []
+}

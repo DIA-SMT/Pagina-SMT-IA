@@ -1,0 +1,18 @@
+{
+    "id": 79,
+    "nombre": "Dirección de Despacho de Ambiente y Desarrollo Sustentable",
+    "slug": "direccion-de-despacho-de-ambiente-y-desarrollo-sustentable",
+    "autoridad": "Dra. Romina Constanza Aguilar Bianchi",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/WScnGhIOy51ySiSp5oRk.jpg",
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "ddsambiente@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 10,
+        "nombre": "Secretaría de Ambiente y Desarrollo Sustentable",
+        "slug": "secretaria-de-ambiente-y-desarrollo-sustentable"
+    },
+    "dependencias": []
+}

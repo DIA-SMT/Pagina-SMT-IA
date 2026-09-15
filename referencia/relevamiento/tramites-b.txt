@@ -1,0 +1,65 @@
+﻿## CategorÃ­a de trÃ¡mites: EducaciÃ³n y FormaciÃ³n (cat. 6) [verificado]
+URL: https://smt.gob.ar/tramite/educacion-y-formacion/6
+Listado de tarjetas de categorÃ­a, sin filtros, buscador, paginaciÃ³n ni formularios. 2 Ã­tems: (1) 'Estudiantes al Aire' (taller gratuito de ProducciÃ³n Radial y Periodismo) -> https://smt.gob.ar/nota/taller-gratuito-de-produccion-radial-y-periodismo/68; (2) 'Portal de EducaciÃ³n' -> https://educacion.smt.gob.ar/ (enlace externo a subdominio).
+
+## CategorÃ­a de trÃ¡mites: Transporte y Movilidad (cat. 7) [verificado]
+URL: https://smt.gob.ar/tramite/transporte-y-movilidad/7
+Listado de 6 tarjetas, sin filtros/buscador/paginaciÃ³n: (1) 'Cortes de TrÃ¡nsito' -> https://smt.gob.ar/cortes; (2) 'SUBEM' -> https://smt.gob.ar/SUBEM; (3) 'SUBE' -> https://smt.gob.ar/sube; (4) 'Registro de Transporte' -> https://smt.gob.ar/Registros%20_Transporte%20_Individual_Pasajeros (URL malformada con espacios codificados); (5) 'Recorridos de Colectivos' -> https://smt.gob.ar/nota/recorrido-de-colectivos/17; (6) 'Licencia de Conducir' -> https://smt.gob.ar/nota/licencia-de-conducir/8.
+
+## CategorÃ­a de trÃ¡mites: Biblioteca Digital (cat. 8) [verificado]
+URL: https://smt.gob.ar/tramite/biblioteca-digital/8
+Listado de 21 tarjetas de documentos/planes municipales, sin filtros, buscador, paginaciÃ³n ni visor integrado; las fichas /nota/ enlazan a PDFs (servidor propio /storage/ o Google Drive). Ãtems: 'PROGRAMA CONTROLÃ' /nota/programa-controla/67; 'Plan Local de AcciÃ³n ClimÃ¡tica (PLAC)' /nota/plan-local-de-accion-climatica-plac/100; 'PLAN VEREDAS SANAS' /nota/plan-veredas-sanas/66; 'Concurso hiperbÃ³lico' /nota/concurso-hiperbolico/97; 'MASTER PLAN' /nota/master-plan/62; 'Programa sello de aptitud bromatolÃ³gica' /nota/programa-sello-de-aptitud-bromatologica/96; 'TRANS-FOR-MÃ' /nota/trans-for-ma/61; 'Programa CIRCULÃ' /nota/programa-circula/95; 'E-DU-CÃ' /nota/e-du-ca/60; 'Sistema de gestiÃ³n de ferias municipales' /nota/sistema-de-gestion-de-ferias-municipales/94; 'GIRSU' /nota/girsu/43; 'Plan TRADI' /nota/plan-tradi/93; '180 dÃ­as de la ciudad que queremos' /nota/180-dias-de-la-ciudad-que-queremos/44; 'Diez mesas, una juventud en diÃ¡logo' /nota/diez-mesas-una-juventud-en-dialogo/92; 'SE-PA-RÃ' /nota/se-pa-ra/42; 'Programa CIM CEA â€“ Casa Azul' /nota/programa-cim-cea-casa-azul/91; 'Plan Rector' /nota/plan-rector/32; 'Informes de Emergencia Sanitaria y Ambiental' /nota/informes-de-emergencia-sanitaria-y-ambiental/90; 'Plan de Contingencia ante Inundaciones' https://smt.gob.ar/PlandeContingenciaanteInundaciones; 'Azul es tambien el amor' /nota/azul-es-tambien-el-amor/86; 'Informe IGEI' /nota/inventario-de-gases-de-efecto-invernadero-2023/84.
+
+## CategorÃ­a de trÃ¡mites: Transparencia y ParticipaciÃ³n (cat. 10) [verificado]
+URL: https://smt.gob.ar/tramite/transparencia-y-participacion/10
+Listado de 10 tarjetas, sin filtros/buscador/paginaciÃ³n. Cubre datos abiertos, licitaciones y presupuesto participativo: (1) 'Servicios PÃºblicos' -> https://uspp.smt.gob.ar/; (2) 'Presupuesto Participativo' -> https://smt.gob.ar/presupuestoparticipativo; (3) 'Precios de obra pÃºblica' -> https://smt.gob.ar/nota/precios-oficiales-de-obras-publicas-y-servicios/85; (4) 'Portal de Datos de la Ciudad' -> https://www.smtendatos.com.ar/ (dominio externo no gob.ar); (5) 'Transparencia y datos abiertos' -> https://transparencia.smt.gob.ar/; (6) 'ParticipaciÃ³n Ciudadana' -> https://docs.google.com/forms/d/1M2ghY-ZJ-yHRKEh5lYUpsfeAcB-SPdWo25TbmLNWQR0/edit (enlace a Google Forms en modo /edit, aparentemente errÃ³neo); (7) 'C.E.S.' -> https://ces.smt.gob.ar/; (8) 'BoletÃ­n Oficial' -> https://smt.gob.ar/nota/boletin-oficial-digital/56; (9) 'Plan Rector' -> https://smt.gob.ar/nota/plan-rector/32 (duplicado con Biblioteca Digital); (10) 'Licitaciones y Concursos' -> https://licitaciones.smt.gob.ar/. No se mencionan declaraciones juradas.
+
+## CategorÃ­a de trÃ¡mites: Normativa (cat. 11) [verificado]
+URL: https://smt.gob.ar/tramite/normativa/11
+Listado de 10 tarjetas de documentos normativos, sin boletÃ­n oficial propio en esta categorÃ­a (el BoletÃ­n estÃ¡ en cat. 10), sin buscador/filtros/paginaciÃ³n/visor. 6 Ã­tems van directo a Google Drive: 'Reglamento SMT CORRE' -> https://drive.google.com/file/d/1PkzEx3YJ17fBZ8cBeW3Cd2rqW5PaNl6P/view?usp=sharing; 'Planilla de EdificaciÃ³n' -> https://drive.google.com/file/d/1pfRRAg5yxLGhKhtGcQps8EnhjlQuWACE/view?usp=sharing; 'Planilla de Uso' -> https://drive.google.com/file/d/1Z1nag9eNzs2mUX3JUeSywT79EZSpDqrT/view?usp=sharing; 'Digesto Normativo 2Âª Parte' -> https://drive.google.com/file/d/1aVWRerGyw6wke4JaIz5r4g-q-5AqOMBW/view?usp=sharing; 'Digesto Normativo 1Âª Parte' -> https://drive.google.com/file/d/1rYMWOehcfF69s9nmM1MUE5C1YdavChiL/view?usp=sharing; 'CÃ³digo de Planeamiento Urbano' -> https://drive.google.com/file/d/14-sCUa_avrTzot6FroCFAgtmMlqrXQg4/view?usp=sharing. 4 Ã­tems internos: 'CiDiTuc' -> /nota/ciudadano-digital-san-miguel-de-tucuman/77; 'VÃ­a PÃºblica' -> /nota/via-publica/29; 'Patrimonio Urbano' -> /nota/patrimonio-urbano/28; 'Digesto Municipal' -> /nota/digesto-municipal/27.
+
+## Prueba de categorÃ­a 9 (inexistente en el menÃº) [roto aparente]
+URL: https://smt.gob.ar/tramite/x/9
+Devuelve HTTP 404 Not Found. No hay categorÃ­a visible con id 9 en la navegaciÃ³n; no se pudo determinar si el 404 se debe a que el id 9 no existe o a que la ruta valida el slug.
+
+## Ficha: Taller gratuito de ProducciÃ³n Radial y Periodismo (Estudiantes al Aire) [verificado]
+URL: https://smt.gob.ar/nota/taller-gratuito-de-produccion-radial-y-periodismo/68
+Ficha /nota/ estÃ¡ndar: breadcrumb (Inicio > TrÃ¡mite y Servicios > EducaciÃ³n y FormaciÃ³n), tÃ­tulo, subtÃ­tulo, 2 pÃ¡rrafos (responsables, horarios: martes 14-16 clases, jueves 15 emisiÃ³n por Radio Ciudad 87.9), 2 imÃ¡genes, botones de compartir (WhatsApp, Twitter, Telegram). Sin descargas, formularios ni fechas de inscripciÃ³n.
+
+## Ficha: Licencia de Conducir [verificado]
+URL: https://smt.gob.ar/nota/licencia-de-conducir/8
+Ficha con requisitos (boleta CENAT pagada, vÃ¡lida 60 dÃ­as; certificados de conducta con vigencia de dos meses; curso 'Mi Primer Licencia' para 16-21 aÃ±os), aranceles publicados (licencia anual $8.142; formulario CENAT $10.150), enlace al turnero https://turnos.smt.gob.ar/?destino=turnero, mapa de Google Maps de la DirecciÃ³n de Licencias y PDF descargable 'Requisitos Licencias SMT (1).pdf'.
+
+## Ficha: Recorrido de Colectivos [verificado]
+URL: https://smt.gob.ar/nota/recorrido-de-colectivos/17
+Ficha con imagen, texto de la SecretarÃ­a de Movilidad Urbana y promociÃ³n de la app 'Cuando SUBO' (ubicaciÃ³n en tiempo real, lÃ­neas 1-19); enlace al mapa interactivo https://mapa.smt.gob.ar/; referencias genÃ©ricas a AppStore/PlayStore sin URL directa; botones de compartir. No publica los recorridos en sÃ­ (ni PDFs ni mapa embebido).
+
+## Ficha: Plan Local de AcciÃ³n ClimÃ¡tica (PLAC) [verificado]
+URL: https://smt.gob.ar/nota/plan-local-de-accion-climatica-plac/100
+Ficha tipo 'documento de biblioteca': breadcrumb a Biblioteca Digital, imagen, 2 pÃ¡rrafos (estrategia 2023-2030: mitigaciÃ³n, adaptaciÃ³n, gobernanza), icono PDF con nombre 'PLAC_Plan-Local-Accion-Climatica_SMT.pdf' y botÃ³n DESCARGAR -> /storage/tramites-items-notas/April2026/q4zNHaex3ogmdlrdvBJP.pdf. Descarga directa, sin visor embebido.
+
+## Ficha: MASTER PLAN [verificado]
+URL: https://smt.gob.ar/nota/master-plan/62
+Ficha de documento: imagen, pÃ¡rrafo descriptivo (visiÃ³n de ciudad, proceso participativo), enlace 'master plan_compressed.pdf' con botÃ³n DESCARGAR -> /storage/tramites-items-notas/June2024/qKUBWl6kbW6mszhTYK9b.pdf, botones de compartir y bloque 'Lo mÃ¡s leÃ­do'. Sin visor ni formularios.
+
+## Ficha: BoletÃ­n Oficial Digital [verificado]
+URL: https://smt.gob.ar/nota/boletin-oficial-digital/56
+Ficha-landing del BoletÃ­n Oficial: texto institucional (validez oficial equivalente a la ediciÃ³n impresa, acceso diario a decisiones municipales), botÃ³n de acceso -> https://boletinoficial.smt.gob.ar/?destino=boletin (subdominio donde vive el boletÃ­n real) y enlace a la 'Ordenanza Tributaria 2026' en Google Drive -> https://drive.google.com/file/d/1DolBj2h3GBgG3xNsfUNTWDsyq7RqXOIF/view. Sin buscador de boletines en esta ficha.
+
+## Ficha: Digesto Municipal [verificado]
+URL: https://smt.gob.ar/nota/digesto-municipal/27
+Ficha de documento Ãºnico: texto sobre acceso a normativas 'de forma clara y sistemÃ¡tica' con contexto histÃ³rico, y una sola descarga: 'Digesto-Municipal.pdf' -> https://smt.gob.ar/storage/tramites-items-notas/May2024/pTcyEDXqYdOBMFgxdSzn.pdf. Sin visor, sin buscador de normas, sin navegaciÃ³n por ordenanza/decreto.
+
+## Ficha: Precios Oficiales de Obras PÃºblicas y Servicios [verificado]
+URL: https://smt.gob.ar/nota/precios-oficiales-de-obras-publicas-y-servicios/85
+Ficha con actualizaciÃ³n mensual: texto (precios tope de referencia, DirecciÃ³n de Obras Viales, aplicaciÃ³n obligatoria), PDF vigente 'DECRETO 0454-25-SOP - RES 4217-SOP-2026 - PRECIOS AGOSTO 2026' -> /storage/tramites-items-notas/September2026/ME19yWMZt4AvhLCcrvva.pdf, y enlace a carpeta de Google Drive con el histÃ³rico de meses anteriores. Sin visor ni formularios.
+
+## Ficha: VÃ­a PÃºblica [verificado]
+URL: https://smt.gob.ar/nota/via-publica/29
+Ficha normativa: texto sobre la Ordenanza nÂº 2114/93 y decretos que regulan uso de vÃ­a pÃºblica (marquesinas, carteles publicitarios, paisaje urbano), descarga 'VÃ­a-PÃºblica.pdf' -> /storage/tramites-items-notas/May2024/FvYIlBK6hT8UIkb7PIES.pdf, contactos (Municipalidad 4516500; Asistencia PÃºblica 4308393 / 4212329), botones de compartir. Sin formularios. El breadcrumb la ubica bajo 'Biblioteca Digital' aunque estÃ¡ listada en la categorÃ­a Normativa.
+
+## Ficha: Plan Rector (duplicada en cat. 8 y cat. 10) [verificado]
+URL: https://smt.gob.ar/nota/plan-rector/32
+Ficha de documento: breadcrumb Inicio > Tramite y Servicios > Biblioteca Digital > Plan Rector; imagen, texto (visiÃ³n de ciudad, Ã¡mbitos de intervenciÃ³n, objetivos estratÃ©gicos 2023-2030, proceso participativo), descarga 'Plan-Rector(2023-2030).PDF' con botÃ³n DESCARGAR -> /storage/tramites-items-notas/August2024/HHoLo7LQKnsFCvzVv3qn.PDF. Sin visor ni formularios. La misma nota estÃ¡ enlazada desde Biblioteca Digital (cat. 8) y desde Transparencia y ParticipaciÃ³n (cat. 10).
+
+NOTAS: Hallazgos y contradicciones del Ã¡mbito (categorÃ­as 6-11): (1) La categorÃ­a 9 no existe pÃºblicamente: /tramite/x/9 devuelve 404; queda pendiente confirmar en la base de Voyager si hay un registro id 9 oculto/eliminado o si la ruta exige slug exacto. (2) Enlace roto aparente en Transparencia: 'ParticipaciÃ³n Ciudadana' apunta a un Google Forms en modo ediciÃ³n (https://docs.google.com/forms/d/1M2ghY-ZJ-yHRKEh5lYUpsfeAcB-SPdWo25TbmLNWQR0/edit) en vez de /viewform â€” para el pÃºblico pedirÃ¡ permisos o fallarÃ¡. (3) DuplicaciÃ³n de contenido: 'Plan Rector' (/nota/plan-rector/32) figura en Biblioteca Digital (cat. 8) y en Transparencia (cat. 10); su breadcrumb dice Biblioteca Digital. (4) Inconsistencia de taxonomÃ­a: 'VÃ­a PÃºblica' (/nota/via-publica/29) estÃ¡ listada en Normativa (cat. 11) pero su breadcrumb la ubica en Biblioteca Digital. (5) Dependencia fuerte de Google Drive: 6 de 10 Ã­tems de Normativa (digestos normativos 1Âª y 2Âª parte, CÃ³digo de Planeamiento Urbano, planillas de edificaciÃ³n y uso, reglamento SMT CORRE) y la Ordenanza Tributaria 2026 del BoletÃ­n Oficial viven en drive.google.com con enlaces ?usp=sharing â€” riesgo de pÃ©rdida si cambia la cuenta; se recomienda migrarlos a /storage/. (6) Datos posiblemente desactualizados: aranceles de Licencia de Conducir (licencia anual $8.142, formulario CENAT $10.150; el PDF de requisitos aparenta ser de abril 2024) y el Digesto Municipal es un Ãºnico PDF consolidado subido en mayo 2024 sin buscador de normas. (7) 'Precios de obra pÃºblica' sÃ­ estÃ¡ al dÃ­a (PDF de agosto 2026, subido septiembre 2026, DECRETO 0454-25-SOP / RES 4217-SOP-2026), con histÃ³rico en carpeta Drive. (8) URL malformada en Transporte: /Registros%20_Transporte%20_Individual_Pasajeros (espacios y guiones bajos mezclados). (9) La ficha MASTER PLAN podrÃ­a tener parte del texto en inglÃ©s (la extracciÃ³n devolviÃ³ el pÃ¡rrafo descriptivo en inglÃ©s) â€” verificar en origen. (10) El 'Portal de Datos de la Ciudad' usa un dominio fuera de gob.ar (smtendatos.com.ar) â€” verificar titularidad y vigencia. (11) Los PDFs propios estÃ¡n bajo /storage/tramites-items-notas/{Mes}{AÃ±o}/ (patrÃ³n del media manager de Voyager); deben preservarse esas rutas o redirigirse en la migraciÃ³n. (12) Ninguna categorÃ­a tiene buscador, filtros ni paginaciÃ³n; Biblioteca Digital (21 Ã­tems) es la que mÃ¡s lo necesitarÃ­a, junto con un visor de PDF embebido (hoy todo es descarga directa o salto a Drive). (13) El BoletÃ­n Oficial real vive en el subdominio boletinoficial.smt.gob.ar (la nota 56 es solo una landing); las capacidades de bÃºsqueda del boletÃ­n quedan fuera de este Ã¡mbito y deben relevarse en ese subdominio.

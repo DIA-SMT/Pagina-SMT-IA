@@ -1,0 +1,40 @@
+{
+    "id": 11,
+    "nombre": "Secretaría de Atención al Ciudadano",
+    "slug": "secretaria-de-atencion-al-ciudadano",
+    "autoridad": "Dra. María Sofía Prado Budeguer",
+    "foto": "https://smt.gob.ar/storage/administraciones/April2024/ADPPKfGrIsFc37xHPRxl.webp",
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "satencionciudadana@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": "https://smt.gob.ar/storage/administraciones/August2026/eNbiwCMBWMiMECMfc9Ic.pdf",
+    "padre": {
+        "id": 1,
+        "nombre": "Intendencia",
+        "slug": "intendencia"
+    },
+    "dependencias": [
+        {
+            "id": 91,
+            "nombre": "Dirección de Despacho de Atención al Ciudadano",
+            "slug": "direccion-de-despacho-de-atencion-al-ciudadano",
+            "autoridad": "Sr. José Félix Senrra",
+            "email": "ddsatencionciudadana@smt.gob.ar"
+        },
+        {
+            "id": 92,
+            "nombre": "Dirección de Programas Sociales",
+            "slug": "direccion-de-programas-sociales",
+            "autoridad": "Sra. María Fernanda Prado Budeguer",
+            "email": "programassociales@smt.gob.ar"
+        },
+        {
+            "id": 93,
+            "nombre": "Dirección de Familia",
+            "slug": "direccion-de-familia",
+            "autoridad": "Sra. Elízabeth Susana Rodríguez",
+            "email": "familia@smt.gob.ar"
+        }
+    ]
+}

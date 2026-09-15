@@ -1,0 +1,81 @@
+﻿## CategorÃ­a de trÃ¡mites: Actividades Ciudadanas [verificado]
+URL: https://smt.gob.ar/tramite/actividades-ciudadanas/12
+Listado en grilla de 8 Ã­tems con imagen, tÃ­tulo y bajada: Programa Ciudad Activa (/nota/plazas-ciudad-activa/63), Centros Deportivos (/nota/complejos-deportivos/55), Centro Integrador Comunitario CIC (/nota/centro-integrador-comunitariocic/23), Talleres (/talleres), Mi Feria Digital (/catalogo/catalogo-de-emprendedores), Centro de InformaciÃ³n a Vecinos (/nota/centro-de-informacion-a-vecinos/76), Programa Proteger (/nota/programa-proteger/75), Programas Sociales (/nota/programas-sociales/74). Breadcrumb Inicio > TrÃ¡mite y Servicios > Actividades Ciudadanas. Sin paginaciÃ³n, filtros, buscador ni formularios.
+
+## CategorÃ­a de trÃ¡mites: Patrimonio Cultural [verificado]
+URL: https://smt.gob.ar/tramite/patrimonio-cultural/13
+Listado de 6 Ã­tems: Parques (/parques_smt), Espacios EmblemÃ¡ticos (/nota/espacios-emblematicos-del-parque-9-de-julio/87), Memorial de Mujeres DD (/memorial), Patrimonio HistÃ³rico (/nota/proceres/59), Patrimonio ArquitectÃ³nico (/nota/patrimonio-arquitectonico/58), Patrimonio ArtÃ­stico (/nota/obras-de-arte-del-parque/57). Mezcla fichas /nota/ con rutas custom. Sin paginaciÃ³n, filtros ni formularios. El contenido es cultural/informativo, no son trÃ¡mites en sentido estricto.
+
+## CategorÃ­a de trÃ¡mites: Justicia Municipal [verificado]
+URL: https://smt.gob.ar/tramite/justicia-municipal/16
+Listado con un ÃšNICO Ã­tem: Infracciones Tribunal Municipal de Faltas (/nota/gestion-de-consulta-y-pago-de-infracciones-a-las-normas-municipales/70), 'GestiÃ³n de Consulta y Pago de infracciones'. Sin paginaciÃ³n, filtros, buscador ni formularios. Contenido muy escaso para una categorÃ­a propia.
+
+## CategorÃ­a de trÃ¡mites: Catastro y EdificaciÃ³n (slug con errata 'catrastro') [verificado]
+URL: https://smt.gob.ar/tramite/catrastro-y-edificacion/18
+Listado con 2 Ã­tems: TrÃ¡mites de Catastro Digital (enlace externo https://catastro.smt.gob.ar/?destino=catastro) y CartelerÃ­a Reglamentaria de Obra (/nota/carteleria-reglamentaria/82). ERRATA CONFIRMADA: tanto el slug de la URL como el tÃ­tulo visible muestran 'Catrastro' en vez de 'Catastro'. Sin paginaciÃ³n, filtros ni formularios.
+
+## CategorÃ­a de trÃ¡mites id 14 (inexistente) [roto aparente]
+URL: https://smt.gob.ar/tramite/x/14
+Devuelve HTTP 404. Como el ruteo resuelve solo por ID (el slug se ignora, ver notas), el 404 confirma que no existe categorÃ­a con id 14 en el CMS.
+
+## CategorÃ­a de trÃ¡mites id 15 (inexistente) [roto aparente]
+URL: https://smt.gob.ar/tramite/x/15
+Devuelve HTTP 404. No existe categorÃ­a con id 15 (ruteo por ID, slug ignorado).
+
+## CategorÃ­a de trÃ¡mites id 17 (inexistente) [roto aparente]
+URL: https://smt.gob.ar/tramite/x/17
+Devuelve HTTP 404. No existe categorÃ­a con id 17 (ruteo por ID, slug ignorado).
+
+## Ficha: Plazas - Ciudad Activa [verificado]
+URL: https://smt.gob.ar/nota/plazas-ciudad-activa/63
+Ficha informativa del programa de actividades en plazas: texto descriptivo, cronograma semanal por plaza (lun/miÃ© Parque 9 de Julio y Plaza Urquiza; mar/jue Plaza San MartÃ­n y Plaza Villa LujÃ¡n, 19:30), asesoramiento nutricional 17-20 h en Complejo Ledesma, 4 fotos, enlaces a Google Maps por ubicaciÃ³n, botones compartir WhatsApp/Twitter/Telegram. Sin formularios ni descargas.
+
+## Ficha: Programas Sociales [verificado]
+URL: https://smt.gob.ar/nota/programas-sociales/74
+Ficha de la DirecciÃ³n de Programas Sociales: misiÃ³n, capacitaciones (mermelada agria y licores artesanales, convenio INTA, gratuitas) y asesoramiento sobre programas nacionales (Progresar, AUH, jubilaciones, Ex Potenciar Trabajo). Imagen tipo banner. Sin horarios, requisitos, formularios ni descargas.
+
+## Ficha: Centro de InformaciÃ³n a Vecinos [verificado]
+URL: https://smt.gob.ar/nota/centro-de-informacion-a-vecinos/76
+Ficha informativa: atenciÃ³n de consultas y reclamos, atenciÃ³n personalizada de trÃ¡mites, promociÃ³n de CiudadanÃ­a Digital. Horario 8 a 18 h, direcciÃ³n '9 de Julio 570 Casa Central', una foto, botones de compartir. Sin formularios ni descargas.
+
+## Ficha: Espacios EmblemÃ¡ticos del Parque 9 de Julio [verificado]
+URL: https://smt.gob.ar/nota/espacios-emblematicos-del-parque-9-de-julio/87
+Ficha con introducciÃ³n y 6 espacios con foto (Lago San Miguel, La PÃ©rgola y el Rosedal, Casa de la AdministraciÃ³n, Casa del Obispo, Museo a Cielo Abierto, El Reloj); cada uno enlaza a un Google Sites externo con el detalle. Botones de compartir. Sin formularios ni descargas.
+
+## Ficha: Obras de Arte del Parque (Patrimonio ArtÃ­stico) [verificado]
+URL: https://smt.gob.ar/nota/obras-de-arte-del-parque/57
+Ficha-galerÃ­a con texto histÃ³rico (mÃ¡s de 20 rÃ©plicas neoclÃ¡sicas fundidas por Val d'Osne, traÃ­das en 1926) y ~45 obras documentadas, cada una con foto e hipervÃ­nculo a una ficha individual en Google Sites (Venus de Milo, DiscÃ³bolo, Laocoonte, monumentos locales, etc.). Botones de compartir. Sin formularios ni descargas.
+
+## Ficha: GestiÃ³n de Consulta y Pago de Infracciones (Tribunal de Faltas) [verificado]
+URL: https://smt.gob.ar/nota/gestion-de-consulta-y-pago-de-infracciones-a-las-normas-municipales/70
+Ficha de trÃ¡mite con pasos: registrarse en CiDiTuc (https://ciudaddigital.smt.gob.ar/), ingresar con CUIL y contraseÃ±a, menÃº CONSULTAS > MULTAS, recepciÃ³n de cupÃ³n de pago por email. Pago exclusivamente por PagoFÃ¡cil (locales o app, acepta billeteras virtuales), impacto en 48 h. Contacto tmfconsultas@smt.gob.ar. Enlaza ademÃ¡s a tesoreria.smt.gob.ar, dimsmt.gob.ar, licitaciones.smt.gob.ar y mapa.smt.gob.ar. Sin formularios propios ni descargas.
+
+## Ficha: CartelerÃ­a Reglamentaria de Obra [verificado]
+URL: https://smt.gob.ar/nota/carteleria-reglamentaria/82
+Ficha con texto introductorio y 4 grupos de descargas alojadas en Google Drive: 'Por Seguridad', 'Elementos de Seguridad', 'Por InformaciÃ³n de Obra' y 'Plan de Salida RÃ¡pida de Expedientes'; menciona ademÃ¡s 'Horarios Extendidos de Trabajo' como permiso aparte. Sin formularios; no cita normativa explÃ­cita.
+
+## PÃ¡gina: Parques (ruta custom, Ã­tem de Patrimonio Cultural) [verificado]
+URL: https://smt.gob.ar/parques_smt
+PÃ¡gina con 3 parques enlazados (Parque Avellaneda, Parque Guillermina, Parque 9 de Julio) con fotos, enlace a mapa.smt.gob.ar, botones de compartir y bloque 'Lo mÃ¡s leÃ­do'. Ruta custom fuera del patrÃ³n /nota/{slug}/{id}, aunque plantillada por el mismo CMS.
+
+## PÃ¡gina: Memorial de Mujeres Detenidas Desaparecidas (ruta custom) [verificado]
+URL: https://smt.gob.ar/memorial
+PÃ¡gina informativa del memorial (SecretarÃ­a de la Mujer, 2012): texto histÃ³rico 1973-1983, descripciÃ³n de la obra (pÃ©rgola con nombres de 150 mujeres), fotografÃ­a, y descarga de PDF 'NOMBRES DE MUJERES DD.pdf'. Botones de compartir. Ruta custom fuera de /nota/.
+
+## Portal externo: Catastro Digital (Ã­tem de categorÃ­a 18) [pendiente de verificaciÃ³n]
+URL: https://catastro.smt.gob.ar/?destino=catastro
+Responde y muestra el tÃ­tulo 'TRÃMITES DE CATASTRO DIGITAL', pero el contenido se renderiza por JavaScript y no se pudo enumerar sus funciones (presumiblemente login y gestiones/consultas catastrales). No se pudo confirmar si requiere autenticaciÃ³n.
+
+## GuÃ­a de TrÃ¡mites (portada) [verificado]
+URL: https://guiadetramites.smt.gob.ar
+Sitio separado del portal principal, en subdominio propio: directorio clasificado de trÃ¡mites con portada de categorÃ­as (unas 17-20: Licencia de Conducir, Habilitaciones Comerciales, Catastro y EdificaciÃ³n, Tribunal de Faltas, BromatologÃ­a, Cementerio, Salud, Tasas y Contribuciones, TrÃ¡nsito y Transporte, Denuncias, etc.), secciÃ³n de 'mÃ¡s visitados' y navegaciÃ³n por filtros en cascada (CategorÃ­a > SubcategorÃ­a > Nota) mediante selects. Rutas: /categoria?cat={id}, /categoria?sub={id}#note-{id}. Sin buscador de texto libre detectado. No enlaza a fichas /nota/ del portal principal; enlaza a ciudaddigital.smt.gob.ar, turnos.smt.gob.ar y banners hacia smt.gob.ar.
+
+## GuÃ­a de TrÃ¡mites: pÃ¡gina de categorÃ­a (ej. Licencia de Conducir) [verificado]
+URL: https://guiadetramites.smt.gob.ar/categoria?cat=32
+Vista de categorÃ­a con 6-7 notas en acordeones: Primera Vez, RenovaciÃ³n, CategorÃ­a Profesional, HabilitaciÃ³n por Alcoholemia Positiva, Mayores de 65, Aranceles, Certificaciones. Cada nota detalla requisitos con viÃ±etas, costos/aranceles, modalidad (online/presencial), ubicaciones, horarios y enlaces externos (argentina.gob.ar, seguridadvial.gob.ar, turnos.smt.gob.ar, ciudaddigital.smt.gob.ar, Google Maps). Sin paginaciÃ³n.
+
+## GuÃ­a de TrÃ¡mites: pÃ¡gina de subcategorÃ­a con anclas a notas [verificado]
+URL: https://guiadetramites.smt.gob.ar/categoria?sub=122
+Misma vista de acordeones filtrada por subcategorÃ­a, con menÃº lateral de categorÃ­as y anclas #note-{id} para llegar a una nota puntual (ej. ?sub=122#note-163 RenovaciÃ³n de Licencia). Sin buscador de texto libre, sin paginaciÃ³n ni descargas visibles.
+
+NOTAS: HALLAZGOS TÃ‰CNICOS: (1) El ruteo de /tramite/{slug}/{id} resuelve SOLO por ID: /tramite/x/12 renderiza 'Actividades Ciudadanas' con slug inventado. Confirmado tambiÃ©n implÃ­citamente para /nota/. Riesgo SEO de contenido duplicado; en el rediseÃ±o validar slug y redirigir 301 al canÃ³nico. (2) Gracias a eso, los 404 de /tramite/x/14, /15 y /17 confirman que las categorÃ­as 14, 15 y 17 NO existen (huecos en la secuencia de IDs del CMS; verificar en BD si fueron borradas o despublicadas). (3) ERRATA CONFIRMADA en categorÃ­a 18: el slug es 'catrastro-y-edificacion' y el tÃ­tulo visible tambiÃ©n dice 'Catrastro'; el error estÃ¡ en el registro del CMS, no solo en la URL. DATOS CONTRADICTORIOS: (4) En TODO el sitio principal conviven dos direcciones: '9 De Julio 598 Sur' (header) y '9 de Julio 570' (footer); la ficha del Centro de InformaciÃ³n a Vecinos dice '9 de Julio 570 Casa Central'. Unificar la direcciÃ³n oficial. (5) TelÃ©fono municipal aparece incompleto en el pie de algunas pÃ¡ginas (se cita 4516500 solo en algunas). (6) En Obras de Arte del Parque hay fechas 1926 vs 1928 sin aclarar. (7) La ficha Programas Sociales menciona 'Ex Potenciar Trabajo': posible contenido desactualizado. DEPENDENCIAS EXTERNAS DE CONTENIDO: (8) Las fichas de Patrimonio (Espacios EmblemÃ¡ticos y ~45 obras de arte) delegan todo el detalle en Google Sites externos; CartelerÃ­a Reglamentaria aloja sus descargas en Google Drive. Contenido institucional fuera del control del servidor: candidato prioritario a migraciÃ³n. GUÃA DE TRÃMITES: (9) guiadetramites.smt.gob.ar es un sistema separado en subdominio, aparentemente otra instalaciÃ³n Laravel (assets bajo /storage/settings/, patrÃ³n tÃ­pico de Voyager). Estructura: categorÃ­as > subcategorÃ­as > notas en acordeones, rutas /categoria?cat={id} y ?sub={id} con anclas #note-{id}. NavegaciÃ³n solo por selects en cascada; sin buscador de texto libre detectado. (10) NO enlaza de vuelta a las fichas /nota/ del portal principal: los dos sistemas duplican temÃ¡tica (Catastro y EdificaciÃ³n y Tribunal de Faltas existen en ambos) pero la GuÃ­a tiene el contenido operativo real (requisitos, costos, pasos, turnos) mientras las fichas /nota/ del portal son mayormente descriptivas. El rediseÃ±o deberÃ­a definir una Ãºnica fuente de verdad y plan de redirects. (11) CategorÃ­a 16 (Justicia Municipal) tiene un solo Ã­tem; categorÃ­a 13 (Patrimonio Cultural) no contiene trÃ¡mites sino contenido cultural con rutas custom (/parques_smt, /memorial): revisar la taxonomÃ­a 'TrÃ¡mites y Servicios' en la nueva arquitectura de informaciÃ³n. (12) catastro.smt.gob.ar respondiÃ³ pero renderiza por JavaScript: no se pudieron enumerar sus funciones, queda pendiente de verificaciÃ³n en servidor.

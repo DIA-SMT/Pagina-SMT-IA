@@ -1,0 +1,32 @@
+[
+    {
+        "id": 3,
+        "nombre": "Fotos de SMT",
+        "slug": "fotos-de-smt",
+        "fotos": 14
+    },
+    {
+        "id": 4,
+        "nombre": "Parques y Plazas",
+        "slug": "parques-y-plazas",
+        "fotos": 15
+    },
+    {
+        "id": 5,
+        "nombre": "Teatro Municipal",
+        "slug": "teatro-municipal",
+        "fotos": 3
+    },
+    {
+        "id": 6,
+        "nombre": "Museo Mercedes Sosa",
+        "slug": "museo-mercedes-sosa",
+        "fotos": 2
+    },
+    {
+        "id": 10,
+        "nombre": "Asistencia Pública",
+        "slug": "asistencia-publica",
+        "fotos": 4
+    }
+]

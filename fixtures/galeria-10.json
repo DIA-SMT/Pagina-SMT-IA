@@ -1,0 +1,31 @@
+{
+    "id": 10,
+    "nombre": "Asistencia Pública",
+    "slug": "asistencia-publica",
+    "fotos": [
+        {
+            "id": 25,
+            "descripcion": null,
+            "imagen": "https://smt.gob.ar/storage/galeria/November2024/cGLWCMw1GS7d8xDfFStH.jpg",
+            "miniatura": "https://smt.gob.ar/storage/galeria/November2024/cGLWCMw1GS7d8xDfFStH-cropped.jpg"
+        },
+        {
+            "id": 34,
+            "descripcion": null,
+            "imagen": "https://smt.gob.ar/storage/galeria/November2024/m2PZlhLT7ixm5dEYHIAk.jpeg",
+            "miniatura": "https://smt.gob.ar/storage/galeria/November2024/m2PZlhLT7ixm5dEYHIAk-cropped.jpeg"
+        },
+        {
+            "id": 35,
+            "descripcion": null,
+            "imagen": "https://smt.gob.ar/storage/galeria/November2024/JYON50qxHyFd9PoFoWsf.jpeg",
+            "miniatura": "https://smt.gob.ar/storage/galeria/November2024/JYON50qxHyFd9PoFoWsf-cropped.jpeg"
+        },
+        {
+            "id": 36,
+            "descripcion": null,
+            "imagen": "https://smt.gob.ar/storage/galeria/November2024/Z6usfWvXWmzSL8Aqenpa.jpeg",
+            "miniatura": "https://smt.gob.ar/storage/galeria/November2024/Z6usfWvXWmzSL8Aqenpa-cropped.jpeg"
+        }
+    ]
+}

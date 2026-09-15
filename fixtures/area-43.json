@@ -1,0 +1,18 @@
+{
+    "id": 43,
+    "nombre": "Dirección de Salud",
+    "slug": "direccion-de-salud",
+    "autoridad": "Dr. Alejandro Roque Bonari",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/hSYiRZwjFYZl4clvAMNt.jpg",
+    "domicilio": "Marina Alfaro 1449 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "salud@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 20,
+        "nombre": "Subsecretaría de Desarrollo Humano",
+        "slug": "subsecretaria-de-desarrollo-humano"
+    },
+    "dependencias": []
+}

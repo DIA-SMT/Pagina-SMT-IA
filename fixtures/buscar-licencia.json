@@ -1,0 +1,25 @@
+{
+    "consulta": "licencia",
+    "total": 3,
+    "resultados": [
+        {
+            "tipo": "ficha",
+            "id": 8,
+            "titulo": "Licencia de Conducir",
+            "bajada": null,
+            "categoria": 7
+        },
+        {
+            "tipo": "area",
+            "id": 98,
+            "titulo": "Dirección de Licencias de Conducir",
+            "autoridad": "Sra. Viviana Paola Tirone"
+        },
+        {
+            "tipo": "area",
+            "id": 122,
+            "titulo": "Subsecretaría de Seguridad Vial y Licencias de Conducir",
+            "autoridad": "Dr. Benjamín Nieva"
+        }
+    ]
+}

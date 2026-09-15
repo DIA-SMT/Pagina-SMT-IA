@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "portal-next",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "portal-next"],
+      "port": 3000
+    },
+    {
+      "name": "portal-smt-blade",
+      "runtimeExecutable": "php",
+      "runtimeArgs": ["portal-smt/artisan", "serve", "--host=127.0.0.1", "--port=8123"],
+      "port": 8123
+    }
+  ]
+}

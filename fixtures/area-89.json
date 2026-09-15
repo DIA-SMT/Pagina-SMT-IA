@@ -1,0 +1,18 @@
+{
+    "id": 89,
+    "nombre": "Dirección de Turismo",
+    "slug": "direccion-de-turismo",
+    "autoridad": "Sr. Pablo  Gerstenfeld",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/c1B9YZt4bdIBjGxykKMe.jpg",
+    "domicilio": "Congreso y Crisóstomo Álvarez - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "turismo@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 13,
+        "nombre": "Subsecretaría de Cultura",
+        "slug": "subsecretaria-de-cultura"
+    },
+    "dependencias": []
+}

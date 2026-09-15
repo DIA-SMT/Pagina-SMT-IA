@@ -1,0 +1,18 @@
+{
+    "id": 48,
+    "nombre": "Dirección de Población Animal",
+    "slug": "direccion-de-poblacion-animal",
+    "autoridad": "Sra. María Mercedes Dabul",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/MSgHpRqOTCTVxDJtFKJc.jpg",
+    "domicilio": "Av. Francisco de Aguirre 1550- San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "poblacionanimal@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 20,
+        "nombre": "Subsecretaría de Desarrollo Humano",
+        "slug": "subsecretaria-de-desarrollo-humano"
+    },
+    "dependencias": []
+}

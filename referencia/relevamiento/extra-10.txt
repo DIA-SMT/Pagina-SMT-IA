@@ -1,0 +1,65 @@
+﻿## TÃ©cnica [roto aparente]
+URL: https://smt.gob.ar/robots.txt
+Devuelve HTTP 404 (verificado con WebFetch y confirmado con curl). El sitio no publica robots.txt.
+
+## TÃ©cnica [roto aparente]
+URL: https://smt.gob.ar/sitemap.xml
+Devuelve HTTP 404 (verificado con WebFetch y confirmado con curl). No existe sitemap XML.
+
+## TÃ©cnica [verificado]
+URL: https://smt.gob.ar/admin
+Devuelve HTTP 404 mostrando la pÃ¡gina 404 personalizada del sitio (mismo cuerpo de 23.577 bytes que cualquier 404). TambiÃ©n /admin/login devuelve 404. El login de Voyager NO estÃ¡ expuesto en la ruta por defecto: fue movido a otro prefijo o bloqueado a nivel servidor. No se intentÃ³ iniciar sesiÃ³n.
+
+## TÃ©cnica [verificado]
+URL: https://smt.gob.ar/ (hoja de estilos)
+La home (HTTP 200, 58.376 bytes) carga 13 CSS locales bajo /assets/css/: owl.carousel.css, bootstrap.css (Bootstrap v5.2.3, confirmado por cabecera del archivo), animate.css, swiper-bundle.css, slick.css, flaticon_statex.css, magnific-popup.css, font-awesome-pro.css (Font Awesome 5/6 Pro servido localmente desde /assets/fonts/), spacing.css, custom-animation.css, nivo-lightbox.min.css, nivo-lightbox-theme.css y main.css (310 KB, hoja principal del template).
+
+## TÃ©cnica [verificado]
+URL: https://smt.gob.ar/ (scripts)
+La home carga 26 JS locales bajo /assets/js/: vendor/jquery.js (jQuery 3.6.0), jquery.min.js (jQuery 1.11.0 â€” segunda carga que pisa a la 3.6.0), nivo-lightbox.min.js, vendor/waypoints.js, bootstrap-bundle.js, meanmenu.js, gsap.min.js, ScrollTrigger.min.js, split-text.min.js, swiper-bundle.js, slick.js, range-slider.js, magnific-popup.js, nice-select.js, purecounter.js, countdown.js, jequery-knob.js, jequery-appear.js, wow.js, jarallax.js, isotope-pkgd.js, imagesloaded-pkgd.js, ajax-form.js, owl.carousel.min.js y main.js (22,7 KB, JS del template con Ã­ndice 'JS INDEX' de ThemePure).
+
+## TÃ©cnica [verificado]
+URL: https://smt.gob.ar/assets/css/main.css
+TipografÃ­as: el @import de Google Fonts (DM Sans 400/500/700 + Marcellus) estÃ¡ COMENTADO al inicio de main.css, aunque las variables CSS --tp-ff-body/--tp-ff-heading/--tp-ff-dmsans/--tp-ff-Marcellus siguen apuntando a 'DM Sans' y 'Marcellus' (caen a sans-serif del sistema). Ãšnica @font-face activa en main.css: Poppins local (/assets/fonts/Poppins/Poppins-Regular.ttf). Iconfonts locales: flaticon_statex (ttf/woff/woff2/eot/svg en /assets/fonts/, woff2 responde 200) y Font Awesome 5/6 Pro/Brands/Duotone locales. No hay <link> a fonts.googleapis.com en el HTML.
+
+## TÃ©cnica [verificado]
+URL: https://smt.gob.ar/ (imÃ¡genes)
+Dos orÃ­genes de imagen claramente separados: /storage/... = subidas del CMS Voyager (ej. /storage/banners/February2026/*.jpg|.gif|.png, /storage/settings/April2024/... para favicon/logo, /storage/galeria/... con 38 imÃ¡genes en la galerÃ­a) y /assets/img/muni/... = estÃ¡ticos del deploy (logos Logo_SMT_pos_1.png / Logo_SMT_neg_1.png, callcenter.png, Casa-Historica-03.png). Se detectÃ³ un src con ruta relativa './assets/img/muni/callcenter.png' que se romperÃ­a fuera de la raÃ­z.
+
+## TÃ©cnica [verificado]
+URL: https://smt.gob.ar/ (formulario buscador)
+Ãšnico formulario presente en todas las pÃ¡ginas visitadas (home, galerÃ­a, trÃ¡mite, nota, Ã¡rea, turno-asistencia): <form action="/search/result" method="get"> con un input text name="q" required placeholder="Buscar..." y botÃ³n submit SVG. Al ser GET no lleva token CSRF. No se encontrÃ³ ningÃºn formulario POST con _token en las pÃ¡ginas pÃºblicas visitadas, aunque Laravel emite la cookie XSRF-TOKEN.
+
+## TÃ©cnica [verificado]
+URL: https://smt.gob.ar/search/result?q=habilitacion
+PÃ¡gina de resultados de bÃºsqueda: muestra resultados con tÃ­tulo + descripciÃ³n breve (ej. 'HabilitaciÃ³n de Comercios' â†’ /nota/habilitacion-comercial/5), sin contador de resultados, sin paginaciÃ³n y con sidebar 'Lo mÃ¡s leÃ­do' con enlaces a otras secciones.
+
+## TÃ©cnica [verificado]
+URL: https://smt.gob.ar/galeria/imagenes
+GalerÃ­a (HTTP 200, 51.491 bytes): ~40 imÃ¡genes desde /storage/galeria/ con filtro por categorÃ­as del lado cliente: <form id="mg-filter"> con radios name="filter" (valores 'all', '3', ...: Todas, Fotos de SMT, Parques y Plazas, Teatro Municipal, Museo Mercedes Sosa, Asistencia PÃºblica), aplicado vÃ­a isotope/imagesloaded sin recarga. SIN paginaciÃ³n: ?page=2 devuelve exactamente el mismo cuerpo (51.491 bytes idÃ©nticos) y no existe markup .pagination ni enlaces ?page=N.
+
+## TÃ©cnica [verificado]
+URL: https://smt.gob.ar/tramite/gestion-tributaria-y-comercial/1
+CategorÃ­a de trÃ¡mites (HTTP 200, 31.557 bytes): lista bloques con enlaces destacados (Portal para Proveedores â†’ /portalproveedores, Ingresos Municipales â†’ /nota/direccion-de-ingresos-municipales/2, HabilitaciÃ³n de Comercios â†’ /nota/habilitacion-comercial/5). Sin paginaciÃ³n (?page=N ausente, sin markup de paginador Laravel), sin filtros ni buscador propio.
+
+## TÃ©cnica [verificado]
+URL: https://smt.gob.ar/assets/js/main.js
+No se encontraron endpoints JSON/API en el JS propio: main.js no contiene fetch(), $.ajax, axios ni XMLHttpRequest (solo .get(0) de jQuery para play/pause de video). Tampoco hay llamadas AJAX inline en el HTML de home ni galerÃ­a. ajax-form.js es cÃ³digo genÃ©rico del template que harÃ­a POST al action de un #contact-form que NO existe en ninguna pÃ¡gina visitada (cÃ³digo muerto).
+
+## TÃ©cnica [verificado]
+URL: https://smt.gob.ar/pagina-que-no-existe-xyz
+HTTP 404 con pÃ¡gina de error PERSONALIZADA (Blade resources/views/errors/404, 23.577 bytes): usa el layout completo del sitio (header con menÃº, footer con telÃ©fonos de urgencia 911/100/102/103/105/107, redes sociales, enlace 'Ingresar a CiDiTuc' â†’ ciudaddigital.smt.gob.ar) y en el cuerpo muestra 'ERROR 404 / El contenido que estas buscando no esta disponible, por el momento.' (clase 'error text-center'). Defectos: no tiene <title> y conserva meta robots 'index, follow'.
+
+## TÃ©cnica [verificado]
+URL: https://smt.gob.ar/assets/css/flaticon_statex.css
+Plantilla CONFIRMADA: 'Statex' (ThemeForest, autor ThemePure). Indicios: iconfont propia 'flaticon_statex' (@font-face con ttf/woff/woff2/eot/svg), prefijo de clases 'tp-' (Theme-Pure) dominante en todo el HTML (tp-slider-*, tp-feature-*, tp-footer-widget*, tp-main-menu*, tp-section-title...), variables CSS --tp-ff-* en main.css y cabecera 'JS INDEX' tÃ­pica de ThemePure en main.js (PreLoader, Offcanvas, cartmini, etc., incluyendo mÃ³dulos de e-commerce sin uso).
+
+## TÃ©cnica [verificado]
+URL: https://smt.gob.ar/ (cabeceras HTTP)
+Stack confirmado por cabeceras: Server: nginx; X-Powered-By: PHP/7.4.33 y PleskLin; cookies de Laravel XSRF-TOKEN y smt_session (session cookie renombrada, Max-Age 7200, samesite=lax, httponly); Cache-Control: private, must-revalidate; HSTS max-age=31536000 includeSubDomains preload. Expone versiÃ³n de PHP obsoleta (7.4.33, EOL).
+
+## TÃ©cnica [verificado]
+URL: https://smt.gob.ar/ (scripts de terceros)
+Dos dependencias externas de script en la home: Google Analytics 4 (googletagmanager.com/gtag/js?id=G-LJ5M7XKZ0F) y widget de clima de tutiempo.net (script s-widget). Enlaces salientes del layout a subdominios propios (ciudaddigital.smt.gob.ar, smtendatos.gob.ar) y a Google Forms/Drive, Instagram, Twitter, Facebook, YouTube.
+
+NOTAS: Contradicciones y datos desactualizados detectados: (1) Doble carga de jQuery en la home: vendor/jquery.js = v3.6.0 y luego jquery.min.js = v1.11.0; al cargarse segunda, la 1.11.0 pisa a la 3.6.0 â€” riesgo real de incompatibilidades con plugins modernos. (2) El @import de Google Fonts (DM Sans + Marcellus) estÃ¡ comentado en main.css pero las variables --tp-ff-* siguen declarando esas familias: la tipografÃ­a efectiva del sitio es fallback de sistema, salvo Poppins (Ãºnica @font-face activa, local). (3) robots.txt y sitemap.xml no existen (404): dÃ©ficit SEO a resolver en el rediseÃ±o. (4) La pÃ¡gina 404 personalizada no tiene <title> y mantiene meta robots 'index, follow'. (5) font-awesome-pro.css sirve Font Awesome 5/6 PRO localmente â€” verificar licencia antes de reutilizar. (6) Typo en slug oficial: /tramite/catrastro-y-edificacion/18 ('catrastro' por 'catastro'); tambiÃ©n existe el enlace irregular /Registros%20_Transporte%20_Individual_Pasajeros con espacios codificados. (7) ajax-form.js espera un #contact-form inexistente en las pÃ¡ginas visitadas: cÃ³digo muerto del template Statex, igual que mÃ³dulos cartmini/e-commerce en main.js. (8) /admin y /admin/login devuelven 404 con la pÃ¡gina de error del sitio: el panel Voyager fue movido de prefijo o bloqueado â€” confirmar en servidor la ruta real (no se intentÃ³ login). (9) No existe paginaciÃ³n Laravel en ninguna vista pÃºblica revisada: /galeria/imagenes?page=2 devuelve byte a byte lo mismo que sin parÃ¡metro. (10) meta robots 'index, follow' estÃ¡ escrito con markup irregular (<meta  name=robots ... > sin comillas) en el layout base. (11) Ruta relativa './assets/img/muni/callcenter.png' en la home (en vez de absoluta) â€” se romperÃ­a en cualquier ruta anidada. (12) Cookie de sesiÃ³n renombrada a 'smt_session'; XSRF-TOKEN se emite aunque no hay formularios POST pÃºblicos.

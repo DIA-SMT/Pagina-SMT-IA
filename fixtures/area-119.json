@@ -1,0 +1,18 @@
+{
+    "id": 119,
+    "nombre": "Dirección Centro de Monitoreo de Movilidad Urbana (CeMMU)",
+    "slug": "direccion-centro-de-monitoreo-de-movilidad-urbana-cemmu",
+    "autoridad": "Dra. Mariela del Valle Cortez",
+    "foto": null,
+    "domicilio": "Av. Avellaneda 663 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "cemmu@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 12,
+        "nombre": "Secretaría de Movilidad Urbana",
+        "slug": "secretaria-de-movilidad-urbana"
+    },
+    "dependencias": []
+}

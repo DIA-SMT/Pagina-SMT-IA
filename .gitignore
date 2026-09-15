@@ -1,0 +1,73 @@
+# ============================================================
+#  Qué NO entra al repositorio
+#  DIA-SMT/Pagina-SMT-IA es un repositorio PÚBLICO.
+# ============================================================
+
+# ---- 1. Datos personales y credenciales -------------------
+# Nunca, ni en un repo privado.
+#
+# datos-origen/ es un volcado de la base de producción: 12.846 INSERT con
+# datos reales. tbl_emprendedor guarda dni, apellido, nombre, teléfono,
+# domicilio, localidad y código postal de personas; users guarda el hash de
+# contraseña y el remember_token de las cuentas del panel municipal.
+datos-origen/
+
+# El token de la API de datos.
+.env.local
+.env*.local
+.env.production
+
+# Claves y certificados, por si alguna vez cae una acá.
+*.pem
+*.key
+*.p12
+id_rsa*
+id_ed25519*
+
+# ---- 2. Seguridad operativa del servidor ------------------
+# Son informes de estado de un servidor de gobierno en producción con
+# defectos todavía sin corregir: el endpoint interno de la base, que el
+# crontab de root guarda credenciales en texto plano, la ruta del panel de
+# administración y qué rutas devuelven 500. Publicarlo es entregar el mapa.
+# Se mantienen fuera del repo hasta que el municipio remedie y decida.
+docs/hallazgos-servidor.md
+docs/acceso-servidor.md
+
+# ---- 3. Dependencias y salida de build --------------------
+node_modules/
+.next/
+out/
+build/
+dist/
+vendor/
+.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+
+# ---- 4. Entorno local y herramientas ----------------------
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.vercel
+*.tsbuildinfo
+next-env.d.ts
+.claude/settings.local.json
+
+# ---- 5. Trabajo intermedio --------------------------------
+# Listado crudo de URLs de medios del CMS, generado por scripts/. Se
+# regenera; no aporta nada al repositorio.
+.urls_cms.txt
+
+# El Laravel de producción se conserva sólo como referencia de lectura y
+# pesa 70 MB con sus dependencias. Lo que importaba de ese código ya está
+# resumido en docs/ y en referencia/codigo-produccion/.
+portal-smt/
+
+# La historia del scaffold de create-next-app, movida acá para que
+# portal-next deje de ser un repo anidado. Se puede borrar.
+portal-next/.git.bak-createnextapp/

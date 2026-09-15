@@ -1,0 +1,18 @@
+{
+    "id": 55,
+    "nombre": "Tribunal Municipal de Faltas",
+    "slug": "tribunal-municipal-de-faltas",
+    "autoridad": "Dr. Matías Tomás Balardini",
+    "foto": "https://smt.gob.ar/storage/administraciones/April2026/okn7q5oSxKRLXwfih8he.jpg",
+    "domicilio": "Jujuy 259 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "tmfdireccion@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 3,
+        "nombre": "Secretaría de Gobierno",
+        "slug": "secretaria-de-gobierno"
+    },
+    "dependencias": []
+}

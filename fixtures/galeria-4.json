@@ -1,0 +1,97 @@
+{
+    "id": 4,
+    "nombre": "Parques y Plazas",
+    "slug": "parques-y-plazas",
+    "fotos": [
+        {
+            "id": 9,
+            "descripcion": "Plaza Independencia",
+            "imagen": "https://smt.gob.ar/storage/galeria/May2024/62GM3FQMi5vsiC7Blc6z.JPG",
+            "miniatura": "https://smt.gob.ar/storage/galeria/May2024/62GM3FQMi5vsiC7Blc6z-cropped.JPG"
+        },
+        {
+            "id": 10,
+            "descripcion": "Plaza Urquiza",
+            "imagen": "https://smt.gob.ar/storage/galeria/May2024/XVzs20hGft8k5iXa0jWL.JPG",
+            "miniatura": "https://smt.gob.ar/storage/galeria/May2024/XVzs20hGft8k5iXa0jWL-cropped.JPG"
+        },
+        {
+            "id": 11,
+            "descripcion": "El Rosedal",
+            "imagen": "https://smt.gob.ar/storage/galeria/May2024/dK9MsQl3yIj8l9nxoSto.JPG",
+            "miniatura": "https://smt.gob.ar/storage/galeria/May2024/dK9MsQl3yIj8l9nxoSto-cropped.JPG"
+        },
+        {
+            "id": 13,
+            "descripcion": "Lago San Miguel",
+            "imagen": "https://smt.gob.ar/storage/galeria/May2024/I9p6R3CgrAI60tTSkEag.jpg",
+            "miniatura": "https://smt.gob.ar/storage/galeria/May2024/I9p6R3CgrAI60tTSkEag-cropped.jpg"
+        },
+        {
+            "id": 41,
+            "descripcion": null,
+            "imagen": "https://smt.gob.ar/storage/galeria/November2024/UAmp5ONqNmjJrKzkxib7.jpeg",
+            "miniatura": "https://smt.gob.ar/storage/galeria/November2024/UAmp5ONqNmjJrKzkxib7-cropped.jpeg"
+        },
+        {
+            "id": 42,
+            "descripcion": null,
+            "imagen": "https://smt.gob.ar/storage/galeria/November2024/ZyfZSNgl6y6QhLv3yUwE.jpg",
+            "miniatura": "https://smt.gob.ar/storage/galeria/November2024/ZyfZSNgl6y6QhLv3yUwE-cropped.jpg"
+        },
+        {
+            "id": 43,
+            "descripcion": null,
+            "imagen": "https://smt.gob.ar/storage/galeria/November2024/VUKceuYVNmuQkY4Xqp5n.jpg",
+            "miniatura": "https://smt.gob.ar/storage/galeria/November2024/VUKceuYVNmuQkY4Xqp5n-cropped.jpg"
+        },
+        {
+            "id": 44,
+            "descripcion": null,
+            "imagen": "https://smt.gob.ar/storage/galeria/November2024/uyWNi5oQ9mws2ITe6CFW.jpg",
+            "miniatura": "https://smt.gob.ar/storage/galeria/November2024/uyWNi5oQ9mws2ITe6CFW-cropped.jpg"
+        },
+        {
+            "id": 45,
+            "descripcion": null,
+            "imagen": "https://smt.gob.ar/storage/galeria/November2024/G6US7ZzVAt3mdOg9LlBB.jpg",
+            "miniatura": "https://smt.gob.ar/storage/galeria/November2024/G6US7ZzVAt3mdOg9LlBB-cropped.jpg"
+        },
+        {
+            "id": 46,
+            "descripcion": null,
+            "imagen": "https://smt.gob.ar/storage/galeria/November2024/CbwNdeLvSFVBuj9MsFzx.jpg",
+            "miniatura": "https://smt.gob.ar/storage/galeria/November2024/CbwNdeLvSFVBuj9MsFzx-cropped.jpg"
+        },
+        {
+            "id": 47,
+            "descripcion": null,
+            "imagen": "https://smt.gob.ar/storage/galeria/November2024/v767Dtc8pLP99I1vBamO.jpg",
+            "miniatura": "https://smt.gob.ar/storage/galeria/November2024/v767Dtc8pLP99I1vBamO-cropped.jpg"
+        },
+        {
+            "id": 48,
+            "descripcion": null,
+            "imagen": "https://smt.gob.ar/storage/galeria/November2024/I4qfPwm6oA1y7htKOlzY.jpg",
+            "miniatura": "https://smt.gob.ar/storage/galeria/November2024/I4qfPwm6oA1y7htKOlzY-cropped.jpg"
+        },
+        {
+            "id": 49,
+            "descripcion": null,
+            "imagen": "https://smt.gob.ar/storage/galeria/November2024/3Gae7iRWK7dlgvlJmsuw.jpeg",
+            "miniatura": "https://smt.gob.ar/storage/galeria/November2024/3Gae7iRWK7dlgvlJmsuw-cropped.jpeg"
+        },
+        {
+            "id": 50,
+            "descripcion": null,
+            "imagen": "https://smt.gob.ar/storage/galeria/November2024/5xewpruFcYNvo6pzAT1m.jpeg",
+            "miniatura": "https://smt.gob.ar/storage/galeria/November2024/5xewpruFcYNvo6pzAT1m-cropped.jpeg"
+        },
+        {
+            "id": 51,
+            "descripcion": null,
+            "imagen": "https://smt.gob.ar/storage/galeria/November2024/XSHznqE7PFfZo6o04MLU.jpeg",
+            "miniatura": "https://smt.gob.ar/storage/galeria/November2024/XSHznqE7PFfZo6o04MLU-cropped.jpeg"
+        }
+    ]
+}

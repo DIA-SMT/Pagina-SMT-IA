@@ -1,0 +1,18 @@
+{
+    "id": 37,
+    "nombre": "Dirección de Información Estratégica",
+    "slug": "direccion-de-informacion-estrategica",
+    "autoridad": "Dr. Luis Enrique Colmenares Martínez",
+    "foto": null,
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "informacionestrategica@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 19,
+        "nombre": "Subsecretaría de Gestión Estratégica y Documentación",
+        "slug": "subsecretaria-de-gestion-estrategica-y-documentacion"
+    },
+    "dependencias": []
+}

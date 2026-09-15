@@ -1,0 +1,40 @@
+{
+    "id": 118,
+    "nombre": "Subsecretaría de Movilidad Urbana",
+    "slug": "subsecretaria-de-movilidad-urbana",
+    "autoridad": ".",
+    "foto": null,
+    "domicilio": ".",
+    "telefono": null,
+    "email": "@",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 12,
+        "nombre": "Secretaría de Movilidad Urbana",
+        "slug": "secretaria-de-movilidad-urbana"
+    },
+    "dependencias": [
+        {
+            "id": 125,
+            "nombre": "Dirección Administrativa de Tránsito",
+            "slug": "direccion-administrativa-de-transito",
+            "autoridad": "Sr. Eduardo Pedro Mosconi",
+            "email": "transitoadministrativa@smt.gob.ar"
+        },
+        {
+            "id": 126,
+            "nombre": "Dirección Operativa de Tránsito",
+            "slug": "direccion-operativa-de-transito",
+            "autoridad": "Sr. Sergio Walter Suárez",
+            "email": "transitooperativa@smt.gob.ar"
+        },
+        {
+            "id": 124,
+            "nombre": "Dirección SUTRAPA",
+            "slug": "direccion-sutrapa",
+            "autoridad": "CPN. Nilda Valeria Amaya",
+            "email": "sutrapa@smt.gob.ar"
+        }
+    ]
+}

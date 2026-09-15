@@ -1,0 +1,73 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use \App\Models\Notas as notas;
+use App\Http\Controllers\Traits\Banners;
+use App\Http\Controllers\Traits\Visitas;
+
+class NotaController extends Controller
+{
+    use Banners;
+    use Visitas;
+
+    public function show($slug)
+    {   
+
+        // $id = $request->id;
+        // $slug = null;
+
+        // if(!$id){
+        //     $slug = $request->route()->uri;
+        // }
+
+        if (!$slug) {
+            abort(500);
+        }
+
+        $queryNota = notas::where('status', 1);
+
+        if ($slug) {
+            $queryNota->where('slug', $slug);
+        }
+
+        $nota = $queryNota->first();
+        
+        if (!$nota) {
+            abort(404);
+        }
+        $sidebarBanner = $this->getBanners('colder');
+        $this->gestionVisitas($nota->id, 'notasGenerales');
+
+        $visitas = $this->allVisitContent();
+
+        return view('notas.show', [
+            'nota'=>$nota,
+            'visitas'=>$visitas,
+            'sidebarBanner'=>$sidebarBanner,
+            'phones'=>$this->phones(),
+        ]);
+    }
+
+    public function showCes()
+    {
+        $nota = notas::where('slug', 'ces')->where('status', 1)->first();
+
+        if (!$nota) {
+            abort(404);
+        }
+
+        $sidebarBanner = $this->getBanners('colder');
+        $this->gestionVisitas($nota->id, 'notasGenerales');
+        $visitas = $this->allVisitContent();
+
+        return view('notas.show', [
+            'nota' => $nota,
+            'visitas' => $visitas,
+            'sidebarBanner' => $sidebarBanner,
+            'phones' => $this->phones(),
+        ]);
+    }
+    
+}

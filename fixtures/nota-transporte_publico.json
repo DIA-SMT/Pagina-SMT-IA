@@ -1,0 +1,17 @@
+{
+    "id": 42,
+    "titulo": "El transporte público en San Miguel de Tucumán",
+    "bajada": null,
+    "texto": "<p class=\"MsoNormal\" style=\"text-align: justify;\"><span style=\"font-family: Poppins; color: #000000;\">Esta publicaci&oacute;n presenta un diagn&oacute;stico del sistema de transporte p&uacute;blico de San Miguel de Tucum&aacute;n y analiza los principales problemas que afectan su funcionamiento: recorridos superpuestos, cobertura insuficiente, demoras, falta de informaci&oacute;n para los pasajeros y dificultades en la gesti&oacute;n y el control del servicio.</span></p>\r\n<p class=\"MsoNormal\" style=\"text-align: justify;\"><span style=\"font-family: Poppins; color: #000000;\">A partir de informaci&oacute;n sobre la demanda, los flujos de viaje y la cobertura territorial, el documento propone avanzar hacia un nuevo esquema de operaci&oacute;n, con recorridos m&aacute;s directos, una distribuci&oacute;n eficiente de la flota y criterios t&eacute;cnicos comunes para la participaci&oacute;n de los operadores.</span></p>\r\n<p class=\"MsoNormal\" style=\"text-align: justify;\"><span style=\"font-family: Poppins;\"><span style=\"color: #000000;\">La propuesta incluye una hoja de ruta para definir los costos reales del sistema, reorganizar l&iacute;neas y frecuencias y evaluar su viabilidad operativa, econ&oacute;mica y financiera. El objetivo es construir, mediante el di&aacute;logo entre las instituciones y los prestadores, las bases para una transformaci&oacute;n gradual y sostenible del transporte p&uacute;blico.</span></span></p>",
+    "slug": "transporte_publico",
+    "estado": "1",
+    "imagen": "https://smt.gob.ar/storage/notas/July2026/198n20o3c40bLn7G7db5.png",
+    "archivos": [
+        {
+            "url": "https://smt.gob.ar/storage/notas/July2026/UzVXJfynmGYGzaXtqXSW.pdf",
+            "nombre": "Transporte Público_MSMT.pdf",
+            "extension": "pdf"
+        }
+    ],
+    "actualizado": "2026-07-31 16:12:57"
+}

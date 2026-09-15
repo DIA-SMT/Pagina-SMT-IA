@@ -1,0 +1,18 @@
+{
+    "id": 90,
+    "nombre": "Dirección de Promoción de Eventos",
+    "slug": "direccion-de-promocion-de-eventos",
+    "autoridad": "Sra. Natalia María Zanotta",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/2b2K0sxG56JZke2wzt97.jpg",
+    "domicilio": "Combate de las Piedras 1550 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "eventos@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 2,
+        "nombre": "Secretaría General",
+        "slug": "secretaria-general"
+    },
+    "dependencias": []
+}

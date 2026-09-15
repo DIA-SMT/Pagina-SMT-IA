@@ -1,0 +1,47 @@
+{
+    "id": 3,
+    "nombre": "Secretaría de Gobierno",
+    "slug": "secretaria-de-gobierno",
+    "autoridad": "Mg. Camila Giuliano",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/6A6rXpFJtTnh2NibP1Ji.jpg",
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "sgobierno@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": "https://smt.gob.ar/storage/administraciones/September2026/uEe5s0UVQ3KY2QX3sugD.pdf",
+    "padre": {
+        "id": 1,
+        "nombre": "Intendencia",
+        "slug": "intendencia"
+    },
+    "dependencias": [
+        {
+            "id": 52,
+            "nombre": "Dirección de Despacho de Gobierno",
+            "slug": "direccion-de-despacho-de-gobierno",
+            "autoridad": "Dra. Fernanda López Roig",
+            "email": "ddsgobierno@smt.gob.ar"
+        },
+        {
+            "id": 16,
+            "nombre": "Subsecretaría de Gobierno",
+            "slug": "subsecretaria-de-gobierno",
+            "autoridad": ".",
+            "email": "subsgobierno@smt.gob.ar"
+        },
+        {
+            "id": 106,
+            "nombre": "Subsecretaría de Seguridad Ciudadana",
+            "slug": "subsecretaria-de-seguridad-ciudadana",
+            "autoridad": "Sr. Rubén Darío Fernández",
+            "email": "subsseguridadciudadana@smt.gob.ar"
+        },
+        {
+            "id": 55,
+            "nombre": "Tribunal Municipal de Faltas",
+            "slug": "tribunal-municipal-de-faltas",
+            "autoridad": "Dr. Matías Tomás Balardini",
+            "email": "tmfdireccion@smt.gob.ar"
+        }
+    ]
+}

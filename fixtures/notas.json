@@ -1,0 +1,289 @@
+{
+    "datos": [
+        {
+            "id": 42,
+            "titulo": "El transporte público en San Miguel de Tucumán",
+            "bajada": null,
+            "slug": "transporte_publico",
+            "estado": "1",
+            "imagen": "https://smt.gob.ar/storage/notas/July2026/198n20o3c40bLn7G7db5.png",
+            "actualizado": "2026-07-31 16:12:57"
+        },
+        {
+            "id": 41,
+            "titulo": "Jóvenes en Acción",
+            "bajada": null,
+            "slug": "jovenesporelclima",
+            "estado": "1",
+            "imagen": null,
+            "actualizado": "2026-07-14 16:21:22"
+        },
+        {
+            "id": 40,
+            "titulo": "Trámites de Gestión Online de Catastro y Edificación",
+            "bajada": "La Municipalidad de San Miguel de Tucumán continúa impulsando la modernización de sus servicios con la incorporación de nuevos trámites digitales de la Dirección de Catastro y Edificación, brindando una gestión más ágil, segura y accesible para vecinos, profesionales y empresas.",
+            "slug": "gestiononlinecatastro",
+            "estado": "1",
+            "imagen": null,
+            "actualizado": "2026-06-26 16:53:33"
+        },
+        {
+            "id": 39,
+            "titulo": "Museo Escultórico a Cielo Abierto - Parque 9 de Julio",
+            "bajada": null,
+            "slug": "museoescultorio",
+            "estado": "1",
+            "imagen": "https://smt.gob.ar/storage/notas/June2026/88qpo8u0Tqzlw2AWmLcw.png",
+            "actualizado": "2026-06-19 16:25:31"
+        },
+        {
+            "id": 38,
+            "titulo": "Plataforma Virtual de Proveedores",
+            "bajada": "La Tesorería General de la Municipalidad de San Miguel de Tucumán informa a todos los proveedores que se encuentra habilitada la Plataforma Virtual de Consulta Para Proveedores y descarga de comprobantes de retenciones.\r\n\r\nLa herramienta tiene como finalidad garantizar la disponibilidad permanente de la información y asegurar mayor eficiencia, trazabilidad y transparencia en el acceso a los comprobantes emitidos por este organismo.",
+            "slug": "portalproveedores",
+            "estado": "1",
+            "imagen": null,
+            "actualizado": "2026-06-09 17:47:42"
+        },
+        {
+            "id": 37,
+            "titulo": "Cortes de Transito en la ciudad",
+            "bajada": "Consultá el mapa actualizado de cortes de tránsito en la ciudad. Informamos en tiempo real las interrupciones por obras, servicios y eventos para que planifiques mejor tus recorridos.",
+            "slug": "cortes",
+            "estado": "1",
+            "imagen": null,
+            "actualizado": "2026-06-02 17:51:28"
+        },
+        {
+            "id": 36,
+            "titulo": "Gestión de Turnos – Asistencia Pública",
+            "bajada": null,
+            "slug": "turno-asistencia",
+            "estado": "1",
+            "imagen": "https://smt.gob.ar/storage/notas/February2026/D6IkMGzmTTckOytKbXxq.PNG",
+            "actualizado": "2026-02-21 17:36:12"
+        },
+        {
+            "id": 35,
+            "titulo": "Plan de Contingencia ante Inundaciones – San Miguel de Tucumán",
+            "bajada": null,
+            "slug": "PlandeContingenciaanteInundaciones",
+            "estado": "1",
+            "imagen": "https://smt.gob.ar/storage/notas/February2026/QslQ9j8NWZsDGDI2tHnD.png",
+            "actualizado": "2026-02-07 14:06:00"
+        },
+        {
+            "id": 34,
+            "titulo": "Registros del Transporte Individual de Pasajeros",
+            "bajada": null,
+            "slug": "Registros _Transporte _Individual_Pasajeros",
+            "estado": "1",
+            "imagen": "https://smt.gob.ar/storage/notas/February2026/qyRGRgnWePfY35b1p5Ta.jpeg",
+            "actualizado": "2026-02-06 15:16:32"
+        },
+        {
+            "id": 33,
+            "titulo": "Presupuesto Participativo",
+            "bajada": "Transparencia y participación para construir la ciudad",
+            "slug": "presupuestoparticipativo",
+            "estado": "1",
+            "imagen": "https://smt.gob.ar/storage/notas/January2026/41pQO2VApyss8yXWVBHs.png",
+            "actualizado": "2026-01-19 18:11:11"
+        },
+        {
+            "id": 32,
+            "titulo": "Talleres",
+            "bajada": "El Municipio ofrece talleres gratuitos durante todo el año",
+            "slug": "Talleres",
+            "estado": "1",
+            "imagen": "https://smt.gob.ar/storage/notas/January2026/zubLoE9Vwx2eqB2yKNZU.jpg",
+            "actualizado": "2026-01-15 15:31:51"
+        },
+        {
+            "id": 31,
+            "titulo": "Parques",
+            "bajada": "Viví la naturaleza, el patrimonio y los espacios verdes de la ciudad",
+            "slug": "parques_smt",
+            "estado": "1",
+            "imagen": null,
+            "actualizado": "2026-01-12 21:36:06"
+        },
+        {
+            "id": 30,
+            "titulo": "Circuitos Turisticos",
+            "bajada": null,
+            "slug": "circuitos-turisticos",
+            "estado": "1",
+            "imagen": "https://smt.gob.ar/storage/notas/January2026/oyNaE7SrqcjL2bhGVKX8.png",
+            "actualizado": "2026-01-10 17:06:32"
+        },
+        {
+            "id": 29,
+            "titulo": "Bus Turístico",
+            "bajada": null,
+            "slug": "busturistico",
+            "estado": "1",
+            "imagen": "https://smt.gob.ar/storage/notas/January2026/CVqxE8eMuPpznJijdJBh.png",
+            "actualizado": "2026-05-22 16:09:36"
+        },
+        {
+            "id": 28,
+            "titulo": "Ordenanza Tributaria 2026",
+            "bajada": null,
+            "slug": "ordenanzatributaria",
+            "estado": "1",
+            "imagen": null,
+            "actualizado": "2026-01-07 22:14:16"
+        },
+        {
+            "id": 27,
+            "titulo": "MEMORIAL DE MUJERES DETENIDAS DESAPARECIDAS",
+            "bajada": "Este sitio dedicado a la Memoria, la Verdad y la Justicia nace a través de la Secretaría de la Mujer articulada con la Secretaría de Derechos Humanos en 2012. Tiene como objetivo homenajear a las mujeres víctimas del terrorismo de Estado en Tucumán.",
+            "slug": "Memorial",
+            "estado": "1",
+            "imagen": "https://smt.gob.ar/storage/notas/March2025/bm2csiS18CA6HK0sA5qu.png",
+            "actualizado": "2025-03-24 17:25:29"
+        },
+        {
+            "id": 26,
+            "titulo": "BIBLIOTECA DIGITAL",
+            "bajada": "En esta Biblioteca podras conocer nuestros documentos de políticas públicas",
+            "slug": "Bibliotecadigital",
+            "estado": "0",
+            "imagen": null,
+            "actualizado": "2025-03-24 17:30:47"
+        },
+        {
+            "id": 25,
+            "titulo": "CONCURSO \"NUEVA CONFITERIA EL LAGO\"",
+            "bajada": null,
+            "slug": "concurso_confiteria",
+            "estado": "0",
+            "imagen": "https://smt.gob.ar/storage/notas/February2025/SADNvnYAvQIfwJfP09Ie.jpg",
+            "actualizado": "2025-02-25 17:55:09"
+        },
+        {
+            "id": 22,
+            "titulo": "Recomendaciones Sanitarias",
+            "bajada": null,
+            "slug": "Recomendaciones_sanitarias",
+            "estado": "1",
+            "imagen": null,
+            "actualizado": "2025-03-25 21:02:36"
+        },
+        {
+            "id": 20,
+            "titulo": "Programa SUBEM",
+            "bajada": null,
+            "slug": "SUBEM",
+            "estado": "1",
+            "imagen": "https://smt.gob.ar/storage/notas/January2025/KdZNeyuYj0TzvZopL7X4.png",
+            "actualizado": "2026-02-03 21:49:20"
+        },
+        {
+            "id": 19,
+            "titulo": "Tarjeta SUBE",
+            "bajada": "¡Atención, usuarios del transporte público de San Miguel de Tucumán!",
+            "slug": "Sube",
+            "estado": "1",
+            "imagen": "https://smt.gob.ar/storage/notas/March2025/4ZmleDzbWTfEXu9jbcqe.png",
+            "actualizado": "2026-02-03 22:20:02"
+        },
+        {
+            "id": 18,
+            "titulo": "Concurso Fotográfico \"San Miguel de Tucumán en foco\"",
+            "bajada": "El concurso \"San Miguel de Tucumán en foco\" tiene como propósito principal promover la cultura local, resaltando la riqueza patrimonial y la belleza natural de nuestra ciudad. Este proyecto no solo busca captar la atención de fotógrafos profesionales y amateurs, sino que también pretende involucrar a toda la comunidad en un proceso de reflexión y descubrimiento de nuestra identidad a través de la fotografía.",
+            "slug": "concurso",
+            "estado": "1",
+            "imagen": "https://smt.gob.ar/storage/notas/August2024/nbqFz7ZaDDLGqP7uviSr.jpg",
+            "actualizado": "2024-08-30 21:03:14"
+        },
+        {
+            "id": 17,
+            "titulo": "Meisterplan",
+            "bajada": null,
+            "slug": "Meisterplan",
+            "estado": "1",
+            "imagen": "https://smt.gob.ar/storage/notas/August2024/fpz2FcRsHQ2HNxL80N2E.png",
+            "actualizado": "2025-03-25 21:54:42"
+        },
+        {
+            "id": 16,
+            "titulo": "Recorridos de Colectivos",
+            "bajada": null,
+            "slug": "colectivos",
+            "estado": "1",
+            "imagen": "https://smt.gob.ar/storage/notas/October2024/rWDrbUJCKUkq0LvCt1Ye.jpg",
+            "actualizado": "2026-02-27 21:54:05"
+        },
+        {
+            "id": 15,
+            "titulo": "Consejo Económico y Social de la Ciudad de San Miguel de Tucumán",
+            "bajada": null,
+            "slug": "ces",
+            "estado": "0",
+            "imagen": "https://smt.gob.ar/storage/notas/November2024/mtFLXQLaXlpF77q76DZ9.jpg",
+            "actualizado": "2026-02-06 17:49:59"
+        },
+        {
+            "id": 13,
+            "titulo": "WIFISMT",
+            "bajada": null,
+            "slug": "plazaswifi",
+            "estado": "1",
+            "imagen": "https://smt.gob.ar/storage/notas/November2024/xWHeC4Lus3TUpvN9sCpv.jpg",
+            "actualizado": "2026-05-15 15:52:46"
+        },
+        {
+            "id": 10,
+            "titulo": "Galeria",
+            "bajada": null,
+            "slug": "galeria",
+            "estado": "0",
+            "imagen": null,
+            "actualizado": "2026-02-03 22:29:27"
+        },
+        {
+            "id": 6,
+            "titulo": "Lugares de Interes",
+            "bajada": "Descubre San Miguel de Tucumán\r\n\r\nBienvenido a San Miguel de Tucumán, una ciudad llena de historia, cultura y belleza natural. \r\nExplora nuestros lugares de interés:",
+            "slug": "lugares-de-interes",
+            "estado": "1",
+            "imagen": null,
+            "actualizado": "2025-03-25 22:57:58"
+        },
+        {
+            "id": 5,
+            "titulo": "Circuitos Turisticos a Pie",
+            "bajada": null,
+            "slug": "circuitosturisticospie",
+            "estado": "1",
+            "imagen": "https://smt.gob.ar/storage/notas/January2026/XVhEeWWQdfbgHISk8iiI.png",
+            "actualizado": "2026-01-08 11:58:43"
+        },
+        {
+            "id": 4,
+            "titulo": "HISTORIA",
+            "bajada": null,
+            "slug": "historia",
+            "estado": "1",
+            "imagen": "https://smt.gob.ar/storage/notas/January2026/4gFTb1subYnz7uzRzBoj.png",
+            "actualizado": "2026-01-12 20:52:38"
+        },
+        {
+            "id": 3,
+            "titulo": "Turismo",
+            "bajada": "La región Noroeste de La República, es una de las 6 regiones turísticas que el Ministerio de Turismo de la Nación ha dividido al país; siendo las restantes, Litoral: Chaco, Corrientes, Misiones, ente Ríos y Santa Fé (Cataratas, Ruinas de San Ignacio de Mini); Cuyo: La Rioja, San Juan, Mendoza (Aconcagua 6959 m) y San Luis; Patagonia: La Pampa, Neuquén, Río Negro (Bariloche), Chubut, Santa Cruz y Tierra del Fuego, Córdoba: Carlos Paz, La Falda y Buenos Aires: La Ciudad del Tango.",
+            "slug": "turismo",
+            "estado": "1",
+            "imagen": "https://smt.gob.ar/storage/notas/April2024/td7xo7K7wNVDW7D5KgT6.jpg",
+            "actualizado": "2024-08-20 14:48:17"
+        }
+    ],
+    "paginacion": {
+        "pagina": 1,
+        "por_pagina": 100,
+        "total": 31,
+        "paginas": 1
+    }
+}

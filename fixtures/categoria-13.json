@@ -1,0 +1,57 @@
+{
+    "id": 13,
+    "titulo": "Patrimonio Cultural",
+    "texto": "Edificios, obras artisticas, lugares historicos que forman el acervo cultural de la ciudad",
+    "icono": "fa-solid fa-landmark",
+    "slug": "patrimonio-cultural",
+    "items": [
+        {
+            "id": 59,
+            "titulo": "Patrimonio Artístico",
+            "texto": "Esculturas y monumentos del Parque 9 de Julio.",
+            "icono": "fa-solid fa-tree",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 60,
+            "titulo": "Patrimonio Arquitectónico",
+            "texto": "Patrimonio cultural que refleja su importancia histórica y su diversidad cultural",
+            "icono": "fa-solid fa-landmark",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 61,
+            "titulo": "Patrimonio Histórico",
+            "texto": "Estos próceres son recordados con admiración y respeto por su valentía y sacrificio en la gesta libertadora.",
+            "icono": "fa-solid fa-user-group",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 107,
+            "titulo": "Memorial de Mujeres DD",
+            "texto": "Homenaje a mujeres tucumanas desaparecidas",
+            "icono": "fa-solid fa-female",
+            "enlace": "https://smt.gob.ar/memorial",
+            "orden": null
+        },
+        {
+            "id": 113,
+            "titulo": "Espacios Emblemáticos",
+            "texto": "Lugares icónicos de San Miguel de Tucumán que reflejan su historia, cultura e identidad urbana.",
+            "icono": "fa-solid fa-building-columns",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 114,
+            "titulo": "Parques",
+            "texto": "Áreas verdes urbanas para la recreación y el disfrute del patrimonio natural y cultural.",
+            "icono": "fa-solid fa-tree",
+            "enlace": "https://smt.gob.ar/parques_smt",
+            "orden": null
+        }
+    ]
+}

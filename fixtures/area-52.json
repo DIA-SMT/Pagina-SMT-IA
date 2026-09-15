@@ -1,0 +1,18 @@
+{
+    "id": 52,
+    "nombre": "Dirección de Despacho de Gobierno",
+    "slug": "direccion-de-despacho-de-gobierno",
+    "autoridad": "Dra. Fernanda López Roig",
+    "foto": null,
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "ddsgobierno@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 3,
+        "nombre": "Secretaría de Gobierno",
+        "slug": "secretaria-de-gobierno"
+    },
+    "dependencias": []
+}

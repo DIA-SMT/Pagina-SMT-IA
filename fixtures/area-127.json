@@ -1,0 +1,18 @@
+{
+    "id": 127,
+    "nombre": "Dirección de Transporte",
+    "slug": "direccion-de-transporte",
+    "autoridad": "Dr. Máximo Ramón Stenvers",
+    "foto": null,
+    "domicilio": "Av. Roque Sáenz Peña 56 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "transporte@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 12,
+        "nombre": "Secretaría de Movilidad Urbana",
+        "slug": "secretaria-de-movilidad-urbana"
+    },
+    "dependencias": []
+}

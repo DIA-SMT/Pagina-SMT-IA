@@ -1,0 +1,40 @@
+{
+    "id": 9,
+    "nombre": "Secretaría de Innovación Tecnológica",
+    "slug": "secretaria-de-innovacion-tecnologica",
+    "autoridad": "Ing. Omar Abraham",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/QPBrdxttoW7qtIAOc6qC.jpg",
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "sitec@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": "https://smt.gob.ar/storage/administraciones/August2026/hNb7hkEtHodZfjGYfOMN.pdf",
+    "padre": {
+        "id": 1,
+        "nombre": "Intendencia",
+        "slug": "intendencia"
+    },
+    "dependencias": [
+        {
+            "id": 51,
+            "nombre": "Dirección de Despacho de Innovación Tecnológica",
+            "slug": "direccion-de-despacho-de-innovacion-tecnologica",
+            "autoridad": "CPN. María Florencia Borsotto",
+            "email": "ddsitec@smt.gob.ar"
+        },
+        {
+            "id": 28,
+            "nombre": "Dirección de Innovación Tecnológica",
+            "slug": "direccion-de-innovacion-tecnologica",
+            "autoridad": "Ing. Silvia Alejandra Calabró",
+            "email": "ditec@smt.gob.ar"
+        },
+        {
+            "id": 112,
+            "nombre": "Dirección de Inteligencia Artificial",
+            "slug": "direccion-de-inteligencia-artificial",
+            "autoridad": "Dr. Marco Rossi",
+            "email": "direccionia@smt.gob.ar"
+        }
+    ]
+}

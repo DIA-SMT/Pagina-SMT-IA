@@ -1,0 +1,17 @@
+{
+    "id": 16,
+    "titulo": "Justicia Municipal",
+    "texto": "Gestión y Administración de la Justicia municipal y de faltas",
+    "icono": "fa-solid fa-scale-balanced",
+    "slug": "justicia-municipal",
+    "items": [
+        {
+            "id": 75,
+            "titulo": "Infracciones Tribunal Municipal de Faltas",
+            "texto": "Gestión de Consulta y Pago de infracciones",
+            "icono": "fa-solid fa-car",
+            "enlace": null,
+            "orden": null
+        }
+    ]
+}

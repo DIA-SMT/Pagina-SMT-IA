@@ -1,0 +1,18 @@
+{
+    "id": 105,
+    "nombre": "Dirección de Despacho de Servicios Públicos",
+    "slug": "direccion-de-despacho-de-servicios-publicos",
+    "autoridad": "Dra. María Mercedes Koch",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/1tl3aqVBpOlREjplKwmS.jpg",
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "ddsservicios@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 7,
+        "nombre": "Secretaría de Servicios Públicos",
+        "slug": "secretaria-de-servicios-publicos"
+    },
+    "dependencias": []
+}

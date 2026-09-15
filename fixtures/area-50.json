@@ -1,0 +1,18 @@
+{
+    "id": 50,
+    "nombre": "Dirección de Empleo y Emprendimientos",
+    "slug": "direccion-de-empleo-y-emprendimientos",
+    "autoridad": "Sr. Osvaldo Luis Chalín",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/jPaIYQEMFreuskdofEDe.jpg",
+    "domicilio": "Avda. Juan B. Justo 951 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "empleo@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 16,
+        "nombre": "Subsecretaría de Gobierno",
+        "slug": "subsecretaria-de-gobierno"
+    },
+    "dependencias": []
+}

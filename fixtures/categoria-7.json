@@ -1,0 +1,65 @@
+{
+    "id": 7,
+    "titulo": "Transporte y Movilidad",
+    "texto": "Representa servicios de transporte y seguridad vial.",
+    "icono": "fa-solid fa-car",
+    "slug": "transporte-y-movilidad",
+    "items": [
+        {
+            "id": 10,
+            "titulo": "Licencia de Conducir",
+            "texto": "Requisitos para Licencia de conducir",
+            "icono": "fa-regular fa-id-card",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 17,
+            "titulo": "PIMU",
+            "texto": "Plan Integral de Movilidad Urbana",
+            "icono": "fa-solid fa-bus",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 19,
+            "titulo": "Recorridos de Colectivos",
+            "texto": "Recorido completo de los colectivos en San Miguel de Tucumán",
+            "icono": "fa-solid fa-bus-simple",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 76,
+            "titulo": "Registro de Transporte",
+            "texto": "Registros del Transporte Individual de Pasajeros",
+            "icono": "fa-solid fa-taxi",
+            "enlace": "https://smt.gob.ar/Registros%20_Transporte%20_Individual_Pasajeros",
+            "orden": null
+        },
+        {
+            "id": 98,
+            "titulo": "SUBE",
+            "texto": "Tecnología para simplificar y mejorar el acceso al transporte público",
+            "icono": "fa-solid fa-id-card",
+            "enlace": "https://smt.gob.ar/sube",
+            "orden": null
+        },
+        {
+            "id": 104,
+            "titulo": "SUBEM",
+            "texto": "Una Nueva Forma para que los Estudiantes Viajen en la Cuidad",
+            "icono": "fa-regular fa-address-card",
+            "enlace": "https://smt.gob.ar/SUBEM",
+            "orden": null
+        },
+        {
+            "id": 131,
+            "titulo": "Cortes de Tránsito",
+            "texto": "Cortes programados",
+            "icono": "fa-solid fa-person-digging",
+            "enlace": "https://smt.gob.ar/cortes",
+            "orden": null
+        }
+    ]
+}

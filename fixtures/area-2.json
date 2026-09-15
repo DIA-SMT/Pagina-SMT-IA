@@ -1,0 +1,61 @@
+{
+    "id": 2,
+    "nombre": "Secretaría General",
+    "slug": "secretaria-general",
+    "autoridad": "Dr. Rodrigo Gómez Tortosa",
+    "foto": "https://smt.gob.ar/storage/administraciones/August2026/xuau6m9GWbx9A8JRQf5v.jpg",
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "sgeneral@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": "https://smt.gob.ar/storage/administraciones/September2026/4neRrxagR81YkNv46ry2.pdf",
+    "padre": {
+        "id": 1,
+        "nombre": "Intendencia",
+        "slug": "intendencia"
+    },
+    "dependencias": [
+        {
+            "id": 31,
+            "nombre": "Dirección de Despacho de Intendencia",
+            "slug": "direccion-de-despacho-de-intendencia",
+            "autoridad": "Dr. Pablo Martín Pérez Ledesma",
+            "email": "ddsgeneral@smt.gob.ar"
+        },
+        {
+            "id": 18,
+            "nombre": "Subsecretaría de Prensa y Comunicación Institucional",
+            "slug": "subsecretaria-de-prensa-y-comunicacion-institucional",
+            "autoridad": "Lic. Pablo Fernando Haro Rodríguez",
+            "email": "subsecprensa@smt.gob.ar"
+        },
+        {
+            "id": 19,
+            "nombre": "Subsecretaría de Gestión Estratégica y Documentación",
+            "slug": "subsecretaria-de-gestion-estrategica-y-documentacion",
+            "autoridad": "Mg. Lic. Humberto Ponce de León",
+            "email": "subsgestion@smt.gob.ar"
+        },
+        {
+            "id": 20,
+            "nombre": "Subsecretaría de Desarrollo Humano",
+            "slug": "subsecretaria-de-desarrollo-humano",
+            "autoridad": "Dra. Graciela Alejandra Trejo",
+            "email": "subsdesarrolloh@smt.gob.ar"
+        },
+        {
+            "id": 13,
+            "nombre": "Subsecretaría de Cultura",
+            "slug": "subsecretaria-de-cultura",
+            "autoridad": "Sra. Ana Lía Carbonell",
+            "email": "subscultura@smt.gob.ar"
+        },
+        {
+            "id": 90,
+            "nombre": "Dirección de Promoción de Eventos",
+            "slug": "direccion-de-promocion-de-eventos",
+            "autoridad": "Sra. Natalia María Zanotta",
+            "email": "eventos@smt.gob.ar"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "id": 91,
+    "nombre": "Dirección de Despacho de Atención al Ciudadano",
+    "slug": "direccion-de-despacho-de-atencion-al-ciudadano",
+    "autoridad": "Sr. José Félix Senrra",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/BI3wZkwT30eIiotY8xpV.jpg",
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "ddsatencionciudadana@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 11,
+        "nombre": "Secretaría de Atención al Ciudadano",
+        "slug": "secretaria-de-atencion-al-ciudadano"
+    },
+    "dependencias": []
+}

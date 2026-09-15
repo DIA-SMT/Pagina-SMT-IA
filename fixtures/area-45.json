@@ -1,0 +1,18 @@
+{
+    "id": 45,
+    "nombre": "Dirección de Niñez y Juventud",
+    "slug": "direccion-de-ninez-y-juventud",
+    "autoridad": "Dra. Vanesa Raquel Castro",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/dambxB73Yi5jh2WbeVGW.jpg",
+    "domicilio": "Venezuela 3200 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "direccionnyj@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 20,
+        "nombre": "Subsecretaría de Desarrollo Humano",
+        "slug": "subsecretaria-de-desarrollo-humano"
+    },
+    "dependencias": []
+}

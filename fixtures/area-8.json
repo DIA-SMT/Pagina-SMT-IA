@@ -1,0 +1,40 @@
+{
+    "id": 8,
+    "nombre": "Secretaría de Ingresos Municipales",
+    "slug": "secretaria-de-ingresos-municipales",
+    "autoridad": "Cr. María Fernanda Herrera",
+    "foto": "https://smt.gob.ar/storage/administraciones/February2026/R5qfsvEQ9xeC0GdvK48r.jpg",
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "sim@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": "https://smt.gob.ar/storage/administraciones/September2026/SXGWvQLOT63pnDZR5aJY.pdf",
+    "padre": {
+        "id": 1,
+        "nombre": "Intendencia",
+        "slug": "intendencia"
+    },
+    "dependencias": [
+        {
+            "id": 74,
+            "nombre": "Dirección de Despacho de Ingresos Municipales",
+            "slug": "direccion-de-despacho-de-ingresos-municipales",
+            "autoridad": "Dr. Gonzalo Álvaro De León",
+            "email": "ddsim@smt.gob.ar"
+        },
+        {
+            "id": 25,
+            "nombre": "Subsecretaría de Ingresos Municipales",
+            "slug": "subsecretaria-de-ingresos-municipales",
+            "autoridad": null,
+            "email": "subsim@smt.gob.ar"
+        },
+        {
+            "id": 128,
+            "nombre": "Subsecretaría de Planificación Financiera",
+            "slug": "subsecretaria-de-planificacion-financiera",
+            "autoridad": "..",
+            "email": "."
+        }
+    ]
+}

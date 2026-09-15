@@ -1,0 +1,18 @@
+{
+    "id": 33,
+    "nombre": "Dirección de Comunicación no Tradicional",
+    "slug": "direccion-de-comunicacion-no-tradicional",
+    "autoridad": "Sr. Gabriel Lemme",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/hS9ZXWzJXvrXOxn2Vjwx.jpg",
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "comunicaciónnotradicional@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 18,
+        "nombre": "Subsecretaría de Prensa y Comunicación Institucional",
+        "slug": "subsecretaria-de-prensa-y-comunicacion-institucional"
+    },
+    "dependencias": []
+}

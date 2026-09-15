@@ -1,0 +1,18 @@
+{
+    "id": 61,
+    "nombre": "Dirección de Alumbrado Y Semáforos",
+    "slug": "direccion-de-alumbrado-y-semaforos",
+    "autoridad": "Ing. Sergio Daniel Gao",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/mcetrq3EniIFTZGnHSrb.jpg",
+    "domicilio": "Mate de Luna 1925  - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "alumbradoysemaforos@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 23,
+        "nombre": "Subsecretaría de Obras Públicas",
+        "slug": "subsecretaria-de-obras-publicas"
+    },
+    "dependencias": []
+}

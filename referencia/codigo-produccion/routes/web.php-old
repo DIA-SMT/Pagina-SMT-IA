@@ -1,0 +1,40 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+
+#Rutas observadas
+Route::get('/ces','NotaController@show')->name('ces');
+Route::get('/colectivos','NotaController@show')->name('colectivos');
+
+
+#Nuevas rutas de SMT
+Route::get('/tramite/{title}/{id}', 'TramitesController@index');
+Route::get('/nota/{title}/{id}', 'TramitesController@showNota');
+Route::get('/area/{title}/{id}', 'AreasController@index');
+Route::get('/contenido/{slug}/{id}', 'NotaController@show');
+
+Route::get('search', 'HomeController@search');
+Route::get('/depenendencia/{administrador_id}/{name}/{area_id}', 'AreasController@depenendencias');
+Route::get('/galeria', 'ImagenesController@index');
+Route::get('/map', 'MapController@index');
+Route::get('/zona', 'MapController@showZona');
+Route::get('/zona/{id}', 'MapController@showBarrios');
+Route::get('/', 'HomeController@index');
+Route::get('/notabarrio/{title}/{id}', 'MapController@showNota');
+Route::get('/zona-notas/{id}', 'ZonaController@index');
+Route::get('/zona-notas/apply-filter/{id}/{slug}', 'ZonaController@filtro');
+
+
+Route::group(['prefix' => 'rootadmin'], function () {
+	Voyager::routes();
+
+    $namespacePrefix = '\\'.config('voyager.controllers.namespace').'\\';
+    Route::get('area-gobiernos/{id}/orden-dependiente', ['uses' => $namespacePrefix.'VoyagerAdministracionesController@order', 'as' => 'administraciones.order']);
+    Route::post('area-gobiernos/{id}/orden-dependiente', ['uses' => $namespacePrefix.'VoyagerAdministracionesController@updateOrder', 'as' => 'administraciones.update.order']);
+	Route::get('imagen/{id}/trash', ['uses' => $namespacePrefix.'VoyagerGaleriasController@trash', 'as' => 'trash']);
+	Route::put('galeria/add-description', ['uses' => $namespacePrefix.'VoyagerGaleriasController@addDescription', 'as' => 'addDescription']);
+
+
+});
+

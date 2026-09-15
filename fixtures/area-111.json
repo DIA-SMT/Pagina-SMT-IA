@@ -1,0 +1,18 @@
+{
+    "id": 111,
+    "nombre": "Dirección de Ceremonial",
+    "slug": "direccion-de-ceremonial",
+    "autoridad": "Lic. Belén Bonilla",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/8zCs6QfhhFJRUUQUxKEg.jpg",
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "ceremonial@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 1,
+        "nombre": "Intendencia",
+        "slug": "intendencia"
+    },
+    "dependencias": []
+}

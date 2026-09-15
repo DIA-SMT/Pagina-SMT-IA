@@ -1,0 +1,18 @@
+{
+    "id": 59,
+    "nombre": "Dirección de Despacho de Obras Públicas",
+    "slug": "direccion-de-despacho-de-obras-publicas",
+    "autoridad": "Dra. Luisa Intile",
+    "foto": null,
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "ddsobrasp@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 5,
+        "nombre": "Secretaría de Obras Públicas",
+        "slug": "secretaria-de-obras-publicas"
+    },
+    "dependencias": []
+}

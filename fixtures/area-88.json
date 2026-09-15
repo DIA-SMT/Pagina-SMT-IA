@@ -1,0 +1,18 @@
+{
+    "id": 88,
+    "nombre": "Dirección General de Museos  y Teatros",
+    "slug": "direccion-general-de-museos-y-teatros",
+    "autoridad": "Lic. María Cecilia Guerra Orozco",
+    "foto": null,
+    "domicilio": "Catamarca 920 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "museosyteatros@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 13,
+        "nombre": "Subsecretaría de Cultura",
+        "slug": "subsecretaria-de-cultura"
+    },
+    "dependencias": []
+}

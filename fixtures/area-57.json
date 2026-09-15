@@ -1,0 +1,18 @@
+{
+    "id": 57,
+    "nombre": "Dirección General de Compras y Contrataciones",
+    "slug": "direccion-general-de-compras-y-contrataciones",
+    "autoridad": "C.P.N. Silvia Rossana Otero",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/Jj2M9bZhKcIVPBM9GiVw.jpg",
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "compras@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 15,
+        "nombre": "Subsecretaría de Economía y Hacienda",
+        "slug": "subsecretaria-de-economia-y-hacienda"
+    },
+    "dependencias": []
+}

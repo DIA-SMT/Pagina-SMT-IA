@@ -1,0 +1,29 @@
+<?php
+
+namespace App\Models;
+
+use Eloquent as Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+class AreasGobiernos extends Model
+{
+
+    public $table = 'areas_gobiernos';
+    
+    const CREATED_AT = 'created_at';
+    const UPDATED_AT = 'updated_at';
+
+
+
+    public $fillable = [
+        'area',
+        
+    ];
+
+   
+    public function administracion(): HasMany
+    {
+        return $this->HasMany(\App\Models\Administracion::class, 'area_id');
+    }
+
+}

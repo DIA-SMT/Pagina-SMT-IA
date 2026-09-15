@@ -1,0 +1,13 @@
+{
+    "consulta": "sanidad",
+    "total": 1,
+    "resultados": [
+        {
+            "tipo": "ficha",
+            "id": 14,
+            "titulo": "Emisión del carnet de sanidad",
+            "bajada": null,
+            "categoria": 4
+        }
+    ]
+}

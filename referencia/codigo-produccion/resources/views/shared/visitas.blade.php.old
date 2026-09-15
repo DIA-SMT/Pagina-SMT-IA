@@ -1,0 +1,37 @@
+@if(count($visitas)>0)
+    <div class="card mb-3">
+        <div class="card-header">
+            <h5 class="card-title">Lo más leído</h5>
+        </div>
+        <div class="card-body">
+            <ul class="list-group">
+                @foreach($visitas as $visita)
+                    <?php 
+                        $title = '';
+                        $url = '';
+                        if ($visita->content == 'notasGenerales') {
+                            $title = $visita->titulo;
+                            $url = "/contenido/".str_slug($title)."/".$visita->content_id;
+                        }
+
+                        if ($visita->content == 'tramitesServicios') {
+                            $title = $visita->title;
+                            $url = "/tramite/".str_slug($title)."/{$visita->content_id}";
+                        }
+
+                        if ($visita->content == 'gobierno') {
+                            $title = $visita->area;
+                            $url = "/area/".str_slug($title)."/{$visita->area_id}";
+                        }
+
+
+                    ?>
+                    <li class="list-group-item">
+                        <a href="{{$url}}">{{$title}}</a>
+                    </li>
+                @endforeach
+                
+            </ul>
+        </div>
+    </div>
+@endif

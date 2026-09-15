@@ -1,0 +1,18 @@
+{
+    "id": 93,
+    "nombre": "Dirección de Familia",
+    "slug": "direccion-de-familia",
+    "autoridad": "Sra. Elízabeth Susana Rodríguez",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/03mEbaMbWaV85uqM234f.jpg",
+    "domicilio": "Av. Juan B. Justo 965 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "familia@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 11,
+        "nombre": "Secretaría de Atención al Ciudadano",
+        "slug": "secretaria-de-atencion-al-ciudadano"
+    },
+    "dependencias": []
+}

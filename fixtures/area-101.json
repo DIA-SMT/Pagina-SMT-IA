@@ -1,0 +1,18 @@
+{
+    "id": 101,
+    "nombre": "Dirección de Relaciones Institucionales e Internacionales",
+    "slug": "direccion-de-relaciones-institucionales-e-internacionales",
+    "autoridad": "Lic. Ana Carolina Oliver",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/vfchXWFlMAyhNgjOnsl2.jpg",
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "rrii@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 16,
+        "nombre": "Subsecretaría de Gobierno",
+        "slug": "subsecretaria-de-gobierno"
+    },
+    "dependencias": []
+}

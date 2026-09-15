@@ -1,0 +1,18 @@
+{
+    "id": 69,
+    "nombre": "Dirección de Limpieza Urbana",
+    "slug": "direccion-de-limpieza-urbana",
+    "autoridad": "Sr. Carlos Javier Montoya",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/bxGfwWQuzfGyENKDA72s.jpg",
+    "domicilio": "Av. Estado de Israel 1249 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "limpiezaurbana@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 27,
+        "nombre": "Subsecretaría de Servicios Públicos",
+        "slug": "subsecretaria-de-servicios-publicos"
+    },
+    "dependencias": []
+}

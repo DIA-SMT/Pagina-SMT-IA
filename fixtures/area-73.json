@@ -1,0 +1,18 @@
+{
+    "id": 73,
+    "nombre": "Dirección de Parque 9 de Julio",
+    "slug": "direccion-de-parque-9-de-julio",
+    "autoridad": null,
+    "foto": null,
+    "domicilio": "Av. Carlos Thays - Parque 9 de Julio - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "parque9dejulio@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 27,
+        "nombre": "Subsecretaría de Servicios Públicos",
+        "slug": "subsecretaria-de-servicios-publicos"
+    },
+    "dependencias": []
+}

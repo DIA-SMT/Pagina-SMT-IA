@@ -1,0 +1,17 @@
+{
+    "id": 27,
+    "categoria": 8,
+    "item": 30,
+    "titulo": "Digesto Municipal",
+    "bajada": null,
+    "cuerpo": "<p><span style=\"color: #000000;\">Accede al Digesto Municipal de San Miguel de Tucum&aacute;n para consultar de forma transparente las normativas municipales. Elaboradas con precisi&oacute;n en colaboraci&oacute;n con autoridades y expertos legales, cada regulaci&oacute;n est&aacute; organizada de manera clara y sistem&aacute;tica, e incluye su contexto hist&oacute;rico y fundamentaci&oacute;n legal.</span></p>\r\n<p><span style=\"color: #000000;\">Acceda a la informaci&oacute;n de Digesto Municipal a trav&eacute;s de este documento en formato PDF.</span></p>\r\n<p>&nbsp;</p>",
+    "imagen": null,
+    "archivos": [
+        {
+            "url": "https://smt.gob.ar/storage/tramites-items-notas/May2024/pTcyEDXqYdOBMFgxdSzn.pdf",
+            "nombre": "Digesto-Municipal.pdf",
+            "extension": "pdf"
+        }
+    ],
+    "actualizado": "2025-03-25 21:58:52"
+}

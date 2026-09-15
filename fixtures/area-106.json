@@ -1,0 +1,40 @@
+{
+    "id": 106,
+    "nombre": "Subsecretaría de Seguridad Ciudadana",
+    "slug": "subsecretaria-de-seguridad-ciudadana",
+    "autoridad": "Sr. Rubén Darío Fernández",
+    "foto": null,
+    "domicilio": "9 de Julio 229 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "subsseguridadciudadana@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 3,
+        "nombre": "Secretaría de Gobierno",
+        "slug": "secretaria-de-gobierno"
+    },
+    "dependencias": [
+        {
+            "id": 100,
+            "nombre": "Centro de Monitoreo Municipal",
+            "slug": "centro-de-monitoreo-municipal",
+            "autoridad": ".",
+            "email": "direccion.comm@smt.gob.ar"
+        },
+        {
+            "id": 35,
+            "nombre": "Dirección de Defensa Civil",
+            "slug": "direccion-de-defensa-civil",
+            "autoridad": ".",
+            "email": "dc@smt.gob.ar"
+        },
+        {
+            "id": 104,
+            "nombre": "Patrulla Protección Ciudadana",
+            "slug": "patrulla-proteccion-ciudadana",
+            "autoridad": null,
+            "email": "ppc@smt.gob.ar"
+        }
+    ]
+}

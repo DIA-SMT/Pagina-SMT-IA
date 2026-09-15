@@ -1,0 +1,18 @@
+{
+    "id": 130,
+    "nombre": "Dirección de Control Judicial",
+    "slug": "direccion-de-control-judicial",
+    "autoridad": ".",
+    "foto": null,
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "@",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 24,
+        "nombre": "Fiscalía Adjunta",
+        "slug": "fiscalia-adjunta"
+    },
+    "dependencias": []
+}

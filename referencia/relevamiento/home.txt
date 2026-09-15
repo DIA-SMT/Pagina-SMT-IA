@@ -1,0 +1,125 @@
+﻿## Home / Portada [verificado]
+URL: https://smt.gob.ar/
+Portada institucional: header con menÃº desplegable (Gobierno, TrÃ¡mites y servicios, La ciudad, Noticias, botÃ³n CiDiTuc), hero con slider de imÃ¡genes, grilla de 14 categorÃ­as de trÃ¡mites, fila de banners destacados, footer con contacto, herramientas, telÃ©fonos de urgencia y redes. No tiene feed de noticias propio (Noticias enlaza a subdominio externo).
+
+## MenÃº header â€“ Inicio [verificado]
+URL: https://smt.gob.ar
+Ãtem de menÃº que vuelve a la portada.
+
+## MenÃº header â€“ Gobierno > Estructura de Gobierno MSMT [verificado]
+URL: https://smt.gob.ar/area/intendencia/1
+Ãšnico sub-Ã­tem del desplegable Gobierno (el Ã­tem padre enlaza a la home). Ficha de la Intendencia: autoridad (Dra. Rossana Chahla), direcciÃ³n 9 de Julio 570, mail intendencia@smt.gob.ar, listado de 11 secretarÃ­as dependientes con mail y enlace interno a cada /area/{slug}/{id}, organigrama descargable.
+
+## MenÃº header â€“ TrÃ¡mites y servicios > GuÃ­a de TrÃ¡mites Municipales [verificado]
+URL: https://guiadetramites.smt.gob.ar
+GuÃ­a de trÃ¡mites en subdominio propio: filtros por categorÃ­a/subcategorÃ­a/nota con botÃ³n Aplicar, top 10 de trÃ¡mites mÃ¡s visitados, 16 categorÃ­as temÃ¡ticas.
+
+## MenÃº header â€“ TrÃ¡mites y servicios > Portal de TesorerÃ­a para Proveedores [pendiente de verificaciÃ³n]
+URL: http://tesoreria.smt.gob.ar/
+Enlace del desplegable al portal de proveedores (login proveedores, consulta de retenciones y comprobantes). Ojo: el menÃº usa http:// sin TLS. No visitado directamente.
+
+## MenÃº header â€“ TrÃ¡mites y servicios > Ingresos municipales (DIM) [pendiente de verificaciÃ³n]
+URL: https://www.dimsmt.gob.ar/
+Enlace del desplegable a la DirecciÃ³n de Ingresos Municipales (dominio propio). No visitado.
+
+## MenÃº header â€“ TrÃ¡mites y servicios > Habilitaciones de negocios [verificado]
+URL: https://smt.gob.ar/nota/habilitacion-comercial/5
+Ficha de nota con guÃ­a paso a paso de habilitaciÃ³n comercial: 6 pasos online, formularios FHN 1 y FHN 2, requisitos (DNI, AFIP, Rentas, seguro RC, foto de fachada), habilitaciÃ³n provisoria 60 dÃ­as. Enlaza a munidigital.com/citizenv2, dimsmt.gob.ar, afip.gob.ar y rentastucuman.gob.ar.
+
+## MenÃº header â€“ TrÃ¡mites y servicios > Licitaciones [pendiente de verificaciÃ³n]
+URL: https://licitaciones.smt.gob.ar/
+Enlace del desplegable al portal de licitaciones. No visitado.
+
+## MenÃº header â€“ La ciudad > Historia [verificado]
+URL: https://smt.gob.ar/historia
+PÃ¡gina de contenido histÃ³rico: fundaciones 1565/1685, Independencia 1816, Batalla de TucumÃ¡n, etimologÃ­a, lÃ­nea de tiempo, industria azucarera; imÃ¡genes servidas desde /storage/notas/ (CMS).
+
+## MenÃº header â€“ La ciudad > Circuitos TurÃ­sticos [verificado]
+URL: https://smt.gob.ar/circuitos-turisticos
+PÃ¡gina Ã­ndice con dos opciones: Circuito a Pie y Bus TurÃ­stico, cada una con enlace interno propio (circuitosturisticospie y busturistico); sidebar 'Lo mÃ¡s leÃ­do'.
+
+## MenÃº header â€“ La ciudad > Patrimonio Cultural [pendiente de verificaciÃ³n]
+URL: https://smt.gob.ar/tramite/patrimonio-cultural/13
+Sub-Ã­tem del menÃº que apunta a la categorÃ­a de trÃ¡mites 13 (misma URL que la tarjeta de la grilla de la home). No visitada individualmente.
+
+## MenÃº header â€“ La ciudad > GalerÃ­a de Fotos [verificado]
+URL: https://smt.gob.ar/galeria/imagenes
+GalerÃ­a en grid de miniaturas con enlace a imagen en alta resoluciÃ³n; categorÃ­as seleccionables (Fotos de SMT, Parques y Plazas, Teatro Municipal, Museo Mercedes Sosa, Asistencia PÃºblica); fotos fechadas 2024; sin paginaciÃ³n visible.
+
+## MenÃº header â€“ La ciudad > Lugares de InterÃ©s [verificado]
+URL: https://smt.gob.ar/lugares-de-interes
+GuÃ­a turÃ­stica con 8 lugares destacados (Casa HistÃ³rica, Catedral, Parque 9 de Julio, Cerro San Javier, Plaza Independencia, museos, Casa de Gobierno); botones para compartir en redes; enlaza a /area/direccion-de-turismo/89, mapa.smt.gob.ar y agendaculturalsmt.com.
+
+## MenÃº header â€“ La ciudad > Mapa Interactivo [pendiente de verificaciÃ³n]
+URL: https://mapa.smt.gob.ar/
+Enlace del desplegable al mapa interactivo de la ciudad. No visitado.
+
+## MenÃº header â€“ Noticias [verificado]
+URL: https://comunicacionsmt.gob.ar/
+Ãtem de menÃº de primer nivel que sale a un portal de noticias en dominio aparte: listado de noticias destacadas, 'Lo mÃ¡s visto', newsletter con formulario de suscripciÃ³n, secciones Institucional / TrÃ¡mites y Servicios, redes (incluye LinkedIn y TikTok que la home no lista); aparenta CMS tipo WordPress; telÃ©fono 0381-4516500.
+
+## MenÃº header â€“ Ingresar a CiDiTuc [pendiente de verificaciÃ³n]
+URL: https://ciudaddigital.smt.gob.ar/
+BotÃ³n destacado del header hacia la plataforma Ciudadano Digital (login ciudadano, trÃ¡mites autenticados). No visitado (plataforma con login).
+
+## Home â€“ Hero / slider [verificado]
+URL: https://smt.gob.ar/
+Bloque hero con tÃ­tulo 'San Miguel de TucumÃ¡n â€“ La ciudad que queremos' y slider/galerÃ­a de 7 imÃ¡genes de sitios emblemÃ¡ticos (Campus Educativo Ambiental, Casa HistÃ³rica, Catedral, Puente Peatonal Mate de Luna, Parque 9 de Julio, Fuente de los Leones, Plaza Independencia). Sin CTA aparente por imagen.
+
+## Home â€“ Grilla de categorÃ­as de trÃ¡mites y servicios [verificado]
+URL: https://smt.gob.ar/
+14 tarjetas hacia /tramite/{slug}/{id}: gestion-tributaria-y-comercial/1, medio-ambiente-y-espacios-publicos/2, cultura-arte-y-turismo-local/3, prevencion-y-servicios-de-salud/4, seguridad-ciudadana-y-emergencias/5, educacion-y-formacion/6, transporte-y-movilidad/7, biblioteca-digital/8, transparencia-y-participacion/10, normativa/11, actividades-ciudadanas/12, patrimonio-cultural/13, justicia-municipal/16, catrastro-y-edificacion/18 (sic: slug con typo 'catrastro'). Los ids 9, 14, 15 y 17 no aparecen en la home.
+
+## Home â€“ Banner Concurso FotogrÃ¡fico [pendiente de verificaciÃ³n]
+URL: https://docs.google.com/forms/d/1pAIgRDHjyCWw2xGWlIKSeYmYK_6oLsv_XTee7HF8IWk/viewform
+Banner de la home hacia un Google Form de inscripciÃ³n a concurso fotogrÃ¡fico. No visitado; probablemente campaÃ±a temporal.
+
+## Home â€“ Banner RecolecciÃ³n de residuos [pendiente de verificaciÃ³n]
+URL: https://smtendatos.gob.ar/mapa-interactivo-de-recoleccion-de-residuos-por-turno/
+Banner hacia mapa interactivo de recolecciÃ³n de residuos por turno, alojado en el portal de datos. No visitado.
+
+## Home â€“ Banner Sistema de Registros del Transporte [verificado]
+URL: https://smt.gob.ar/Registros%20_Transporte%20_Individual_Pasajeros
+PÃ¡gina informativa del registro digital del transporte individual de pasajeros (Ordenanzas 5483 y 5484): registros de conductores, licencias, agencias y plataformas; acceso vÃ­a CiDiTuc en https://movilidad.smt.gob.ar; soporte WhatsApp 381 219 5650. La URL contiene espacios codificados (%20) y existe una variante sin espacios /Registros_Transporte_Individual_Pasajeros enlazada desde el buscador.
+
+## Home â€“ Banner Portal Proveedores [verificado]
+URL: https://smt.gob.ar/portalproveedores
+PÃ¡gina informativa de la Plataforma Virtual de Proveedores: consulta de retenciones, descarga de comprobantes; alta de usuario y login en https://tesoreria.smt.gob.ar/#/; contactos tesoreria@smt.gob.ar y ditec@smt.gob.ar.
+
+## Home â€“ Banner Portal de Datos del Municipio [pendiente de verificaciÃ³n]
+URL: https://smtendatos.gob.ar/
+Banner hacia el portal de datos abiertos del municipio. No visitado.
+
+## Home â€“ Banner Turno Asistencia PÃºblica [verificado]
+URL: https://smt.gob.ar/turno-asistencia
+PÃ¡gina informativa de turnos de Asistencia PÃºblica: turno online vÃ­a Portal Asistencia PÃºblica con credenciales de Ciudadano Digital, o presencial en Batalla de Chacabuco 239, lun-vie 7 a 17 h.
+
+## Home â€“ Banner SUBEM (Boleto Educativo Municipal) [verificado]
+URL: https://smt.gob.ar/SUBEM
+PÃ¡gina informativa del programa SUBEM: viajes gratuitos en lÃ­neas urbanas 1-19 para +40.000 estudiantes; inscripciÃ³n en DirecciÃ³n de Respuesta RÃ¡pida (San Lorenzo 1270, 8-18 h); menciona inicio de inscripciÃ³n '9 de febrero de 2026' (fecha ya pasada) y reposiciÃ³n $1.500.
+
+## Home â€“ Banner Multas [pendiente de verificaciÃ³n]
+URL: https://cidituc.smt.gob.ar/?destino=derivador#/multas
+Banner hacia el mÃ³dulo de multas dentro de la plataforma CiDiTuc (SPA con routing por hash). No visitado (requiere plataforma).
+
+## Buscador global [verificado]
+URL: https://smt.gob.ar/search/result?q=licencia
+Ruta GET /search/result?q={tÃ©rmino}. Devuelve resultados agrupados en secciones fijas: 'Notas Generales' (tarjetas con tÃ­tulo e imagen hacia /nota/{slug}/{id} o pÃ¡ginas sueltas), 'TrÃ¡mites & Servicios' (tÃ­tulo + descripciÃ³n) y 'Gobierno'; una secciÃ³n sin coincidencias muestra el texto 'Seccion sin contenido' (sin tilde). Con q=licencia devolviÃ³ 2 notas (/nota/licencia-de-conducir/8 y /Registros_Transporte_Individual_Pasajeros) y 1 trÃ¡mite. Sin paginaciÃ³n aparente.
+
+## Buscador global â€“ prueba q=tramite [verificado]
+URL: https://smt.gob.ar/search/result?q=tramite
+Con q=tramite devuelve ~9 notas generales en tarjetas, secciÃ³n TrÃ¡mites & Servicios y bloque 'Lo mÃ¡s leÃ­do' (10 enlaces). Ejemplos: /gestiononlinecatastro, /tramite/transporte-y-movilidad/7, /tramite/gestion-tributaria-y-comercial/1, /nota/patrimonio-arquitectonico/58. Sin paginaciÃ³n; la cobertura parece limitada a tÃ­tulos/contenido del CMS, no indexa subdominios externos.
+
+## Footer â€“ Contacto y telÃ©fonos de urgencia [verificado]
+URL: https://smt.gob.ar/
+Bloque de contacto: direcciÃ³n 9 de Julio 570 T4000; 'Municipalidad' figura sin nÃºmero de telÃ©fono visible; Asistencia PÃºblica 107. TelÃ©fonos de urgencia como enlaces tel:: 911 PolicÃ­a, 100 Bomberos, 102 Ayuda al NiÃ±o, 103 Defensa Civil, 105 Emergencia Ambiental, 107 Salud.
+
+## Footer â€“ Herramientas [verificado]
+URL: https://smt.gob.ar/
+Bloque de enlaces: Expedientes (https://expediente.smt.gob.ar/index.jsp), GestiÃ³n de Empleados (https://personal.smt.gob.ar/), Catastro y EdificaciÃ³n (https://ciudaddigital.smt.gob.ar/?destino=catastro), Webmail (https://webmail.smt.gob.ar/login.php), Recursos GrÃ¡ficos (Google Drive: https://drive.google.com/drive/folders/1ehHDkPFjrtmZPIBaQ8ZxRO-Z7loaoRFp?usp=drive_link), CIDITUC (https://ciudaddigital.smt.gob.ar/). Mezcla herramientas internas de empleados con accesos ciudadanos; destinos no visitados.
+
+## Footer â€“ Redes sociales [verificado]
+URL: https://smt.gob.ar/
+Ãconos hacia Facebook (https://www.facebook.com/MuniSMTucuman), YouTube (https://www.youtube.com/user/MuniSMTucuman), Instagram (https://instagram.com/munismtucuman) y Twitter (https://twitter.com/MuniSMT). No incluye LinkedIn ni TikTok, que sÃ­ lista el portal de noticias.
+
+NOTAS: Hallazgos y contradicciones: (1) El slug /tramite/catrastro-y-edificacion/18 tiene error tipogrÃ¡fico ('catrastro' por 'catastro'); conviene redirecciÃ³n 301 en el rediseÃ±o. (2) La URL del banner de transporte contiene espacios codificados: /Registros%20_Transporte%20_Individual_Pasajeros; el buscador enlaza a la variante sin espacios /Registros_Transporte_Individual_Pasajeros â€” ambas parecen resolver la misma pÃ¡gina; normalizar y redirigir. (3) La pÃ¡gina SUBEM menciona inscripciÃ³n que 'comienza el 9 de febrero de 2026', fecha ya pasada al 14-09-2026: contenido probablemente desactualizado. (4) En la grilla de categorÃ­as de la home faltan los ids 9, 14, 15 y 17 de /tramite/: verificar en el admin Voyager si estÃ¡n despublicados o eliminados. (5) La extracciÃ³n de la home no detectÃ³ el form del buscador (posible input oculto tras Ã­cono o cargado por JS), pero la ruta GET /search/result?q= funciona; verificar en las plantillas Blade dÃ³nde vive el form. (6) Los resultados del buscador se agrupan en secciones fijas (Notas Generales, TrÃ¡mites & Servicios, Gobierno) y una secciÃ³n vacÃ­a muestra el literal 'Seccion sin contenido' (sin tilde); no hay paginaciÃ³n; no indexa subdominios (guiadetramites, comunicacionsmt). (7) Los Ã­tems padre de menÃº Gobierno / TrÃ¡mites y servicios / La ciudad tienen href a la home (https://smt.gob.ar): son solo contenedores de dropdown. (8) El Ã­tem de menÃº 'Portal de TesorerÃ­a para Proveedores' usa http:// sin TLS (http://tesoreria.smt.gob.ar/) mientras el banner /portalproveedores enlaza a https://tesoreria.smt.gob.ar/#/. (9) El footer de smt.gob.ar muestra 'Municipalidad' sin nÃºmero telefÃ³nico visible; el portal de noticias comunicacionsmt.gob.ar publica 0381-4516500. (10) Redes sociales inconsistentes entre home (Facebook, YouTube, Instagram, Twitter) y comunicacionsmt (agrega LinkedIn y TikTok, usa X). (11) Las noticias no viven en smt.gob.ar sino en comunicacionsmt.gob.ar (CMS aparte, aparenta WordPress, con newsletter propio): decidir si el rediseÃ±o integra un feed. (12) La ficha de habilitaciÃ³n comercial deriva a un proveedor SaaS externo (munidigital.com/citizenv2), dependencia a documentar. (13) El footer 'Herramientas' mezcla sistemas internos de empleados (expedientes JSP, personal, webmail) con accesos ciudadanos y un Google Drive pÃºblico de recursos grÃ¡ficos. Descripciones de pÃ¡ginas obtenidas vÃ­a WebFetch (resumen automatizado); los textos exactos de requisitos deben validarse contra el HTML original antes de migrar contenido.

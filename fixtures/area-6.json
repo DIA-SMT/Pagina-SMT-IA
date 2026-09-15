@@ -1,0 +1,33 @@
+{
+    "id": 6,
+    "nombre": "Fiscalía Municipal",
+    "slug": "fiscalia-municipal",
+    "autoridad": "Dr. Conrado Mosqueira",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/Lt7uAREJcrdajbH1A3ED.webp",
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "fiscalia@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": "https://smt.gob.ar/storage/administraciones/September2026/1K4u2kszbpkm8BXrjFkG.pdf",
+    "padre": {
+        "id": 1,
+        "nombre": "Intendencia",
+        "slug": "intendencia"
+    },
+    "dependencias": [
+        {
+            "id": 65,
+            "nombre": "Dirección de Despacho de Fiscalía Municipal",
+            "slug": "direccion-de-despacho-de-fiscalia-municipal",
+            "autoridad": "Dra. María Josefina Van Gelderen",
+            "email": "ddfm@smt.gob.ar"
+        },
+        {
+            "id": 24,
+            "nombre": "Fiscalía Adjunta",
+            "slug": "fiscalia-adjunta",
+            "autoridad": "Dr. Sergio Gastón Emilio Cipriani",
+            "email": "fiscaliaadjunta@smt.gob.ar"
+        }
+    ]
+}

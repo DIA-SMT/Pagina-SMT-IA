@@ -1,0 +1,89 @@
+{
+    "id": 11,
+    "titulo": "Normativa",
+    "texto": "Recopilacion de Normativas y disposiciones legales.",
+    "icono": "fa-solid fa-flag",
+    "slug": "normativa",
+    "items": [
+        {
+            "id": 30,
+            "titulo": "Digesto Municipal",
+            "texto": "Recopila las normativas y disposiciones legales vigentes en el ámbito municipal.",
+            "icono": "fa-solid fa-book",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 31,
+            "titulo": "Patrimonio Urbano",
+            "texto": "Sitios históricos, arquitectónicos y culturales.",
+            "icono": "fa-solid fa-city",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 32,
+            "titulo": "Vía Pública",
+            "texto": "Regulación del uso de la vía pública en San Miguel de Tucumán mediante Ordenanza y decretos.",
+            "icono": "fa-solid fa-map-location-dot",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 33,
+            "titulo": "Código de Planeamiento Urbano",
+            "texto": "Conjunto de normativas que regulan el desarrollo urbanístico de la ciudad.",
+            "icono": "fa-solid fa-terminal",
+            "enlace": "https://drive.google.com/file/d/14-sCUa_avrTzot6FroCFAgtmMlqrXQg4/view?usp=sharing",
+            "orden": null
+        },
+        {
+            "id": 83,
+            "titulo": "CiDiTuc",
+            "texto": "Normativa para la reglamentación de Ciudadano Digital de la Ciudad de San Miguel de Tucumán",
+            "icono": "fa-solid fa-person",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 84,
+            "titulo": "Digesto Normativo 1ª Parte",
+            "texto": "Recopila normativas sobre planificación urbana y construcción, brindando un marco accesible para el uso del suelo.",
+            "icono": "fa-solid fa-file",
+            "enlace": "https://drive.google.com/file/d/1rYMWOehcfF69s9nmM1MUE5C1YdavChiL/view?usp=sharing",
+            "orden": null
+        },
+        {
+            "id": 85,
+            "titulo": "Digesto Normativo 2ª Parte",
+            "texto": "Recopila normativas sobre planificación urbana y construcción, brindando un marco accesible para el uso del suelo.",
+            "icono": "fa-solid fa-file",
+            "enlace": "https://drive.google.com/file/d/1aVWRerGyw6wke4JaIz5r4g-q-5AqOMBW/view?usp=sharing",
+            "orden": null
+        },
+        {
+            "id": 86,
+            "titulo": "Planilla de Uso",
+            "texto": "Planilla de disposiciones particulares sobre usos del suelo para cada distrito",
+            "icono": "fa-solid fa-table",
+            "enlace": "https://drive.google.com/file/d/1Z1nag9eNzs2mUX3JUeSywT79EZSpDqrT/view?usp=sharing",
+            "orden": null
+        },
+        {
+            "id": 87,
+            "titulo": "Planilla de Edificación",
+            "texto": "Documento que detalla los requisitos y procedimientos necesarios para llevar a cabo proyectos de construcción.",
+            "icono": "fa-solid fa-table",
+            "enlace": "https://drive.google.com/file/d/1pfRRAg5yxLGhKhtGcQps8EnhjlQuWACE/view?usp=sharing",
+            "orden": null
+        },
+        {
+            "id": 133,
+            "titulo": "Reglamento SMT CORRE",
+            "texto": "Consultá el reglamento oficial de SMT Corre 2026 con las condiciones, categorías, distancias y pautas generales del evento.",
+            "icono": "fa-solid fa-file",
+            "enlace": "https://drive.google.com/file/d/1PkzEx3YJ17fBZ8cBeW3Cd2rqW5PaNl6P/view?usp=sharing",
+            "orden": null
+        }
+    ]
+}

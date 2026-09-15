@@ -1,0 +1,69 @@
+﻿## Ciudad Digital (Ciudadano Digital) [verificado]
+URL: https://ciudaddigital.smt.gob.ar/
+Responde HTTP 200. Devuelve HTML mÃ­nimo: es una SPA que carga su contenido por JavaScript (WebFetch solo capturÃ³ el tÃ­tulo 'Ciudad Digital'). Probable portal de identidad/Ciudadano Digital del municipio; no se pudo confirmar el formulario de login porque el render depende de JS. No redirige. Servidor nginx con X-Powered-By: PleskLin.
+
+## CiDiTuc - derivador / Multas [verificado]
+URL: https://cidituc.smt.gob.ar/?destino=derivador#/multas
+Responde HTTP 200. SPA con enrutado por hash (#/multas) y parametro de query ?destino=derivador (derivador de tramites, seccion multas). HTML mÃ­nimo, contenido cargado por JS (solo tÃ­tulo 'CiDiTuc'). Probable plataforma Ciudadano Digital de TucumÃ¡n; login no confirmado por render JS. No redirige. nginx + PleskLin.
+
+## GuÃ­a de TrÃ¡mites [verificado]
+URL: https://guiadetramites.smt.gob.ar
+Responde HTTP 200. Directorio buscable de tramites municipales: filtros por categoria/subcategoria (16 categorias), listado de 'mas visitados' (10 tramites), tarjetas de categoria y banners. Navegacion por parametros (?cat=, ?sub=, #note-). No requiere login para navegar. No redirige. nginx + PHP/8.2.33 + PleskLin.
+
+## Portal de TesorerÃ­a [verificado]
+URL: http://tesoreria.smt.gob.ar/
+El HTTP devuelve 302 Found y redirige a https://tesoreria.smt.gob.ar/ (Apache/2.4.58 Win64 PHP/8.2.12). El destino HTTPS responde 200 con tÃ­tulo 'Portal de Tesoreria' (contenido mÃ­nimo). Es el portal de tesoreria / plataforma de proveedores; el landing de proveedores indica acceso con email y contraseÃ±a (login).
+
+## DIM - DirecciÃ³n de Ingresos Municipales [verificado]
+URL: https://www.dimsmt.gob.ar/
+Responde HTTP 200. Portal 'DIM - Direccion de Ingresos Municipales' (tributos/ingresos municipales). Stack distinto al resto del ecosistema: Microsoft-IIS/10.0 con X-Powered-By: ASP.NET. HTML mÃ­nimo por WebFetch. No redirige.
+
+## Licitaciones [verificado]
+URL: https://licitaciones.smt.gob.ar/
+Responde HTTP 200. TÃ­tulo 'Licitaciones'; portal de licitaciones/contrataciones publicas. HTML mÃ­nimo (posible SPA o listado renderizado por JS: no se observaron listados ni descargas en el HTML servido). No redirige. nginx + PleskLin.
+
+## Expediente Digital - Login [verificado]
+URL: https://expediente.smt.gob.ar/index.jsp
+Responde HTTP 200. PÃ¡gina de login 'Expedientes - Inicio de Sesion': formulario con Usuario y ContraseÃ±a, boton 'Ingresar', logo del municipio, footer 2026. Pide login. La URL usa extension .jsp (sugiere Java/JSP) pero el servidor reporta Apache/2.4.58 con PHP/8.2.12 (charset iso-8859-1): tecnologia aparente contradictoria.
+
+## Portal de Personal (RRHH) [verificado]
+URL: https://personal.smt.gob.ar/
+Responde HTTP 200. 'Portal de Personal' (recursos humanos / legajos de empleados municipales). HTML mÃ­nimo por WebFetch; probable login requerido, no confirmado por render. No redirige. Apache/2.4.58 Win64 PHP/8.2.12.
+
+## Webmail institucional (Horde) [verificado]
+URL: https://webmail.smt.gob.ar/login.php
+Responde HTTP 200. Login de Horde Webmail: campos usuario/contraseÃ±a, aviso Caps Lock, selector de modo (Automatic/Basic/Dynamic/Mobile) e idioma (50+), footer 'Powered by Horde'. Pide login. nginx + PHP/7.4.33.
+
+## Mapa SMT [verificado]
+URL: https://mapa.smt.gob.ar/
+Responde HTTP 200. TÃ­tulo 'Mapa SMT'; SPA de mapa cuyo contenido se carga por JS (no visible en el HTML servido, no se pudo identificar la libreria de mapas). Sin login aparente. No redirige. nginx + PleskLin.
+
+## SMT en Datos - Portal de Datos (home) [verificado]
+URL: https://smtendatos.gob.ar/
+Responde HTTP 200. Portal de Datos de la ciudad sobre WordPress (/wp-content/, PHP/8.2.33, Server 'hcdn'): mapas interactivos, dashboards de metricas municipales, noticias con datos, datasets descargables y una seccion Intranet (no accesible desde el home). Contenido publico sin login. No redirige.
+
+## GestiÃ³n de Turnos - Asistencia PÃºblica (nota) [verificado]
+URL: https://smt.gob.ar/turno-asistencia
+Responde HTTP 200. Nota informativa del portal principal sobre gestion de turnos de Asistencia Publica. No tiene formulario propio: deriva al portal externo asistenciapublica.smt.gob.ar (requiere cuenta Ciudadano Digital) o a atencion presencial (Batalla de Chacabuco 239). Breadcrumb Inicio > Notas. nginx + PHP/7.4.33 + PleskLin (portal Laravel/Voyager).
+
+## SUBEM - Boleto Educativo Municipal (nota) [verificado]
+URL: https://smt.gob.ar/SUBEM
+Responde HTTP 200. Nota informativa del Boleto Educativo Municipal (SUBEM 2026): beneficio, lineas, cronograma y costos de reposicion. Sin login, sin formularios ni descargas. La ruta es /SUBEM (en mayusculas, no bajo /nota/{slug}/{id}). Portal Laravel/Voyager.
+
+## Plataforma Virtual de Proveedores (nota) [verificado]
+URL: https://smt.gob.ar/portalproveedores
+Responde HTTP 200. Nota/landing de la Plataforma Virtual de Proveedores: explica el registro (formulario descargable, certificacion bancaria/notarial de firma, envio por expediente o a tesoreria@smt.gob.ar) y funciones (consulta de retenciones, descarga/impresion de documentos). El acceso real ocurre en tesoreria.smt.gob.ar (login email+password). Portal Laravel/Voyager.
+
+## Registros de Transporte Individual de Pasajeros (nota) [verificado]
+URL: https://smt.gob.ar/Registros%20_Transporte%20_Individual_Pasajeros
+Responde HTTP 200. Nota informativa sobre el registro digital de transporte individual (taxis, agencias, plataformas, motos): categorias y datos requeridos. Los formularios reales estan en movilidad.smt.gob.ar y requieren login CiDiTuc; soporte por WhatsApp. Portal Laravel/Voyager. URL con errata: contiene espacios codificados seguidos de guion bajo ('%20_' dos veces), slug malformado que igualmente resuelve.
+
+## Nota: HabilitaciÃ³n Comercial (ficha individual) [verificado]
+URL: https://smt.gob.ar/nota/habilitacion-comercial/5
+Responde HTTP 200. Ficha individual (patron /nota/{slug}/{id}) de Habilitacion Comercial: pasos, formularios (FHN1 Uso Conforme, FHN2 Solicitud y Empadronamiento), requisitos documentales, autorizacion provisoria de 60 dias, seguimiento de estado. El tramite se inicia en munidigital.com (portal externo). Enlaces a AFIP, Rentas Tucuman y DIM. Portal Laravel/Voyager (Blade). Sin login para ver la ficha.
+
+## Mapa interactivo de recolecciÃ³n de residuos por turno [verificado]
+URL: https://smtendatos.gob.ar/mapa-interactivo-de-recoleccion-de-residuos-por-turno/
+Responde HTTP 200. PÃ¡gina del Portal de Datos (WordPress) con mapa interactivo de recoleccion de RSU por turno (manana/tarde/noche, zonas por color). Metadatos: fuente Secretaria de Ambiente, gestor Enzo Bono. El codigo del mapa embebido no aparece en el HTML servido (carga por JS/embed, servicio no confirmado). Sin login. No redirige.
+
+NOTAS: Contradicciones, erratas y comportamientos raros detectados: 1) https://smt.gob.ar/Registros%20_Transporte%20_Individual_Pasajeros tiene un slug malformado: incluye espacios codificados (%20) seguidos de guion bajo ('%20_' aparece dos veces), mezcla de espacios y guiones bajos. La URL igual resuelve (200) pero deberia normalizarse y dejar una redireccion. 2) expediente.smt.gob.ar/index.jsp declara extension .jsp (Java/JSP) pero el servidor responde Apache/2.4.58 con PHP/8.2.12: la tecnologia aparente es contradictoria (probable artefacto legado o migracion); verificar en servidor. 3) La ruta /SUBEM esta en mayusculas y fuera del patron /nota/{slug}/{id} habitual del CMS; conviene normalizar el slug. 4) Ecosistema heterogeneo de servidores: el portal principal smt.gob.ar y varios subdominios (ciudaddigital, cidituc, mapa, licitaciones) corren nginx+Plesk (portal principal en PHP 7.4.33, guiadetramites en PHP 8.2.33); tesoreria, personal y expediente corren Apache 2.4.58 sobre Windows con PHP 8.2.12; dimsmt.gob.ar corre Microsoft-IIS/10.0 con ASP.NET; webmail usa Horde sobre PHP 7.4.33; smtendatos usa WordPress (PHP 8.2.33, Server 'hcdn'). 5) Dominios propios fuera de .smt.gob.ar: www.dimsmt.gob.ar y smtendatos.gob.ar. 6) http://tesoreria.smt.gob.ar/ hace 302 a https (correcto). 7) Limitacion de la verificacion: ciudaddigital, cidituc, mapa y licitaciones son SPAs que renderizan por JavaScript; WebFetch solo obtuvo el <title>, por lo que la presencia/ausencia de login y el detalle funcional no pudieron confirmarse por render y quedan sujetos a verificacion en servidor o con navegador. Todas respondieron HTTP 200 (o 302->200 en tesoreria), asi que se registran como 'verificado' por respuesta HTTP, pero con la salvedad anotada. 8) No se detectaron paginas rotas: ninguna devolvio 4xx/5xx.

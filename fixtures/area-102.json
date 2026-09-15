@@ -1,0 +1,18 @@
+{
+    "id": 102,
+    "nombre": "Contaduría General",
+    "slug": "contaduria-general",
+    "autoridad": "C.P.N. Marcelo Edmundo Albaca Petersen",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/AP5P0fXC5AUWGeZLCmb2.jpg",
+    "domicilio": "9 de Julio 598  - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "contaduria@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 15,
+        "nombre": "Subsecretaría de Economía y Hacienda",
+        "slug": "subsecretaria-de-economia-y-hacienda"
+    },
+    "dependencias": []
+}

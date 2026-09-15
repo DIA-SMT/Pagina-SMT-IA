@@ -1,0 +1,18 @@
+{
+    "id": 74,
+    "nombre": "Dirección de Despacho de Ingresos Municipales",
+    "slug": "direccion-de-despacho-de-ingresos-municipales",
+    "autoridad": "Dr. Gonzalo Álvaro De León",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/O3xMEt23UIxa7z8rR7yN.jpg",
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "ddsim@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 8,
+        "nombre": "Secretaría de Ingresos Municipales",
+        "slug": "secretaria-de-ingresos-municipales"
+    },
+    "dependencias": []
+}

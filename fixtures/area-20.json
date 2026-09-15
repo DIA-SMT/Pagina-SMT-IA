@@ -1,0 +1,82 @@
+{
+    "id": 20,
+    "nombre": "Subsecretaría de Desarrollo Humano",
+    "slug": "subsecretaria-de-desarrollo-humano",
+    "autoridad": "Dra. Graciela Alejandra Trejo",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/eguW9q27wP4Vq16jrTOD.jpg",
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "subsdesarrolloh@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 2,
+        "nombre": "Secretaría General",
+        "slug": "secretaria-general"
+    },
+    "dependencias": [
+        {
+            "id": 43,
+            "nombre": "Dirección de Salud",
+            "slug": "direccion-de-salud",
+            "autoridad": "Dr. Alejandro Roque Bonari",
+            "email": "salud@smt.gob.ar"
+        },
+        {
+            "id": 44,
+            "nombre": "Dirección de Educación",
+            "slug": "direccion-de-educacion",
+            "autoridad": "Lic. Isabel Cristina Amate Pérez",
+            "email": "educacion@smt.gob.ar"
+        },
+        {
+            "id": 45,
+            "nombre": "Dirección de Niñez y Juventud",
+            "slug": "direccion-de-ninez-y-juventud",
+            "autoridad": "Dra. Vanesa Raquel Castro",
+            "email": "direccionnyj@smt.gob.ar"
+        },
+        {
+            "id": 46,
+            "nombre": "Dirección de Adulto Mayor",
+            "slug": "direccion-de-adulto-mayor",
+            "autoridad": "Dr. Luis Emiliano Ramírez",
+            "email": "adultos@smt.gob.ar"
+        },
+        {
+            "id": 47,
+            "nombre": "Dirección de Inclusión, Género y Diversidad",
+            "slug": "direccion-de-inclusion-genero-y-diversidad",
+            "autoridad": "Sra. Ana Carolina Peralta",
+            "email": "inclusion@smt.gob.ar"
+        },
+        {
+            "id": 48,
+            "nombre": "Dirección de Población Animal",
+            "slug": "direccion-de-poblacion-animal",
+            "autoridad": "Sra. María Mercedes Dabul",
+            "email": "poblacionanimal@smt.gob.ar"
+        },
+        {
+            "id": 49,
+            "nombre": "Dirección de Asistencia Pública",
+            "slug": "direccion-de-asistencia-publica",
+            "autoridad": "Dra. Karina Mirta Faccioli",
+            "email": "asistenciapublica@smt.gob.ar"
+        },
+        {
+            "id": 113,
+            "nombre": "Dirección Centro de Tartamudez Municipal",
+            "slug": "direccion-centro-de-tartamudez-municipal",
+            "autoridad": "Lic. Lina M. Almazán",
+            "email": "centrodetartamudez@smt.gob.ar"
+        },
+        {
+            "id": 114,
+            "nombre": "Dirección Abordaje Integral del Espectro Autista - Casa Azul",
+            "slug": "direccion-abordaje-integral-del-espectro-autista-casa-azul",
+            "autoridad": "Lic. Laura Judit Trejo",
+            "email": "saludtea@smt.gob.ar"
+        }
+    ]
+}

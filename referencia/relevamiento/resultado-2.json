@@ -1,0 +1,264 @@
+﻿{
+    "type":  "result",
+    "key":  "v2:9d49df6d5294c9756c1d316ad8c7ea0175bc1a43a8f1c97bf8dd6b004cf8a44d",
+    "agentId":  "a31f9513c135b38a6",
+    "result":  {
+                   "rows":  [
+                                {
+                                    "seccion":  "Estructura de Gobierno MSMT / Intendencia (raÃ­z del Ã¡rbol de Ã¡reas)",
+                                    "url":  "https://smt.gob.ar/area/intendencia/1",
+                                    "comportamiento":  "Ficha raÃ­z de la secciÃ³n Gobierno (Ãºnico destino del menÃº desplegable \u0027Gobierno\u0027). Muestra autoridad (Dra. Rossana Chahla) con foto, domicilio (9 de Julio 570, C.P. 4000), email intendencia@smt.gob.ar, campo TelÃ©fono vacÃ­o, sin biografÃ­a ni texto descriptivo. Lista ~14 dependencias directas como tarjetas clickeables (nombre + email + enlace /area/slug/id): 9 secretarÃ­as, FiscalÃ­a Municipal, Sec. de Ordenamiento y Convivencia, Dir. Gral. de Intendencia y Dir. de Ceremonial. Ofrece descarga de Organigrama en PDF. Breadcrumb Inicio \u003e Gobierno \u003e Intendencia; sin navegaciÃ³n lateral entre Ã¡reas.",
+                                    "origen_datos":  "CMS Voyager (tabla de administraciones; fotos y PDFs en /storage/administraciones/)",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade como pÃ¡gina Ã­ndice del organigrama; agregar telÃ©fono/horarios y bio de la intendenta como campos opcionales del CMS",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Ficha de secretarÃ­a (plantilla nivel 1) â€” ej. SecretarÃ­a General",
+                                    "url":  "https://smt.gob.ar/area/secretaria-general/2",
+                                    "comportamiento":  "Plantilla estÃ¡ndar de Ã¡rea nivel 1: autoridad (Dr. Rodrigo GÃ³mez Tortosa, Secretario General) con foto desde /storage/administraciones/..., domicilio, email sgeneral@smt.gob.ar, telÃ©fono no cargado. Lista 6 dependencias hijas como tarjetas con email y enlace /area/ (Despacho, Subsec. Prensa, Subsec. GestiÃ³n EstratÃ©gica, Subsec. Desarrollo Humano, Subsec. Cultura, Dir. PromociÃ³n de Eventos). Organigrama propio descargable: /storage/administraciones/September2026/4neRrxagR81YkNv46ry2.pdf",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade (una sola plantilla de Ã¡rea recursiva para los 3 niveles); mantener carga de organigrama PDF por Ã¡rea en Voyager",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "SecretarÃ­a de Gobierno",
+                                    "url":  "https://smt.gob.ar/area/secretaria-de-gobierno/3",
+                                    "comportamiento":  "Misma plantilla de Ã¡rea: Mg. Camila Giuliano (Secretaria), foto, 9 de Julio 570, sgobierno@smt.gob.ar. 4 hijas: Despacho de Gobierno /52, Subsec. de Gobierno /16, Subsec. de Seguridad Ciudadana /106, Tribunal Municipal de Faltas /55. Organigrama: /storage/administraciones/September2026/uEe5s0UVQ3KY2QX3sugD.pdf",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "SecretarÃ­a de EconomÃ­a y Hacienda",
+                                    "url":  "https://smt.gob.ar/area/secretaria-de-economia-y-hacienda/4",
+                                    "comportamiento":  "Plantilla de Ã¡rea: Cr. SebastiÃ¡n Ruiz Toscano (Secretario), foto, seh@smt.gob.ar. 2 hijas: Despacho /58 y SubsecretarÃ­a /15. Organigrama: /storage/administraciones/September2026/Wuc5KVUf7TwJ1qCCvIUf.pdf. Enlaza a /tramite/gestion-tributaria-y-comercial/1",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "SecretarÃ­a de Obras PÃºblicas",
+                                    "url":  "https://smt.gob.ar/area/secretaria-de-obras-publicas/5",
+                                    "comportamiento":  "Plantilla de Ã¡rea: Ing. Claudio Fernando Bravo (Secretario), obraspublicas@smt.gob.ar. 3 hijas: Despacho /59, Subsec. de Obras PÃºblicas /23, Subsec. de PlanificaciÃ³n Urbana /26. Organigrama: /storage/administraciones/September2026/QhEatoUB4zpUjsU9gWOD.pdf",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "FiscalÃ­a Municipal",
+                                    "url":  "https://smt.gob.ar/area/fiscalia-municipal/6",
+                                    "comportamiento":  "Plantilla de Ã¡rea: Dr. Conrado Mosqueira (Fiscal Municipal) con foto, fiscalia@smt.gob.ar. 2 hijas: Despacho de FiscalÃ­a /65 y FiscalÃ­a Adjunta /24. Organigrama: /storage/administraciones/September2026/1K4u2kszbpkm8BXrjFkG.pdf",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "SecretarÃ­a de Servicios PÃºblicos",
+                                    "url":  "https://smt.gob.ar/area/secretaria-de-servicios-publicos/7",
+                                    "comportamiento":  "Plantilla de Ã¡rea: Sr. Luciano Chincarini (Secretario) con foto, sservicios@smt.gob.ar. 2 hijas: Despacho /105 y SubsecretarÃ­a /27. Organigrama: /storage/administraciones/September2026/ZJHAy481bA9vtiggGWVH.pdf. Sidebar/bloques con enlaces a Programa SUBEM, SUBE, Recorridos de Colectivos, Mapa Interactivo",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "SecretarÃ­a de Ingresos Municipales",
+                                    "url":  "https://smt.gob.ar/area/secretaria-de-ingresos-municipales/8",
+                                    "comportamiento":  "Plantilla de Ã¡rea: Cr. MarÃ­a Fernanda Herrera (Secretaria), sim@smt.gob.ar. 3 hijas: Despacho /74, Subsec. de Ingresos Municipales /25, Subsec. de PlanificaciÃ³n Financiera /128 (esta Ãºltima sin email cargado). Organigrama: /storage/administraciones/September2026/SXGWvQLOT63pnDZR5aJY.pdf",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "SecretarÃ­a de InnovaciÃ³n TecnolÃ³gica",
+                                    "url":  "https://smt.gob.ar/area/secretaria-de-innovacion-tecnologica/9",
+                                    "comportamiento":  "Plantilla de Ã¡rea: Ing. Omar Abraham (Secretario), sitec@smt.gob.ar. 3 hijas: Despacho /51, Dir. de InnovaciÃ³n TecnolÃ³gica /28, Dir. de Inteligencia Artificial /112. Organigrama: /storage/administraciones/August2026/hNb7hkEtHodZfjGYfOMN.pdf",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "SecretarÃ­a de Ambiente y Desarrollo Sustentable",
+                                    "url":  "https://smt.gob.ar/area/secretaria-de-ambiente-y-desarrollo-sustentable/10",
+                                    "comportamiento":  "Plantilla de Ã¡rea: Ing. Julieta Migliavacca (Secretaria), sambiente@smt.gob.ar. 4 hijas: Despacho /79, Dir. de Salud Ambiental /80, Dir. de Ambiente /81, Dir. de BromatologÃ­a /82. Organigrama: /storage/administraciones/September2026/WcbimzZedBOyvwmFmkr5.pdf",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "SecretarÃ­a de AtenciÃ³n al Ciudadano",
+                                    "url":  "https://smt.gob.ar/area/secretaria-de-atencion-al-ciudadano/11",
+                                    "comportamiento":  "Plantilla de Ã¡rea: Dra. MarÃ­a SofÃ­a Prado Budeguer (Secretaria) con foto, satencionciudadana@smt.gob.ar. 3 hijas: Despacho /91, Dir. de Programas Sociales /92, Dir. de Familia /93. Organigrama: /storage/administraciones/August2026/eNbiwCMBWMiMECMfc9Ic.pdf",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "SecretarÃ­a de Movilidad Urbana",
+                                    "url":  "https://smt.gob.ar/area/secretaria-de-movilidad-urbana/12",
+                                    "comportamiento":  "Plantilla de Ã¡rea con sede propia (Av. Avellaneda 663): Sr. Carlos Roberto Arnedo (Secretario), smovilidad@smt.gob.ar. 5 hijas: Despacho /83, Subsec. de Movilidad Urbana /118 (sin email), Subsec. de Seguridad Vial y Licencias de Conducir /122, Dir. Centro de Monitoreo CeMMU /119, Dir. de Transporte /127. Organigrama: /storage/administraciones/September2026/p7dAw2rZew1qWB3kKKvm.pdf",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade; conservar campo de domicilio por Ã¡rea (varias sedes distintas de 9 de Julio 570)",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "SecretarÃ­a de Ordenamiento y Convivencia",
+                                    "url":  "https://smt.gob.ar/area/secretaria-de-ordenamiento-y-convivencia/109",
+                                    "comportamiento":  "Plantilla de Ã¡rea con sede propia (9 de Julio 229): Dr. Javier Eduardo GonzÃ¡lez (Secretario), email cargado como \u0027ordenamientoyconvivnecia@smt.gob.ar\u0027 (typo aparente). 4 hijas: Despacho /120, Dir. de la VÃ­a PÃºblica /99, Dir. de SeÃ±alizaciÃ³n y CartelerÃ­a /117 (sin email), FiscalÃ­a Ambiental Municipal /121. Organigrama: /storage/administraciones/September2026/D8vw3OmOI6o8BSe1JNe5.pdf",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade; corregir email con errata en el CMS antes de migrar",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "SubsecretarÃ­a de Cultura (plantilla nivel 2 con hijas)",
+                                    "url":  "https://smt.gob.ar/area/subsecretaria-de-cultura/13",
+                                    "comportamiento":  "Misma plantilla en nivel intermedio: Ana LÃ­a Carbonell (Subsecretaria), sin foto cargada, subscultura@smt.gob.ar. 3 hijas: Dir. GestiÃ³n Cultural /86, Dir. Gral. de Museos y Teatros /88, Dir. de Turismo /89. Sin organigrama PDF propio. Breadcrumb Inicio \u003e Gobierno \u003e SubsecretarÃ­a de Cultura (no enlaza al padre SecretarÃ­a General)",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade; en el rediseÃ±o agregar enlace explÃ­cito al Ã¡rea padre en el breadcrumb",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "DirecciÃ³n de Turismo (plantilla nivel 3, hoja)",
+                                    "url":  "https://smt.gob.ar/area/direccion-de-turismo/89",
+                                    "comportamiento":  "Plantilla de Ã¡rea hoja: Sr. Pablo Gerstenfeld (Director) con foto, sede propia (Congreso y CrisÃ³stomo Ãlvarez), turismo@smt.gob.ar. Sin hijas: muestra el texto literal \u0027No hay estructura para esta seccion..\u0027. Sin descargas. Enlaza a trÃ¡mites populares y a /nota/ (HabilitaciÃ³n Comercial)",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade; ocultar el bloque de estructura cuando el Ã¡rea no tiene hijas en lugar de mostrar texto con errata",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "DirecciÃ³n General de Intendencia (hoja dependiente directa de Intendencia)",
+                                    "url":  "https://smt.gob.ar/area/direccion-general-de-intendencia/110",
+                                    "comportamiento":  "Plantilla de Ã¡rea hoja: Sra. Mirta Olivera (Directora), dirgeneral@smt.gob.ar, 9 de Julio 570. Sin hijas (\u0027No hay estructura para esta seccion\u0027) y sin organigrama PDF",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "DirecciÃ³n de Ceremonial (hoja dependiente directa de Intendencia)",
+                                    "url":  "https://smt.gob.ar/area/direccion-de-ceremonial/111",
+                                    "comportamiento":  "Plantilla de Ã¡rea hoja: Lic. BelÃ©n Bonilla (Directora), ceremonial@smt.gob.ar, 9 de Julio 570. Sin hijas ni descargas",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Tribunal Municipal de Faltas (hallazgo singular: organismo jurisdiccional dentro del Ã¡rbol de Ã¡reas)",
+                                    "url":  "https://smt.gob.ar/area/tribunal-municipal-de-faltas/55",
+                                    "comportamiento":  "Usa la misma plantilla genÃ©rica de Ã¡rea: Dr. MatÃ­as TomÃ¡s Balardini con foto, sede Jujuy 259, tmfdireccion@smt.gob.ar. Sin hijas, sin descripciÃ³n de competencias, sin horarios de atenciÃ³n ni vÃ­nculo a trÃ¡mites de faltas/multas pese a ser organismo de alto trÃ¡fico ciudadano",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade y evaluar ficha enriquecida (competencias, horarios, cÃ³mo pagar/apelar multas) enlazada desde trÃ¡mites",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Organigrama descargable (PDF por Ã¡rea, subido vÃ­a Voyager)",
+                                    "url":  "https://smt.gob.ar/storage/administraciones/August2026/CzqK1MgeJjUn6ggHv8ys.pdf",
+                                    "comportamiento":  "Descarga directa del organigrama de Intendencia (application/pdf, ~36,6 KB, responde correctamente). Cada secretarÃ­a tiene su propio PDF con nombre hash bajo /storage/administraciones/{Mes}{AÃ±o}/. No existe organigrama HTML navegable ni un PDF consolidado Ãºnico enlazado como tal",
+                                    "origen_datos":  "Archivo estÃ¡tico subido por CMS Voyager (media manager, carpeta administraciones)",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Verificar en servidor el inventario completo de PDFs; en el rediseÃ±o generar organigrama HTML desde el Ã¡rbol de Ã¡reas y mantener el PDF como descarga secundaria",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "MenÃº \u0027Gobierno\u0027 del portal (navegaciÃ³n de entrada a la secciÃ³n)",
+                                    "url":  "https://smt.gob.ar/",
+                                    "comportamiento":  "El menÃº desplegable \u0027Gobierno\u0027 de la home tiene un Ãºnico Ã­tem: \u0027Estructura de Gobierno MSMT\u0027 que apunta a /area/intendencia/1. No hay enlaces a Concejo Deliberante, Tribunal de Cuentas, BoletÃ­n Oficial ni listado de autoridades en el menÃº ni en el footer (el footer solo trae direcciÃ³n, telÃ©fonos de urgencia, herramientas internas de expedientes/empleados/catastro y redes sociales)",
+                                    "origen_datos":  "CMS Voyager (menÃº Voyager)",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade; en el rediseÃ±o ampliar el menÃº Gobierno (autoridades, organigrama, y decidir si se enlaza al Concejo Deliberante como enlace externo)",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Buscador ante contenido institucional inexistente (bÃºsqueda \u0027concejo\u0027)",
+                                    "url":  "https://smt.gob.ar/search/result?q=concejo",
+                                    "comportamiento":  "El buscador responde pero devuelve una secciÃ³n vacÃ­a con el texto \u0027Seccion sin contenido\u0027: no existe en el portal ninguna pÃ¡gina del Concejo Deliberante, boletÃ­n oficial ni listado unificado de autoridades. La Ãºnica vÃ­a institucional es el Ã¡rbol /area/",
+                                    "origen_datos":  "CMS Voyager (bÃºsqueda sobre contenido del CMS)",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade con estado vacÃ­o claro; evaluar incorporar pÃ¡gina institucional del Concejo o enlace externo oficial en el rediseÃ±o",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Manejo de error en rutas /area/ con id inexistente",
+                                    "url":  "https://smt.gob.ar/area/prueba-inexistente/9999",
+                                    "comportamiento":  "Una URL /area/ con id inexistente devuelve HTTP 500 Internal Server Error en lugar de 404: el controlador Laravel no maneja el registro no encontrado (probable ausencia de findOrFail/abort(404))",
+                                    "origen_datos":  "AplicaciÃ³n Laravel (controlador de Ã¡reas)",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Verificar en servidor y corregir en el rediseÃ±o: devolver 404 con pÃ¡gina de error amigable",
+                                    "estado":  "roto aparente"
+                                }
+                            ],
+                   "urls_no_visitadas":  [
+                                             "https://smt.gob.ar/area/direccion-de-despacho-de-intendencia/31",
+                                             "https://smt.gob.ar/area/subsecretaria-de-prensa-y-comunicacion-institucional/18",
+                                             "https://smt.gob.ar/area/subsecretaria-de-gestion-estrategica-y-documentacion/19",
+                                             "https://smt.gob.ar/area/subsecretaria-de-desarrollo-humano/20",
+                                             "https://smt.gob.ar/area/direccion-de-promocion-de-eventos/90",
+                                             "https://smt.gob.ar/area/direccion-de-despacho-de-gobierno/52",
+                                             "https://smt.gob.ar/area/subsecretaria-de-gobierno/16",
+                                             "https://smt.gob.ar/area/subsecretaria-de-seguridad-ciudadana/106",
+                                             "https://smt.gob.ar/area/direccion-de-despacho-de-economia-y-hacienda/58",
+                                             "https://smt.gob.ar/area/subsecretaria-de-economia-y-hacienda/15",
+                                             "https://smt.gob.ar/area/direccion-de-despacho-de-obras-publicas/59",
+                                             "https://smt.gob.ar/area/subsecretaria-de-obras-publicas/23",
+                                             "https://smt.gob.ar/area/subsecretaria-de-planificacion-urbana/26",
+                                             "https://smt.gob.ar/area/direccion-de-despacho-de-fiscalia-municipal/65",
+                                             "https://smt.gob.ar/area/fiscalia-adjunta/24",
+                                             "https://smt.gob.ar/area/direccion-de-despacho-de-servicios-publicos/105",
+                                             "https://smt.gob.ar/area/subsecretaria-de-servicios-publicos/27",
+                                             "https://smt.gob.ar/area/direccion-de-despacho-de-ingresos-municipales/74",
+                                             "https://smt.gob.ar/area/subsecretaria-de-ingresos-municipales/25",
+                                             "https://smt.gob.ar/area/subsecretaria-de-planificacion-financiera/128",
+                                             "https://smt.gob.ar/area/direccion-de-despacho-de-innovacion-tecnologica/51",
+                                             "https://smt.gob.ar/area/direccion-de-innovacion-tecnologica/28",
+                                             "https://smt.gob.ar/area/direccion-de-inteligencia-artificial/112",
+                                             "https://smt.gob.ar/area/direccion-de-despacho-de-ambiente-y-desarrollo-sustentable/79",
+                                             "https://smt.gob.ar/area/direccion-de-salud-ambiental/80",
+                                             "https://smt.gob.ar/area/direccion-de-ambiente/81",
+                                             "https://smt.gob.ar/area/direccion-de-bromatologia/82",
+                                             "https://smt.gob.ar/area/direccion-de-despacho-de-atencion-al-ciudadano/91",
+                                             "https://smt.gob.ar/area/direccion-de-programas-sociales/92",
+                                             "https://smt.gob.ar/area/direccion-de-familia/93",
+                                             "https://smt.gob.ar/area/direccion-de-despacho-de-movilidad-urbana/83",
+                                             "https://smt.gob.ar/area/subsecretaria-de-movilidad-urbana/118",
+                                             "https://smt.gob.ar/area/subsecretaria-de-seguridad-vial-y-licencias-de-conducir/122",
+                                             "https://smt.gob.ar/area/direccion-centro-de-monitoreo-de-movilidad-urbana-cemmu/119",
+                                             "https://smt.gob.ar/area/direccion-de-transporte/127",
+                                             "https://smt.gob.ar/area/direccion-de-despacho-de-ordenamiento-y-convivencia/120",
+                                             "https://smt.gob.ar/area/direccion-de-la-via-publica/99",
+                                             "https://smt.gob.ar/area/direccion-de-senalizacion-y-carteleria/117",
+                                             "https://smt.gob.ar/area/fiscalia-ambiental-municipal/121",
+                                             "https://smt.gob.ar/area/direccion-gestion-cultural/86",
+                                             "https://smt.gob.ar/area/direccion-general-de-museos-y-teatros/88",
+                                             "https://smt.gob.ar/area/direccion-de-inclusion-genero-y-diversidad/47",
+                                             "https://smt.gob.ar/storage/administraciones/September2026/4neRrxagR81YkNv46ry2.pdf",
+                                             "https://smt.gob.ar/storage/administraciones/September2026/uEe5s0UVQ3KY2QX3sugD.pdf",
+                                             "https://smt.gob.ar/storage/administraciones/September2026/Wuc5KVUf7TwJ1qCCvIUf.pdf",
+                                             "https://smt.gob.ar/storage/administraciones/September2026/QhEatoUB4zpUjsU9gWOD.pdf",
+                                             "https://smt.gob.ar/storage/administraciones/September2026/1K4u2kszbpkm8BXrjFkG.pdf",
+                                             "https://smt.gob.ar/storage/administraciones/September2026/ZJHAy481bA9vtiggGWVH.pdf",
+                                             "https://smt.gob.ar/storage/administraciones/September2026/SXGWvQLOT63pnDZR5aJY.pdf",
+                                             "https://smt.gob.ar/storage/administraciones/August2026/hNb7hkEtHodZfjGYfOMN.pdf",
+                                             "https://smt.gob.ar/storage/administraciones/September2026/WcbimzZedBOyvwmFmkr5.pdf",
+                                             "https://smt.gob.ar/storage/administraciones/August2026/eNbiwCMBWMiMECMfc9Ic.pdf",
+                                             "https://smt.gob.ar/storage/administraciones/September2026/p7dAw2rZew1qWB3kKKvm.pdf",
+                                             "https://smt.gob.ar/storage/administraciones/September2026/D8vw3OmOI6o8BSe1JNe5.pdf"
+                                         ],
+                   "notas":  "Se visitaron 18 pÃ¡ginas /area/ y la plantilla es Ãºnica para los 3 niveles (intendencia \u003e secretarÃ­a \u003e subsecretarÃ­a \u003e direcciÃ³n): autoridad con cargo, foto opcional (/storage/administraciones/...), domicilio, email, campo TelÃ©fono presente pero vacÃ­o en TODAS las fichas visitadas, tarjetas de dependencias hijas con email + enlace, y organigrama PDF opcional por Ã¡rea. Datos contradictorios/desactualizados detectados: (1) email con errata en SecretarÃ­a de Ordenamiento y Convivencia: \u0027ordenamientoyconvivnecia@smt.gob.ar\u0027 (\u0027convivnecia\u0027 en lugar de \u0027convivencia\u0027); (2) texto con erratas en Ã¡reas sin hijas: \u0027No hay estructura para esta seccion..\u0027 (sin tilde y doble punto); (3) el resumen de Intendencia habla de 13 dependencias pero se enumeran 14 enlaces; (4) algunas hijas no tienen email cargado (Subsec. de PlanificaciÃ³n Financiera /128, Subsec. de Movilidad Urbana /118, Dir. de SeÃ±alizaciÃ³n y CartelerÃ­a /117); (5) breadcrumb siempre es \u0027Inicio \u003e Gobierno \u003e [Ã¡rea actual]\u0027 sin reflejar la jerarquÃ­a real (una direcciÃ³n de nivel 3 no muestra a su secretarÃ­a padre). Ausencias institucionales: no existe pÃ¡gina del intendente con biografÃ­a (solo la ficha /area/intendencia/1), no hay listado unificado de autoridades (habrÃ­a que recorrer el Ã¡rbol), no hay pÃ¡gina del Concejo Deliberante ni enlace externo a Ã©l, ni BoletÃ­n Oficial ni Tribunal de Cuentas; la bÃºsqueda \u0027concejo\u0027 devuelve \u0027Seccion sin contenido\u0027. Los organigramas son PDFs por secretarÃ­a subidos vÃ­a Voyager con fechas August/September2026 (carga reciente y mantenida). Robustez: /area/ con id inexistente devuelve HTTP 500 (no 404). Ninguna ficha muestra telÃ©fono ni horario de atenciÃ³n. Sedes distintas de 9 de Julio 570: Movilidad Urbana (Av. Avellaneda 663), Ordenamiento y Convivencia (9 de Julio 229), Tribunal de Faltas (Jujuy 259), Dir. de Turismo (Congreso y CrisÃ³stomo Ãlvarez). Las ~43 Ã¡reas hijas no visitadas quedan como pendientes en urls_no_visitadas; por consistencia de plantilla es esperable que respondan igual, pero no se verificÃ³ una por una."
+               }
+}

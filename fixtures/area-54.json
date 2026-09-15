@@ -1,0 +1,18 @@
+{
+    "id": 54,
+    "nombre": "Dirección de Capital Humano",
+    "slug": "direccion-de-capital-humano",
+    "autoridad": "Dra. María Lorena Radrizzani",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/X8UGw5pxfiR9U8lfS9vr.jpg",
+    "domicilio": "Buenos Aires 334 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "dircapitalh@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 16,
+        "nombre": "Subsecretaría de Gobierno",
+        "slug": "subsecretaria-de-gobierno"
+    },
+    "dependencias": []
+}

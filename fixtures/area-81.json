@@ -1,0 +1,18 @@
+{
+    "id": 81,
+    "nombre": "Dirección de Ambiente",
+    "slug": "direccion-de-ambiente",
+    "autoridad": "Sr. Fortuna Kiyoshi",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/psBeAIrJeVwJJ0M1L3JT.jpeg",
+    "domicilio": "San Martín 1009 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "ambiente@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 10,
+        "nombre": "Secretaría de Ambiente y Desarrollo Sustentable",
+        "slug": "secretaria-de-ambiente-y-desarrollo-sustentable"
+    },
+    "dependencias": []
+}

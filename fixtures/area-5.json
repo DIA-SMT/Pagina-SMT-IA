@@ -1,0 +1,40 @@
+{
+    "id": 5,
+    "nombre": "Secretaría de Obras Públicas",
+    "slug": "secretaria-de-obras-publicas",
+    "autoridad": "Ing. Claudio Fernando Bravo",
+    "foto": null,
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "obraspublicas@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": "https://smt.gob.ar/storage/administraciones/September2026/QhEatoUB4zpUjsU9gWOD.pdf",
+    "padre": {
+        "id": 1,
+        "nombre": "Intendencia",
+        "slug": "intendencia"
+    },
+    "dependencias": [
+        {
+            "id": 59,
+            "nombre": "Dirección de Despacho de Obras Públicas",
+            "slug": "direccion-de-despacho-de-obras-publicas",
+            "autoridad": "Dra. Luisa Intile",
+            "email": "ddsobrasp@smt.gob.ar"
+        },
+        {
+            "id": 23,
+            "nombre": "Subsecretaría de Obras Públicas",
+            "slug": "subsecretaria-de-obras-publicas",
+            "autoridad": "Ing. Leonardo Míguez",
+            "email": "subobrasp@smt.gob.ar"
+        },
+        {
+            "id": 26,
+            "nombre": "Subsecretaría de Planificación Urbana",
+            "slug": "subsecretaria-de-planificacion-urbana",
+            "autoridad": "Ing. Hebe Amparo Jezabel Espinosa Rojas",
+            "email": "subsplanurbana@smt.gob.ar"
+        }
+    ]
+}

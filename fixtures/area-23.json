@@ -1,0 +1,40 @@
+{
+    "id": 23,
+    "nombre": "Subsecretaría de Obras Públicas",
+    "slug": "subsecretaria-de-obras-publicas",
+    "autoridad": "Ing. Leonardo Míguez",
+    "foto": null,
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "subobrasp@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 5,
+        "nombre": "Secretaría de Obras Públicas",
+        "slug": "secretaria-de-obras-publicas"
+    },
+    "dependencias": [
+        {
+            "id": 60,
+            "nombre": "Dirección de Obras Viales",
+            "slug": "direccion-de-obras-viales",
+            "autoridad": "Ing Darío Vera Antonelli",
+            "email": "obras@smt.gob.ar"
+        },
+        {
+            "id": 61,
+            "nombre": "Dirección de Alumbrado Y Semáforos",
+            "slug": "direccion-de-alumbrado-y-semaforos",
+            "autoridad": "Ing. Sergio Daniel Gao",
+            "email": "alumbradoysemaforos@smt.gob.ar"
+        },
+        {
+            "id": 62,
+            "nombre": "Dirección de Proyectos",
+            "slug": "direccion-de-proyectos",
+            "autoridad": "Arq. Claudia Griselda Zarrabeitia",
+            "email": "proyectos@smt.gob.ar"
+        }
+    ]
+}

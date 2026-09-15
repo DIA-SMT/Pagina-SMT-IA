@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "nombre": "Emergencia Policial",
+        "numero": "911"
+    },
+    {
+        "id": 2,
+        "nombre": "Bomberos",
+        "numero": "100"
+    },
+    {
+        "id": 3,
+        "nombre": "Ayuda al Niño",
+        "numero": "102"
+    },
+    {
+        "id": 6,
+        "nombre": "Defensa Civil",
+        "numero": "103"
+    },
+    {
+        "id": 7,
+        "nombre": "Emergencia Ambiental",
+        "numero": "105"
+    },
+    {
+        "id": 8,
+        "nombre": "Emergencia Salud",
+        "numero": "107"
+    }
+]

@@ -1,0 +1,65 @@
+{
+    "id": 4,
+    "titulo": "Prevención y Servicios de Salud",
+    "texto": "Servicios de prevención y cuidados para la salud.",
+    "icono": "fa-solid fa-heart-pulse",
+    "slug": "prevencion-y-servicios-de-salud",
+    "items": [
+        {
+            "id": 13,
+            "titulo": "Carnet de Sanidad",
+            "texto": "Consulta tu carnet de sanidad virtual",
+            "icono": "fa-regular fa-id-card",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 21,
+            "titulo": "Casa Azul",
+            "texto": "Es un centro municipal gratuito de atención integral para personas con CEA y sus familias, que brinda acompañamiento médico, terapéutico y educativo.",
+            "icono": "fa-solid fa-house",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 34,
+            "titulo": "Centros de Atención Comunitarias (C.A.C.)",
+            "texto": "Construir comunidades más fuertes y saludables, proporcionando un ambiente acogedor y accesible para todos.",
+            "icono": "fa-solid fa-user-group",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 72,
+            "titulo": "Servicio de Población Animal",
+            "texto": "Turnos y Requisitos",
+            "icono": "fa-solid fa-cat",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 89,
+            "titulo": "Asistencia Pública",
+            "texto": "Atiende las necesidades de salud de los vecinos, garantizando su bienestar mediante servicios accesibles y de calidad",
+            "icono": "fa-solid fa-user-doctor",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 90,
+            "titulo": "Centro Integral de la Mujer",
+            "texto": "Brindar atención médica integral a las mujeres, promoviendo su salud y bienestar, con servicios de prevención, diagnóstico, tratamiento, educación y apoyo emocional.",
+            "icono": "fa fa-female",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 105,
+            "titulo": "Recomendaciones Sanitarias",
+            "texto": "Recomendaciones Sanitarias para la población",
+            "icono": "fa fa-medkit",
+            "enlace": "https://smt.gob.ar/recomendaciones_sanitarias",
+            "orden": null
+        }
+    ]
+}

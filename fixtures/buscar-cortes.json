@@ -1,0 +1,13 @@
+{
+    "consulta": "cortes",
+    "total": 1,
+    "resultados": [
+        {
+            "tipo": "nota",
+            "id": 37,
+            "titulo": "Cortes de Transito en la ciudad",
+            "bajada": "Consultá el mapa actualizado de cortes de tránsito en la ciudad. Informamos en tiempo real las interrupciones por obras, servicios y eventos para que planifiques mejor tus recorridos.",
+            "slug": "cortes"
+        }
+    ]
+}

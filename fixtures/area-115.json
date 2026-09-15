@@ -1,0 +1,18 @@
+{
+    "id": 115,
+    "nombre": "Dirección de Espacios Verdes",
+    "slug": "direccion-de-espacios-verdes",
+    "autoridad": "Ing. Álvaro M. Costilla",
+    "foto": null,
+    "domicilio": "Calle Los Tarcos 491, Parque 9 de Julio - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "espaciosverdes@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 27,
+        "nombre": "Subsecretaría de Servicios Públicos",
+        "slug": "subsecretaria-de-servicios-publicos"
+    },
+    "dependencias": []
+}

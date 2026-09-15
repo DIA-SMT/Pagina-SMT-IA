@@ -1,0 +1,13 @@
+{
+    "consulta": "turno",
+    "total": 1,
+    "resultados": [
+        {
+            "tipo": "nota",
+            "id": 36,
+            "titulo": "Gestión de Turnos – Asistencia Pública",
+            "bajada": null,
+            "slug": "turno-asistencia"
+        }
+    ]
+}

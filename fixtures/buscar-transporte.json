@@ -1,0 +1,33 @@
+{
+    "consulta": "transporte",
+    "total": 4,
+    "resultados": [
+        {
+            "tipo": "nota",
+            "id": 19,
+            "titulo": "Tarjeta SUBE",
+            "bajada": "¡Atención, usuarios del transporte público de San Miguel de Tucumán!",
+            "slug": "Sube"
+        },
+        {
+            "tipo": "nota",
+            "id": 34,
+            "titulo": "Registros del Transporte Individual de Pasajeros",
+            "bajada": null,
+            "slug": "Registros _Transporte _Individual_Pasajeros"
+        },
+        {
+            "tipo": "nota",
+            "id": 42,
+            "titulo": "El transporte público en San Miguel de Tucumán",
+            "bajada": null,
+            "slug": "transporte_publico"
+        },
+        {
+            "tipo": "area",
+            "id": 127,
+            "titulo": "Dirección de Transporte",
+            "autoridad": "Dr. Máximo Ramón Stenvers"
+        }
+    ]
+}

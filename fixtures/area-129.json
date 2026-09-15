@@ -1,0 +1,18 @@
+{
+    "id": 129,
+    "nombre": "Oficina de Crédito Público",
+    "slug": "oficina-de-credito-publico",
+    "autoridad": "Cr. Jorge Fabián Martínez",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/dWatkL4cHxz816v7PxaX.jpg",
+    "domicilio": "24 de Septiembre 334 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "creditopublico@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 128,
+        "nombre": "Subsecretaría de Planificación Financiera",
+        "slug": "subsecretaria-de-planificacion-financiera"
+    },
+    "dependencias": []
+}

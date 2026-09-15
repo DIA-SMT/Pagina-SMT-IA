@@ -1,0 +1,41 @@
+{
+    "id": 2,
+    "titulo": "Medio Ambiente y Espacios Públicos",
+    "texto": "Trámites vinculados a Espacios Urbanos Públicos y Privados. Cuidado del Medio Ambiente",
+    "icono": "fa -solid fa-recycle",
+    "slug": "medio-ambiente-y-espacios-publicos",
+    "items": [
+        {
+            "id": 91,
+            "titulo": "Ecopuntos",
+            "texto": "Lugares habilitados para depositar sus reciclables",
+            "icono": "fa-solid fa-recycle",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 92,
+            "titulo": "WIFISMT",
+            "texto": "Proyecto que facilita el acceso a la tecnología, fomenta la inclusión digital y conecta a la comunidad en espacios públicos",
+            "icono": "fa fa-wifi",
+            "enlace": null,
+            "orden": null
+        },
+        {
+            "id": 101,
+            "titulo": "Empresas de Fumigación",
+            "texto": "Listado de empresas de fumigación especializadas en control de plagas y desinfección en diferentes entornos.",
+            "icono": "fa-solid fa-spray-can",
+            "enlace": "https://drive.google.com/file/d/1rjfkY2gcWP5nPY5I-AvcLun3rn6mqE5A/view?usp=drive_link",
+            "orden": null
+        },
+        {
+            "id": 134,
+            "titulo": "Proyectos Climáticos",
+            "texto": "Proyecto de Juventud y Acción Climática",
+            "icono": "fa-solid fa-seedling",
+            "enlace": "https://smt.gob.ar/jovenesporelclima",
+            "orden": null
+        }
+    ]
+}

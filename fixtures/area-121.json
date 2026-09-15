@@ -1,0 +1,18 @@
+{
+    "id": 121,
+    "nombre": "Fiscalía Ambiental Municipal",
+    "slug": "fiscalia-ambiental-municipal",
+    "autoridad": ".",
+    "foto": null,
+    "domicilio": "9 de Julio 229 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "fiscaliaambiental@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 109,
+        "nombre": "Secretaría de Ordenamiento y Convivencia",
+        "slug": "secretaria-de-ordenamiento-y-convivencia"
+    },
+    "dependencias": []
+}

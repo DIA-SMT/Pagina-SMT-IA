@@ -1,0 +1,18 @@
+{
+    "id": 32,
+    "nombre": "Dirección de Comunicación",
+    "slug": "direccion-de-comunicacion",
+    "autoridad": "Sr. Sebastián Ignacio Ángel Zazzali",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/9shJDmOlevkA0tDfsbn7.jpg",
+    "domicilio": "9 de Julio 570 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "comunicacion@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 18,
+        "nombre": "Subsecretaría de Prensa y Comunicación Institucional",
+        "slug": "subsecretaria-de-prensa-y-comunicacion-institucional"
+    },
+    "dependencias": []
+}

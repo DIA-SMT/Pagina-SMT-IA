@@ -1,0 +1,19 @@
+{
+    "id": 6,
+    "nombre": "Museo Mercedes Sosa",
+    "slug": "museo-mercedes-sosa",
+    "fotos": [
+        {
+            "id": 20,
+            "descripcion": null,
+            "imagen": "https://smt.gob.ar/storage/galeria/August2024/HltHUCxVP48fZ013D2hk.jpg",
+            "miniatura": "https://smt.gob.ar/storage/galeria/August2024/HltHUCxVP48fZ013D2hk-cropped.jpg"
+        },
+        {
+            "id": 21,
+            "descripcion": null,
+            "imagen": "https://smt.gob.ar/storage/galeria/August2024/heUHKlwA4QYoiO915VBH.jpg",
+            "miniatura": "https://smt.gob.ar/storage/galeria/August2024/heUHKlwA4QYoiO915VBH-cropped.jpg"
+        }
+    ]
+}

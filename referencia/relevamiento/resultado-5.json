@@ -1,0 +1,211 @@
+﻿{
+    "type":  "result",
+    "key":  "v2:bc919f28a3e0f725dab912d0228025b601716735dac76980b8dbf1eeae5e372c",
+    "agentId":  "a202c944bcdf21dbd",
+    "result":  {
+                   "rows":  [
+                                {
+                                    "seccion":  "CategorÃ­a de trÃ¡mites: Actividades Ciudadanas",
+                                    "url":  "https://smt.gob.ar/tramite/actividades-ciudadanas/12",
+                                    "comportamiento":  "Listado en grilla de 8 Ã­tems con imagen, tÃ­tulo y bajada: Programa Ciudad Activa (/nota/plazas-ciudad-activa/63), Centros Deportivos (/nota/complejos-deportivos/55), Centro Integrador Comunitario CIC (/nota/centro-integrador-comunitariocic/23), Talleres (/talleres), Mi Feria Digital (/catalogo/catalogo-de-emprendedores), Centro de InformaciÃ³n a Vecinos (/nota/centro-de-informacion-a-vecinos/76), Programa Proteger (/nota/programa-proteger/75), Programas Sociales (/nota/programas-sociales/74). Breadcrumb Inicio \u003e TrÃ¡mite y Servicios \u003e Actividades Ciudadanas. Sin paginaciÃ³n, filtros, buscador ni formularios.",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade como grilla de categorÃ­a; algunos Ã­tems apuntan a rutas custom (/talleres, /catalogo/...) que hay que mapear en el rediseÃ±o",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "CategorÃ­a de trÃ¡mites: Patrimonio Cultural",
+                                    "url":  "https://smt.gob.ar/tramite/patrimonio-cultural/13",
+                                    "comportamiento":  "Listado de 6 Ã­tems: Parques (/parques_smt), Espacios EmblemÃ¡ticos (/nota/espacios-emblematicos-del-parque-9-de-julio/87), Memorial de Mujeres DD (/memorial), Patrimonio HistÃ³rico (/nota/proceres/59), Patrimonio ArquitectÃ³nico (/nota/patrimonio-arquitectonico/58), Patrimonio ArtÃ­stico (/nota/obras-de-arte-del-parque/57). Mezcla fichas /nota/ con rutas custom. Sin paginaciÃ³n, filtros ni formularios. El contenido es cultural/informativo, no son trÃ¡mites en sentido estricto.",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade; evaluar mover esta categorÃ­a fuera de \u0027TrÃ¡mites\u0027 a una secciÃ³n \u0027La ciudad / Cultura\u0027 en la nueva IA",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "CategorÃ­a de trÃ¡mites: Justicia Municipal",
+                                    "url":  "https://smt.gob.ar/tramite/justicia-municipal/16",
+                                    "comportamiento":  "Listado con un ÃšNICO Ã­tem: Infracciones Tribunal Municipal de Faltas (/nota/gestion-de-consulta-y-pago-de-infracciones-a-las-normas-municipales/70), \u0027GestiÃ³n de Consulta y Pago de infracciones\u0027. Sin paginaciÃ³n, filtros, buscador ni formularios. Contenido muy escaso para una categorÃ­a propia.",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade; evaluar fusionarla con otra categorÃ­a o completarla con las notas de Tribunal de Faltas que sÃ­ existen en guiadetramites.smt.gob.ar",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "CategorÃ­a de trÃ¡mites: Catastro y EdificaciÃ³n (slug con errata \u0027catrastro\u0027)",
+                                    "url":  "https://smt.gob.ar/tramite/catrastro-y-edificacion/18",
+                                    "comportamiento":  "Listado con 2 Ã­tems: TrÃ¡mites de Catastro Digital (enlace externo https://catastro.smt.gob.ar/?destino=catastro) y CartelerÃ­a Reglamentaria de Obra (/nota/carteleria-reglamentaria/82). ERRATA CONFIRMADA: tanto el slug de la URL como el tÃ­tulo visible muestran \u0027Catrastro\u0027 en vez de \u0027Catastro\u0027. Sin paginaciÃ³n, filtros ni formularios.",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna (Ã­tem principal deriva a externa: catastro.smt.gob.ar)",
+                                    "propuesta":  "Re-plantillar Blade; corregir slug y tÃ­tulo en el CMS y dejar redirect 301 desde /tramite/catrastro-y-edificacion/18",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "CategorÃ­a de trÃ¡mites id 14 (inexistente)",
+                                    "url":  "https://smt.gob.ar/tramite/x/14",
+                                    "comportamiento":  "Devuelve HTTP 404. Como el ruteo resuelve solo por ID (el slug se ignora, ver notas), el 404 confirma que no existe categorÃ­a con id 14 en el CMS.",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "No migrar; verificar en servidor/BD si el registro fue borrado o estÃ¡ despublicado",
+                                    "estado":  "roto aparente"
+                                },
+                                {
+                                    "seccion":  "CategorÃ­a de trÃ¡mites id 15 (inexistente)",
+                                    "url":  "https://smt.gob.ar/tramite/x/15",
+                                    "comportamiento":  "Devuelve HTTP 404. No existe categorÃ­a con id 15 (ruteo por ID, slug ignorado).",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "No migrar; verificar en servidor/BD si el registro fue borrado o estÃ¡ despublicado",
+                                    "estado":  "roto aparente"
+                                },
+                                {
+                                    "seccion":  "CategorÃ­a de trÃ¡mites id 17 (inexistente)",
+                                    "url":  "https://smt.gob.ar/tramite/x/17",
+                                    "comportamiento":  "Devuelve HTTP 404. No existe categorÃ­a con id 17 (ruteo por ID, slug ignorado).",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "No migrar; verificar en servidor/BD si el registro fue borrado o estÃ¡ despublicado",
+                                    "estado":  "roto aparente"
+                                },
+                                {
+                                    "seccion":  "Ficha: Plazas - Ciudad Activa",
+                                    "url":  "https://smt.gob.ar/nota/plazas-ciudad-activa/63",
+                                    "comportamiento":  "Ficha informativa del programa de actividades en plazas: texto descriptivo, cronograma semanal por plaza (lun/miÃ© Parque 9 de Julio y Plaza Urquiza; mar/jue Plaza San MartÃ­n y Plaza Villa LujÃ¡n, 19:30), asesoramiento nutricional 17-20 h en Complejo Ledesma, 4 fotos, enlaces a Google Maps por ubicaciÃ³n, botones compartir WhatsApp/Twitter/Telegram. Sin formularios ni descargas.",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna (mapas: externa google.com/maps)",
+                                    "propuesta":  "Re-plantillar Blade (plantilla de ficha /nota/); revisar vigencia de horarios antes de migrar",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Ficha: Programas Sociales",
+                                    "url":  "https://smt.gob.ar/nota/programas-sociales/74",
+                                    "comportamiento":  "Ficha de la DirecciÃ³n de Programas Sociales: misiÃ³n, capacitaciones (mermelada agria y licores artesanales, convenio INTA, gratuitas) y asesoramiento sobre programas nacionales (Progresar, AUH, jubilaciones, Ex Potenciar Trabajo). Imagen tipo banner. Sin horarios, requisitos, formularios ni descargas.",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade; completar horarios y contacto en la carga de contenido (menciona \u0027Ex Potenciar Trabajo\u0027, posible contenido desactualizado)",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Ficha: Centro de InformaciÃ³n a Vecinos",
+                                    "url":  "https://smt.gob.ar/nota/centro-de-informacion-a-vecinos/76",
+                                    "comportamiento":  "Ficha informativa: atenciÃ³n de consultas y reclamos, atenciÃ³n personalizada de trÃ¡mites, promociÃ³n de CiudadanÃ­a Digital. Horario 8 a 18 h, direcciÃ³n \u00279 de Julio 570 Casa Central\u0027, una foto, botones de compartir. Sin formularios ni descargas.",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade; unificar la direcciÃ³n oficial (contradice el header del sitio, ver notas)",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Ficha: Espacios EmblemÃ¡ticos del Parque 9 de Julio",
+                                    "url":  "https://smt.gob.ar/nota/espacios-emblematicos-del-parque-9-de-julio/87",
+                                    "comportamiento":  "Ficha con introducciÃ³n y 6 espacios con foto (Lago San Miguel, La PÃ©rgola y el Rosedal, Casa de la AdministraciÃ³n, Casa del Obispo, Museo a Cielo Abierto, El Reloj); cada uno enlaza a un Google Sites externo con el detalle. Botones de compartir. Sin formularios ni descargas.",
+                                    "origen_datos":  "CMS Voyager (detalle en Google Sites externo)",
+                                    "dependencia":  "externa: sites.google.com",
+                                    "propuesta":  "Re-plantillar Blade y evaluar migrar el contenido de los Google Sites al CMS propio para no depender de Google",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Ficha: Obras de Arte del Parque (Patrimonio ArtÃ­stico)",
+                                    "url":  "https://smt.gob.ar/nota/obras-de-arte-del-parque/57",
+                                    "comportamiento":  "Ficha-galerÃ­a con texto histÃ³rico (mÃ¡s de 20 rÃ©plicas neoclÃ¡sicas fundidas por Val d\u0027Osne, traÃ­das en 1926) y ~45 obras documentadas, cada una con foto e hipervÃ­nculo a una ficha individual en Google Sites (Venus de Milo, DiscÃ³bolo, Laocoonte, monumentos locales, etc.). Botones de compartir. Sin formularios ni descargas.",
+                                    "origen_datos":  "CMS Voyager (detalle en Google Sites externo)",
+                                    "dependencia":  "externa: sites.google.com",
+                                    "propuesta":  "Re-plantillar Blade como galerÃ­a; migrar las ~45 fichas de Google Sites al CMS o a un catÃ¡logo propio",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Ficha: GestiÃ³n de Consulta y Pago de Infracciones (Tribunal de Faltas)",
+                                    "url":  "https://smt.gob.ar/nota/gestion-de-consulta-y-pago-de-infracciones-a-las-normas-municipales/70",
+                                    "comportamiento":  "Ficha de trÃ¡mite con pasos: registrarse en CiDiTuc (https://ciudaddigital.smt.gob.ar/), ingresar con CUIL y contraseÃ±a, menÃº CONSULTAS \u003e MULTAS, recepciÃ³n de cupÃ³n de pago por email. Pago exclusivamente por PagoFÃ¡cil (locales o app, acepta billeteras virtuales), impacto en 48 h. Contacto tmfconsultas@smt.gob.ar. Enlaza ademÃ¡s a tesoreria.smt.gob.ar, dimsmt.gob.ar, licitaciones.smt.gob.ar y mapa.smt.gob.ar. Sin formularios propios ni descargas.",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "externa: ciudaddigital.smt.gob.ar (el trÃ¡mite real se hace ahÃ­)",
+                                    "propuesta":  "Re-plantillar Blade manteniendo el enlace a CiDiTuc como CTA principal; verificar vigencia del circuito de pago con Tribunal de Faltas",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Ficha: CartelerÃ­a Reglamentaria de Obra",
+                                    "url":  "https://smt.gob.ar/nota/carteleria-reglamentaria/82",
+                                    "comportamiento":  "Ficha con texto introductorio y 4 grupos de descargas alojadas en Google Drive: \u0027Por Seguridad\u0027, \u0027Elementos de Seguridad\u0027, \u0027Por InformaciÃ³n de Obra\u0027 y \u0027Plan de Salida RÃ¡pida de Expedientes\u0027; menciona ademÃ¡s \u0027Horarios Extendidos de Trabajo\u0027 como permiso aparte. Sin formularios; no cita normativa explÃ­cita.",
+                                    "origen_datos":  "CMS Voyager (archivos en Google Drive externo)",
+                                    "dependencia":  "externa: drive.google.com",
+                                    "propuesta":  "Re-plantillar Blade y mover los PDF de Google Drive al storage propio del servidor; verificar en servidor que los enlaces Drive sigan activos",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "PÃ¡gina: Parques (ruta custom, Ã­tem de Patrimonio Cultural)",
+                                    "url":  "https://smt.gob.ar/parques_smt",
+                                    "comportamiento":  "PÃ¡gina con 3 parques enlazados (Parque Avellaneda, Parque Guillermina, Parque 9 de Julio) con fotos, enlace a mapa.smt.gob.ar, botones de compartir y bloque \u0027Lo mÃ¡s leÃ­do\u0027. Ruta custom fuera del patrÃ³n /nota/{slug}/{id}, aunque plantillada por el mismo CMS.",
+                                    "origen_datos":  "CMS Voyager (ruta custom)",
+                                    "dependencia":  "interna (mapa: externa mapa.smt.gob.ar)",
+                                    "propuesta":  "Re-plantillar Blade; normalizar la ruta al esquema estÃ¡ndar y dejar redirect desde /parques_smt",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "PÃ¡gina: Memorial de Mujeres Detenidas Desaparecidas (ruta custom)",
+                                    "url":  "https://smt.gob.ar/memorial",
+                                    "comportamiento":  "PÃ¡gina informativa del memorial (SecretarÃ­a de la Mujer, 2012): texto histÃ³rico 1973-1983, descripciÃ³n de la obra (pÃ©rgola con nombres de 150 mujeres), fotografÃ­a, y descarga de PDF \u0027NOMBRES DE MUJERES DD.pdf\u0027. Botones de compartir. Ruta custom fuera de /nota/.",
+                                    "origen_datos":  "CMS Voyager (ruta custom, PDF en servidor)",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade conservando el PDF; verificar en servidor la ubicaciÃ³n del archivo para migrarlo",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Portal externo: Catastro Digital (Ã­tem de categorÃ­a 18)",
+                                    "url":  "https://catastro.smt.gob.ar/?destino=catastro",
+                                    "comportamiento":  "Responde y muestra el tÃ­tulo \u0027TRÃMITES DE CATASTRO DIGITAL\u0027, pero el contenido se renderiza por JavaScript y no se pudo enumerar sus funciones (presumiblemente login y gestiones/consultas catastrales). No se pudo confirmar si requiere autenticaciÃ³n.",
+                                    "origen_datos":  "subdominio externo (aplicaciÃ³n propia)",
+                                    "dependencia":  "externa: catastro.smt.gob.ar",
+                                    "propuesta":  "Mantener enlace externo en el rediseÃ±o; verificar en servidor la app y su estado",
+                                    "estado":  "pendiente de verificaciÃ³n"
+                                },
+                                {
+                                    "seccion":  "GuÃ­a de TrÃ¡mites (portada)",
+                                    "url":  "https://guiadetramites.smt.gob.ar",
+                                    "comportamiento":  "Sitio separado del portal principal, en subdominio propio: directorio clasificado de trÃ¡mites con portada de categorÃ­as (unas 17-20: Licencia de Conducir, Habilitaciones Comerciales, Catastro y EdificaciÃ³n, Tribunal de Faltas, BromatologÃ­a, Cementerio, Salud, Tasas y Contribuciones, TrÃ¡nsito y Transporte, Denuncias, etc.), secciÃ³n de \u0027mÃ¡s visitados\u0027 y navegaciÃ³n por filtros en cascada (CategorÃ­a \u003e SubcategorÃ­a \u003e Nota) mediante selects. Rutas: /categoria?cat={id}, /categoria?sub={id}#note-{id}. Sin buscador de texto libre detectado. No enlaza a fichas /nota/ del portal principal; enlaza a ciudaddigital.smt.gob.ar, turnos.smt.gob.ar y banners hacia smt.gob.ar.",
+                                    "origen_datos":  "subdominio externo â€” aparenta ser otra instalaciÃ³n Laravel/Voyager (assets en /storage/settings/)",
+                                    "dependencia":  "externa: guiadetramites.smt.gob.ar",
+                                    "propuesta":  "DecisiÃ³n clave del rediseÃ±o: unificar su contenido (requisitos, costos, pasos) con las fichas /nota/ del portal principal o mantenerlo como sistema aparte con enlace externo; verificar en servidor si comparte base de datos",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "GuÃ­a de TrÃ¡mites: pÃ¡gina de categorÃ­a (ej. Licencia de Conducir)",
+                                    "url":  "https://guiadetramites.smt.gob.ar/categoria?cat=32",
+                                    "comportamiento":  "Vista de categorÃ­a con 6-7 notas en acordeones: Primera Vez, RenovaciÃ³n, CategorÃ­a Profesional, HabilitaciÃ³n por Alcoholemia Positiva, Mayores de 65, Aranceles, Certificaciones. Cada nota detalla requisitos con viÃ±etas, costos/aranceles, modalidad (online/presencial), ubicaciones, horarios y enlaces externos (argentina.gob.ar, seguridadvial.gob.ar, turnos.smt.gob.ar, ciudaddigital.smt.gob.ar, Google Maps). Sin paginaciÃ³n.",
+                                    "origen_datos":  "subdominio externo (Laravel/Voyager aparente)",
+                                    "dependencia":  "externa: guiadetramites.smt.gob.ar + enlaces a sistemas nacionales",
+                                    "propuesta":  "Este es el contenido de trÃ¡mites mÃ¡s completo del ecosistema: migrarlo/portarlo a la plantilla de fichas del rediseÃ±o o mantener enlace externo hasta unificar",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "GuÃ­a de TrÃ¡mites: pÃ¡gina de subcategorÃ­a con anclas a notas",
+                                    "url":  "https://guiadetramites.smt.gob.ar/categoria?sub=122",
+                                    "comportamiento":  "Misma vista de acordeones filtrada por subcategorÃ­a, con menÃº lateral de categorÃ­as y anclas #note-{id} para llegar a una nota puntual (ej. ?sub=122#note-163 RenovaciÃ³n de Licencia). Sin buscador de texto libre, sin paginaciÃ³n ni descargas visibles.",
+                                    "origen_datos":  "subdominio externo (Laravel/Voyager aparente)",
+                                    "dependencia":  "externa: guiadetramites.smt.gob.ar",
+                                    "propuesta":  "Si se unifica, mapear las URLs ?cat=/?sub=#note-N a redirects hacia las nuevas fichas para no romper enlaces difundidos",
+                                    "estado":  "verificado"
+                                }
+                            ],
+                   "urls_no_visitadas":  [
+                                             "https://smt.gob.ar/nota/complejos-deportivos/55",
+                                             "https://smt.gob.ar/nota/centro-integrador-comunitariocic/23",
+                                             "https://smt.gob.ar/talleres",
+                                             "https://smt.gob.ar/catalogo/catalogo-de-emprendedores",
+                                             "https://smt.gob.ar/nota/programa-proteger/75",
+                                             "https://smt.gob.ar/nota/proceres/59",
+                                             "https://smt.gob.ar/nota/patrimonio-arquitectonico/58",
+                                             "https://smt.gob.ar/nota/habilitacion-comercial/5",
+                                             "https://smt.gob.ar/area/intendencia/1",
+                                             "https://smt.gob.ar/historia",
+                                             "https://smt.gob.ar/circuitos-turisticos",
+                                             "https://smt.gob.ar/lugares-de-interes",
+                                             "https://guiadetramites.smt.gob.ar/categoria?sub=59#note-91",
+                                             "https://ciudaddigital.smt.gob.ar/",
+                                             "https://turnos.smt.gob.ar/",
+                                             "https://tesoreria.smt.gob.ar/",
+                                             "https://www.dimsmt.gob.ar/",
+                                             "https://licitaciones.smt.gob.ar/",
+                                             "https://mapa.smt.gob.ar/"
+                                         ],
+                   "notas":  "HALLAZGOS TÃ‰CNICOS: (1) El ruteo de /tramite/{slug}/{id} resuelve SOLO por ID: /tramite/x/12 renderiza \u0027Actividades Ciudadanas\u0027 con slug inventado. Confirmado tambiÃ©n implÃ­citamente para /nota/. Riesgo SEO de contenido duplicado; en el rediseÃ±o validar slug y redirigir 301 al canÃ³nico. (2) Gracias a eso, los 404 de /tramite/x/14, /15 y /17 confirman que las categorÃ­as 14, 15 y 17 NO existen (huecos en la secuencia de IDs del CMS; verificar en BD si fueron borradas o despublicadas). (3) ERRATA CONFIRMADA en categorÃ­a 18: el slug es \u0027catrastro-y-edificacion\u0027 y el tÃ­tulo visible tambiÃ©n dice \u0027Catrastro\u0027; el error estÃ¡ en el registro del CMS, no solo en la URL. DATOS CONTRADICTORIOS: (4) En TODO el sitio principal conviven dos direcciones: \u00279 De Julio 598 Sur\u0027 (header) y \u00279 de Julio 570\u0027 (footer); la ficha del Centro de InformaciÃ³n a Vecinos dice \u00279 de Julio 570 Casa Central\u0027. Unificar la direcciÃ³n oficial. (5) TelÃ©fono municipal aparece incompleto en el pie de algunas pÃ¡ginas (se cita 4516500 solo en algunas). (6) En Obras de Arte del Parque hay fechas 1926 vs 1928 sin aclarar. (7) La ficha Programas Sociales menciona \u0027Ex Potenciar Trabajo\u0027: posible contenido desactualizado. DEPENDENCIAS EXTERNAS DE CONTENIDO: (8) Las fichas de Patrimonio (Espacios EmblemÃ¡ticos y ~45 obras de arte) delegan todo el detalle en Google Sites externos; CartelerÃ­a Reglamentaria aloja sus descargas en Google Drive. Contenido institucional fuera del control del servidor: candidato prioritario a migraciÃ³n. GUÃA DE TRÃMITES: (9) guiadetramites.smt.gob.ar es un sistema separado en subdominio, aparentemente otra instalaciÃ³n Laravel (assets bajo /storage/settings/, patrÃ³n tÃ­pico de Voyager). Estructura: categorÃ­as \u003e subcategorÃ­as \u003e notas en acordeones, rutas /categoria?cat={id} y ?sub={id} con anclas #note-{id}. NavegaciÃ³n solo por selects en cascada; sin buscador de texto libre detectado. (10) NO enlaza de vuelta a las fichas /nota/ del portal principal: los dos sistemas duplican temÃ¡tica (Catastro y EdificaciÃ³n y Tribunal de Faltas existen en ambos) pero la GuÃ­a tiene el contenido operativo real (requisitos, costos, pasos, turnos) mientras las fichas /nota/ del portal son mayormente descriptivas. El rediseÃ±o deberÃ­a definir una Ãºnica fuente de verdad y plan de redirects. (11) CategorÃ­a 16 (Justicia Municipal) tiene un solo Ã­tem; categorÃ­a 13 (Patrimonio Cultural) no contiene trÃ¡mites sino contenido cultural con rutas custom (/parques_smt, /memorial): revisar la taxonomÃ­a \u0027TrÃ¡mites y Servicios\u0027 en la nueva arquitectura de informaciÃ³n. (12) catastro.smt.gob.ar respondiÃ³ pero renderiza por JavaScript: no se pudieron enumerar sus funciones, queda pendiente de verificaciÃ³n en servidor."
+               }
+}

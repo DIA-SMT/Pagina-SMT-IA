@@ -1,0 +1,190 @@
+﻿{
+    "type":  "result",
+    "key":  "v2:b1ed585d7c1d51d19690cf13db9dec61ffeed49df834474612ef143c1ecd04ec",
+    "agentId":  "ab0425326ce3a1b8a",
+    "result":  {
+                   "rows":  [
+                                {
+                                    "seccion":  "CategorÃ­a de trÃ¡mites: EducaciÃ³n y FormaciÃ³n (cat. 6)",
+                                    "url":  "https://smt.gob.ar/tramite/educacion-y-formacion/6",
+                                    "comportamiento":  "Listado de tarjetas de categorÃ­a, sin filtros, buscador, paginaciÃ³n ni formularios. 2 Ã­tems: (1) \u0027Estudiantes al Aire\u0027 (taller gratuito de ProducciÃ³n Radial y Periodismo) -\u003e https://smt.gob.ar/nota/taller-gratuito-de-produccion-radial-y-periodismo/68; (2) \u0027Portal de EducaciÃ³n\u0027 -\u003e https://educacion.smt.gob.ar/ (enlace externo a subdominio).",
+                                    "origen_datos":  "CMS Voyager (tabla de categorÃ­as de trÃ¡mites) + enlace a subdominio externo",
+                                    "dependencia":  "interna | externa: educacion.smt.gob.ar",
+                                    "propuesta":  "Re-plantillar Blade el listado de categorÃ­a; mantener enlace externo al portal de educaciÃ³n",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "CategorÃ­a de trÃ¡mites: Transporte y Movilidad (cat. 7)",
+                                    "url":  "https://smt.gob.ar/tramite/transporte-y-movilidad/7",
+                                    "comportamiento":  "Listado de 6 tarjetas, sin filtros/buscador/paginaciÃ³n: (1) \u0027Cortes de TrÃ¡nsito\u0027 -\u003e https://smt.gob.ar/cortes; (2) \u0027SUBEM\u0027 -\u003e https://smt.gob.ar/SUBEM; (3) \u0027SUBE\u0027 -\u003e https://smt.gob.ar/sube; (4) \u0027Registro de Transporte\u0027 -\u003e https://smt.gob.ar/Registros%20_Transporte%20_Individual_Pasajeros (URL malformada con espacios codificados); (5) \u0027Recorridos de Colectivos\u0027 -\u003e https://smt.gob.ar/nota/recorrido-de-colectivos/17; (6) \u0027Licencia de Conducir\u0027 -\u003e https://smt.gob.ar/nota/licencia-de-conducir/8.",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade; corregir/normalizar la URL con espacios del Registro de Transporte y verificar en servidor las rutas cortas (/cortes, /SUBEM, /sube)",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "CategorÃ­a de trÃ¡mites: Biblioteca Digital (cat. 8)",
+                                    "url":  "https://smt.gob.ar/tramite/biblioteca-digital/8",
+                                    "comportamiento":  "Listado de 21 tarjetas de documentos/planes municipales, sin filtros, buscador, paginaciÃ³n ni visor integrado; las fichas /nota/ enlazan a PDFs (servidor propio /storage/ o Google Drive). Ãtems: \u0027PROGRAMA CONTROLÃ\u0027 /nota/programa-controla/67; \u0027Plan Local de AcciÃ³n ClimÃ¡tica (PLAC)\u0027 /nota/plan-local-de-accion-climatica-plac/100; \u0027PLAN VEREDAS SANAS\u0027 /nota/plan-veredas-sanas/66; \u0027Concurso hiperbÃ³lico\u0027 /nota/concurso-hiperbolico/97; \u0027MASTER PLAN\u0027 /nota/master-plan/62; \u0027Programa sello de aptitud bromatolÃ³gica\u0027 /nota/programa-sello-de-aptitud-bromatologica/96; \u0027TRANS-FOR-MÃ\u0027 /nota/trans-for-ma/61; \u0027Programa CIRCULÃ\u0027 /nota/programa-circula/95; \u0027E-DU-CÃ\u0027 /nota/e-du-ca/60; \u0027Sistema de gestiÃ³n de ferias municipales\u0027 /nota/sistema-de-gestion-de-ferias-municipales/94; \u0027GIRSU\u0027 /nota/girsu/43; \u0027Plan TRADI\u0027 /nota/plan-tradi/93; \u0027180 dÃ­as de la ciudad que queremos\u0027 /nota/180-dias-de-la-ciudad-que-queremos/44; \u0027Diez mesas, una juventud en diÃ¡logo\u0027 /nota/diez-mesas-una-juventud-en-dialogo/92; \u0027SE-PA-RÃ\u0027 /nota/se-pa-ra/42; \u0027Programa CIM CEA â€“ Casa Azul\u0027 /nota/programa-cim-cea-casa-azul/91; \u0027Plan Rector\u0027 /nota/plan-rector/32; \u0027Informes de Emergencia Sanitaria y Ambiental\u0027 /nota/informes-de-emergencia-sanitaria-y-ambiental/90; \u0027Plan de Contingencia ante Inundaciones\u0027 https://smt.gob.ar/PlandeContingenciaanteInundaciones; \u0027Azul es tambien el amor\u0027 /nota/azul-es-tambien-el-amor/86; \u0027Informe IGEI\u0027 /nota/inventario-de-gases-de-efecto-invernadero-2023/84.",
+                                    "origen_datos":  "CMS Voyager; PDFs en /storage/tramites-items-notas/ (media manager de Voyager) y algunos en Google Drive",
+                                    "dependencia":  "interna | externa: drive.google.com (parcial)",
+                                    "propuesta":  "Re-plantillar Blade como biblioteca real con buscador/filtros y visor de PDF; migrar los PDFs de Google Drive al storage propio",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "CategorÃ­a de trÃ¡mites: Transparencia y ParticipaciÃ³n (cat. 10)",
+                                    "url":  "https://smt.gob.ar/tramite/transparencia-y-participacion/10",
+                                    "comportamiento":  "Listado de 10 tarjetas, sin filtros/buscador/paginaciÃ³n. Cubre datos abiertos, licitaciones y presupuesto participativo: (1) \u0027Servicios PÃºblicos\u0027 -\u003e https://uspp.smt.gob.ar/; (2) \u0027Presupuesto Participativo\u0027 -\u003e https://smt.gob.ar/presupuestoparticipativo; (3) \u0027Precios de obra pÃºblica\u0027 -\u003e https://smt.gob.ar/nota/precios-oficiales-de-obras-publicas-y-servicios/85; (4) \u0027Portal de Datos de la Ciudad\u0027 -\u003e https://www.smtendatos.com.ar/ (dominio externo no gob.ar); (5) \u0027Transparencia y datos abiertos\u0027 -\u003e https://transparencia.smt.gob.ar/; (6) \u0027ParticipaciÃ³n Ciudadana\u0027 -\u003e https://docs.google.com/forms/d/1M2ghY-ZJ-yHRKEh5lYUpsfeAcB-SPdWo25TbmLNWQR0/edit (enlace a Google Forms en modo /edit, aparentemente errÃ³neo); (7) \u0027C.E.S.\u0027 -\u003e https://ces.smt.gob.ar/; (8) \u0027BoletÃ­n Oficial\u0027 -\u003e https://smt.gob.ar/nota/boletin-oficial-digital/56; (9) \u0027Plan Rector\u0027 -\u003e https://smt.gob.ar/nota/plan-rector/32 (duplicado con Biblioteca Digital); (10) \u0027Licitaciones y Concursos\u0027 -\u003e https://licitaciones.smt.gob.ar/. No se mencionan declaraciones juradas.",
+                                    "origen_datos":  "CMS Voyager + subdominios externos (uspp, transparencia, ces, licitaciones, boletinoficial) + dominio externo smtendatos.com.ar + Google Forms",
+                                    "dependencia":  "interna | externa: uspp.smt.gob.ar, transparencia.smt.gob.ar, ces.smt.gob.ar, licitaciones.smt.gob.ar, smtendatos.com.ar, docs.google.com",
+                                    "propuesta":  "Re-plantillar Blade el listado; mantener enlaces a subdominios; corregir el enlace de Google Forms (/edit -\u003e /viewform) o reemplazarlo por formulario propio; verificar vigencia de smtendatos.com.ar",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "CategorÃ­a de trÃ¡mites: Normativa (cat. 11)",
+                                    "url":  "https://smt.gob.ar/tramite/normativa/11",
+                                    "comportamiento":  "Listado de 10 tarjetas de documentos normativos, sin boletÃ­n oficial propio en esta categorÃ­a (el BoletÃ­n estÃ¡ en cat. 10), sin buscador/filtros/paginaciÃ³n/visor. 6 Ã­tems van directo a Google Drive: \u0027Reglamento SMT CORRE\u0027 -\u003e https://drive.google.com/file/d/1PkzEx3YJ17fBZ8cBeW3Cd2rqW5PaNl6P/view?usp=sharing; \u0027Planilla de EdificaciÃ³n\u0027 -\u003e https://drive.google.com/file/d/1pfRRAg5yxLGhKhtGcQps8EnhjlQuWACE/view?usp=sharing; \u0027Planilla de Uso\u0027 -\u003e https://drive.google.com/file/d/1Z1nag9eNzs2mUX3JUeSywT79EZSpDqrT/view?usp=sharing; \u0027Digesto Normativo 2Âª Parte\u0027 -\u003e https://drive.google.com/file/d/1aVWRerGyw6wke4JaIz5r4g-q-5AqOMBW/view?usp=sharing; \u0027Digesto Normativo 1Âª Parte\u0027 -\u003e https://drive.google.com/file/d/1rYMWOehcfF69s9nmM1MUE5C1YdavChiL/view?usp=sharing; \u0027CÃ³digo de Planeamiento Urbano\u0027 -\u003e https://drive.google.com/file/d/14-sCUa_avrTzot6FroCFAgtmMlqrXQg4/view?usp=sharing. 4 Ã­tems internos: \u0027CiDiTuc\u0027 -\u003e /nota/ciudadano-digital-san-miguel-de-tucuman/77; \u0027VÃ­a PÃºblica\u0027 -\u003e /nota/via-publica/29; \u0027Patrimonio Urbano\u0027 -\u003e /nota/patrimonio-urbano/28; \u0027Digesto Municipal\u0027 -\u003e /nota/digesto-municipal/27.",
+                                    "origen_datos":  "CMS Voyager + Google Drive (6 de 10 Ã­tems)",
+                                    "dependencia":  "interna | externa: drive.google.com",
+                                    "propuesta":  "Re-plantillar Blade; migrar los 6 PDFs de Google Drive al servidor propio (riesgo de pÃ©rdida si cambia la cuenta Drive); evaluar un mÃ³dulo de digesto navegable con buscador de ordenanzas",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Prueba de categorÃ­a 9 (inexistente en el menÃº)",
+                                    "url":  "https://smt.gob.ar/tramite/x/9",
+                                    "comportamiento":  "Devuelve HTTP 404 Not Found. No hay categorÃ­a visible con id 9 en la navegaciÃ³n; no se pudo determinar si el 404 se debe a que el id 9 no existe o a que la ruta valida el slug.",
+                                    "origen_datos":  "desconocido",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Verificar en servidor (tabla de categorÃ­as en Voyager) si existe un registro id 9 oculto/eliminado antes de migrar",
+                                    "estado":  "roto aparente"
+                                },
+                                {
+                                    "seccion":  "Ficha: Taller gratuito de ProducciÃ³n Radial y Periodismo (Estudiantes al Aire)",
+                                    "url":  "https://smt.gob.ar/nota/taller-gratuito-de-produccion-radial-y-periodismo/68",
+                                    "comportamiento":  "Ficha /nota/ estÃ¡ndar: breadcrumb (Inicio \u003e TrÃ¡mite y Servicios \u003e EducaciÃ³n y FormaciÃ³n), tÃ­tulo, subtÃ­tulo, 2 pÃ¡rrafos (responsables, horarios: martes 14-16 clases, jueves 15 emisiÃ³n por Radio Ciudad 87.9), 2 imÃ¡genes, botones de compartir (WhatsApp, Twitter, Telegram). Sin descargas, formularios ni fechas de inscripciÃ³n.",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade (plantilla genÃ©rica de nota); verificar vigencia del taller antes de migrar",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Ficha: Licencia de Conducir",
+                                    "url":  "https://smt.gob.ar/nota/licencia-de-conducir/8",
+                                    "comportamiento":  "Ficha con requisitos (boleta CENAT pagada, vÃ¡lida 60 dÃ­as; certificados de conducta con vigencia de dos meses; curso \u0027Mi Primer Licencia\u0027 para 16-21 aÃ±os), aranceles publicados (licencia anual $8.142; formulario CENAT $10.150), enlace al turnero https://turnos.smt.gob.ar/?destino=turnero, mapa de Google Maps de la DirecciÃ³n de Licencias y PDF descargable \u0027Requisitos Licencias SMT (1).pdf\u0027.",
+                                    "origen_datos":  "CMS Voyager + PDF en storage",
+                                    "dependencia":  "interna | externa: turnos.smt.gob.ar, Google Maps",
+                                    "propuesta":  "Re-plantillar Blade; actualizar aranceles (aparentan ser de abril 2024) y mantener integraciÃ³n con el turnero",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Ficha: Recorrido de Colectivos",
+                                    "url":  "https://smt.gob.ar/nota/recorrido-de-colectivos/17",
+                                    "comportamiento":  "Ficha con imagen, texto de la SecretarÃ­a de Movilidad Urbana y promociÃ³n de la app \u0027Cuando SUBO\u0027 (ubicaciÃ³n en tiempo real, lÃ­neas 1-19); enlace al mapa interactivo https://mapa.smt.gob.ar/; referencias genÃ©ricas a AppStore/PlayStore sin URL directa; botones de compartir. No publica los recorridos en sÃ­ (ni PDFs ni mapa embebido).",
+                                    "origen_datos":  "CMS Voyager",
+                                    "dependencia":  "interna | externa: mapa.smt.gob.ar",
+                                    "propuesta":  "Re-plantillar Blade; verificar vigencia de la app \u0027Cuando SUBO\u0027 y considerar embeber el mapa de recorridos",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Ficha: Plan Local de AcciÃ³n ClimÃ¡tica (PLAC)",
+                                    "url":  "https://smt.gob.ar/nota/plan-local-de-accion-climatica-plac/100",
+                                    "comportamiento":  "Ficha tipo \u0027documento de biblioteca\u0027: breadcrumb a Biblioteca Digital, imagen, 2 pÃ¡rrafos (estrategia 2023-2030: mitigaciÃ³n, adaptaciÃ³n, gobernanza), icono PDF con nombre \u0027PLAC_Plan-Local-Accion-Climatica_SMT.pdf\u0027 y botÃ³n DESCARGAR -\u003e /storage/tramites-items-notas/April2026/q4zNHaex3ogmdlrdvBJP.pdf. Descarga directa, sin visor embebido.",
+                                    "origen_datos":  "CMS Voyager (PDF en /storage/ del servidor propio)",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade; agregar visor PDF embebido en el rediseÃ±o; conservar los archivos de /storage/tramites-items-notas/ en la migraciÃ³n",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Ficha: MASTER PLAN",
+                                    "url":  "https://smt.gob.ar/nota/master-plan/62",
+                                    "comportamiento":  "Ficha de documento: imagen, pÃ¡rrafo descriptivo (visiÃ³n de ciudad, proceso participativo), enlace \u0027master plan_compressed.pdf\u0027 con botÃ³n DESCARGAR -\u003e /storage/tramites-items-notas/June2024/qKUBWl6kbW6mszhTYK9b.pdf, botones de compartir y bloque \u0027Lo mÃ¡s leÃ­do\u0027. Sin visor ni formularios.",
+                                    "origen_datos":  "CMS Voyager (PDF en /storage/ del servidor propio)",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade; verificar en origen el idioma del texto (la extracciÃ³n devolviÃ³ parte del pÃ¡rrafo en inglÃ©s)",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Ficha: BoletÃ­n Oficial Digital",
+                                    "url":  "https://smt.gob.ar/nota/boletin-oficial-digital/56",
+                                    "comportamiento":  "Ficha-landing del BoletÃ­n Oficial: texto institucional (validez oficial equivalente a la ediciÃ³n impresa, acceso diario a decisiones municipales), botÃ³n de acceso -\u003e https://boletinoficial.smt.gob.ar/?destino=boletin (subdominio donde vive el boletÃ­n real) y enlace a la \u0027Ordenanza Tributaria 2026\u0027 en Google Drive -\u003e https://drive.google.com/file/d/1DolBj2h3GBgG3xNsfUNTWDsyq7RqXOIF/view. Sin buscador de boletines en esta ficha.",
+                                    "origen_datos":  "CMS Voyager (landing) + sistema del boletÃ­n en subdominio externo",
+                                    "dependencia":  "interna | externa: boletinoficial.smt.gob.ar, drive.google.com",
+                                    "propuesta":  "Mantener enlace al subdominio del boletÃ­n (verificar en servidor ese sistema); migrar la Ordenanza Tributaria de Drive a storage propio",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Ficha: Digesto Municipal",
+                                    "url":  "https://smt.gob.ar/nota/digesto-municipal/27",
+                                    "comportamiento":  "Ficha de documento Ãºnico: texto sobre acceso a normativas \u0027de forma clara y sistemÃ¡tica\u0027 con contexto histÃ³rico, y una sola descarga: \u0027Digesto-Municipal.pdf\u0027 -\u003e https://smt.gob.ar/storage/tramites-items-notas/May2024/pTcyEDXqYdOBMFgxdSzn.pdf. Sin visor, sin buscador de normas, sin navegaciÃ³n por ordenanza/decreto.",
+                                    "origen_datos":  "CMS Voyager (PDF consolidado en /storage/, subido mayo 2024)",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade; en el rediseÃ±o evaluar digesto navegable/buscable en lugar de un Ãºnico PDF consolidado; verificar actualizaciÃ³n del PDF (mayo 2024)",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Ficha: Precios Oficiales de Obras PÃºblicas y Servicios",
+                                    "url":  "https://smt.gob.ar/nota/precios-oficiales-de-obras-publicas-y-servicios/85",
+                                    "comportamiento":  "Ficha con actualizaciÃ³n mensual: texto (precios tope de referencia, DirecciÃ³n de Obras Viales, aplicaciÃ³n obligatoria), PDF vigente \u0027DECRETO 0454-25-SOP - RES 4217-SOP-2026 - PRECIOS AGOSTO 2026\u0027 -\u003e /storage/tramites-items-notas/September2026/ME19yWMZt4AvhLCcrvva.pdf, y enlace a carpeta de Google Drive con el histÃ³rico de meses anteriores. Sin visor ni formularios.",
+                                    "origen_datos":  "CMS Voyager (PDF mensual en /storage/) + histÃ³rico en Google Drive",
+                                    "dependencia":  "interna | externa: drive.google.com (histÃ³rico)",
+                                    "propuesta":  "Re-plantillar Blade con listado/archivo histÃ³rico propio (es contenido de actualizaciÃ³n mensual); migrar el histÃ³rico de Drive al servidor",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Ficha: VÃ­a PÃºblica",
+                                    "url":  "https://smt.gob.ar/nota/via-publica/29",
+                                    "comportamiento":  "Ficha normativa: texto sobre la Ordenanza nÂº 2114/93 y decretos que regulan uso de vÃ­a pÃºblica (marquesinas, carteles publicitarios, paisaje urbano), descarga \u0027VÃ­a-PÃºblica.pdf\u0027 -\u003e /storage/tramites-items-notas/May2024/FvYIlBK6hT8UIkb7PIES.pdf, contactos (Municipalidad 4516500; Asistencia PÃºblica 4308393 / 4212329), botones de compartir. Sin formularios. El breadcrumb la ubica bajo \u0027Biblioteca Digital\u0027 aunque estÃ¡ listada en la categorÃ­a Normativa.",
+                                    "origen_datos":  "CMS Voyager (PDF en /storage/)",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade; corregir la asignaciÃ³n de categorÃ­a (Normativa vs Biblioteca Digital) en el CMS",
+                                    "estado":  "verificado"
+                                },
+                                {
+                                    "seccion":  "Ficha: Plan Rector (duplicada en cat. 8 y cat. 10)",
+                                    "url":  "https://smt.gob.ar/nota/plan-rector/32",
+                                    "comportamiento":  "Ficha de documento: breadcrumb Inicio \u003e Tramite y Servicios \u003e Biblioteca Digital \u003e Plan Rector; imagen, texto (visiÃ³n de ciudad, Ã¡mbitos de intervenciÃ³n, objetivos estratÃ©gicos 2023-2030, proceso participativo), descarga \u0027Plan-Rector(2023-2030).PDF\u0027 con botÃ³n DESCARGAR -\u003e /storage/tramites-items-notas/August2024/HHoLo7LQKnsFCvzVv3qn.PDF. Sin visor ni formularios. La misma nota estÃ¡ enlazada desde Biblioteca Digital (cat. 8) y desde Transparencia y ParticipaciÃ³n (cat. 10).",
+                                    "origen_datos":  "CMS Voyager (PDF en /storage/)",
+                                    "dependencia":  "interna",
+                                    "propuesta":  "Re-plantillar Blade; decidir en el rediseÃ±o la categorÃ­a canÃ³nica (hoy figura duplicada en 2 categorÃ­as)",
+                                    "estado":  "verificado"
+                                }
+                            ],
+                   "urls_no_visitadas":  [
+                                             "https://smt.gob.ar/nota/programa-controla/67",
+                                             "https://smt.gob.ar/nota/plan-veredas-sanas/66",
+                                             "https://smt.gob.ar/nota/concurso-hiperbolico/97",
+                                             "https://smt.gob.ar/nota/programa-sello-de-aptitud-bromatologica/96",
+                                             "https://smt.gob.ar/nota/trans-for-ma/61",
+                                             "https://smt.gob.ar/nota/programa-circula/95",
+                                             "https://smt.gob.ar/nota/e-du-ca/60",
+                                             "https://smt.gob.ar/nota/sistema-de-gestion-de-ferias-municipales/94",
+                                             "https://smt.gob.ar/nota/girsu/43",
+                                             "https://smt.gob.ar/nota/plan-tradi/93",
+                                             "https://smt.gob.ar/nota/180-dias-de-la-ciudad-que-queremos/44",
+                                             "https://smt.gob.ar/nota/diez-mesas-una-juventud-en-dialogo/92",
+                                             "https://smt.gob.ar/nota/se-pa-ra/42",
+                                             "https://smt.gob.ar/nota/programa-cim-cea-casa-azul/91",
+                                             "https://smt.gob.ar/nota/informes-de-emergencia-sanitaria-y-ambiental/90",
+                                             "https://smt.gob.ar/nota/azul-es-tambien-el-amor/86",
+                                             "https://smt.gob.ar/nota/inventario-de-gases-de-efecto-invernadero-2023/84",
+                                             "https://smt.gob.ar/nota/ciudadano-digital-san-miguel-de-tucuman/77",
+                                             "https://smt.gob.ar/nota/patrimonio-urbano/28",
+                                             "https://smt.gob.ar/PlandeContingenciaanteInundaciones",
+                                             "https://smt.gob.ar/cortes",
+                                             "https://smt.gob.ar/SUBEM",
+                                             "https://smt.gob.ar/sube",
+                                             "https://smt.gob.ar/Registros%20_Transporte%20_Individual_Pasajeros",
+                                             "https://smt.gob.ar/presupuestoparticipativo",
+                                             "https://educacion.smt.gob.ar/",
+                                             "https://uspp.smt.gob.ar/",
+                                             "https://transparencia.smt.gob.ar/",
+                                             "https://ces.smt.gob.ar/",
+                                             "https://licitaciones.smt.gob.ar/",
+                                             "https://boletinoficial.smt.gob.ar/?destino=boletin",
+                                             "https://turnos.smt.gob.ar/?destino=turnero",
+                                             "https://mapa.smt.gob.ar/",
+                                             "https://www.smtendatos.com.ar/"
+                                         ],
+                   "notas":  "Hallazgos y contradicciones del Ã¡mbito (categorÃ­as 6-11): (1) La categorÃ­a 9 no existe pÃºblicamente: /tramite/x/9 devuelve 404; queda pendiente confirmar en la base de Voyager si hay un registro id 9 oculto/eliminado o si la ruta exige slug exacto. (2) Enlace roto aparente en Transparencia: \u0027ParticipaciÃ³n Ciudadana\u0027 apunta a un Google Forms en modo ediciÃ³n (https://docs.google.com/forms/d/1M2ghY-ZJ-yHRKEh5lYUpsfeAcB-SPdWo25TbmLNWQR0/edit) en vez de /viewform â€” para el pÃºblico pedirÃ¡ permisos o fallarÃ¡. (3) DuplicaciÃ³n de contenido: \u0027Plan Rector\u0027 (/nota/plan-rector/32) figura en Biblioteca Digital (cat. 8) y en Transparencia (cat. 10); su breadcrumb dice Biblioteca Digital. (4) Inconsistencia de taxonomÃ­a: \u0027VÃ­a PÃºblica\u0027 (/nota/via-publica/29) estÃ¡ listada en Normativa (cat. 11) pero su breadcrumb la ubica en Biblioteca Digital. (5) Dependencia fuerte de Google Drive: 6 de 10 Ã­tems de Normativa (digestos normativos 1Âª y 2Âª parte, CÃ³digo de Planeamiento Urbano, planillas de edificaciÃ³n y uso, reglamento SMT CORRE) y la Ordenanza Tributaria 2026 del BoletÃ­n Oficial viven en drive.google.com con enlaces ?usp=sharing â€” riesgo de pÃ©rdida si cambia la cuenta; se recomienda migrarlos a /storage/. (6) Datos posiblemente desactualizados: aranceles de Licencia de Conducir (licencia anual $8.142, formulario CENAT $10.150; el PDF de requisitos aparenta ser de abril 2024) y el Digesto Municipal es un Ãºnico PDF consolidado subido en mayo 2024 sin buscador de normas. (7) \u0027Precios de obra pÃºblica\u0027 sÃ­ estÃ¡ al dÃ­a (PDF de agosto 2026, subido septiembre 2026, DECRETO 0454-25-SOP / RES 4217-SOP-2026), con histÃ³rico en carpeta Drive. (8) URL malformada en Transporte: /Registros%20_Transporte%20_Individual_Pasajeros (espacios y guiones bajos mezclados). (9) La ficha MASTER PLAN podrÃ­a tener parte del texto en inglÃ©s (la extracciÃ³n devolviÃ³ el pÃ¡rrafo descriptivo en inglÃ©s) â€” verificar en origen. (10) El \u0027Portal de Datos de la Ciudad\u0027 usa un dominio fuera de gob.ar (smtendatos.com.ar) â€” verificar titularidad y vigencia. (11) Los PDFs propios estÃ¡n bajo /storage/tramites-items-notas/{Mes}{AÃ±o}/ (patrÃ³n del media manager de Voyager); deben preservarse esas rutas o redirigirse en la migraciÃ³n. (12) Ninguna categorÃ­a tiene buscador, filtros ni paginaciÃ³n; Biblioteca Digital (21 Ã­tems) es la que mÃ¡s lo necesitarÃ­a, junto con un visor de PDF embebido (hoy todo es descarga directa o salto a Drive). (13) El BoletÃ­n Oficial real vive en el subdominio boletinoficial.smt.gob.ar (la nota 56 es solo una landing); las capacidades de bÃºsqueda del boletÃ­n quedan fuera de este Ã¡mbito y deben relevarse en ese subdominio."
+               }
+}

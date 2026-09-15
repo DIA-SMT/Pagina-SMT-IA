@@ -1,0 +1,14 @@
+{
+    "id": 84,
+    "nombre": "Dirección General de Tránsito",
+    "slug": "direccion-general-de-transito",
+    "autoridad": ".",
+    "foto": null,
+    "domicilio": "Av. Avellaneda 663 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "transito@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": null,
+    "dependencias": []
+}

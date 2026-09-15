@@ -1,0 +1,18 @@
+{
+    "id": 80,
+    "nombre": "Dirección de Salud Ambiental",
+    "slug": "direccion-de-salud-ambiental",
+    "autoridad": "Lic. Clara Saslaver",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/KTjcq0wVRYAhAEutSoSV.jpg",
+    "domicilio": ".San Martín 1009 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "saludambiental@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 10,
+        "nombre": "Secretaría de Ambiente y Desarrollo Sustentable",
+        "slug": "secretaria-de-ambiente-y-desarrollo-sustentable"
+    },
+    "dependencias": []
+}

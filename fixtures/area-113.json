@@ -1,0 +1,18 @@
+{
+    "id": 113,
+    "nombre": "Dirección Centro de Tartamudez Municipal",
+    "slug": "direccion-centro-de-tartamudez-municipal",
+    "autoridad": "Lic. Lina M. Almazán",
+    "foto": "https://smt.gob.ar/storage/administraciones/January2026/tQlVK6MycRV6VpgGtZz6.jpg",
+    "domicilio": "Cartamarca 411 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "centrodetartamudez@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 20,
+        "nombre": "Subsecretaría de Desarrollo Humano",
+        "slug": "subsecretaria-de-desarrollo-humano"
+    },
+    "dependencias": []
+}

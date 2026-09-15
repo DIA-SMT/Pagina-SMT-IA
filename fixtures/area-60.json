@@ -1,0 +1,18 @@
+{
+    "id": 60,
+    "nombre": "Dirección de Obras Viales",
+    "slug": "direccion-de-obras-viales",
+    "autoridad": "Ing Darío Vera Antonelli",
+    "foto": null,
+    "domicilio": "Mate de Luna 1925 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "obras@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 23,
+        "nombre": "Subsecretaría de Obras Públicas",
+        "slug": "subsecretaria-de-obras-publicas"
+    },
+    "dependencias": []
+}

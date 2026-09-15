@@ -1,0 +1,18 @@
+{
+    "id": 125,
+    "nombre": "Dirección Administrativa de Tránsito",
+    "slug": "direccion-administrativa-de-transito",
+    "autoridad": "Sr. Eduardo Pedro Mosconi",
+    "foto": null,
+    "domicilio": "Av. Avellaneda 663 - San Miguel de Tucumán (C.P. 4000)",
+    "telefono": null,
+    "email": "transitoadministrativa@smt.gob.ar",
+    "descripcion": null,
+    "organigrama": null,
+    "padre": {
+        "id": 118,
+        "nombre": "Subsecretaría de Movilidad Urbana",
+        "slug": "subsecretaria-de-movilidad-urbana"
+    },
+    "dependencias": []
+}
