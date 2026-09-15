@@ -38,11 +38,38 @@ export const NAV: SeccionNav[] = [
     ],
   },
   {
+    /* Transporte entra al primer nivel ocupando el lugar que dejó
+       Transparencia, cuyos hijos pasaron a Gobierno. No es un capricho de
+       orden: son 301 visitas diarias —colectivos 161, SUBE 59, SUBEM 37,
+       registros 44— que hoy no tienen ninguna puerta de entrada en el portal,
+       más la ficha de recorridos con otras 51. Y el ancho obliga a canjear:
+       a 1024px, donde aparece este menú, sobran 49px sobre un promedio de
+       122px por ítem, así que un sexto ítem no entra. */
+    titulo: "Transporte",
+    hijos: [
+      { titulo: "Recorridos de colectivos", url: "/p/colectivos" },
+      { titulo: "Tarjeta SUBE", url: "/p/Sube" },
+      { titulo: "Programa SUBEM — boleto educativo", url: "/p/SUBEM" },
+      { titulo: "Registros del transporte individual", url: "/p/Registros%20_Transporte%20_Individual_Pasajeros" },
+      { titulo: "Cortes de tránsito", url: "/p/cortes" },
+      { titulo: "Trámites de transporte y movilidad", url: "/tramites/7" },
+    ],
+  },
+  {
+    /* Absorbe los hijos de la vieja sección Transparencia. El rótulo se queda
+       en "Gobierno" y no pasa a "Gobierno y transparencia" por el mismo
+       problema de ancho: el rótulo largo mide unos 210px contra los 102 de
+       este, y no hay de dónde sacarlos. En el pie, donde sí hay lugar, la
+       columna se llama "Gobierno y transparencia". */
     titulo: "Gobierno",
     hijos: [
       { titulo: "Estructura de Gobierno", url: "/gobierno" },
+      { titulo: "Transparencia y Participación", url: "/tramites/10" },
       { titulo: "Normativa", url: "/tramites/11" },
       { titulo: "Justicia Municipal", url: "/tramites/16" },
+      { titulo: "Presupuesto Participativo", url: "/p/presupuestoparticipativo" },
+      { titulo: "Portal de Datos", url: "https://smtendatos.gob.ar/", externo: true },
+      { titulo: "Contaduría y presupuesto", url: "https://transparencia.smt.gob.ar/", externo: true },
       { titulo: "Licitaciones", url: "https://licitaciones.smt.gob.ar/", externo: true },
     ],
   },
@@ -55,15 +82,6 @@ export const NAV: SeccionNav[] = [
       { titulo: "Patrimonio cultural", url: "/tramites/13" },
       { titulo: "Galería de imágenes", url: "/galeria" },
       { titulo: "Mapa interactivo", url: "https://mapa.smt.gob.ar/", externo: true },
-    ],
-  },
-  {
-    titulo: "Transparencia",
-    hijos: [
-      { titulo: "Transparencia y Participación", url: "/tramites/10" },
-      { titulo: "Portal de Datos", url: "https://smtendatos.gob.ar/", externo: true },
-      { titulo: "Contaduría y presupuesto", url: "https://transparencia.smt.gob.ar/", externo: true },
-      { titulo: "Licitaciones", url: "https://licitaciones.smt.gob.ar/", externo: true },
     ],
   },
   {
@@ -97,6 +115,144 @@ export const SISTEMAS: ItemNav[] = [
   { titulo: "Catastro y Edificación", url: "https://ciudaddigital.smt.gob.ar/?destino=catastro", externo: true },
   { titulo: "Webmail", url: "https://webmail.smt.gob.ar/login.php", externo: true },
   { titulo: "SMT en Datos", url: "https://smtendatos.gob.ar/", externo: true },
+];
+
+/* ------------------------------------------------------------------ *
+ * El pie como directorio
+ * ------------------------------------------------------------------ */
+
+/**
+ * Columnas del pie de página.
+ *
+ * El pie anterior era una selección de favoritos: tenía "Gestión Tributaria"
+ * pero no las otras trece categorías, y un `SISTEMAS.slice(0, 8)` decidía por
+ * orden de array que Webmail y SMT en Datos no existieran. Sus dieciocho
+ * enlaces no cubrían ni una de las diez páginas más visitadas del portal.
+ *
+ * Acá cada columna tiene una REGLA que se puede decir en voz alta, escrita en
+ * `regla`. Sirve para dos cosas: decidir sin discutir si un enlace nuevo entra
+ * o no, y detectar cuándo una columna dejó de cumplir lo que promete.
+ *
+ * El orden de las columnas sigue la demanda medida sobre el log del servidor
+ * (lunes 14/09/2026): trámites 2.270 visitas diarias, transporte 301 sin
+ * ninguna puerta de entrada en el portal, gobierno 567, ciudad 107.
+ *
+ * Los destinos están verificados uno por uno contra el portal: 34 rutas
+ * internas y 9 externas, todas en 200. Las etiquetas respetan el título real
+ * de cada página; donde el rótulo agrega algo ("gratuitos" en Talleres,
+ * "boleto educativo" en SUBEM) es porque el propio contenido lo dice.
+ */
+export type EnlacePie = {
+  texto: string;
+  url: string;
+  externo?: boolean;
+};
+
+export type ColumnaPie = {
+  titulo: string;
+  /** La regla que define qué entra en esta columna. No se muestra al vecino. */
+  regla: string;
+  enlaces: EnlacePie[];
+};
+
+export const PIE: ColumnaPie[] = [
+  {
+    titulo: "Trámites y servicios",
+    regla:
+      "Las seis fichas de trámite más visitadas del portal, más las dos vías " +
+      "de gestión en línea y el índice completo por tema.",
+    enlaces: [
+      { texto: "Licencia de conducir", url: "/fichas/8" },
+      { texto: "Emisión del carnet de sanidad", url: "/fichas/14" },
+      { texto: "Turnos de Asistencia Pública", url: "/p/turno-asistencia" },
+      { texto: "Consulta y pago de infracciones", url: "/fichas/70" },
+      { texto: "Servicio de Población Animal", url: "/fichas/81" },
+      { texto: "Habilitación comercial", url: "/fichas/5" },
+      { texto: "Guía de Trámites Municipales", url: "https://guiadetramites.smt.gob.ar", externo: true },
+      { texto: "Ingresos Municipales (DIM)", url: "https://www.dimsmt.gob.ar/", externo: true },
+      { texto: "Todos los trámites, por tema", url: "/tramites" },
+    ],
+  },
+  {
+    titulo: "Transporte y movilidad",
+    regla:
+      "Todo lo que el portal publica sobre moverse por la ciudad, sin importar " +
+      "de qué tabla del CMS venga. Es la columna que arregla las 301 visitas " +
+      "diarias que hoy no tienen ninguna puerta de entrada.",
+    enlaces: [
+      { texto: "Recorridos de colectivos", url: "/p/colectivos" },
+      { texto: "Tarjeta SUBE", url: "/p/Sube" },
+      { texto: "Programa SUBEM — boleto educativo", url: "/p/SUBEM" },
+      { texto: "Registros del transporte individual", url: "/p/Registros%20_Transporte%20_Individual_Pasajeros" },
+      { texto: "Cortes de tránsito", url: "/p/cortes" },
+      { texto: "Plan Integral de Movilidad Urbana", url: "/fichas/15" },
+      { texto: "Secretaría de Movilidad Urbana", url: "/gobierno/12" },
+      { texto: "Trámites de transporte y movilidad", url: "/tramites/7" },
+    ],
+  },
+  {
+    titulo: "Gobierno y transparencia",
+    regla:
+      "El organigrama, las categorías institucionales y los sistemas donde el " +
+      "municipio rinde cuentas.",
+    enlaces: [
+      { texto: "Estructura de gobierno", url: "/gobierno" },
+      { texto: "Transparencia y Participación", url: "/tramites/10" },
+      { texto: "Normativa", url: "/tramites/11" },
+      { texto: "Justicia Municipal", url: "/tramites/16" },
+      { texto: "Presupuesto Participativo", url: "/p/presupuestoparticipativo" },
+      { texto: "Ordenanza Tributaria 2026", url: "/p/ordenanzatributaria" },
+      { texto: "Licitaciones", url: "https://licitaciones.smt.gob.ar/", externo: true },
+      { texto: "Tesorería — proveedores", url: "https://tesoreria.smt.gob.ar/", externo: true },
+      { texto: "SMT en Datos", url: "https://smtendatos.gob.ar/", externo: true },
+    ],
+  },
+  {
+    titulo: "La ciudad",
+    regla:
+      "Lo que el portal publica sobre la ciudad como lugar: su historia, sus " +
+      "espacios, su patrimonio y sus actividades abiertas.",
+    enlaces: [
+      { texto: "Historia de la ciudad", url: "/p/historia" },
+      { texto: "Lugares de interés", url: "/p/lugares-de-interes" },
+      { texto: "Circuitos turísticos", url: "/p/circuitos-turisticos" },
+      { texto: "Parques", url: "/p/parques_smt" },
+      { texto: "Talleres municipales gratuitos", url: "/p/Talleres" },
+      { texto: "Patrimonio Cultural", url: "/tramites/13" },
+      { texto: "Galería de imágenes", url: "/galeria" },
+      { texto: "Todas las páginas del portal", url: "/p" },
+      { texto: "Mapa interactivo", url: "https://mapa.smt.gob.ar/", externo: true },
+    ],
+  },
+  {
+    titulo: "Emergencias y contacto",
+    regla:
+      "Los canales para una urgencia y para comunicarse con el municipio. Los " +
+      "teléfonos de emergencia no van acá: salen del CMS y se muestran aparte, " +
+      "para que el municipio pueda corregirlos sin tocar el código.",
+    enlaces: [
+      { texto: "Prestaciones de Asistencia Pública", url: "/fichas/78" },
+      { texto: "Defensa Civil Municipal", url: "/fichas/64" },
+      { texto: "Seguridad Ciudadana y Emergencias", url: "/tramites/5" },
+      { texto: "Contacto de la Municipalidad", url: "/contacto" },
+    ],
+  },
+];
+
+/**
+ * La franja inferior: las páginas de convención que un portal de Estado tiene
+ * que tener siempre a la vista.
+ *
+ * No están acá Webmail ni Gestión de Empleados, que la propuesta original
+ * ponía en esta franja: son sistemas de uso interno del personal municipal y
+ * ofrecérselos al vecino en las 175 páginas del portal, sin ninguna
+ * aclaración, es ruido. Siguen listados en el mapa del sitio.
+ */
+export const PIE_LEGAL: EnlacePie[] = [
+  { texto: "Contacto", url: "/contacto" },
+  { texto: "Mapa del sitio", url: "/mapa-del-sitio" },
+  { texto: "Accesibilidad", url: "/accesibilidad" },
+  { texto: "Portal de noticias", url: "https://comunicacionsmt.gob.ar/", externo: true },
 ];
 
 export const CONTACTO = {

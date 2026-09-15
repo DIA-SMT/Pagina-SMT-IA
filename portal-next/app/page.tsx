@@ -31,6 +31,41 @@ const MAPA = "https://mapa.smt.gob.ar/";
 const DATOS_ABIERTOS = "https://smtendatos.gob.ar/";
 const LICITACIONES = "https://licitaciones.smt.gob.ar/";
 
+/**
+ * Los cuatro destinos de transporte con más demanda medida.
+ *
+ * Las descripciones no las escribimos nosotros: salen de lo que dice cada
+ * página. "Gratuita para grupos con atributos sociales" está en el texto de
+ * /p/Sube y "Boleto Educativo Municipal" en el de /p/SUBEM. Los cuatro
+ * destinos están verificados en 200.
+ */
+const TRANSPORTE = [
+  {
+    titulo: "Recorridos de colectivos",
+    detalle: "Las líneas municipales, de la 1 a la 19, y cómo seguirlas en tiempo real.",
+    url: "/p/colectivos",
+    icono: "transporte",
+  },
+  {
+    titulo: "Tarjeta SUBE",
+    detalle: "Cómo obtenerla y quiénes la reciben sin cargo.",
+    url: "/p/Sube",
+    icono: "pagos",
+  },
+  {
+    titulo: "Boleto Educativo Municipal",
+    detalle: "El programa SUBEM para estudiantes de primaria y secundaria.",
+    url: "/p/SUBEM",
+    icono: "educacion",
+  },
+  {
+    titulo: "Transporte individual de pasajeros",
+    detalle: "El registro obligatorio para personas, vehículos y empresas del servicio.",
+    url: "/p/Registros%20_Transporte%20_Individual_Pasajeros",
+    icono: "normativa",
+  },
+];
+
 /** Búsquedas frecuentes: todas corresponden a trámites que existen en el CMS. */
 const BUSQUEDAS_FRECUENTES = [
   "Licencia de conducir",
@@ -168,6 +203,43 @@ export default async function Portada() {
                 </Link>
               ),
             )}
+          </div>
+        </div>
+      </section>
+
+      {/* B-bis. Cómo moverte por la ciudad -------------------------------- */}
+      {/* El agujero más grande que mostró el log del servidor. Medido el lunes
+          14/09/2026, día hábil completo y sin bots: colectivos 161 visitas
+          diarias, SUBE 59, registros del transporte individual 44, SUBEM 37.
+          Son 301 visitas por día de información de transporte que el portal no
+          enlazaba desde ningún lado: se llegaba sólo por buscador o por la URL
+          directa. Para comparar, los tres botones que la portada sí mostraba
+          —historia, circuitos y lugares de interés— suman 107. */}
+      <section className="seccion seccion--blanca" aria-labelledby="titulo-transporte">
+        <div className="contenedor">
+          <div className="seccion__cabecera">
+            <div>
+              <p className="seccion__kicker">Transporte y movilidad</p>
+              <h2 id="titulo-transporte">Cómo moverte por la ciudad</h2>
+              <p>Los recorridos, la tarjeta y los trámites del transporte público.</p>
+            </div>
+            <Link className="boton boton--secundario" href="/tramites/7">
+              Ver todos los trámites de transporte
+            </Link>
+          </div>
+
+          <div className="grilla grilla--4">
+            {TRANSPORTE.map((destino) => (
+              <article className="tarjeta" key={destino.url}>
+                <span className="tarjeta__icono">
+                  <Icono nombre={destino.icono} tamano={24} />
+                </span>
+                <h3>
+                  <Link href={destino.url}>{destino.titulo}</Link>
+                </h3>
+                <p>{destino.detalle}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>

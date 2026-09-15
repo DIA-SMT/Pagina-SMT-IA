@@ -1042,7 +1042,8 @@ form.buscador-hero:focus-within {
   gap: var(--sp-7);
   position: relative;
 }
-@media (min-width: 60rem) { .footer__grid { grid-template-columns: 1.4fr 1fr 1fr 1fr; } }
+@media (min-width: 60rem) { .footer__grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 75rem) { .footer__grid { grid-template-columns: repeat(6, 1fr); } }
 .footer h2 {
   color: #fff;
   font-size: var(--fs-sm);
@@ -1449,3 +1450,76 @@ time { font-variant-numeric: tabular-nums; }
   border-color: rgba(255, 255, 255, 0.28);
 }
 .seccion--azul .tel-emergencia:hover { background: var(--c-azul-800); }
+
+/* ---- El pie como directorio ----
+   Antes eran cuatro columnas con enlaces elegidos a mano. Ahora son seis y
+   cada una responde a una regla enunciable (ver PIE en lib/navegacion.ts).
+   Eso hace que el pie sea largo, y por eso las columnas se pliegan en
+   teléfono. */
+
+/* La identidad no se pliega: el logo, el domicilio y el teléfono general son
+   lo primero que alguien busca en un pie institucional. */
+.footer__identidad { position: relative; margin-bottom: var(--sp-8); }
+
+@media (min-width: 60rem) {
+  .footer__identidad {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: var(--sp-6);
+  }
+  .footer__logo img { margin-bottom: 0; }
+  .footer__redes { margin-top: 0; }
+}
+
+/* En teléfono el summary ES el control: ocupa el ancho, se toca cómodo y
+   lleva un separador arriba para que las columnas se lean como una pila de
+   secciones y no como un bloque continuo. */
+.footer__col > summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  min-height: 2.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+.footer__col > summary::-webkit-details-marker { display: none; }
+.footer__col > summary h2 { margin-bottom: 0; }
+
+/* Flecha propia en vez del triángulo del navegador, que no se puede colorear
+   de forma pareja entre motores. */
+.footer__col > summary::after {
+  content: "";
+  width: 0.55rem; height: 0.55rem;
+  border-right: 2px solid var(--c-celeste-200);
+  border-bottom: 2px solid var(--c-celeste-200);
+  transform: rotate(45deg);
+  margin-right: 0.25rem;
+  transition: transform var(--t-rapida);
+  flex: none;
+}
+.footer__col[open] > summary::after { transform: rotate(-135deg); }
+
+.footer__col > summary:hover h2 { color: var(--c-celeste-200); }
+.footer__col > summary:active { background: rgba(255, 255, 255, 0.06); }
+
+.footer__col > ul,
+.footer__col > .footer__emergencias { padding-bottom: var(--sp-4); }
+
+@media (min-width: 60rem) {
+  /* En escritorio las columnas están siempre abiertas y el rótulo vuelve a
+     ser un título y no un control: sin cursor, sin flecha, sin borde y sin
+     poder plegarse. El atributo `open` lo pone el HTML servido. */
+  .footer__col > summary {
+    cursor: default;
+    pointer-events: none;
+    min-height: 0;
+    border-top: 0;
+    display: block;
+  }
+  .footer__col > summary::after { display: none; }
+  .footer__col > ul,
+  .footer__col > .footer__emergencias { padding-bottom: 0; }
+}
