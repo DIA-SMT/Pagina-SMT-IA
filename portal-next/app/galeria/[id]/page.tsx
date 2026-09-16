@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 
 import { Migas } from "@/components/Migas";
 import { getGaleria, getGalerias } from "@/lib/api";
+import { medirImagenes } from "@/lib/medidas";
 import type { Foto, Galeria } from "@/lib/tipos";
 
 /** Los contenidos del CMS cambian poco: se revalidan cada cinco minutos. */
@@ -32,21 +33,58 @@ function contarFotos(cantidad: number): string {
  * falta la miniatura se muestra la original, y si no hay ningún archivo la
  * foto se descarta, porque no habría nada que pintar.
  */
-type FotoLista = { id: number; src: string; original: string | null; descripcion: string | null };
+type FotoLista = {
+  id: number;
+  src: string;
+  original: string | null;
+  descripcion: string | null;
+  /** Proporción real de la foto, para que no haya que recortarla. */
+  proporcion: number;
+};
 
-function prepararFotos(fotos: Foto[]): FotoLista[] {
-  return fotos.flatMap((foto) => {
-    const src = foto.miniatura ?? foto.imagen;
-    if (!src) return [];
+/**
+ * Proporción de reserva cuando una foto no se puede medir. Es la que tenían
+ * todas hasta ahora, y como reserva sirve: lo que no sirve es imponérsela a
+ * las 38.
+ */
+const PROPORCION_RESERVA = 4 / 3;
 
-    return [
-      {
-        id: foto.id,
-        src,
-        original: foto.imagen,
-        descripcion: foto.descripcion?.trim() || null,
-      },
-    ];
+/**
+ * Prepara las fotos con su proporción real.
+ *
+ * Antes iban todas metidas a la fuerza en una caja de 4/3 con objectFit cover,
+ * así que a una foto vertical se le comían el cielo y el piso: en la galería
+ * de Parques se veía una tajada de la flor y del monumento, no la foto. Con la
+ * proporción real, cada una entra entera y la grilla queda despareja abajo,
+ * que es como se ve un mosaico de fotos de verdad.
+ *
+ * La API no publica el tamaño —la base guarda la ruta del archivo y nada
+ * más—, así que hay que leer la cabecera de cada archivo. Se hace de a tandas
+ * de tres porque el servidor municipal tarda hasta 6,7 segundos por foto y con
+ * todas a la vez se ahoga. Corre al generar la página y queda en caché un día.
+ */
+async function prepararFotos(fotos: Foto[]): Promise<FotoLista[]> {
+  // La miniatura del CMS NO se usa: Voyager las genera todas a 255x160 con el
+  // recorte ya hecho. Son dos problemas de una: la foto vertical llega
+  // decapitada de fábrica, y 255px de ancho en una tarjeta de 256px se ve
+  // borrosa en cualquier pantalla de densidad doble. Se parte del original y
+  // next/image entrega el tamaño que corresponda a cada pantalla.
+  const utiles = fotos.flatMap((foto) => {
+    const src = foto.imagen ?? foto.miniatura;
+    return src ? [{ foto, src }] : [];
+  });
+
+  const medidas = await medirImagenes(utiles.map((x) => x.src));
+
+  return utiles.map(({ foto, src }, i) => {
+    const m = medidas[i];
+    return {
+      id: foto.id,
+      src,
+      original: foto.imagen,
+      descripcion: foto.descripcion?.trim() || null,
+      proporcion: m && m.alto > 0 ? m.ancho / m.alto : PROPORCION_RESERVA,
+    };
   });
 }
 
@@ -101,7 +139,7 @@ export default async function PaginaGaleria({ params }: { params: Promise<{ id: 
   if (!galeria) notFound();
 
   const nombre = nombreDe(galeria);
-  const fotos = prepararFotos(galeria.fotos);
+  const fotos = await prepararFotos(galeria.fotos);
 
   return (
     <>
@@ -159,7 +197,7 @@ export default async function PaginaGaleria({ params }: { params: Promise<{ id: 
           ) : (
             <div className="galeria">
               {fotos.map((foto) => (
-                <figure key={foto.id} style={{ aspectRatio: "4 / 3" }}>
+                <figure key={foto.id} style={{ aspectRatio: foto.proporcion }}>
                   {/* El pie describe la foto: cuando existe, esa misma
                       descripción es el texto alternativo de la imagen. */}
                   <Image

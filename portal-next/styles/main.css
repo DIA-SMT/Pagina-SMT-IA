@@ -919,6 +919,10 @@ form.buscador-hero:focus-within {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
   gap: var(--sp-4);
+  /* Cada figura conserva la proporción de su foto, así que las de una misma
+     fila terminan a distinta altura. Sin esto, la grilla las estiraría a la
+     altura de la más alta y volveríamos al recorte que vinimos a sacar. */
+  align-items: start;
 }
 
 .galeria figure {
@@ -1522,4 +1526,203 @@ time { font-variant-numeric: tabular-nums; }
   .footer__col > summary::after { display: none; }
   .footer__col > ul,
   .footer__col > .footer__emergencias { padding-bottom: 0; }
+}
+
+/* ---- Fondo de fotos que se van pasando ----
+   Las fotos de las galerías del CMS como fondo de una sección oscura. El
+   pasaje es CSS puro: cinco capas apiladas con la opacidad animada y el
+   arranque escalonado, sin una línea de JavaScript. */
+.seccion--fotos { position: relative; isolation: isolate; }
+.seccion--fotos > .contenedor { position: relative; z-index: 1; }
+
+.fondo-fotos {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+.fondo-fotos img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  /* El nombre, la duración y el retardo los pone el componente: dependen de
+     cuántas fotos hayan pasado el filtro, que lo decide el CMS. */
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+
+
+/* El velo es lo que hace que esto sea publicable y no sólo lindo: garantiza
+   el contraste del título, la bajada y el kicker pase la foto que pase.
+   Mantiene el azul institucional, así que la sección sigue perteneciendo al
+   mismo sitio y no parece un banner pegado encima. */
+.fondo-fotos__velo {
+  position: absolute;
+  inset: 0;
+  /* Fuerte sólo donde está el texto —el título y la bajada viven arriba a la
+     izquierda— y se abre hacia la derecha para que la foto se vea. Las
+     tarjetas y los botones son blancos opacos: no necesitan velo, se defienden
+     solos. Una sola capa: dos apiladas apagaban la foto hasta dejarla casi
+     como el azul plano que vinimos a reemplazar. */
+  background: linear-gradient(
+    103deg,
+    rgba(10, 46, 110, 0.92) 0%,
+    rgba(10, 46, 110, 0.86) 46%,
+    rgba(10, 46, 110, 0.52) 74%,
+    rgba(10, 46, 110, 0.32) 100%
+  );
+}
+
+/* Quien pidió menos movimiento en su sistema operativo ve una sola foto,
+   quieta. No es una animación decorativa que se pueda ignorar: un fondo que
+   cambia solo detrás del texto marea a mucha gente. */
+@media (prefers-reduced-motion: reduce) {
+  .fondo-fotos img { animation: none; }
+  .fondo-fotos img:first-child { opacity: 1; }
+}
+
+/* La bajada de una sección con foto va en blanco y no en celeste-100. Medido
+   contra el peor caso imaginable —una foto blanca detrás— el celeste daba
+   3,80:1 y AA pide 4,5 para texto de este tamaño. El blanco lo resuelve sin
+   tener que oscurecer más la foto, que es lo que vinimos a mostrar. */
+.seccion--fotos .seccion__cabecera p:not(.seccion__kicker) { color: #fff; }
+
+/* ---- Carrusel de banners ----
+   Los banners del CMS vienen en siete proporciones distintas, de 1:1 a
+   10,78:1. Acá todos comparten un cajón del mismo tamaño y cada uno entra
+   completo adentro: los finitos con aire arriba y abajo, el cuadrado con aire
+   a los costados. Nada se recorta ni se estira.
+
+   La proporción del cajón, 4,4:1, es la mediana de los quince que publica el
+   CMS: es la que deja menos aire sumando todos. */
+.carrusel { position: relative; }
+
+.carrusel__pista {
+  display: flex;
+  gap: var(--sp-4);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  /* El desplazamiento suave NO va acá. Puesto en CSS se aplica a TODA
+     asignación de scroll, incluidas las del componente, y la animación se
+     traba: medido, scrollLeft se quedaba en 0 y ni las flechas ni los puntos
+     movían nada. Lo decide el JS llamada por llamada, que además contempla
+     prefers-reduced-motion. */
+  /* Sitio para el anillo de foco de los banners, que si no queda recortado
+     por el propio scroll del contenedor. */
+  padding: var(--sp-1);
+  margin: calc(var(--sp-1) * -1);
+  scrollbar-width: none;
+}
+.carrusel__pista::-webkit-scrollbar { display: none; }
+
+.carrusel .banner {
+  flex: 0 0 auto;
+  /* No es decorativo: el aviso "(se abre en otra pestaña)" va en un span con
+     position:absolute, y sin un ancestro posicionado acá se cuelga de
+     .carrusel, o sea FUERA del área que scrollea. Cada aviso quedaba en la
+     posición de su slide —hasta 4217px— y estiraba la página entera a lo
+     ancho. Con esto, cada uno queda dentro de su propio cajón. */
+  position: relative;
+  width: min(100% - 0.5rem, 34rem);
+  aspect-ratio: 4.4;
+  /* Alineado al borde y no al centro: con "center", el último banner no se
+     puede centrar nunca —no hay scroll suficiente— y la flecha derecha se
+     quedaba trabada al final. Con "start" cada uno se apoya en el borde
+     izquierdo, que además es lo que calcula el componente para saber en cuál
+     está parado. */
+  scroll-snap-align: start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* El fondo hace que el aire sobrante lea como margen del cajón y no como
+     un error de maquetación. */
+  background: var(--c-blanco);
+  border: 1px solid var(--c-borde-objeto);
+  border-radius: var(--r-lg);
+  box-shadow: var(--sombra-1);
+  overflow: hidden;
+  padding: var(--sp-2);
+}
+.carrusel .banner picture { display: contents; }
+.carrusel .banner img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--r-sm);
+}
+
+.carrusel__controles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-3);
+  margin-top: var(--sp-5);
+  flex-wrap: wrap;
+}
+
+/* Las tres: anterior, pausa y siguiente. Mismo círculo de 44px para que lean
+   como una sola fila de controles y ninguno cante más que los otros. El de
+   pausa no es decorativo: WCAG 2.2.2, nivel A, exige poder frenar cualquier
+   cosa que se mueva sola por más de cinco segundos. */
+.carrusel__flecha {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex: none;
+  border: 1px solid var(--c-borde-campo);
+  border-radius: var(--r-full);
+  background: var(--c-blanco);
+  color: var(--c-azul-700);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color var(--t-rapida), background var(--t-rapida);
+}
+.carrusel__flecha:hover { border-color: var(--c-azul-300); background: var(--c-azul-50); }
+.carrusel__flecha:active { background: var(--c-azul-100); }
+
+
+.carrusel__puntos {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.carrusel__puntos button {
+  display: block;
+  width: 0.65rem;
+  height: 0.65rem;
+  padding: 0;
+  border: 0;
+  border-radius: var(--r-full);
+  background: var(--c-borde-campo);
+  cursor: pointer;
+  transition: background var(--t-rapida), transform var(--t-rapida);
+}
+.carrusel__puntos button[aria-current] { background: var(--c-azul-700); transform: scale(1.35); }
+
+/* El punto mide 10px, muy por debajo del mínimo de toque. Se le agranda el
+   área sin agrandar la bolita, con un seudoelemento transparente. */
+@media (pointer: coarse) {
+  .carrusel__puntos li { position: relative; }
+  .carrusel__puntos button::after {
+    content: "";
+    position: absolute;
+    inset: 50% 50%;
+    width: 2.75rem;
+    height: 2.75rem;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carrusel__puntos button { transition: none; }
 }

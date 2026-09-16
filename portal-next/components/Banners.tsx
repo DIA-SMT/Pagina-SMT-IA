@@ -1,12 +1,17 @@
+import { CarruselBanners } from "./CarruselBanners";
 import type { Banner } from "@/lib/tipos";
 
 /**
  * Banners de campaña que administra el municipio desde Voyager.
  *
- * Son piezas gráficas con el texto incrustado en la imagen, así que no se
- * recortan: cada una conserva su proporción original. Vienen con relaciones
- * muy dispares (de 4,4:1 a 10,8:1), por eso van en dos columnas alineadas
- * arriba y no en una grilla de altura fija, que las deformaría.
+ * Son piezas gráficas con el texto incrustado en la imagen, así que nunca se
+ * recortan: cada una entra completa en su cajón.
+ *
+ * Medidos los quince que publica el CMS, vienen en siete proporciones
+ * distintas: 960x960 (1:1) la de la radio, 970x90 (10,78:1) la del Portal de
+ * Datos, y cinco medidas más en el medio. En la grilla de dos columnas que
+ * había antes, cada fila quedaba de una altura distinta y el bloque se veía
+ * desprolijo. Van a un carrusel donde todos comparten cajón.
  *
  * El campo `responsive` del CMS es la variante para pantallas angostas: el
  * sitio actual la usa con `d-none d-lg-block` / `d-block d-lg-none`. Acá se
@@ -79,11 +84,11 @@ export function Banners({ banners }: { banners: Banner[] }) {
             <h2 id="titulo-campanas">Lo que está pasando en la ciudad</h2>
           </div>
         </div>
-        <div className="banners">
+        <CarruselBanners cantidad={visibles.length}>
           {visibles.map((b) => (
             <Pieza key={b.id} banner={b} />
           ))}
-        </div>
+        </CarruselBanners>
       </div>
     </section>
   );

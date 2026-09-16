@@ -3,11 +3,13 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 import { Banners } from "@/components/Banners";
+import { FondoFotos } from "@/components/FondoFotos";
 import { Icono } from "@/components/Iconos";
-import { getBanners, getCategorias, getGalerias } from "@/lib/api";
+import { getBanners, getCategorias, getGaleria, getGalerias } from "@/lib/api";
 import { HERO } from "@/lib/hero";
+import { medirImagenes } from "@/lib/medidas";
 import { ACCESOS, iconoDesdeFontAwesome } from "@/lib/navegacion";
-import type { Banner, GaleriaResumen } from "@/lib/tipos";
+import type { Banner, Foto, GaleriaResumen } from "@/lib/tipos";
 
 /** Los contenidos del CMS cambian poco: se regeneran cada cinco minutos. */
 export const revalidate = 300;
@@ -89,6 +91,75 @@ async function sinRomper<T>(promesa: Promise<T>, respaldo: T, que: string): Prom
   }
 }
 
+/**
+ * Las fotos que se van pasando de fondo en "Conocé la ciudad".
+ *
+ * Salen de las galerías del CMS, no de una lista escrita acá: si el municipio
+ * carga una foto nueva, la portada la muestra sola.
+ *
+ * Se quedan las que tienen descripción cargada. La regla no es caprichosa: en
+ * las galerías de hoy son 12 de 38, y son justamente las fotos de ciudad
+ * —Monumento al Bicentenario, Plaza Independencia, El Rosedal— mientras que
+ * las de actos y oficinas están sin describir. Además le da al municipio un
+ * motivo concreto para completar el texto alternativo.
+ *
+ * Se descartan las repetidas por descripción: hay dos "Puente peatonal Mate de
+ * luna" y verlas pasar una atrás de la otra queda raro.
+ *
+ * Además se miden: una foto vertical recortada a una banda ancha muestra una
+ * tajada sin sentido, y una chica estirada se ve borrosa. Las dos cosas se
+ * notan. Como la API no publica el tamaño —la base guarda la ruta del archivo
+ * y nada más— se lee la cabecera de cada candidata (lib/medidas.ts).
+ *
+ * Los dos umbrales salen de medir la caja real: a 1440px de pantalla el fondo
+ * mide 1425x802.
+ *   - Apaisada, 1,2 de proporción o más. Con la foto vertical de 675x1011 que
+ *     había entrado, se veía una franja del medio y nada más.
+ *   - 1200px de ancho como mínimo, para que el estiramiento no pase de 1,19x
+ *     y no se note. La que había entrado medía 427x641 y se servía a 160x240.
+ *
+ * Cinco es el tope: a siete segundos por foto ya son treinta y cinco segundos
+ * de vuelta y la sección no gana nada con más.
+ */
+const FOTOS_DE_FONDO = 5;
+const ANCHO_MINIMO = 1200;
+const PROPORCION_MINIMA = 1.2;
+
+async function fotosParaElFondo(galerias: GaleriaResumen[]): Promise<Foto[]> {
+  const completas = await Promise.all(
+    galerias.map((galeria) =>
+      sinRomper(getGaleria(galeria.id), null, `la galería ${galeria.id}`),
+    ),
+  );
+
+  // Primero el filtro barato: descripción cargada y sin repetir.
+  const vistas = new Set<string>();
+  const candidatas: Foto[] = [];
+  for (const galeria of completas) {
+    for (const foto of galeria?.fotos ?? []) {
+      const descripcion = foto.descripcion?.trim();
+      if (!descripcion || !foto.imagen) continue;
+      const clave = descripcion.toLowerCase();
+      if (vistas.has(clave)) continue;
+      vistas.add(clave);
+      candidatas.push(foto);
+    }
+  }
+
+  // Y recién ahí el caro, que pide bytes por la red. De a tandas de tres: el
+  // servidor municipal tarda hasta 6,7 segundos por foto y con doce pedidos
+  // simultáneos se ahoga, así que el fondo cambiaba de cantidad de fotos en
+  // cada regeneración. El resultado queda en caché un día.
+  const medidas = await medirImagenes(candidatas.map((foto) => foto.imagen ?? ""));
+
+  return candidatas
+    .filter((_, i) => {
+      const m = medidas[i];
+      return m !== null && m.ancho >= ANCHO_MINIMO && m.ancho / m.alto >= PROPORCION_MINIMA;
+    })
+    .slice(0, FOTOS_DE_FONDO);
+}
+
 export default async function Portada() {
   const [categorias, galerias, banners] = await Promise.all([
     getCategorias(),
@@ -97,6 +168,7 @@ export default async function Portada() {
   ]);
 
   const transparencia = categorias.find((c) => c.id === 10);
+  const fotosDeFondo = await fotosParaElFondo(galerias);
 
   return (
     <>
@@ -282,7 +354,9 @@ export default async function Portada() {
           y esto es comunicación con fecha de vencimiento. */}
       <Banners banners={banners} />
 
-      <section className="seccion seccion--azul" aria-labelledby="titulo-ciudad">
+      <section className="seccion seccion--azul seccion--fotos" aria-labelledby="titulo-ciudad">
+        <FondoFotos fotos={fotosDeFondo} />
+
         <div className="contenedor">
           <div className="seccion__cabecera">
             <div>
