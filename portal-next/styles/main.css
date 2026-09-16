@@ -358,70 +358,204 @@ strong { font-weight: 700; }
 .acordeon__panel[hidden] { display: none; }
 
 /* ---- 05 Hero ----
-   Banda panorámica de ancho completo. Las fotografías municipales disponibles
-   son panorámicas (3:1), así que el hero se adapta al material en vez de
-   recortarlo: antes se metía una 3:1 en un recuadro de 1,4:1 y se veía una
-   franja del centro.
+   Banda azul de ancho completo, arriba de todo: el buscador y los seis
+   accesos que concentran la demanda.
 
-   El título va sobre la foto con un velo de azul institucional — no un negro
-   genérico — que garantiza contraste sin importar si la foto es un amanecer
-   o una toma nocturna. El buscador baja a una tarjeta que monta sobre el
-   borde inferior: queda sobre fondo sólido, que es donde más se lee, y de
-   paso le da profundidad y anclaje a la portada. */
+   Sin fotografía, y es deliberado: la ciudad pasó a ser el telón del tramo de
+   servicios (bloque 05-bis). Tenerla también acá sería gastar el mismo
+   recurso dos veces y que ninguna de las dos pese.
+
+   El panel dejó de tener fondo propio. Esa tarjeta azul con sombra existía
+   por una razón concreta —que el texto cayera sobre color sólido y nunca
+   sobre la foto, porque sobre un amanecer el blanco daba 2,8:1—. Sin foto
+   detrás, un recuadro azul sobre azul es un contorno que no separa nada. El
+   contraste lo garantiza ahora el degradado de la banda, que es el mismo de
+   .seccion--azul: 6,82:1 para el blanco en su punto más claro. */
 
 .hero {
   position: relative;
-  background: var(--c-blanco);
+  background:
+    radial-gradient(90rem 40rem at 110% -20%, rgba(46, 177, 255, 0.20), transparent 60%),
+    linear-gradient(135deg, var(--c-azul-900), var(--c-azul-700));
+  color: #fff;
+  /* La curva del pétalo del logo se mudó del panel al canto de la banda: es
+     el mismo gesto a la escala que corresponde ahora. */
+  border-radius: 0 0 clamp(2rem, 9vw, 7rem) 0;
 }
 
-.hero__banda {
+.hero__contenido {
   position: relative;
-  width: 100%;
-  aspect-ratio: 3 / 2;          /* móvil: más alto para que la foto se lea */
-  /* Sin este mínimo, en un teléfono angosto la banda queda tan baja que el
-     bloque de texto ocupa el 75% de su alto y se sale de la zona cubierta
-     por el velo. */
-  min-height: 26rem;
-  overflow: hidden;
+  z-index: 1;
+  padding-block: clamp(2.5rem, 7vw, 4.5rem) clamp(3rem, 8vw, 5.5rem);
+}
+
+/* Sigue siendo un bloque angosto aunque ya no se vea como tarjeta: una línea
+   de texto de 1200px no se lee, se barre. */
+.hero__panel { max-width: 46rem; color: #fff; }
+
+/* Las hojas: los accesos, lo único blanco de la banda. En escritorio van en
+   dos y tres columnas para que el ancho no quede vacío a la derecha, que es
+   donde antes estaba la fotografía. */
+.hero__hojas {
+  margin-top: clamp(2.5rem, 8vh, 5rem);
+  display: grid;
+  gap: var(--sp-3);
+  max-width: 38rem;
+}
+@media (min-width: 60rem) {
+  .hero__hojas { max-width: none; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 72rem) {
+  .hero__hojas { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+/* El rótulo es un ítem más de la grilla: sin esto se mete en la primera celda
+   y empuja las tarjetas una posición. */
+.hero__rotulo {
+  grid-column: 1 / -1;
+  display: inline-flex; align-items: center; gap: var(--sp-2);
+  width: fit-content;
+  font-size: var(--fs-sm); font-weight: var(--fw-fuerte);
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: #fff;
+  background: rgba(10, 46, 110, 0.82);
+  padding: 0.5rem 1rem;
+  border-radius: var(--r-full);
+  margin-bottom: var(--sp-1);
+}
+.hero__rotulo::before {
+  content: ""; flex: none;
+  width: 1.2rem; height: 0.75rem;
+  background: var(--c-amarillo-400);
+  border-radius: 0 100% 0 100%;
+}
+/* Sombra más marcada que la de una tarjeta en página clara: acá el fondo es
+   oscuro y la sombra normal no se ve. */
+.hero__hojas .acceso { box-shadow: var(--sombra-3); }
+
+
+/* ---- 05-bis El telón: la ciudad quieta ----
+   Las tres fotografías se quedan fijas ocupando la pantalla mientras los
+   servicios y las campañas les pasan por delante, y se van turnando a medida
+   que uno baja. Es position: sticky con el contenido tirado hacia arriba por
+   un margen negativo; NO background-attachment: fixed, que es la forma que
+   sale en los tutoriales y la única que no funciona en iOS.
+
+   El velo es fuerte y no un lavado, y eso no es gusto: acá sí hay texto sobre
+   la fotografía —los encabezados de las dos secciones—. Está medido sobre los
+   píxeles compuestos: se buscó el píxel MÁS CLARO de cada una de las tres
+   fotos y se compuso con el punto más flojo del degradado.
+
+     sin velo ............ 1,01:1  el blanco desaparece
+     velo al 0,70 ........ 5,31:1  pasa el blanco, el kicker amarillo no (3,8)
+     velo al 0,78 ........ 6,76:1  y el amarillo sube a 4,86:1
+
+   Por eso el piso del degradado es 0,78 y no 0,70: el que manda no es el
+   blanco de los títulos sino el amarillo del kicker, que es texto chico.
+
+   Las tarjetas son opacas, así que su texto conserva el contraste que ya
+   tenía y no hay que tocarlas. */
+/* El fondo va TAMBIÉN acá y no sólo en .telon__fondo. En el teléfono la
+   barra del navegador se retrae al bajar y el viewport visible crece: si el
+   telón pegajoso midiera menos, por abajo asomaría el fondo claro de la
+   página con los títulos blancos encima. Con lvh no debería pasar nunca,
+   pero esta línea cuesta nada y cubre el redondeo. */
+.telon { position: relative; isolation: isolate; background: var(--c-azul-900); }
+
+/* lvh y NO svh: svh es el viewport CHICO, con las barras del navegador
+   desplegadas. Cuando la barra se retrae el viewport crece unos 60-115px y un
+   fondo de 100svh deja esa franja sin cubrir, justo abajo, que es donde el
+   ojo está leyendo mientras el contenido sube. Con lvh el fondo siempre
+   alcanza; lo que sobra queda debajo del pliegue, que es inocuo.
+
+   Tampoco dvh: se recalcularía en vivo en cada transición de la barra y el
+   margen negativo del contenido daría saltos. Los dos valores —el alto de
+   acá y el margin-top de .telon__contenido— tienen que moverse JUNTOS o el
+   contenido se desalinea del fondo. */
+.telon__fondo {
+  position: sticky;
+  top: 0;
+  height: 100lvh;
+  overflow: clip;
   background: var(--c-azul-900);
 }
-.hero__banda img {
-  width: 100%;
-  height: 100%;
+.telon__fotos { position: absolute; inset: 0; }
+.telon__fotos img {
   object-fit: cover;
-  object-position: center;
+  opacity: 0;
+  transform-origin: 50% 55%;
+}
+.telon__fotos img:first-of-type { opacity: 1; }
+
+/* Sin cruce no hay segunda ni tercera foto: se quedan en opacity 0 para
+   siempre. Ocultarlas evita pintar dos capas invisibles, y con loading=lazy
+   los navegadores que respetan display:none tampoco las piden. No está
+   garantizado por especificación: el ahorro de bytes es probable, no seguro. */
+@media (prefers-reduced-motion: reduce) {
+  .telon__fotos img:not(:first-of-type) { display: none; }
+}
+@supports not (animation-timeline: view()) {
+  .telon__fotos img:not(:first-of-type) { display: none; }
 }
 
-/* Velo en azul institucional: sube desde abajo y deja limpia la parte alta
-   de la foto.
-
-   Los puntos del degradado van en rem y NO en porcentaje. Con porcentajes la
-   zona opaca se mide contra el alto de la banda, pero el bloque de texto mide
-   siempre lo mismo en píxeles: en escritorio ocupaba el 36% inferior y caía
-   dentro de la zona cubierta, pero en un teléfono ocupaba el 75% y la primera
-   línea del título quedaba sobre una parte casi transparente. Medido sobre las
-   siete fotos, a 375px daba entre 1,6:1 y 2,4:1, o sea por debajo del mínimo
-   de 3:1 para texto grande. En rem la zona opaca cubre el alto real del texto
-   sea cual sea el tamaño de pantalla. */
-.hero__velo {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(10, 46, 110, 0.94) 0,
-    rgba(10, 46, 110, 0.88) 13rem,
-    rgba(10, 46, 110, 0.35) 17rem,
-    rgba(10, 46, 110, 0.06) 100%
-  );
+.telon__velo {
+  position: absolute; inset: 0;
+  background: linear-gradient(160deg, rgba(10, 46, 110, 0.82) 0%, rgba(10, 46, 110, 0.78) 45%, rgba(8, 25, 46, 0.85) 100%);
 }
 
-.hero__texto {
-  position: absolute;
-  inset: auto 0 0 0;
-  /* Tiene que superar el solape de la tarjeta del buscador, o la bajada queda
-     cortada por debajo. */
-  padding-bottom: var(--sp-9);
+.telon__contenido { position: relative; z-index: 1; margin-top: -100lvh; }
+
+/* Lo que no vive dentro de una tarjeta se pasa a blanco, igual que en las
+   secciones azules del portal. */
+.telon__contenido .seccion { background: transparent; }
+.telon__contenido .seccion__cabecera h2 { color: #fff; }
+.telon__contenido .seccion__cabecera p:not(.seccion__kicker) { color: #fff; }
+.telon__contenido .seccion__kicker { color: var(--c-amarillo-400); }
+.telon__contenido .seccion__kicker::before { background: var(--c-amarillo-400); }
+
+/* Los puntos del carrusel eran gris claro y azul-700 sobre página clara:
+   sobre el velo el activo desaparecía. */
+/* Las flechas toman su fondo de --c-blanco, que de noche es una superficie
+   oscura: sobre el velo quedaban en 1,46:1 de relleno y sólo las sostenía el
+   borde, en 3,03:1. Acá se fija blanco de verdad y azul oscuro adentro, que
+   es lo mismo que ya hace .boton--blanco en las bandas azules. El de pausa no
+   es decorativo: WCAG 2.2.2 exige poder frenar el carrusel. */
+.telon__contenido .carrusel__flecha {
+  background: #fff;
+  border-color: #fff;
+  color: #003E9C;
 }
+.telon__contenido .carrusel__flecha:hover { background: var(--c-celeste-50); border-color: var(--c-celeste-50); }
+
+.telon__contenido .carrusel__puntos button { background: rgba(255, 255, 255, 0.5); }
+.telon__contenido .carrusel__puntos button[aria-current] { background: #fff; }
+
+/* El movimiento: la ciudad respira y se va turnando mientras el contenido
+   sube. Todo con transform y opacity, que el navegador resuelve sin
+   recalcular la página. */
+.telon { view-timeline-name: --recorrido; view-timeline-axis: block; }
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .telon__fotos img {
+      animation-timeline: --recorrido;
+      animation-range: cover 0% cover 100%;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+    }
+    .telon__fotos img:nth-of-type(1) { animation-name: telon-respirar, telon-turno-1; }
+    .telon__fotos img:nth-of-type(2) { animation-name: telon-respirar, telon-turno-2; }
+    .telon__fotos img:nth-of-type(3) { animation-name: telon-respirar, telon-turno-3; }
+  }
+}
+
+/* 6%: alcanza para que no se sienta una lámina pegada y no llega a notarse
+   como efecto. */
+@keyframes telon-respirar { from { transform: scale(1); } to { transform: scale(1.06); } }
+/* Cruces largos y superpuestos: nunca se ve un corte, se ve que la vista
+   cambió sin que uno se diera cuenta. */
+@keyframes telon-turno-1 { 0%, 26% { opacity: 1; } 40%, 100% { opacity: 0; } }
+@keyframes telon-turno-2 { 0%, 26% { opacity: 0; } 40%, 60% { opacity: 1; } 74%, 100% { opacity: 0; } }
+@keyframes telon-turno-3 { 0%, 60% { opacity: 0; } 74%, 100% { opacity: 1; } }
 
 .hero__titulo {
   font-weight: var(--fw-titular);
@@ -432,12 +566,9 @@ strong { font-weight: 700; }
   text-wrap: balance;
   max-width: 20ch;
 }
-/* El acento va en amarillo pleno en vez de subrayado: sobre la foto, un
-   subrayado se pierde y el color del logo se lee mejor. */
-.hero__titulo em {
-  font-style: normal;
-  color: var(--c-amarillo-400);
-}
+/* El acento va en amarillo pleno: es el color del logo y sobre el azul-900
+   del panel da 14,8:1. */
+.hero__titulo em { font-style: normal; color: var(--c-amarillo-400); }
 
 .hero__bajada {
   margin-top: var(--sp-3);
@@ -446,41 +577,7 @@ strong { font-weight: 700; }
   max-width: 44ch;
 }
 
-/* El epígrafe da contexto de la foto, pero es secundario: en pantallas
-   angostas compite con el título y se oculta. El alt de la imagen conserva
-   la descripción para quien use lector de pantalla. */
-.hero__epigrafe { display: none; }
-
-@media (min-width: 40rem) {
-  .hero__epigrafe {
-    display: block;
-    position: absolute;
-    top: var(--sp-4);
-    right: var(--sp-4);
-    z-index: 1;
-    max-width: 22rem;
-    padding: 0.3rem 0.8rem;
-    border-radius: var(--r-full);
-    background: rgba(10, 24, 40, 0.55);
-    backdrop-filter: blur(6px);
-    color: rgba(255, 255, 255, 0.92);
-    font-size: var(--fs-xs);
-    text-align: right;
-  }
-}
-
-/* La tarjeta del buscador monta sobre la foto y ancla la portada. */
-.hero__panel {
-  position: relative;
-  margin-top: calc(var(--sp-7) * -1);
-  background: var(--c-blanco);
-  border: 1px solid var(--c-borde-objeto);
-  border-radius: var(--r-lg);
-  box-shadow: var(--sombra-3);
-  padding: var(--sp-5);
-}
-
-.hero__panel .buscador-hero { margin-top: 0; max-width: none; }
+.hero__panel .buscador-hero { margin-top: var(--sp-5); max-width: none; }
 
 .hero__sugerencias {
   display: flex;
@@ -489,9 +586,12 @@ strong { font-weight: 700; }
   gap: var(--sp-2) var(--sp-3);
   margin-top: var(--sp-4);
 }
+/* Celeste claro y no gris: este rótulo vive sobre el azul del panel. El gris
+   heredado daba 1:1 —literalmente invisible— cuando el panel dejó de ser
+   blanco. */
 .hero__sugerencias > span {
   font-size: var(--fs-sm);
-  color: var(--c-ink-muted);
+  color: var(--c-celeste-100);
   flex: none;
 }
 .hero__chips {
@@ -503,24 +603,11 @@ strong { font-weight: 700; }
   list-style: none;
 }
 
-@media (min-width: 40rem) {
-  .hero__banda { aspect-ratio: 21 / 9; }
-  .hero__texto { padding-bottom: var(--sp-7); }
-  .hero__panel { padding: var(--sp-5) var(--sp-6); }
-}
-
 @media (min-width: 64rem) {
-  /* Cerca de la proporción nativa de las fotos, para no recortarlas. */
-  .hero__banda { aspect-ratio: 2.8 / 1; max-height: 34rem; }
-  .hero__texto { padding-bottom: var(--sp-8); }
-  .hero__panel {
-    margin-top: calc(var(--sp-8) * -1);
-    padding: var(--sp-6);
-  }
-  /* El buscador va en su propia fila, a todo lo que necesite. Se probó
-     compartiendo fila con los chips y no funciona: la columna de chips pide
-     unos 1030px de los 1216 disponibles y deja el campo en 97px. El buscador
-     es el elemento más usado de la portada y no puede ceder ancho. */
+  /* El buscador a todo lo que necesite. Se probó compartiendo fila con los
+     chips y no funciona: la columna de chips pide unos 1030px de los 1216
+     disponibles y deja el campo en 97px. El buscador es el elemento más usado
+     de la portada y no puede ceder ancho. */
   .hero__panel .buscador-hero { max-width: 40rem; }
   .hero__sugerencias { margin-top: var(--sp-4); }
 }
@@ -664,7 +751,20 @@ form.buscador-hero:focus-within {
   margin-bottom: var(--sp-4);
   transition: background var(--t-media), color var(--t-media);
 }
-.tarjeta:hover .tarjeta__icono { background: var(--c-azul-600); color: #fff; }
+/* Amarillo al pasar el mouse: es el color del logo y el único de la paleta
+   que no se usa para nada más, así que el gesto no se confunde con un estado.
+   El ícono va en azul-900 y no en blanco: sobre el amarillo, el blanco da
+   1,39:1 —invisible— y el azul-900 da 9,26:1.
+
+   Encerrado en hover:hover a propósito: en una pantalla táctil el hover queda
+   pegado después del toque, y una tarjeta con el ícono amarillo clavado se
+   lee como seleccionada. */
+@media (hover: hover) {
+  .tarjeta:hover .tarjeta__icono {
+    background: var(--c-amarillo-400);
+    color: var(--c-azul-900);
+  }
+}
 
 /* Acceso destacado: tarjeta compacta horizontal */
 .acceso {
@@ -1725,4 +1825,222 @@ time { font-variant-numeric: tabular-nums; }
 
 @media (prefers-reduced-motion: reduce) {
   .carrusel__puntos button { transition: none; }
+}
+
+/* ---- Buscador con sugerencias ----
+   Es la puerta principal del portal: entran 2.210 personas por día a la
+   portada y la página más visitada del sitio es una sola ficha. Hasta ahora
+   había que escribir, apretar Buscar, esperar una página de resultados y
+   recién ahí elegir. */
+.buscador-vivo { position: relative; }
+
+.sugerencias {
+  position: absolute;
+  inset: calc(100% + var(--sp-2)) 0 auto 0;
+  z-index: 30;
+  margin: 0;
+  padding: var(--sp-1);
+  list-style: none;
+  background: var(--c-blanco);
+  border: 1px solid var(--c-borde-objeto);
+  border-radius: var(--r-lg);
+  box-shadow: var(--sombra-3);
+  max-height: 24rem;
+  overflow-y: auto;
+  /* Entra 6px, no 20: alcanza para que se lea como "apareció" sin que nada
+     vuele por la pantalla. */
+  animation: sugerencias-entran var(--t-media) cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes sugerencias-entran {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sugerencias { animation: none; }
+}
+
+.sugerencia {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 0.15rem var(--sp-4);
+  padding: var(--sp-3) var(--sp-4);
+  border-radius: var(--r-md);
+  cursor: pointer;
+  transition: background var(--t-rapida);
+}
+.sugerencia[aria-selected="true"] {
+  background: var(--c-azul-50);
+  box-shadow: inset 3px 0 0 var(--c-azul-600);
+}
+.sugerencia__t { font-weight: var(--fw-semi); color: var(--c-ink); }
+.sugerencia__t b { color: var(--c-azul-700); }
+.sugerencia__d { grid-column: 1; font-size: var(--fs-sm); color: var(--c-ink-muted); }
+.sugerencia__chip {
+  /* La columna va declarada: sin esto el acomodo automático la mete en la
+     primera y empuja el título contra el borde derecho. */
+  grid-column: 2;
+  grid-row: 1 / 3;
+  align-self: center;
+  justify-self: end;
+  white-space: nowrap;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-fuerte);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--c-azul-800);
+  background: var(--c-celeste-100);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--r-full);
+}
+.sugerencias__vacio {
+  padding: var(--sp-4);
+  color: var(--c-ink-muted);
+  font-size: var(--fs-sm);
+}
+
+/* En pantalla táctil cada sugerencia tiene que poder tocarse cómoda. */
+@media (pointer: coarse) {
+  .sugerencia { min-height: 3.25rem; }
+}
+
+/* En pantalla angosta el botón se queda con el ícono y suelta la palabra.
+   Medido a 360px: el campo pasa de 166px a 246px. Ahí adentro se escribe
+   "licencia de conducir", y 166px daba para ver tres palabras cortadas.
+   El nombre accesible del botón no cambia: lo lleva el texto, que se oculta
+   visualmente pero lo sigue leyendo el lector de pantalla. */
+@media (max-width: 26rem) {
+  .buscador-hero .boton--primario {
+    padding-inline: 0.9rem;
+    gap: 0;
+  }
+  .buscador-hero .boton--primario > :not(svg) {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+}
+
+/* ---- Interruptor de tema ---- */
+.tema {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex: none;
+  border: 1px solid var(--c-borde-campo);
+  border-radius: var(--r-full);
+  background: var(--c-blanco);
+  color: var(--c-ink);
+  cursor: pointer;
+  transition: border-color var(--t-rapida), background var(--t-rapida), color var(--t-rapida);
+}
+.tema:hover { border-color: var(--c-azul-300); background: var(--c-azul-50); color: var(--c-azul-700); }
+.tema:active { background: var(--c-azul-100); }
+/* El hueco se reserva mientras no se sabe el tema, para que el encabezado no
+   pegue un salto cuando aparece el botón. */
+.tema--reservado { display: inline-block; width: 2.75rem; height: 2.75rem; flex: none; }
+
+/* La luz que se abre desde el botón.
+   Por defecto el navegador hace un desvanecido entre la foto del antes y la
+   del después; acá se lo saca, porque lo que se anima es el recorte circular
+   de la de arriba (lo hace components/Tema.tsx). Sin esto, el desvanecido y
+   el círculo se pisan y queda sucio. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) { z-index: 1; }
+::view-transition-new(root) { z-index: 9999; }
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(root),
+  ::view-transition-new(root) { animation: none !important; }
+}
+
+/* ---- Lo que el tema oscuro obliga a corregir ----
+   No son retoques estéticos: son lugares donde un color declarado a mano
+   dejaba de funcionar al invertirse el fondo. */
+
+/* .boton--blanco vive sobre las bandas azules y toma su fondo de --c-blanco,
+   que de noche pasa a ser una superficie oscura: quedaba azul sobre azul.
+   Acá se fija blanco de verdad, que es lo que el nombre siempre prometió. */
+.seccion--azul .boton--blanco,
+.hero .boton--blanco,
+.telon__contenido .boton--blanco {
+  background: #fff;
+  color: #003E9C;
+}
+
+/* Las secciones azules y el pie ya eran oscuros. De noche, contra un fondo
+   general más oscuro todavía, quedaban brillando como un cartel. Bajan un
+   escalón para seguir leyéndose como una banda y no como una lámpara. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .seccion--azul {
+    background:
+      radial-gradient(90rem 40rem at 110% -20%, rgba(46, 177, 255, 0.10), transparent 60%),
+      linear-gradient(135deg, #061426, #0D2A4A);
+  }
+  :root:not([data-theme="light"]) .footer { background: #061426; }
+  :root:not([data-theme="light"]) .hero {
+    background:
+      radial-gradient(90rem 40rem at 110% -20%, rgba(46, 177, 255, 0.10), transparent 60%),
+      linear-gradient(135deg, #061426, #0D2A4A);
+  }
+  :root:not([data-theme="light"]) .telon__velo {
+    background: linear-gradient(160deg, rgba(6, 20, 38, 0.86) 0%, rgba(6, 20, 38, 0.82) 45%, rgba(4, 12, 24, 0.90) 100%);
+  }
+  :root:not([data-theme="light"]) .header { background: rgba(15, 36, 56, 0.92); }
+}
+:root[data-theme="dark"] .seccion--azul {
+  background:
+    radial-gradient(90rem 40rem at 110% -20%, rgba(46, 177, 255, 0.10), transparent 60%),
+    linear-gradient(135deg, #061426, #0D2A4A);
+}
+:root[data-theme="dark"] .footer { background: #061426; }
+:root[data-theme="dark"] .hero {
+  background:
+    radial-gradient(90rem 40rem at 110% -20%, rgba(46, 177, 255, 0.10), transparent 60%),
+    linear-gradient(135deg, #061426, #0D2A4A);
+}
+:root[data-theme="dark"] .telon__velo {
+  background: linear-gradient(160deg, rgba(6, 20, 38, 0.86) 0%, rgba(6, 20, 38, 0.82) 45%, rgba(4, 12, 24, 0.90) 100%);
+}
+:root[data-theme="dark"] .header { background: rgba(15, 36, 56, 0.92); }
+
+/* Los dos lugares donde el azul de marca se usa como TEXTO y no como fondo.
+   Con el 600 pasaban raspando —3,18 el ícono de tarjeta y 3,65 el número del
+   404, contra un mínimo de 3— así que de noche toman el 500, que los lleva a
+   5,46 y 6,27. El resto de los usos del 600 son fondos con texto blanco
+   encima y no los toca el tema. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .tarjeta__icono { color: var(--c-azul-500); }
+  :root:not([data-theme="light"]) .pagina-error .codigo { color: var(--c-azul-500); }
+}
+:root[data-theme="dark"] .tarjeta__icono { color: var(--c-azul-500); }
+:root[data-theme="dark"] .pagina-error .codigo { color: var(--c-azul-500); }
+
+
+/* ---- 20 Foco visible sobre tarjetas con sombra propia ----
+   :focus-visible declara "box-shadow: 0 0 0 6px var(--foco-exterior)" con
+   especificidad (0,1,0). .acceso y .documento declaran su propia sombra con
+   la MISMA especificidad y más abajo en el archivo, así que le ganan por
+   orden; .hero__hojas .acceso y .carrusel .banner le ganan por especificidad.
+   El resultado era que sólo quedaba el outline, que en tema claro es blanco:
+   1,07:1 sobre una sección clara y 1,00:1 sobre una blanca. O sea, ningún
+   anillo de foco visible al tabular.
+
+   .tarjeta y .galeria ya tenían este mismo arreglo; esto lo extiende a los
+   cuatro que faltaban. Falla 2.4.7 y 2.4.11 si no está. */
+.acceso:focus-visible,
+.hero__hojas .acceso:focus-visible,
+.documento:focus-visible,
+.carrusel .banner:focus-visible {
+  box-shadow: 0 0 0 6px var(--foco-exterior);
 }

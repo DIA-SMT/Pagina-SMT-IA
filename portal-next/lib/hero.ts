@@ -1,5 +1,5 @@
 /**
- * Imagen del hero de la portada.
+ * Fotos del hero de la portada.
  *
  * Las fotos viven en `public/hero/` y no en el CMS. Es una decisión
  * deliberada: son piezas de diseño, panorámicas y optimizadas a medida del
@@ -7,18 +7,16 @@
  * originales). Las que están cargadas en Voyager son versiones viejas de baja
  * resolución.
  *
- * Si en algún momento el municipio quiere elegir la foto del hero desde el
- * panel, se cambia `HERO` por una llamada a `getSliders()` de lib/api.ts y
- * listo: el resto del componente no se entera. La contra sería perder el
- * control sobre la proporción y el peso.
+ * Si en algún momento el municipio quiere elegir las fotos desde el panel, se
+ * cambia `FOTOS_HERO` por una llamada a `getSliders()` de lib/api.ts y listo:
+ * el resto del componente no se entera. La contra sería perder el control
+ * sobre la proporción y el peso.
  */
 
 export type FotoHero = {
   src: string;
   /** Alt descriptivo: la foto aporta contexto, no es decorativa. */
   alt: string;
-  /** Epígrafe corto que se muestra sobre la imagen. */
-  epigrafe: string;
   /** Recorte preferido cuando el contenedor es más alto que la foto. */
   posicion?: string;
 };
@@ -27,48 +25,34 @@ export const FOTOS_HERO: FotoHero[] = [
   {
     src: "/hero/01-san-miguel-de-tucuman.webp",
     alt: "Avenida de San Miguel de Tucumán al atardecer, con los lapachos en flor a ambos lados y el Monumento al Bicentenario al fondo",
-    epigrafe: "Lapachos en flor sobre la avenida, con el Monumento al Bicentenario",
     posicion: "center 55%",
   },
   {
     src: "/hero/02-museo-nacional-de-la-independencia.webp",
     alt: "Fachada blanca de la Casa Histórica de la Independencia con su portal barroco y sus puertas azules",
-    epigrafe: "Casa Histórica de la Independencia",
   },
   {
     src: "/hero/03-la-fuente-de-los-leones.webp",
     alt: "La Fuente de los Leones del Parque 9 de Julio iluminada de noche, con sus chorros de agua",
-    epigrafe: "Fuente de los Leones, Parque 9 de Julio",
   },
   {
     src: "/hero/04-iglesia-catedral.webp",
     alt: "Vista aérea nocturna de la Catedral de San Miguel de Tucumán iluminada, frente a la Plaza Independencia",
-    epigrafe: "Catedral de San Miguel de Tucumán",
   },
   {
     src: "/hero/06-puente-peatonal.webp",
     alt: "Puente peatonal iluminado en azul sobre una avenida de la ciudad, de noche",
-    epigrafe: "Puente peatonal Amador Lucero",
   },
   {
     src: "/hero/11-parque-9-de-julio.webp",
     alt: "Vista del Parque 9 de Julio, el principal espacio verde de la ciudad",
-    epigrafe: "Parque 9 de Julio",
   },
   {
     src: "/hero/12-campus-educativo-ambiental.webp",
     alt: "Campus Educativo Ambiental de San Miguel de Tucumán",
-    epigrafe: "Campus Educativo Ambiental",
   },
 ];
 
-/**
- * La portada usa una foto fija y no una al azar: con renderizado estático,
- * rotar por pedido rompería la caché y haría que la página cambie sola entre
- * visitas, que es justo lo que no se quiere en un portal de gobierno.
- * Para cambiarla, se mueve este índice.
- */
-export const HERO: FotoHero = FOTOS_HERO[0];
 
 /* ------------------------------------------------------------------ *
  * Bandas de sección

@@ -3,10 +3,12 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 import { Banners } from "@/components/Banners";
+import { Buscador } from "@/components/Buscador";
 import { FondoFotos } from "@/components/FondoFotos";
 import { Icono } from "@/components/Iconos";
 import { getBanners, getCategorias, getGaleria, getGalerias } from "@/lib/api";
-import { HERO } from "@/lib/hero";
+import { FOTOS_HERO } from "@/lib/hero";
+import { construirIndice } from "@/lib/indice";
 import { medirImagenes } from "@/lib/medidas";
 import { ACCESOS, iconoDesdeFontAwesome } from "@/lib/navegacion";
 import type { Banner, Foto, GaleriaResumen } from "@/lib/tipos";
@@ -169,53 +171,35 @@ export default async function Portada() {
 
   const transparencia = categorias.find((c) => c.id === 10);
   const fotosDeFondo = await fotosParaElFondo(galerias);
+  // El índice del buscador viaja con el HTML: el servidor municipal tarda
+  // hasta 6,7 segundos por pedido, así que consultarlo por tecla no es opción.
+  const indice = await construirIndice();
 
   return (
     <>
-      {/* A. Hero -------------------------------------------------------- */}
+      {/* A. Hero: buscar y los accesos -------------------------------------
+          Sin fotografía: la ciudad ahora es el telón de la sección de
+          servicios, más abajo. Acá manda el azul institucional, el mismo
+          degradado que usan las otras zonas azules del portal.
+
+          El panel dejó de ser una tarjeta con sombra: esa tarjeta existía
+          para que el texto no cayera sobre la foto. Sin foto detrás, un
+          recuadro azul sobre azul sería un contorno que no separa nada.
+          La curva del pétalo del logo se mudó al canto de la banda.
+
+          Los accesos vuelven acá adentro, que es donde estaban: son lo
+          único blanco de la banda y le dan el punto de apoyo. */}
       <section className="hero">
-        <div className="hero__banda">
-          <Image
-            src={HERO.src}
-            alt={HERO.alt}
-            fill
-            priority
-            sizes="100vw"
-            style={HERO.posicion ? { objectPosition: HERO.posicion } : undefined}
-          />
-          <div className="hero__velo" aria-hidden="true" />
-          <p className="hero__epigrafe">{HERO.epigrafe}</p>
-
-          <div className="hero__texto">
-            <div className="contenedor">
-              <h1 className="hero__titulo">
-                Tu ciudad, <em>más cerca</em>
-              </h1>
-              <p className="hero__bajada">
-                Encontrá trámites, servicios e información de San Miguel de Tucumán.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="contenedor">
+        <div className="hero__contenido contenedor">
           <div className="hero__panel">
-            <form className="buscador-hero" action="/buscar" method="get" role="search">
-              <label className="visualmente-oculto" htmlFor="buscar-portada">
-                Buscar trámites, servicios e información
-              </label>
-              <input
-                id="buscar-portada"
-                type="search"
-                name="q"
-                placeholder="¿Qué necesitás hacer?"
-                required
-              />
-              <button className="boton boton--primario" type="submit">
-                <Icono nombre="buscar" tamano={18} />
-                Buscar
-              </button>
-            </form>
+            <h1 className="hero__titulo">
+              Tu ciudad, <em>más cerca</em>
+            </h1>
+            <p className="hero__bajada">
+              Encontrá trámites, servicios e información de San Miguel de Tucumán.
+            </p>
+
+            <Buscador indice={indice} />
 
             <div className="hero__sugerencias">
               <span id="busquedas-frecuentes">Búsquedas frecuentes</span>
@@ -230,20 +214,16 @@ export default async function Portada() {
               </ul>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* B. Accesos destacados ------------------------------------------ */}
-      <section className="seccion seccion--blanca" aria-labelledby="titulo-accesos">
-        <div className="contenedor">
-          <div className="seccion__cabecera">
-            <div>
-              <p className="seccion__kicker">Atajos</p>
-              <h2 id="titulo-accesos">Accesos destacados</h2>
-            </div>
-          </div>
-
-          <div className="grilla grilla--3">
+          {/* Sección propia adentro del hero, y no un div: así "Accesos
+              destacados" nombra a las seis tarjetas y nada más. Puesto en el
+              <section> de afuera, un lector de pantalla anunciaba como
+              "Accesos destacados" a toda la región que contiene el h1 de la
+              página y el buscador. */}
+          <section className="hero__hojas" aria-labelledby="titulo-accesos">
+            <h2 className="hero__rotulo" id="titulo-accesos">
+              Accesos destacados
+            </h2>
             {ACCESOS.map((acceso) =>
               acceso.externo ? (
                 <a
@@ -275,7 +255,7 @@ export default async function Portada() {
                 </Link>
               ),
             )}
-          </div>
+          </section>
         </div>
       </section>
 
@@ -316,44 +296,96 @@ export default async function Portada() {
         </div>
       </section>
 
-      {/* C. Servicios por temática --------------------------------------- */}
-      <section className="seccion" aria-labelledby="titulo-servicios">
-        <div className="contenedor">
-          <div className="seccion__cabecera">
-            <div>
-              <p className="seccion__kicker">Trámites y servicios</p>
-              <h2 id="titulo-servicios">Servicios por temática</h2>
-              <p>Elegí una categoría para ver los trámites que incluye y cómo hacerlos.</p>
-            </div>
-            <a className="boton boton--secundario" href={GUIA_TRAMITES} rel="noopener" target="_blank">
-              Guía de Trámites
-              <Icono nombre="externo" tamano={16} />
-              <span className="visualmente-oculto"> (se abre en otra pestaña)</span>
-            </a>
-          </div>
+      {/* C. El telón: la ciudad quieta y el contenido por delante ----------
+          Las tres fotografías se quedan fijas ocupando la pantalla mientras
+          los servicios y las campañas le pasan por encima, y se van
+          turnando a medida que uno baja. Es position: sticky, no
+          background-attachment: fixed, que es la forma que sale en los
+          tutoriales y la única que no funciona en iOS.
 
-          <div className="grilla grilla--4">
-            {categorias.map((categoria) => (
-              <article className="tarjeta" key={categoria.id}>
-                <span className="tarjeta__icono">
-                  <Icono nombre={iconoDesdeFontAwesome(categoria.icono)} tamano={24} />
-                </span>
-                <h3>
-                  <Link href={`/tramites/${categoria.id}`}>{categoria.titulo}</Link>
-                </h3>
-                {categoria.texto && <p>{categoria.texto}</p>}
-              </article>
+          Las tarjetas son opacas, así que su texto conserva el contraste
+          que ya tenía. El que sí cambia es el de los encabezados de
+          sección, que quedan sobre la fotografía: por eso el velo de azul
+          institucional es fuerte y no un lavado. Está medido sobre los
+          píxeles compuestos, no sobre el color nominal.
+
+          Alt vacío en las tres, igual que en FondoFotos: acá la ciudad es
+          el fondo de una sección de trámites. Describir el atardecer en
+          medio de "Servicios por temática" sería ruido para quien usa
+          lector de pantalla; las descripciones completas viven en
+          FOTOS_HERO, donde sí informan. */}
+      <div className="telon">
+        <div className="telon__fondo">
+          <div className="telon__fotos">
+            {FOTOS_HERO.slice(0, 3).map((foto) => (
+              <Image
+                key={foto.src}
+                src={foto.src}
+                alt=""
+                fill
+                loading="lazy"
+                /* No es 100vw: las fotos son 3:1 y el cajón es alto, así que
+                   object-fit cover las agranda hasta tapar el ALTO y quedan
+                   pintadas mucho más anchas que la pantalla. En un teléfono de
+                   360x800 se pintan a 2400px de ancho, y con 100vw el
+                   navegador elegía el archivo de 750w: 6,4 veces estirado. Con
+                   200vw baja a 3,3 y se paga medio archivo más. No se pide el
+                   tamaño exacto a propósito: serían 500 KB de fondo decorativo
+                   en móvil, que es el 60% del tráfico. */
+                sizes="(max-width: 48rem) 200vw, 100vw"
+                style={foto.posicion ? { objectPosition: foto.posicion } : undefined}
+              />
             ))}
+            <div className="telon__velo" aria-hidden="true" />
           </div>
         </div>
-      </section>
+
+        <div className="telon__contenido">
+        {/* C.1. Servicios por temática ------------------------------------- */}
+        <section className="seccion" aria-labelledby="titulo-servicios">
+          <div className="contenedor">
+            <div className="seccion__cabecera">
+              <div>
+                <p className="seccion__kicker">Trámites y servicios</p>
+                <h2 id="titulo-servicios">Servicios por temática</h2>
+                <p>Elegí una categoría para ver los trámites que incluye y cómo hacerlos.</p>
+              </div>
+              <a className="boton boton--blanco" href={GUIA_TRAMITES} rel="noopener" target="_blank">
+                Guía de Trámites
+                <Icono nombre="externo" tamano={16} />
+                <span className="visualmente-oculto"> (se abre en otra pestaña)</span>
+              </a>
+            </div>
+
+            <div className="grilla grilla--4">
+              {categorias.map((categoria) => (
+                <article className="tarjeta" key={categoria.id}>
+                  <span className="tarjeta__icono">
+                    <Icono nombre={iconoDesdeFontAwesome(categoria.icono)} tamano={24} />
+                  </span>
+                  <h3>
+                    <Link href={`/tramites/${categoria.id}`}>{categoria.titulo}</Link>
+                  </h3>
+                  {categoria.texto && <p>{categoria.texto}</p>}
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* C.2. Campañas y accesos ----------------------------------------- */}
+        {/* Campañas que administra el municipio desde Voyager. Van después de los
+            servicios: el trabajo principal del portal es encontrar un trámite,
+            y esto es comunicación con fecha de vencimiento. Comparten el telón
+            con los servicios porque son el mismo tramo de la portada. */}
+        <Banners banners={banners} />
+        </div>
+      </div>
 
       {/* D. Conocé la ciudad --------------------------------------------- */}
-      {/* Campañas que administra el municipio desde Voyager. Van después de los
-          servicios: el trabajo principal del portal es encontrar un trámite,
-          y esto es comunicación con fecha de vencimiento. */}
-      <Banners banners={banners} />
-
+      {/* Lleva su propio fondo de fotos, y son otras: las del telón de arriba
+          son las siete piezas de public/hero/, éstas salen de las galerías que
+          carga el municipio. */}
       <section className="seccion seccion--azul seccion--fotos" aria-labelledby="titulo-ciudad">
         <FondoFotos fotos={fotosDeFondo} />
 

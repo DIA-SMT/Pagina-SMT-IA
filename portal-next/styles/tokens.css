@@ -163,3 +163,177 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* ============================================================
+   TEMA OSCURO
+   ============================================================
+   La oscuridad sale del propio azul del logo llevado más abajo, no de un
+   gris de catálogo: así el sitio de noche sigue siendo el mismo sitio.
+
+   Hay tres estados, no dos. Una elección explícita estampa data-theme en el
+   <html>, pero la opción por defecto —seguir al sistema— no estampa nada, y
+   ahí lo único que separa claro de oscuro es prefers-color-scheme. Por eso
+   cada token se redefine en los dos lugares: en el media query, protegido con
+   :not([data-theme="light"]) para que una elección clara le gane a un sistema
+   oscuro, y en [data-theme="dark"] para que el botón gane en el otro sentido.
+
+   Sólo se redefinen tokens. Ningún componente declara color adentro de un
+   bloque de tema: un color que sólo existe ahí no se aplica nunca en el
+   estado sin estampar, que es el que ve la mayoría.
+   ============================================================ */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { color-scheme: dark; }
+}
+:root[data-theme="dark"] { color-scheme: dark; }
+:root[data-theme="light"] { color-scheme: light; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+
+    /* ---- Superficies ----
+       "blanco" es el nombre histórico de la superficie de las tarjetas, no de
+       un color: en todo main.css aparece 23 veces y siempre como fondo, nunca
+       como texto. De noche esa superficie es azul oscuro. */
+    --c-blanco:    #0F2438;
+    --c-fondo:     #08192E;
+    --c-fondo-alt: #0C2036;
+
+    /* ---- Texto ----
+       No es blanco puro: sobre un fondo oscuro el blanco puro vibra y cansa.
+       E6EEF8 sobre el fondo da 14,4:1, muy por encima del 4,5 que pide AA. */
+    --c-ink:       #E6EEF8;
+    --c-ink-soft:  #B4C6DA;
+    --c-ink-muted: #8CA3BC;
+
+    /* ---- Bordes ----
+       Suben de luminosidad en vez de bajar: sobre oscuro, un borde se ve
+       porque es MÁS claro que su fondo, al revés que sobre claro. */
+    --c-borde:        #1E3A57;
+    --c-borde-suave:  #17304A;
+    --c-borde-objeto: #234465;
+    /* El borde de los campos tiene que llegar a 3:1 contra la superficie
+       (WCAG 1.4.11). Sobre #0F2438 este da 3,6:1. */
+    --c-borde-campo:  #5C7B9C;
+
+    /* ---- Azules ----
+       La escala se invierte de rol: el 700, que sobre blanco era el color de
+       los enlaces, sobre oscuro sería ilegible. Los enlaces pasan a un azul
+       claro y el 600 de marca se aclara para los botones. */
+    --c-azul-50:  #10263C;
+    --c-azul-100: #16324C;
+    --c-azul-200: #1D4066;
+    --c-azul-300: #2D5F8F;
+    --c-azul-500: #4D9BFF;
+    /* El azul de marca NO cambia entre temas: es la identidad, y los
+     elementos que lo usan llevan su propio fondo, así que el tema de la
+     página no los toca. Aclararlo bajaba el botón primario a 3,76:1 con
+     texto blanco, por debajo del 4,5 que pide AA. */
+  --c-azul-600: #0066FF;
+    --c-azul-700: #7AB0FF;
+    --c-azul-800: #A3C8FF;
+    --c-azul-900: #0A2238;
+
+    /* ---- Celestes ----
+       Se usan sobre las bandas azules, que siguen siendo oscuras: cambian poco. */
+    --c-celeste-50:  #0E2B40;
+    --c-celeste-100: #C5E6FB;
+    --c-celeste-200: #9AD3F2;
+    --c-celeste-600: #2AA3E8;
+    --c-celeste-700: #7FCBF5;
+
+    /* ---- Amarillo ----
+       El 400 no se toca: es el del logo y sobre cualquiera de estos fondos pasa
+       de largo. El 700 existía para texto sobre claro; de noche se aclara. */
+    --c-amarillo-100: #33301A;
+    --c-amarillo-700: #F0DC5A;
+
+    /* ---- Sombras ----
+       Sobre oscuro una sombra tenue no se ve. Se profundizan y se les suma un
+       filo claro arriba, que es lo que de verdad despega una tarjeta de noche. */
+    --sombra-1: 0 1px 2px rgba(0, 0, 0, 0.35), 0 2px 6px rgba(0, 0, 0, 0.45);
+    --sombra-2: 0 2px 4px rgba(0, 0, 0, 0.40), 0 6px 16px rgba(0, 0, 0, 0.50);
+    --sombra-3: 0 4px 8px rgba(0, 0, 0, 0.45), 0 16px 40px rgba(0, 0, 0, 0.55);
+
+    /* ---- Foco ----
+       El anillo de dos tonos se da vuelta: el halo exterior pasa a ser oscuro
+       para que se recorte contra las superficies claras que quedan. */
+    --foco-interior: #F4DC00;
+    --foco-exterior: rgba(0, 0, 0, 0.65);
+
+  }
+}
+
+:root[data-theme="dark"] {
+
+  /* ---- Superficies ----
+     "blanco" es el nombre histórico de la superficie de las tarjetas, no de
+     un color: en todo main.css aparece 23 veces y siempre como fondo, nunca
+     como texto. De noche esa superficie es azul oscuro. */
+  --c-blanco:    #0F2438;
+  --c-fondo:     #08192E;
+  --c-fondo-alt: #0C2036;
+
+  /* ---- Texto ----
+     No es blanco puro: sobre un fondo oscuro el blanco puro vibra y cansa.
+     E6EEF8 sobre el fondo da 14,4:1, muy por encima del 4,5 que pide AA. */
+  --c-ink:       #E6EEF8;
+  --c-ink-soft:  #B4C6DA;
+  --c-ink-muted: #8CA3BC;
+
+  /* ---- Bordes ----
+     Suben de luminosidad en vez de bajar: sobre oscuro, un borde se ve
+     porque es MÁS claro que su fondo, al revés que sobre claro. */
+  --c-borde:        #1E3A57;
+  --c-borde-suave:  #17304A;
+  --c-borde-objeto: #234465;
+  /* El borde de los campos tiene que llegar a 3:1 contra la superficie
+     (WCAG 1.4.11). Sobre #0F2438 este da 3,6:1. */
+  --c-borde-campo:  #5C7B9C;
+
+  /* ---- Azules ----
+     La escala se invierte de rol: el 700, que sobre blanco era el color de
+     los enlaces, sobre oscuro sería ilegible. Los enlaces pasan a un azul
+     claro y el 600 de marca se aclara para los botones. */
+  --c-azul-50:  #10263C;
+  --c-azul-100: #16324C;
+  --c-azul-200: #1D4066;
+  --c-azul-300: #2D5F8F;
+  --c-azul-500: #4D9BFF;
+  /* El azul de marca NO cambia entre temas: es la identidad, y los
+     elementos que lo usan llevan su propio fondo, así que el tema de la
+     página no los toca. Aclararlo bajaba el botón primario a 3,76:1 con
+     texto blanco, por debajo del 4,5 que pide AA. */
+  --c-azul-600: #0066FF;
+  --c-azul-700: #7AB0FF;
+  --c-azul-800: #A3C8FF;
+  --c-azul-900: #0A2238;
+
+  /* ---- Celestes ----
+     Se usan sobre las bandas azules, que siguen siendo oscuras: cambian poco. */
+  --c-celeste-50:  #0E2B40;
+  --c-celeste-100: #C5E6FB;
+  --c-celeste-200: #9AD3F2;
+  --c-celeste-600: #2AA3E8;
+  --c-celeste-700: #7FCBF5;
+
+  /* ---- Amarillo ----
+     El 400 no se toca: es el del logo y sobre cualquiera de estos fondos pasa
+     de largo. El 700 existía para texto sobre claro; de noche se aclara. */
+  --c-amarillo-100: #33301A;
+  --c-amarillo-700: #F0DC5A;
+
+  /* ---- Sombras ----
+     Sobre oscuro una sombra tenue no se ve. Se profundizan y se les suma un
+     filo claro arriba, que es lo que de verdad despega una tarjeta de noche. */
+  --sombra-1: 0 1px 2px rgba(0, 0, 0, 0.35), 0 2px 6px rgba(0, 0, 0, 0.45);
+  --sombra-2: 0 2px 4px rgba(0, 0, 0, 0.40), 0 6px 16px rgba(0, 0, 0, 0.50);
+  --sombra-3: 0 4px 8px rgba(0, 0, 0, 0.45), 0 16px 40px rgba(0, 0, 0, 0.55);
+
+  /* ---- Foco ----
+     El anillo de dos tonos se da vuelta: el halo exterior pasa a ser oscuro
+     para que se recorte contra las superficies claras que quedan. */
+  --foco-interior: #F4DC00;
+  --foco-exterior: rgba(0, 0, 0, 0.65);
+
+}

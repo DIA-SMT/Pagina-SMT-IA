@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 
 import { Icono } from "./Iconos";
+import { Tema } from "./Tema";
 import { CIDITUC, NAV } from "@/lib/navegacion";
 
 /**
@@ -88,6 +89,7 @@ export function Encabezado() {
           </nav>
 
           <div className="header__acciones">
+            <Tema />
             <Link className="boton-buscar solo-desktop" href="/buscar" aria-label="Buscar en el portal" style={{ textDecoration: "none" }}>
               <Icono nombre="buscar" tamano={20} />
             </Link>
