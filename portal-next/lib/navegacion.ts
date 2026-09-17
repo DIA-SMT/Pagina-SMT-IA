@@ -94,6 +94,43 @@ export const NAV: SeccionNav[] = [
 export const CIDITUC = "https://ciudaddigital.smt.gob.ar/";
 
 /** Accesos destacados de la portada. Configurables por el municipio. */
+/**
+ * Los seis destinos del hero, en orden de demanda MEDIDA.
+ *
+ * No están elegidos a dedo: salen del access_ssl_log del servidor municipal
+ * (lunes 14/09/2026, día hábil completo, bots excluidos), las mismas cifras
+ * que lib/indice.ts usa para ordenar el buscador.
+ *
+ *   /fichas/8            Licencia de conducir ............ 831 visitas/día
+ *   /fichas/14           Carnet de sanidad ............... 217
+ *   /p/turno-asistencia  Turno de Asistencia Pública ..... 200
+ *   /p/colectivos        Recorridos de colectivos ........ 161
+ *   /fichas/70           Consulta y pago de infracciones .. 82
+ *   /fichas/5            Habilitación comercial ........... 33
+ *
+ * El primero se lleva 831 de las ~3.600 visitas diarias del portal: casi una
+ * de cada cuatro, y cuatro veces el segundo. Por eso el hero le da el doble de
+ * ancho. La jerarquía visual sigue a la demanda real y no a lo que nos parece
+ * importante; si algún día se remide el log y el orden cambia, esta lista
+ * cambia con él.
+ *
+ * SIN DESCRIPCIONES: las fichas no las tienen estructuradas en el CMS y no se
+ * inventan. El título de cada una es el de su página.
+ *
+ * LO QUE NO ESTÁ Y NO ES UN OLVIDO: pagar tasas se hace en dimsmt.gob.ar y
+ * CiDiTuc en ciudaddigital.smt.gob.ar. Son otros dominios, así que su uso no
+ * aparece en este log. Ausencia de dato no es ausencia de demanda: por eso
+ * esos tres siguen abajo, en ACCESOS.
+ */
+export const DESTACADOS = [
+  { titulo: "Licencia de conducir", url: "/fichas/8", icono: "transporte" },
+  { titulo: "Carnet de sanidad", url: "/fichas/14", icono: "salud" },
+  { titulo: "Turno de Asistencia Pública", url: "/p/turno-asistencia", icono: "salud" },
+  { titulo: "Recorridos de colectivos", url: "/p/colectivos", icono: "transporte" },
+  { titulo: "Consulta y pago de infracciones", url: "/fichas/70", icono: "multas" },
+  { titulo: "Habilitación comercial", url: "/fichas/5", icono: "comercio" },
+];
+
 export const ACCESOS = [
   { titulo: "Guía de Trámites", detalle: "Paso a paso de cada gestión", url: "https://guiadetramites.smt.gob.ar", icono: "tramites", externo: true },
   { titulo: "CiDiTuc", detalle: "Tu ciudad digital", url: CIDITUC, icono: "cidituc", externo: true },

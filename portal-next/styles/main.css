@@ -358,80 +358,155 @@ strong { font-weight: 700; }
 .acordeon__panel[hidden] { display: none; }
 
 /* ---- 05 Hero ----
-   Banda azul de ancho completo, arriba de todo: el buscador y los seis
-   accesos que concentran la demanda.
+   Partido: la tarea a la izquierda, la ciudad a la derecha.
 
-   Sin fotografía, y es deliberado: la ciudad pasó a ser el telón del tramo de
-   servicios (bloque 05-bis). Tenerla también acá sería gastar el mismo
-   recurso dos veces y que ninguna de las dos pese.
+   LA REGLA QUE NO SE NEGOCIA: el texto nunca cae sobre la fotografía. Las
+   versiones anteriores lo intentaron y el contraste terminaba dependiendo de
+   qué píxel quedó atrás —sobre un amanecer, el blanco daba 2,8:1—. Con la
+   foto confinada a su mitad, el texto vive sobre el degradado institucional y
+   el contraste vuelve a ser un número conocido: 6,82:1 el blanco en el punto
+   más claro.
 
-   El panel dejó de tener fondo propio. Esa tarjeta azul con sombra existía
-   por una razón concreta —que el texto cayera sobre color sólido y nunca
-   sobre la foto, porque sobre un amanecer el blanco daba 2,8:1—. Sin foto
-   detrás, un recuadro azul sobre azul es un contorno que no separa nada. El
-   contraste lo garantiza ahora el degradado de la banda, que es el mismo de
-   .seccion--azul: 6,82:1 para el blanco en su punto más claro. */
+   Debajo del buscador van los seis destinos más consultados, no las viejas
+   "búsquedas frecuentes": aquéllas llevaban a una lista de resultados, éstos
+   van derecho a la página. */
 
 .hero {
-  position: relative;
   background:
     radial-gradient(90rem 40rem at 110% -20%, rgba(46, 177, 255, 0.20), transparent 60%),
     linear-gradient(135deg, var(--c-azul-900), var(--c-azul-700));
   color: #fff;
-  /* La curva del pétalo del logo se mudó del panel al canto de la banda: es
-     el mismo gesto a la escala que corresponde ahora. */
-  border-radius: 0 0 clamp(2rem, 9vw, 7rem) 0;
+  /* Teléfono: la foto arriba como banda y la tarea debajo. */
+  display: grid;
+  grid-template-areas: "foto" "texto";
 }
 
-.hero__contenido {
+.hero__texto {
+  grid-area: texto;
+  padding: clamp(1.75rem, 5vw, 3rem) var(--sp-4);
+  max-width: 40rem;
+  margin-inline: auto;
+  width: 100%;
+}
+.hero__titulo {
+  font-weight: var(--fw-titular);
+  line-height: var(--lh-display);
+  font-size: clamp(1.9rem, 4.5vw, 2.8rem);
+  color: #fff;
+}
+.hero__titulo em { font-style: normal; color: var(--c-amarillo-400); }
+.hero__bajada { color: var(--c-celeste-100); margin-top: var(--sp-2); }
+.hero .buscador-hero { margin-top: var(--sp-5); max-width: none; }
+.hero__rotulo {
+  margin-top: clamp(1.5rem, 4vw, 2.25rem);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-fuerte);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-amarillo-400);
+}
+
+.hero__foto {
+  grid-area: foto;
   position: relative;
-  z-index: 1;
-  padding-block: clamp(2.5rem, 7vw, 4.5rem) clamp(3rem, 8vw, 5.5rem);
+  overflow: clip;
+  /* Banda en teléfono; en escritorio el alto lo manda la columna de texto. */
+  aspect-ratio: 16 / 9;
+}
+.hero__foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-/* Sigue siendo un bloque angosto aunque ya no se vea como tarjeta: una línea
-   de texto de 1200px no se lee, se barre. */
-.hero__panel { max-width: 46rem; color: #fff; }
+@media (min-width: 64rem) {
+  .hero {
+    grid-template-areas: "texto foto";
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+    align-items: center;
+  }
+  .hero__texto {
+    max-width: 38rem;
+    margin-inline: 0;
+    justify-self: end;
+    padding-inline: clamp(1.5rem, 4vw, 3rem);
+  }
+  .hero__foto {
+    /* Sin aspect-ratio: la foto toma el alto de la columna de texto, así el
+       bloque no tiene un alto arbitrario y las dos mitades terminan juntas. */
+    aspect-ratio: auto;
+    align-self: stretch;
+    min-height: 100%;
+  }
+}
 
-/* Las hojas: los accesos, lo único blanco de la banda. En escritorio van en
-   dos y tres columnas para que el ancho no quede vacío a la derecha, que es
-   donde antes estaba la fotografía. */
-.hero__hojas {
-  margin-top: clamp(2.5rem, 8vh, 5rem);
+/* ---- Los seis destinos ---- */
+
+.destinos {
+  list-style: none;
+  padding: 0;
+  margin: var(--sp-3) 0 0;
   display: grid;
   gap: var(--sp-3);
-  max-width: 38rem;
 }
-@media (min-width: 60rem) {
-  .hero__hojas { max-width: none; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (min-width: 40rem) {
+  .destinos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* El primero ocupa las dos columnas: tiene cuatro veces el tráfico del
+     segundo, y la jerarquía visual sigue a la demanda medida. */
+  .destinos > [data-principal] { grid-column: 1 / -1; }
 }
-@media (min-width: 72rem) {
-  .hero__hojas { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-}
-/* El rótulo es un ítem más de la grilla: sin esto se mete en la primera celda
-   y empuja las tarjetas una posición. */
-.hero__rotulo {
-  grid-column: 1 / -1;
-  display: inline-flex; align-items: center; gap: var(--sp-2);
-  width: fit-content;
-  font-size: var(--fs-sm); font-weight: var(--fw-fuerte);
-  letter-spacing: 0.08em; text-transform: uppercase;
-  color: #fff;
-  background: rgba(10, 46, 110, 0.82);
-  padding: 0.5rem 1rem;
-  border-radius: var(--r-full);
-  margin-bottom: var(--sp-1);
-}
-.hero__rotulo::before {
-  content: ""; flex: none;
-  width: 1.2rem; height: 0.75rem;
-  background: var(--c-amarillo-400);
-  border-radius: 0 100% 0 100%;
-}
-/* Sombra más marcada que la de una tarjeta en página clara: acá el fondo es
-   oscuro y la sombra normal no se ve. */
-.hero__hojas .acceso { box-shadow: var(--sombra-3); }
 
+.destino {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  /* Alto generoso: es el destino de 831 personas por día y la mayoría entra
+     desde el teléfono. Muy por encima del mínimo de 44 de WCAG 2.5.8. */
+  min-height: 3.5rem;
+  height: 100%;
+  padding: var(--sp-4);
+  background: var(--c-blanco);
+  border: 1px solid var(--c-borde-objeto);
+  border-radius: var(--r-md);
+  box-shadow: var(--sombra-1);
+  text-decoration: none;
+  color: var(--c-ink);
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  transition: box-shadow var(--t-media), border-color var(--t-media), transform var(--t-media);
+}
+.destino:hover {
+  box-shadow: var(--sombra-2);
+  border-color: var(--c-azul-300);
+  color: var(--c-azul-700);
+}
+@media (hover: hover) {
+  .destino:hover { transform: translateY(-2px); }
+}
+/* El halo del foco tiene que ganarle a la sombra propia de la tarjeta: con la
+   misma especificidad, .destino está más abajo en el archivo y se la comía. */
+.destino:focus-visible { box-shadow: 0 0 0 6px var(--foco-exterior); }
+
+[data-principal] .destino {
+  font-size: var(--fs-md);
+  padding: var(--sp-5);
+  border-color: var(--c-azul-300);
+}
+.destino__icono {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0 var(--r-full) 0 var(--r-full); /* forma de pétalo */
+  background: var(--c-azul-50);
+  color: var(--c-azul-600);
+}
+[data-principal] .destino__icono { width: 3.25rem; height: 3.25rem; }
+.destino__titulo { flex: 1; }
+.destino__flecha { flex: none; color: var(--c-azul-600); }
 
 /* ---- 05-bis El telón: la ciudad quieta ----
    Las tres fotografías se quedan fijas ocupando la pantalla mientras los
@@ -577,41 +652,6 @@ strong { font-weight: 700; }
   max-width: 44ch;
 }
 
-.hero__panel .buscador-hero { margin-top: var(--sp-5); max-width: none; }
-
-.hero__sugerencias {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: var(--sp-2) var(--sp-3);
-  margin-top: var(--sp-4);
-}
-/* Celeste claro y no gris: este rótulo vive sobre el azul del panel. El gris
-   heredado daba 1:1 —literalmente invisible— cuando el panel dejó de ser
-   blanco. */
-.hero__sugerencias > span {
-  font-size: var(--fs-sm);
-  color: var(--c-celeste-100);
-  flex: none;
-}
-.hero__chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--sp-2);
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-@media (min-width: 64rem) {
-  /* El buscador a todo lo que necesite. Se probó compartiendo fila con los
-     chips y no funciona: la columna de chips pide unos 1030px de los 1216
-     disponibles y deja el campo en 97px. El buscador es el elemento más usado
-     de la portada y no puede ceder ancho. */
-  .hero__panel .buscador-hero { max-width: 40rem; }
-  .hero__sugerencias { margin-top: var(--sp-4); }
-}
-
 
 /* Estas reglas vivían en el bloque del hero anterior y se usan también fuera
    de él (el buscador está en el menú móvil y en /buscar; los chips y la
@@ -622,7 +662,7 @@ strong { font-weight: 700; }
 .grilla > *,
 .layout-ficha > *,
 .footer__grid > *,
-.hero__panel > * { min-width: 0; }
+.hero__texto > * { min-width: 0; }
 
 .chip {
   display: inline-flex;
@@ -2020,10 +2060,12 @@ time { font-variant-numeric: tabular-nums; }
    5,46 y 6,27. El resto de los usos del 600 son fondos con texto blanco
    encima y no los toca el tema. */
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .tarjeta__icono { color: var(--c-azul-500); }
+  :root:not([data-theme="light"]) .tarjeta__icono,
+  :root:not([data-theme="light"]) .destino__icono { color: var(--c-azul-500); }
   :root:not([data-theme="light"]) .pagina-error .codigo { color: var(--c-azul-500); }
 }
-:root[data-theme="dark"] .tarjeta__icono { color: var(--c-azul-500); }
+:root[data-theme="dark"] .tarjeta__icono,
+:root[data-theme="dark"] .destino__icono { color: var(--c-azul-500); }
 :root[data-theme="dark"] .pagina-error .codigo { color: var(--c-azul-500); }
 
 
@@ -2031,7 +2073,7 @@ time { font-variant-numeric: tabular-nums; }
    :focus-visible declara "box-shadow: 0 0 0 6px var(--foco-exterior)" con
    especificidad (0,1,0). .acceso y .documento declaran su propia sombra con
    la MISMA especificidad y más abajo en el archivo, así que le ganan por
-   orden; .hero__hojas .acceso y .carrusel .banner le ganan por especificidad.
+   orden; .carrusel .banner le gana por especificidad.
    El resultado era que sólo quedaba el outline, que en tema claro es blanco:
    1,07:1 sobre una sección clara y 1,00:1 sobre una blanca. O sea, ningún
    anillo de foco visible al tabular.
@@ -2039,7 +2081,6 @@ time { font-variant-numeric: tabular-nums; }
    .tarjeta y .galeria ya tenían este mismo arreglo; esto lo extiende a los
    cuatro que faltaban. Falla 2.4.7 y 2.4.11 si no está. */
 .acceso:focus-visible,
-.hero__hojas .acceso:focus-visible,
 .documento:focus-visible,
 .carrusel .banner:focus-visible {
   box-shadow: 0 0 0 6px var(--foco-exterior);

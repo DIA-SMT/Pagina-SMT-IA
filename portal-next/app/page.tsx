@@ -10,7 +10,7 @@ import { getBanners, getCategorias, getGaleria, getGalerias } from "@/lib/api";
 import { FOTOS_HERO } from "@/lib/hero";
 import { construirIndice } from "@/lib/indice";
 import { medirImagenes } from "@/lib/medidas";
-import { ACCESOS, iconoDesdeFontAwesome } from "@/lib/navegacion";
+import { ACCESOS, DESTACADOS, iconoDesdeFontAwesome } from "@/lib/navegacion";
 import type { Banner, Foto, GaleriaResumen } from "@/lib/tipos";
 
 /** Los contenidos del CMS cambian poco: se regeneran cada cinco minutos. */
@@ -68,15 +68,6 @@ const TRANSPORTE = [
     url: "/p/Registros%20_Transporte%20_Individual_Pasajeros",
     icono: "normativa",
   },
-];
-
-/** Búsquedas frecuentes: todas corresponden a trámites que existen en el CMS. */
-const BUSQUEDAS_FRECUENTES = [
-  "Licencia de conducir",
-  "Habilitación de comercios",
-  "Carnet de sanidad",
-  "Cortes de tránsito",
-  "Asistencia pública",
 ];
 
 /**
@@ -177,54 +168,88 @@ export default async function Portada() {
 
   return (
     <>
-      {/* A. Hero: buscar y los accesos -------------------------------------
-          Sin fotografía: la ciudad ahora es el telón de la sección de
-          servicios, más abajo. Acá manda el azul institucional, el mismo
-          degradado que usan las otras zonas azules del portal.
+      {/* A. Hero: buscar y la ciudad ----------------------------------------
+          Partido: a la izquierda la tarea, a la derecha la ciudad.
 
-          El panel dejó de ser una tarjeta con sombra: esa tarjeta existía
-          para que el texto no cayera sobre la foto. Sin foto detrás, un
-          recuadro azul sobre azul sería un contorno que no separa nada.
-          La curva del pétalo del logo se mudó al canto de la banda.
+          El texto NUNCA cae sobre la fotografía. Es la lección de los heros
+          anteriores: sobre una foto el contraste depende de qué píxel quedó
+          atrás —sobre un amanecer el blanco daba 2,8:1— y con la foto en su
+          propia mitad vuelve a ser un número conocido.
 
-          Los accesos vuelven acá adentro, que es donde estaban: son lo
-          único blanco de la banda y le dan el punto de apoyo. */}
-      <section className="hero">
-        <div className="hero__contenido contenedor">
-          <div className="hero__panel">
-            <h1 className="hero__titulo">
-              Tu ciudad, <em>más cerca</em>
-            </h1>
-            <p className="hero__bajada">
-              Encontrá trámites, servicios e información de San Miguel de Tucumán.
-            </p>
+          Los seis destinos reemplazan a las viejas "búsquedas frecuentes":
+          aquéllas llevaban a una lista de resultados, éstos van derecho a la
+          página. Están en orden de demanda medida y el primero ocupa el doble
+          porque se lleva casi una de cada cuatro visitas del portal; el
+          detalle está en lib/navegacion.ts, sobre DESTACADOS. */}
+      <section className="hero" aria-labelledby="titulo-buscar">
+        <div className="hero__texto">
+          <h1 className="hero__titulo" id="titulo-buscar">
+            Tu ciudad, <em>más cerca</em>
+          </h1>
+          <p className="hero__bajada">
+            Encontrá trámites, servicios e información de San Miguel de Tucumán.
+          </p>
 
-            <Buscador indice={indice} />
+          <Buscador indice={indice} />
 
-            <div className="hero__sugerencias">
-              <span id="busquedas-frecuentes">Búsquedas frecuentes</span>
-              <ul className="hero__chips" aria-labelledby="busquedas-frecuentes">
-                {BUSQUEDAS_FRECUENTES.map((termino) => (
-                  <li key={termino}>
-                    <Link className="chip" href={`/buscar?q=${encodeURIComponent(termino)}`}>
-                      {termino}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+          <h2 className="hero__rotulo" id="titulo-destacados">
+            Lo que más se consulta
+          </h2>
+          <ul className="destinos" aria-labelledby="titulo-destacados">
+            {DESTACADOS.map((d, i) => (
+              // El primero ocupa el doble: tiene cuatro veces el tráfico del
+              // segundo, medido sobre el log del servidor.
+              <li key={d.url} data-principal={i === 0 ? "" : undefined}>
+                <Link className="destino" href={d.url}>
+                  <span className="destino__icono">
+                    <Icono nombre={d.icono} tamano={i === 0 ? 26 : 22} />
+                  </span>
+                  <span className="destino__titulo">{d.titulo}</span>
+                  <span className="destino__flecha" aria-hidden="true">
+                    <Icono nombre="flecha" tamano={18} />
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="hero__foto">
+          <Image
+            src={FOTOS_HERO[0].src}
+            alt={FOTOS_HERO[0].alt}
+            width={2000}
+            height={667}
+            priority
+            sizes="(min-width: 64rem) 46vw, 100vw"
+            style={
+              FOTOS_HERO[0].posicion ? { objectPosition: FOTOS_HERO[0].posicion } : undefined
+            }
+          />
+        </div>
+      </section>
+
+      {/* B. Sistemas en línea ------------------------------------------------
+          Lo que queda de ACCESOS después de sacar lo que el hero ya muestra:
+          el filtro es por URL, así que si mañana cambian los seis destacados
+          esta sección se reacomoda sola y nunca repite una tarjeta.
+
+          Lo que sobrevive son, sobre todo, los sistemas externos —Guía de
+          Trámites, CiDiTuc, DIM— que no aparecen en nuestro log porque viven
+          en otros dominios, y que por eso no podían competir por un lugar en
+          el hero ordenado por demanda medida. */}
+      <section className="seccion" aria-labelledby="titulo-accesos">
+        <div className="contenedor">
+          <div className="seccion__cabecera">
+            <div>
+              <p className="seccion__kicker">Trámites en línea</p>
+              <h2 id="titulo-accesos">Sistemas del municipio</h2>
+              <p>Las plataformas donde se hacen las gestiones y los pagos.</p>
             </div>
           </div>
 
-          {/* Sección propia adentro del hero, y no un div: así "Accesos
-              destacados" nombra a las seis tarjetas y nada más. Puesto en el
-              <section> de afuera, un lector de pantalla anunciaba como
-              "Accesos destacados" a toda la región que contiene el h1 de la
-              página y el buscador. */}
-          <section className="hero__hojas" aria-labelledby="titulo-accesos">
-            <h2 className="hero__rotulo" id="titulo-accesos">
-              Accesos destacados
-            </h2>
-            {ACCESOS.map((acceso) =>
+          <div className="grilla grilla--3">
+            {ACCESOS.filter((a) => !DESTACADOS.some((d) => d.url === a.url)).map((acceso) =>
               acceso.externo ? (
                 <a
                   className="acceso"
@@ -255,7 +280,7 @@ export default async function Portada() {
                 </Link>
               ),
             )}
-          </section>
+          </div>
         </div>
       </section>
 
