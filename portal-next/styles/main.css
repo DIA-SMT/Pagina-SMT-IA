@@ -620,17 +620,26 @@ strong { font-weight: 700; }
     .telon__fotos img:nth-of-type(1) { animation-name: telon-respirar, telon-turno-1; }
     .telon__fotos img:nth-of-type(2) { animation-name: telon-respirar, telon-turno-2; }
     .telon__fotos img:nth-of-type(3) { animation-name: telon-respirar, telon-turno-3; }
+    .telon__fotos img:nth-of-type(4) { animation-name: telon-respirar, telon-turno-4; }
+    .telon__fotos img:nth-of-type(5) { animation-name: telon-respirar, telon-turno-5; }
   }
 }
 
 /* 6%: alcanza para que no se sienta una lámina pegada y no llega a notarse
    como efecto. */
 @keyframes telon-respirar { from { transform: scale(1); } to { transform: scale(1.06); } }
-/* Cruces largos y superpuestos: nunca se ve un corte, se ve que la vista
-   cambió sin que uno se diera cuenta. */
-@keyframes telon-turno-1 { 0%, 26% { opacity: 1; } 40%, 100% { opacity: 0; } }
-@keyframes telon-turno-2 { 0%, 26% { opacity: 0; } 40%, 60% { opacity: 1; } 74%, 100% { opacity: 0; } }
-@keyframes telon-turno-3 { 0%, 60% { opacity: 0; } 74%, 100% { opacity: 1; } }
+/* Cinco turnos en vez de tres, porque el telón ahora abarca cuatro
+   secciones y con tres fotos cada una duraba demasiado.
+
+   El recorrido se parte en cinco tramos de 20% y cada foto se desvanece
+   sobre la siguiente durante 8%. Los cruces son largos y superpuestos a
+   propósito: nunca se ve un corte, se ve que la vista cambió sin que uno se
+   diera cuenta. */
+@keyframes telon-turno-1 { 0%, 16% { opacity: 1; } 24%, 100% { opacity: 0; } }
+@keyframes telon-turno-2 { 0%, 16% { opacity: 0; } 24%, 36% { opacity: 1; } 44%, 100% { opacity: 0; } }
+@keyframes telon-turno-3 { 0%, 36% { opacity: 0; } 44%, 56% { opacity: 1; } 64%, 100% { opacity: 0; } }
+@keyframes telon-turno-4 { 0%, 56% { opacity: 0; } 64%, 76% { opacity: 1; } 84%, 100% { opacity: 0; } }
+@keyframes telon-turno-5 { 0%, 76% { opacity: 0; } 84%, 100% { opacity: 1; } }
 
 .hero__titulo {
   font-weight: var(--fw-titular);

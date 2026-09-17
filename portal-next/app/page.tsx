@@ -229,104 +229,16 @@ export default async function Portada() {
         </div>
       </section>
 
-      {/* B. Sistemas en línea ------------------------------------------------
-          Lo que queda de ACCESOS después de sacar lo que el hero ya muestra:
-          el filtro es por URL, así que si mañana cambian los seis destacados
-          esta sección se reacomoda sola y nunca repite una tarjeta.
+      {/* B. El telón: la ciudad quieta y el contenido por delante ----------
+          Las fotografías se quedan fijas ocupando la pantalla mientras el
+          contenido les pasa por encima, y se van turnando a medida que uno
+          baja. Es position: sticky, no background-attachment: fixed, que es
+          la forma que sale en los tutoriales y la única que no anda en iOS.
 
-          Lo que sobrevive son, sobre todo, los sistemas externos —Guía de
-          Trámites, CiDiTuc, DIM— que no aparecen en nuestro log porque viven
-          en otros dominios, y que por eso no podían competir por un lugar en
-          el hero ordenado por demanda medida. */}
-      <section className="seccion" aria-labelledby="titulo-accesos">
-        <div className="contenedor">
-          <div className="seccion__cabecera">
-            <div>
-              <p className="seccion__kicker">Trámites en línea</p>
-              <h2 id="titulo-accesos">Sistemas del municipio</h2>
-              <p>Las plataformas donde se hacen las gestiones y los pagos.</p>
-            </div>
-          </div>
-
-          <div className="grilla grilla--3">
-            {ACCESOS.filter((a) => !DESTACADOS.some((d) => d.url === a.url)).map((acceso) =>
-              acceso.externo ? (
-                <a
-                  className="acceso"
-                  key={acceso.url}
-                  href={acceso.url}
-                  rel="noopener"
-                  target="_blank"
-                  data-externo
-                >
-                  <span className="acceso__icono">
-                    <Icono nombre={acceso.icono} tamano={22} />
-                  </span>
-                  <span>
-                    {acceso.titulo}
-                    <span className="visualmente-oculto"> (se abre en otra pestaña)</span>
-                    <small>{acceso.detalle}</small>
-                  </span>
-                </a>
-              ) : (
-                <Link className="acceso" key={acceso.url} href={acceso.url}>
-                  <span className="acceso__icono">
-                    <Icono nombre={acceso.icono} tamano={22} />
-                  </span>
-                  <span>
-                    {acceso.titulo}
-                    <small>{acceso.detalle}</small>
-                  </span>
-                </Link>
-              ),
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* B-bis. Cómo moverte por la ciudad -------------------------------- */}
-      {/* El agujero más grande que mostró el log del servidor. Medido el lunes
-          14/09/2026, día hábil completo y sin bots: colectivos 161 visitas
-          diarias, SUBE 59, registros del transporte individual 44, SUBEM 37.
-          Son 301 visitas por día de información de transporte que el portal no
-          enlazaba desde ningún lado: se llegaba sólo por buscador o por la URL
-          directa. Para comparar, los tres botones que la portada sí mostraba
-          —historia, circuitos y lugares de interés— suman 107. */}
-      <section className="seccion seccion--blanca" aria-labelledby="titulo-transporte">
-        <div className="contenedor">
-          <div className="seccion__cabecera">
-            <div>
-              <p className="seccion__kicker">Transporte y movilidad</p>
-              <h2 id="titulo-transporte">Cómo moverte por la ciudad</h2>
-              <p>Los recorridos, la tarjeta y los trámites del transporte público.</p>
-            </div>
-            <Link className="boton boton--secundario" href="/tramites/7">
-              Ver todos los trámites de transporte
-            </Link>
-          </div>
-
-          <div className="grilla grilla--4">
-            {TRANSPORTE.map((destino) => (
-              <article className="tarjeta" key={destino.url}>
-                <span className="tarjeta__icono">
-                  <Icono nombre={destino.icono} tamano={24} />
-                </span>
-                <h3>
-                  <Link href={destino.url}>{destino.titulo}</Link>
-                </h3>
-                <p>{destino.detalle}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* C. El telón: la ciudad quieta y el contenido por delante ----------
-          Las tres fotografías se quedan fijas ocupando la pantalla mientras
-          los servicios y las campañas le pasan por encima, y se van
-          turnando a medida que uno baja. Es position: sticky, no
-          background-attachment: fixed, que es la forma que sale en los
-          tutoriales y la única que no funciona en iOS.
+          Abarca cuatro secciones —sistemas, transporte, servicios y
+          campañas— y no sólo las dos últimas: es el tramo en que el vecino
+          está resolviendo algo, y tenerlo todo sobre la misma ciudad lo
+          vuelve un solo bloque en vez de cuatro franjas sueltas.
 
           Las tarjetas son opacas, así que su texto conserva el contraste
           que ya tenía. El que sí cambia es el de los encabezados de
@@ -334,15 +246,15 @@ export default async function Portada() {
           institucional es fuerte y no un lavado. Está medido sobre los
           píxeles compuestos, no sobre el color nominal.
 
-          Alt vacío en las tres, igual que en FondoFotos: acá la ciudad es
-          el fondo de una sección de trámites. Describir el atardecer en
-          medio de "Servicios por temática" sería ruido para quien usa
-          lector de pantalla; las descripciones completas viven en
-          FOTOS_HERO, donde sí informan. */}
+          Alt vacío en todas, igual que en FondoFotos: acá la ciudad es el
+          fondo de una sección de trámites. Describir el atardecer en medio
+          de "Servicios por temática" sería ruido para quien usa lector de
+          pantalla; las descripciones completas viven en FOTOS_HERO, donde
+          sí informan. */}
       <div className="telon">
         <div className="telon__fondo">
           <div className="telon__fotos">
-            {FOTOS_HERO.slice(0, 3).map((foto) => (
+            {FOTOS_HERO.slice(1, 6).map((foto) => (
               <Image
                 key={foto.src}
                 src={foto.src}
@@ -366,7 +278,100 @@ export default async function Portada() {
         </div>
 
         <div className="telon__contenido">
-        {/* C.1. Servicios por temática ------------------------------------- */}
+        {/* B.1. Sistemas en línea ------------------------------------------------
+            Lo que queda de ACCESOS después de sacar lo que el hero ya muestra:
+            el filtro es por URL, así que si mañana cambian los seis destacados
+            esta sección se reacomoda sola y nunca repite una tarjeta.
+
+            Lo que sobrevive son, sobre todo, los sistemas externos —Guía de
+            Trámites, CiDiTuc, DIM— que no aparecen en nuestro log porque viven
+            en otros dominios, y que por eso no podían competir por un lugar en
+            el hero ordenado por demanda medida. */}
+        <section className="seccion" aria-labelledby="titulo-accesos">
+          <div className="contenedor">
+            <div className="seccion__cabecera">
+              <div>
+                <p className="seccion__kicker">Trámites en línea</p>
+                <h2 id="titulo-accesos">Sistemas del municipio</h2>
+                <p>Las plataformas donde se hacen las gestiones y los pagos.</p>
+              </div>
+            </div>
+
+            <div className="grilla grilla--3">
+              {ACCESOS.filter((a) => !DESTACADOS.some((d) => d.url === a.url)).map((acceso) =>
+                acceso.externo ? (
+                  <a
+                    className="acceso"
+                    key={acceso.url}
+                    href={acceso.url}
+                    rel="noopener"
+                    target="_blank"
+                    data-externo
+                  >
+                    <span className="acceso__icono">
+                      <Icono nombre={acceso.icono} tamano={22} />
+                    </span>
+                    <span>
+                      {acceso.titulo}
+                      <span className="visualmente-oculto"> (se abre en otra pestaña)</span>
+                      <small>{acceso.detalle}</small>
+                    </span>
+                  </a>
+                ) : (
+                  <Link className="acceso" key={acceso.url} href={acceso.url}>
+                    <span className="acceso__icono">
+                      <Icono nombre={acceso.icono} tamano={22} />
+                    </span>
+                    <span>
+                      {acceso.titulo}
+                      <small>{acceso.detalle}</small>
+                    </span>
+                  </Link>
+                ),
+              )}
+            </div>
+          </div>
+        </section>
+
+
+        {/* B.2. Cómo moverte por la ciudad -------------------------------- */}
+        {/* El agujero más grande que mostró el log del servidor. Medido el lunes
+            14/09/2026, día hábil completo y sin bots: colectivos 161 visitas
+            diarias, SUBE 59, registros del transporte individual 44, SUBEM 37.
+            Son 301 visitas por día de información de transporte que el portal no
+            enlazaba desde ningún lado: se llegaba sólo por buscador o por la URL
+            directa. Para comparar, los tres botones que la portada sí mostraba
+            —historia, circuitos y lugares de interés— suman 107. */}
+        <section className="seccion" aria-labelledby="titulo-transporte">
+          <div className="contenedor">
+            <div className="seccion__cabecera">
+              <div>
+                <p className="seccion__kicker">Transporte y movilidad</p>
+                <h2 id="titulo-transporte">Cómo moverte por la ciudad</h2>
+                <p>Los recorridos, la tarjeta y los trámites del transporte público.</p>
+              </div>
+              <Link className="boton boton--blanco" href="/tramites/7">
+                Ver todos los trámites de transporte
+              </Link>
+            </div>
+
+            <div className="grilla grilla--4">
+              {TRANSPORTE.map((destino) => (
+                <article className="tarjeta" key={destino.url}>
+                  <span className="tarjeta__icono">
+                    <Icono nombre={destino.icono} tamano={24} />
+                  </span>
+                  <h3>
+                    <Link href={destino.url}>{destino.titulo}</Link>
+                  </h3>
+                  <p>{destino.detalle}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* B.3. Servicios por temática ------------------------------------- */}
         <section className="seccion" aria-labelledby="titulo-servicios">
           <div className="contenedor">
             <div className="seccion__cabecera">
@@ -398,7 +403,7 @@ export default async function Portada() {
           </div>
         </section>
 
-        {/* C.2. Campañas y accesos ----------------------------------------- */}
+        {/* B.4. Campañas y accesos ----------------------------------------- */}
         {/* Campañas que administra el municipio desde Voyager. Van después de los
             servicios: el trabajo principal del portal es encontrar un trámite,
             y esto es comunicación con fecha de vencimiento. Comparten el telón
