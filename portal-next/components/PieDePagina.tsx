@@ -37,20 +37,13 @@ function ColumnaDelPie({
   titulo,
   enlaces,
   children,
-  siempreAbierta,
 }: {
   titulo: string;
   enlaces?: EnlacePie[];
   children?: React.ReactNode;
-  /**
-   * No se pliega nunca, ni en teléfono ni en escritorio. Es para los teléfonos
-   * de emergencia: esconder el 911 detrás de un clic, en el pie de un
-   * municipio, sería un mal negocio. El resto del directorio sí se pliega.
-   */
-  siempreAbierta?: boolean;
 }) {
   return (
-    <details className="footer__col" data-abierta={siempreAbierta ? "" : undefined} open>
+    <details className="footer__col" open>
       <summary>
         <h2>{titulo}</h2>
       </summary>
@@ -78,6 +71,44 @@ export async function PieDePagina() {
   }
 
   return (
+    <>
+      {/* ---- La franja de emergencias ----
+          Va AFUERA del pie y antes, no adentro. Dos motivos:
+
+          Uno es el que se pidió: separar. El pie es un azul continuo de 500px
+          y los teléfonos quedaban ahí adentro, como una columna más entre
+          nueve enlaces de trámites. Con su propia franja clara, la última cosa
+          que se ve antes del pie son los números de emergencia.
+
+          El otro es que no tenían por qué estar en el pie. Un pie es
+          navegación secundaria; un teléfono de emergencia no es secundario.
+          Como región propia con su título, un lector de pantalla la anuncia
+          y se puede saltar a ella. */}
+      {emergencias.length > 0 ? (
+        <section className="franja-emergencias" aria-labelledby="titulo-emergencias">
+          <div className="contenedor">
+            <h2 id="titulo-emergencias">Emergencias</h2>
+            <ul className="franja-emergencias__numeros">
+              {emergencias.map((tel) => (
+                <li key={tel.id}>
+                  <a className="tel-emergencia" href={`tel:${tel.numero}`}>
+                    <strong>{tel.numero}</strong> {tel.nombre}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <p className="franja-emergencias__extra">
+              {CONTACTO.asistenciaPublica.map((tel, i) => (
+                <span key={tel}>
+                  {i > 0 ? " · " : "Asistencia Pública: "}
+                  <a href={`tel:+54381${tel.replace(/\D/g, "").slice(-7)}`}>{tel}</a>
+                </span>
+              ))}
+            </p>
+          </div>
+        </section>
+      ) : null}
+
     <footer className="footer">
       <div className="contenedor">
         {/* La identidad va afuera de la grilla y sin plegar: el logo, el
@@ -118,29 +149,6 @@ export async function PieDePagina() {
             <ColumnaDelPie key={columna.titulo} titulo={columna.titulo} enlaces={columna.enlaces} />
           ))}
 
-          {/* Los números de emergencia no son una lista de enlaces como las
-              otras: se administran desde el CMS y se muestran como pastillas
-              para que se distingan del resto del pie de un vistazo. */}
-          {emergencias.length > 0 ? (
-            <ColumnaDelPie titulo="Emergencias" siempreAbierta>
-              <div className="footer__emergencias">
-                {emergencias.map((tel) => (
-                  <a key={tel.id} className="tel-emergencia" href={`tel:${tel.numero}`}>
-                    <strong>{tel.numero}</strong> {tel.nombre}
-                  </a>
-                ))}
-              </div>
-              <ul style={{ marginTop: "var(--sp-4)" }}>
-                {CONTACTO.asistenciaPublica.map((tel) => (
-                  <li key={tel}>
-                    <a href={`tel:+54381${tel.replace(/\D/g, "").slice(-7)}`}>
-                      Asistencia Pública: {tel}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </ColumnaDelPie>
-          ) : null}
         </nav>
         <PlegarPie />
 
@@ -157,5 +165,6 @@ export async function PieDePagina() {
         </div>
       </div>
     </footer>
+    </>
   );
 }

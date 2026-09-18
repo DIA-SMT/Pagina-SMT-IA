@@ -584,7 +584,7 @@ strong { font-weight: 700; }
      parte de la foto y no como una calcomanía pegada encima. Y no cuesta
      contraste: sobre blanco puro y sin nada de velo debajo da 8,59:1 el blanco
      y 6,17:1 el amarillo. */
-  --telon-marquesina: rgba(10, 46, 110, 0.86);
+  --marq-color: rgba(10, 46, 110, 0.86);
 
   /* 3) El canto de todo objeto opaco que flota sobre la foto. Tiene que ser
      OPACO; el porqué, con el barrido completo, está abajo. */
@@ -660,9 +660,11 @@ strong { font-weight: 700; }
    píxeles impredecibles, que es exactamente lo que vinimos a arreglar.
    El > div es el envoltorio del kicker, el h2 y la bajada; el botón blanco es
    el otro hijo del flex y queda afuera a propósito. */
-.telon__contenido .seccion__cabecera > div { max-width: var(--marq-texto); }
+.telon__contenido .seccion__cabecera > div,
+.seccion--fotos .seccion__cabecera > div { max-width: var(--marq-texto); }
 
-.telon__contenido .seccion__cabecera::before {
+.telon__contenido .seccion__cabecera::before,
+.seccion--fotos .seccion__cabecera::before {
   content: "";
   position: absolute;
   z-index: -1;
@@ -687,7 +689,7 @@ strong { font-weight: 700; }
      se desborda a la DERECHA sí empuja la página y saca barra horizontal. */
   right: -1.25rem;
 
-  background: var(--telon-marquesina);
+  background: var(--marq-color);
 }
 
 /* A partir de 60rem hay lugar al costado del texto para que se vea algo, y la
@@ -705,11 +707,12 @@ strong { font-weight: 700; }
    además la pantalla cae justo en el filo, 44rem podría pasarse del
    contenedor, y eso sin el max() es una barra de scroll horizontal. */
 @media (min-width: 60rem) {
-  .telon__contenido .seccion__cabecera::before {
+  .telon__contenido .seccion__cabecera::before,
+  .seccion--fotos .seccion__cabecera::before {
     right: max(-1.25rem, calc(100% - var(--marq-ancho)));
     background: linear-gradient(to right,
-      var(--telon-marquesina) 0,
-      var(--telon-marquesina) calc(100% - var(--marq-fundido)),
+      var(--marq-color) 0,
+      var(--marq-color) calc(100% - var(--marq-fundido)),
       transparent 100%);
   }
 }
@@ -768,7 +771,7 @@ strong { font-weight: 700; }
   margin-inline: auto;
   padding: var(--sp-2) var(--sp-4);
   border-radius: var(--r-full);
-  background: var(--telon-marquesina);
+  background: var(--marq-color);
 }
 
 /* Las flechas toman su fondo de --c-blanco, que de noche es una superficie
@@ -850,7 +853,14 @@ form.buscador-hero:focus-within {
   font: inherit;
   color: var(--c-ink);
 }
-.buscador-hero input:focus { outline: none; }
+/* El anillo de foco lo dibuja el FORMULARIO con :focus-within —borde azul de
+   2px más un halo de 4px— y no el campo. Por eso acá se apaga, y hay que
+   apagar las DOS cosas que pinta la regla general del bloque 02: el outline y
+   la sombra. Estaba sólo el outline, así que la sombra seguía saliendo, y como
+   sigue el radio del elemento y el input no tiene ninguno, pintaba un
+   rectángulo de esquinas vivas adentro de una píldora redonda. Dos anillos
+   superpuestos con formas distintas. */
+.buscador-hero input:focus { outline: none; box-shadow: none; }
 .buscador-hero input::placeholder { color: var(--c-ink-muted); }
 
 /* ---- 06 Botones ---- */
@@ -1827,35 +1837,33 @@ time { font-variant-numeric: tabular-nums; }
    911 detrás de un clic en el pie de un municipio sería un mal negocio.
    La marca la pone PieDePagina.tsx con data-abierta. */
 @media (min-width: 60rem) {
-  .footer__col[data-abierta] > summary {
-    cursor: default;
-    pointer-events: none;
-    min-height: 0;
-    border-top: 0;
-    display: block;
-  }
-  .footer__col[data-abierta] > summary::after { display: none; }
-  .footer__col[data-abierta] > ul,
-  .footer__col[data-abierta] > .footer__emergencias { padding-bottom: 0; }
-
-  /* Las que sí se pliegan quedan alineadas arriba: sin esto, la grilla las
-     estira al alto de la fila y el separador de cada rótulo queda flotando. */
-  .footer__col:not([data-abierta]) { align-self: start; }
-
-  /* Los teléfonos ocupan el ancho entero, y no es estética: son ocho pastillas
-     anchas, y encerradas en una columna de 169px se apilan una debajo de otra
-     y estiran la fila a 440px. O sea que la única columna que queda abierta
-     era la que sostenía todo el alto del pie: plegar las otras cinco casi no
-     servía de nada —medido, 716px contra 768—. A lo ancho entran en dos
-     hileras. No son una columna de enlaces: son una fila de botones. */
-  .footer__col[data-abierta] { grid-column: 1 / -1; }
+  /* Las columnas quedan alineadas arriba: sin esto, la grilla las estira al
+     alto de la fila y el separador de cada rótulo queda flotando. */
+  .footer__col { align-self: start; }
 }
 
 /* ---- Fondo de fotos que se van pasando ----
    Las fotos de las galerías del CMS como fondo de una sección oscura. El
    pasaje es CSS puro: cinco capas apiladas con la opacidad animada y el
    arranque escalonado, sin una línea de JavaScript. */
-.seccion--fotos { position: relative; isolation: isolate; }
+/* ---- La sección de fotos usa la MISMA marquesina que el telón ----
+   Las dos tienen el mismo problema: texto encima de una fotografía que no
+   elegimos. El telón ya lo resolvió con una banda opaca detrás del encabezado,
+   y repetir el dispositivo hace que las dos secciones con foto se lean como la
+   misma idea y no como dos soluciones distintas.
+
+   Las medidas son las mismas y por el mismo motivo: ver el comentario de las
+   tres medidas en el bloque 05-bis. */
+.seccion--fotos {
+  position: relative;
+  isolation: isolate;
+  --marq-texto: 30rem;
+  --marq-plena: 36rem;
+  --marq-fundido: 8rem;
+  --marq-ancho: calc(var(--marq-plena) + var(--marq-fundido));
+  /* El mismo valor que el telón: es el mismo dispositivo. */
+  --marq-color: rgba(10, 46, 110, 0.86);
+}
 .seccion--fotos > .contenedor { position: relative; z-index: 1; }
 
 .fondo-fotos {
@@ -1889,12 +1897,24 @@ time { font-variant-numeric: tabular-nums; }
      tarjetas y los botones son blancos opacos: no necesitan velo, se defienden
      solos. Una sola capa: dos apiladas apagaban la foto hasta dejarla casi
      como el azul plano que vinimos a reemplazar. */
+  /* ---- El velo se aflojó a la mitad, y recién ahora se puede ----
+     Antes arrancaba en 0,92 porque era lo ÚNICO que sostenía el contraste del
+     encabezado, y había que dimensionarlo contra el peor píxel imaginable: una
+     foto blanca detrás. Con el rótulo amarillo, que es el que menos margen
+     tiene, un velo parejo no puede bajar de 0,80 —a 0,70 da 3,76:1 y AA pide
+     4,5—. O sea que aflojarlo no era una decisión: no se podía.
+
+     Ahora el contraste lo garantiza la marquesina, que es un color conocido y
+     no depende de la foto, y el velo se queda sólo con su otro trabajo: darle
+     unidad de color a fotografías que vienen de cualquier galería del CMS.
+     Para eso alcanza con la mitad. Sigue abriéndose hacia la derecha, que es
+     donde no hay texto ni tarjetas. */
   background: linear-gradient(
     103deg,
-    rgba(10, 46, 110, 0.92) 0%,
-    rgba(10, 46, 110, 0.86) 46%,
-    rgba(10, 46, 110, 0.52) 74%,
-    rgba(10, 46, 110, 0.32) 100%
+    rgba(10, 46, 110, 0.46) 0%,
+    rgba(10, 46, 110, 0.40) 46%,
+    rgba(10, 46, 110, 0.26) 74%,
+    rgba(10, 46, 110, 0.18) 100%
   );
 }
 
@@ -1910,7 +1930,75 @@ time { font-variant-numeric: tabular-nums; }
    contra el peor caso imaginable —una foto blanca detrás— el celeste daba
    3,80:1 y AA pide 4,5 para texto de este tamaño. El blanco lo resuelve sin
    tener que oscurecer más la foto, que es lo que vinimos a mostrar. */
+.seccion--fotos .seccion__cabecera {
+  /* La banda es un ::before absoluto: necesita un ancestro posicionado. */
+  position: relative;
+}
 .seccion--fotos .seccion__cabecera p:not(.seccion__kicker) { color: #fff; }
+
+/* ---- 26 La franja de emergencias ----
+   Una banda clara entre el contenido y el pie. Hace dos cosas a la vez: separa
+   —el pie es un azul continuo y antes los teléfonos eran una columna más ahí
+   adentro— y le da a los números el lugar que les corresponde, que no es el
+   pie.
+
+   El fondo sale de --c-blanco y no de un blanco escrito a mano: de día es
+   blanco, que es lo que se pidió, y de noche acompaña al tema en vez de ser
+   una franja encandilante. Contra el pie, que es --c-azul-900 en los dos
+   temas, siempre hay corte. */
+.franja-emergencias {
+  background: var(--c-blanco);
+  border-top: 1px solid var(--c-borde);
+  padding-block: var(--sp-5);
+}
+.franja-emergencias > .contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-3) var(--sp-5);
+}
+.franja-emergencias h2 {
+  margin: 0;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-fuerte);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-ink-muted);
+}
+.franja-emergencias__numeros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.franja-emergencias__extra {
+  margin: 0;
+  font-size: var(--fs-sm);
+  color: var(--c-ink-soft);
+}
+.franja-emergencias__extra a { color: var(--c-azul-700); }
+
+/* La pastilla nació para fondo oscuro: blanco translúcido y número amarillo.
+   Sobre una superficie clara nada de eso sirve —el amarillo del logo sobre
+   blanco da 1,6:1— así que acá se da vuelta entera.
+
+   El número va en --c-azul-700 y no en rojo: --c-error no está redefinido para
+   el tema oscuro, así que sobre la superficie de noche daría 2,86:1. El 700 se
+   da vuelta solo —6,82:1 sobre blanco, 7,13:1 sobre el oscuro— y además es el
+   color de enlace del portal, que es exactamente lo que el número es: un tel:.
+
+   Los !important son para ganarle a los !important de la regla base, que están
+   ahí porque el pie pinta todos sus enlaces de celeste. */
+.franja-emergencias .tel-emergencia {
+  background: var(--c-tinte-azul);
+  border-color: var(--c-borde-campo);
+  color: var(--c-ink) !important;
+}
+.franja-emergencias .tel-emergencia strong { color: var(--c-azul-700); }
+.franja-emergencias .tel-emergencia:hover { background: var(--c-azul-100); }
+
 
 /* ---- Carrusel de banners ----
    Los banners del CMS vienen en siete proporciones distintas, de 1:1 a
@@ -2072,7 +2160,13 @@ time { font-variant-numeric: tabular-nums; }
   overflow-y: auto;
   /* Entra 6px, no 20: alcanza para que se lea como "apareció" sin que nada
      vuele por la pantalla. */
-  animation: sugerencias-entran var(--t-media) cubic-bezier(0.22, 1, 0.36, 1) both;
+  /* La duración va escrita y no sale de --t-media, porque ese token trae su
+     propia curva adentro —vale ".25s cubic-bezier(.2, 0, .2, 1)"— y acá se
+     quería otra. Poniendo las dos, la regla tenía dos funciones de tiempo, era
+     inválida y el navegador la descartaba entera: el desplegable aparecía de
+     golpe, sin entrada. Verificado, daba animationName: none. Es el mismo
+     error que tenía el plegado del encabezado. */
+  animation: sugerencias-entran 0.25s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 @keyframes sugerencias-entran {
   from { opacity: 0; transform: translateY(-6px); }
@@ -2258,7 +2352,7 @@ time { font-variant-numeric: tabular-nums; }
       rgba(6, 20, 38, 0.40) 0%,
       rgba(6, 20, 38, 0.36) 45%,
       rgba(4, 12, 24, 0.46) 100%);
-    --telon-marquesina: rgba(6, 20, 38, 0.86);
+    --marq-color: rgba(6, 20, 38, 0.86);
     --telon-canto: var(--c-celeste-100);
   }
   :root:not([data-theme="light"]) .header { background: rgba(15, 36, 56, 0.92); }
@@ -2290,7 +2384,7 @@ time { font-variant-numeric: tabular-nums; }
     rgba(6, 20, 38, 0.40) 0%,
     rgba(6, 20, 38, 0.36) 45%,
     rgba(4, 12, 24, 0.46) 100%);
-  --telon-marquesina: rgba(6, 20, 38, 0.86);
+  --marq-color: rgba(6, 20, 38, 0.86);
   --telon-canto: var(--c-celeste-100);
 }
 :root[data-theme="dark"] .header { background: rgba(15, 36, 56, 0.92); }
@@ -2354,7 +2448,19 @@ time { font-variant-numeric: tabular-nums; }
    navegador a recalcular la página en cada cuadro. */
 
 .header {
-  transition: translate var(--t-media) ease;
+  /* ---- Ojo con la sintaxis, que acá se perdió el plegado entero ----
+     Decía "translate var(--t-media) ease", y --t-media NO es una duración
+     sola: vale ".25s cubic-bezier(.2, 0, .2, 1)". O sea que la declaración se
+     expandía a "translate .25s cubic-bezier(...) ease", con DOS funciones de
+     tiempo, que es sintaxis inválida. El navegador tiraba la declaración
+     entera y el encabezado se plegaba de un salto seco, sin transición
+     ninguna. Verificado: transitionDuration daba 0s, el valor inicial.
+
+     320ms y no los 250 del token: el encabezado se corre su alto completo,
+     unos 72px, y un recorrido largo a 250ms se lee como un tirón. La curva es
+     de salida fuerte —arranca rápido y frena largo— que es la que hace que
+     algo grande parezca liviano. */
+  transition: translate 320ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 .header[data-plegado] {
   translate: 0 -100%;
@@ -2391,7 +2497,9 @@ time { font-variant-numeric: tabular-nums; }
    de lo que uno escribiría de memoria: girado en reposo, derecho al plegarse. */
 .header__lengueta svg {
   rotate: 180deg;
-  transition: rotate var(--t-media);
+  /* Mismo tiempo y misma curva que el encabezado: el chevron y la barra son
+     un solo gesto, y con duraciones distintas uno llega antes que el otro. */
+  transition: rotate 320ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 .header[data-plegado] .header__lengueta svg { rotate: 0deg; }
 .header__lengueta:hover { color: var(--c-azul-600); background: #fff; }
