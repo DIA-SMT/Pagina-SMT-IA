@@ -111,6 +111,72 @@ export function CarruselBanners({
     return () => clearInterval(reloj);
   }, [pausado, enUso, cantidad, irA, indiceReal]);
 
+  /* ---- La rueda del mouse mueve los banners de costado ----
+     Y cuando llega a la punta suelta, para que la página siga de largo. Eso
+     último es la mitad del asunto: un bloque que se queda con la rueda para
+     siempre es una trampa.
+
+     Avanza de a un banner y no de a píxeles. La pista tiene
+     scroll-snap-type: x mandatory, así que sumarle scrollLeft de a poco pelea
+     con el imán —el navegador vuelve a pegar al banner más cercano apenas
+     termina el movimiento— y se siente trabado. Un golpe de rueda, un banner:
+     es lo que el imán ya sabe hacer, y reusa irA con su desplazamiento suave.
+
+     El enfriamiento existe porque un trackpad no manda un golpe sino una
+     ráfaga de docenas de eventos: sin él, un solo gesto se comía el carrusel
+     entero.
+
+     No se engancha con pantalla táctil ni sin mouse: ahí el gesto horizontal
+     ya funciona solo. Ni con movimiento reducido. */
+  useEffect(() => {
+    const p = pista.current;
+    if (!p || cantidad < 2 || menosMovimiento()) return;
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+
+    let ultimo = 0;
+    const alGirar = (e: WheelEvent) => {
+      // Un gesto horizontal lo resuelve el navegador mejor que nosotros.
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY) || e.deltaY === 0) return;
+
+      const maximo = p.scrollWidth - p.clientWidth;
+      if (maximo <= 1) return;
+
+      /* Se busca el primer banner, en la dirección del giro, que de VERDAD
+         mueva la pista, y si no hay ninguno se suelta.
+
+         No alcanza con mirar si el índice está en la punta. Al final del
+         recorrido los últimos banners comparten pantalla: el scroll se termina
+         antes de que el último se apoye en el borde, así que varios devuelven
+         el mismo destino y el viaje es de cero píxeles. Medido: desde el
+         último banner, girando hacia arriba, la pista no se movía Y la página
+         quedaba trabada, porque el evento se seguía frenando. Es el mismo caso
+         que indiceReal() ya contempla para la flecha derecha, espejado. */
+      const slides = [...p.children] as HTMLElement[];
+      const donde = (i: number) =>
+        Math.max(0, Math.min(slides[i].offsetLeft - p.offsetLeft, maximo));
+
+      const paso = e.deltaY > 0 ? 1 : -1;
+      let destino = -1;
+      for (let i = indiceReal() + paso; i >= 0 && i < slides.length; i += paso) {
+        if (Math.abs(donde(i) - p.scrollLeft) > 4) {
+          destino = i;
+          break;
+        }
+      }
+      // No hay a dónde ir: el evento sigue su camino y la página se mueve.
+      if (destino < 0) return;
+
+      e.preventDefault();
+      const ahora = e.timeStamp;
+      if (ahora - ultimo < 380) return;
+      ultimo = ahora;
+      irA(destino);
+    };
+
+    p.addEventListener("wheel", alGirar, { passive: false });
+    return () => p.removeEventListener("wheel", alGirar);
+  }, [cantidad, indiceReal, irA]);
+
   if (cantidad === 0) return null;
 
   const mover = (paso: number) => irA((indiceReal() + paso + cantidad) % cantidad);

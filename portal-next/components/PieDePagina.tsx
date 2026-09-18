@@ -37,13 +37,20 @@ function ColumnaDelPie({
   titulo,
   enlaces,
   children,
+  siempreAbierta,
 }: {
   titulo: string;
   enlaces?: EnlacePie[];
   children?: React.ReactNode;
+  /**
+   * No se pliega nunca, ni en teléfono ni en escritorio. Es para los teléfonos
+   * de emergencia: esconder el 911 detrás de un clic, en el pie de un
+   * municipio, sería un mal negocio. El resto del directorio sí se pliega.
+   */
+  siempreAbierta?: boolean;
 }) {
   return (
-    <details className="footer__col" open>
+    <details className="footer__col" data-abierta={siempreAbierta ? "" : undefined} open>
       <summary>
         <h2>{titulo}</h2>
       </summary>
@@ -115,7 +122,7 @@ export async function PieDePagina() {
               otras: se administran desde el CMS y se muestran como pastillas
               para que se distingan del resto del pie de un vistazo. */}
           {emergencias.length > 0 ? (
-            <ColumnaDelPie titulo="Emergencias">
+            <ColumnaDelPie titulo="Emergencias" siempreAbierta>
               <div className="footer__emergencias">
                 {emergencias.map((tel) => (
                   <a key={tel.id} className="tel-emergencia" href={`tel:${tel.numero}`}>
