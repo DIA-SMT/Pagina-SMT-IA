@@ -37,11 +37,7 @@ import { useEffect } from "react";
  */
 export function PlegarPie() {
   useEffect(() => {
-    // Las que llevan data-abierta se saltean: son las de emergencias, que no
-    // se pliegan en ningún ancho. El resto arranca cerrado.
-    for (const columna of document.querySelectorAll<HTMLDetailsElement>(
-      ".footer__col:not([data-abierta])",
-    )) {
+    for (const columna of document.querySelectorAll<HTMLDetailsElement>(".footer__col")) {
       columna.open = false;
     }
   }, []);
