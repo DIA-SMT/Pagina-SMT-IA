@@ -97,14 +97,6 @@ export async function PieDePagina() {
                 </li>
               ))}
             </ul>
-            <p className="franja-emergencias__extra">
-              {CONTACTO.asistenciaPublica.map((tel, i) => (
-                <span key={tel}>
-                  {i > 0 ? " · " : "Asistencia Pública: "}
-                  <a href={`tel:+54381${tel.replace(/\D/g, "").slice(-7)}`}>{tel}</a>
-                </span>
-              ))}
-            </p>
           </div>
         </section>
       ) : null}
@@ -127,6 +119,20 @@ export async function PieDePagina() {
             <span>
               <Icono nombre="telefono" tamano={16} className="icono-en-linea" />
               Municipalidad: <a href={`tel:${CONTACTO.telefonoLink}`}>{CONTACTO.telefono}</a>
+            </span>
+            {/* Acá y no en la franja de emergencias: la franja es para el
+                número que se marca en una urgencia, de tres dígitos y de
+                memoria. Estos dos son teléfonos de contacto, del mismo orden
+                que el conmutador del municipio que está justo arriba. */}
+            <span>
+              <Icono nombre="telefono" tamano={16} className="icono-en-linea" />
+              Asistencia Pública:{" "}
+              {CONTACTO.asistenciaPublica.map((tel, i) => (
+                <span key={tel}>
+                  {i > 0 ? " · " : null}
+                  <a href={`tel:+54381${tel.replace(/\D/g, "").slice(-7)}`}>{tel}</a>
+                </span>
+              ))}
             </span>
           </address>
           <div className="footer__redes">
