@@ -1973,12 +1973,6 @@ time { font-variant-numeric: tabular-nums; }
   padding: 0;
   list-style: none;
 }
-.franja-emergencias__extra {
-  margin: 0;
-  font-size: var(--fs-sm);
-  color: var(--c-ink-soft);
-}
-.franja-emergencias__extra a { color: var(--c-azul-700); }
 
 /* La pastilla nació para fondo oscuro: blanco translúcido y número amarillo.
    Sobre una superficie clara nada de eso sirve —el amarillo del logo sobre
