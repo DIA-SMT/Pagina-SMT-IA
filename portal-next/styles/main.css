@@ -194,7 +194,7 @@ strong { font-weight: 700; }
   cursor: pointer;
   transition: border-color var(--t-rapida), background var(--t-rapida);
 }
-.boton-buscar:hover { border-color: var(--c-azul-300); background: var(--c-azul-50); }
+.boton-buscar:hover { border-color: var(--c-azul-300); background: var(--c-tinte-azul); }
 
 .boton-menu {
   display: inline-flex;
@@ -243,7 +243,7 @@ strong { font-weight: 700; }
     transition: background var(--t-rapida), color var(--t-rapida);
   }
   .nav__enlace:hover, .nav__enlace[aria-expanded="true"] {
-    background: var(--c-azul-50);
+    background: var(--c-tinte-azul);
     color: var(--c-azul-700);
   }
   .nav__enlace[aria-current="page"] {
@@ -277,7 +277,7 @@ strong { font-weight: 700; }
     text-decoration: none;
     font-size: var(--fs-sm);
   }
-  .nav__submenu a:hover { background: var(--c-azul-50); color: var(--c-azul-700); }
+  .nav__submenu a:hover { background: var(--c-tinte-azul); color: var(--c-azul-700); }
 }
 
 .boton-cidituc {
@@ -391,6 +391,15 @@ strong { font-weight: 700; }
 /* El acento va en amarillo pleno: es el color del logo y sobre el azul-900
    del hero da 14,8:1. */
 .hero__titulo em { font-style: normal; color: var(--c-amarillo-400); }
+/* El antetítulo, arriba del h1. Va en celeste y no en amarillo para no pelear
+   con el rótulo de "Lo que más se consulta", que sí es amarillo y vive unos
+   centímetros más abajo en la misma columna. */
+.hero__antetitulo {
+  color: var(--c-celeste-100);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semi);
+  margin-bottom: var(--sp-2);
+}
 .hero__bajada {
   color: var(--c-celeste-100);
   margin-top: var(--sp-2);
@@ -472,7 +481,7 @@ strong { font-weight: 700; }
   width: 2.75rem;
   height: 2.75rem;
   border-radius: 0 var(--r-full) 0 var(--r-full); /* forma de pétalo */
-  background: var(--c-azul-50);
+  background: var(--c-tinte-azul);
   color: var(--c-azul-600);
 }
 [data-principal] .destino__icono { width: 3.25rem; height: 3.25rem; }
@@ -788,20 +797,17 @@ strong { font-weight: 700; }
       animation-timing-function: linear;
       animation-fill-mode: both;
     }
-    .telon__fotos img:nth-of-type(1) { animation-name: telon-respirar, telon-turno-1; }
-    .telon__fotos img:nth-of-type(2) { animation-name: telon-respirar, telon-turno-2; }
-    .telon__fotos img:nth-of-type(3) { animation-name: telon-respirar, telon-turno-3; }
-    .telon__fotos img:nth-of-type(4) { animation-name: telon-respirar, telon-turno-4; }
-    .telon__fotos img:nth-of-type(5) { animation-name: telon-respirar, telon-turno-5; }
+    /* Los turnos —qué foto se ve en qué tramo del recorrido— ya no están acá.
+       Eran cinco bloques escritos a mano con los porcentajes calculados para
+       cinco fotos exactas, y ahora la cantidad la decide un sorteo entre las
+       locales y las galerías del CMS: con porcentajes fijos, el día que sean
+       seis quedaría una foto sin turno y un hueco en negro. Los genera
+       components/TelonFotos.tsx, con sus mismas guardas, y para cinco fotos
+       devuelve exactamente los porcentajes que estaban acá. */
   }
 }
 
 @keyframes telon-respirar { from { transform: scale(1); } to { transform: scale(1.06); } }
-@keyframes telon-turno-1 { 0%, 16% { opacity: 1; } 24%, 100% { opacity: 0; } }
-@keyframes telon-turno-2 { 0%, 16% { opacity: 0; } 24%, 36% { opacity: 1; } 44%, 100% { opacity: 0; } }
-@keyframes telon-turno-3 { 0%, 36% { opacity: 0; } 44%, 56% { opacity: 1; } 64%, 100% { opacity: 0; } }
-@keyframes telon-turno-4 { 0%, 56% { opacity: 0; } 64%, 76% { opacity: 1; } 84%, 100% { opacity: 0; } }
-@keyframes telon-turno-5 { 0%, 76% { opacity: 0; } 84%, 100% { opacity: 1; } }
 
 
 /* Estas reglas vivían en el bloque del hero anterior y se usan también fuera
@@ -866,7 +872,7 @@ form.buscador-hero:focus-within {
 .boton--primario { background: var(--c-azul-600); color: #fff; }
 .boton--primario:hover { background: var(--c-azul-700); color: #fff; transform: translateY(-1px); }
 .boton--secundario { background: var(--c-blanco); color: var(--c-azul-700); border-color: var(--c-borde-campo); }
-.boton--secundario:hover { border-color: var(--c-azul-600); color: var(--c-azul-700); background: var(--c-azul-50); }
+.boton--secundario:hover { border-color: var(--c-azul-600); color: var(--c-azul-700); background: var(--c-tinte-azul); }
 .boton--blanco { background: var(--c-blanco); color: var(--c-azul-800); }
 .boton--blanco:hover { background: var(--c-celeste-50); color: var(--c-azul-800); }
 
@@ -921,7 +927,7 @@ form.buscador-hero:focus-within {
   justify-content: center;
   width: 3rem; height: 3rem;
   border-radius: 0 var(--r-full) 0 var(--r-full); /* forma de pétalo */
-  background: var(--c-azul-50);
+  background: var(--c-tinte-azul);
   color: var(--c-azul-600);
   margin-bottom: var(--sp-4);
   transition: background var(--t-media), color var(--t-media);
@@ -1017,7 +1023,7 @@ form.buscador-hero:focus-within {
   color: var(--c-celeste-700); /* 4.7:1 sobre celeste-50 */
 }
 .etiqueta--amarilla { background: var(--c-amarillo-100); color: var(--c-amarillo-700); }
-.etiqueta--azul { background: var(--c-azul-50); color: var(--c-azul-700); }
+.etiqueta--azul { background: var(--c-tinte-azul); color: var(--c-azul-700); }
 
 /* ---- 08 Migas, listados y fichas ---- */
 .migas {
@@ -1294,7 +1300,7 @@ form.buscador-hero:focus-within {
   color: var(--c-ink-soft);
   border: 1px solid transparent;
 }
-.paginacion a:hover { background: var(--c-azul-50); color: var(--c-azul-700); }
+.paginacion a:hover { background: var(--c-tinte-azul); color: var(--c-azul-700); }
 .paginacion [aria-current="page"] { background: var(--c-azul-600); color: #fff; }
 .paginacion .deshabilitado { color: var(--c-borde-campo); }
 
@@ -1335,6 +1341,22 @@ form.buscador-hero:focus-within {
 .footer a { color: var(--c-celeste-100); text-decoration: none; }
 .footer a:hover { color: #fff; text-decoration: underline; }
 .footer__logo img { height: 3rem; width: auto; margin-bottom: var(--sp-4); }
+
+/* ---- Las dos versiones del logo ----
+   Se pintan las dos y el tema elige, porque un <picture> con
+   prefers-color-scheme miraría la preferencia del sistema y no el interruptor
+   del portal. El porqué largo está en components/LogoSMT.tsx.
+
+   Se apaga con display y no con opacidad ni visibilidad: la que no se usa no
+   tiene que ocupar lugar ni recibir el clic. */
+.logo-smt { display: inline-flex; }
+.logo-smt__neg { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .logo-smt__pos { display: none; }
+  :root:not([data-theme="light"]) .logo-smt__neg { display: inline-block; }
+}
+:root[data-theme="dark"] .logo-smt__pos { display: none; }
+:root[data-theme="dark"] .logo-smt__neg { display: inline-block; }
 .footer__direccion { font-style: normal; font-size: var(--fs-sm); display: grid; gap: var(--sp-2); }
 
 .footer__emergencias {
@@ -1614,7 +1636,7 @@ a[data-externo]::after {
 .tarjeta-media:active,
 .acceso:active { box-shadow: var(--sombra-1); transform: none; }
 .panel-movil nav a:active,
-.acordeon__boton:active { background: var(--c-azul-50); }
+.acordeon__boton:active { background: var(--c-tinte-azul); }
 .footer a:active,
 .tel-emergencia:active { background: rgba(255, 255, 255, 0.22); }
 
@@ -1648,7 +1670,7 @@ a[data-externo]::after {
 
 /* d) El menú móvil no tenía ningún estado, mientras que el de escritorio sí:
       era una asimetría heredada. */
-.boton-menu:hover { border-color: var(--c-azul-300); background: var(--c-azul-50); }
+.boton-menu:hover { border-color: var(--c-azul-300); background: var(--c-tinte-azul); }
 .panel-movil nav a:hover,
 .acordeon__boton:hover { color: var(--c-azul-700); }
 
@@ -1784,20 +1806,49 @@ time { font-variant-numeric: tabular-nums; }
 .footer__col > ul,
 .footer__col > .footer__emergencias { padding-bottom: var(--sp-4); }
 
+/* ---- El directorio se pliega también en escritorio ----
+   Medido a 1440x900, con las seis columnas abiertas el pie mide 768px: el 85%
+   de la pantalla. Se probaron las dos salidas obvias y ninguna sirve, porque
+   con 39 enlaces no se puede tener columnas anchas Y un pie bajo:
+
+     seis columnas, enlaces a 15px ... 768px, 6 enlaces partidos en dos renglones
+     seis columnas, enlaces a 13px ... 726px, 11 partidos
+     cuatro columnas, enlaces a 15px . 959px, ninguno partido
+
+   Ensanchar las columnas arregla los renglones partidos y agrega una fila, que
+   cuesta más de lo que ahorra. Achicar la letra casi no baja el alto y empeora
+   el corte. Lo único que baja el pie de verdad es no mostrarlo todo de entrada:
+   plegado mide unos 280px.
+
+   Los enlaces NO se van: siguen en el HTML servido, los rastreadores los siguen
+   —el contenido de un <details> cerrado está en el DOM— y están a un clic.
+
+   La columna de emergencias es la excepción y no se pliega nunca: esconder el
+   911 detrás de un clic en el pie de un municipio sería un mal negocio.
+   La marca la pone PieDePagina.tsx con data-abierta. */
 @media (min-width: 60rem) {
-  /* En escritorio las columnas están siempre abiertas y el rótulo vuelve a
-     ser un título y no un control: sin cursor, sin flecha, sin borde y sin
-     poder plegarse. El atributo `open` lo pone el HTML servido. */
-  .footer__col > summary {
+  .footer__col[data-abierta] > summary {
     cursor: default;
     pointer-events: none;
     min-height: 0;
     border-top: 0;
     display: block;
   }
-  .footer__col > summary::after { display: none; }
-  .footer__col > ul,
-  .footer__col > .footer__emergencias { padding-bottom: 0; }
+  .footer__col[data-abierta] > summary::after { display: none; }
+  .footer__col[data-abierta] > ul,
+  .footer__col[data-abierta] > .footer__emergencias { padding-bottom: 0; }
+
+  /* Las que sí se pliegan quedan alineadas arriba: sin esto, la grilla las
+     estira al alto de la fila y el separador de cada rótulo queda flotando. */
+  .footer__col:not([data-abierta]) { align-self: start; }
+
+  /* Los teléfonos ocupan el ancho entero, y no es estética: son ocho pastillas
+     anchas, y encerradas en una columna de 169px se apilan una debajo de otra
+     y estiran la fila a 440px. O sea que la única columna que queda abierta
+     era la que sostenía todo el alto del pie: plegar las otras cinco casi no
+     servía de nada —medido, 716px contra 768—. A lo ancho entran en dos
+     hileras. No son una columna de enlaces: son una fila de botones. */
+  .footer__col[data-abierta] { grid-column: 1 / -1; }
 }
 
 /* ---- Fondo de fotos que se van pasando ----
@@ -1956,7 +2007,7 @@ time { font-variant-numeric: tabular-nums; }
   cursor: pointer;
   transition: border-color var(--t-rapida), background var(--t-rapida);
 }
-.carrusel__flecha:hover { border-color: var(--c-azul-300); background: var(--c-azul-50); }
+.carrusel__flecha:hover { border-color: var(--c-azul-300); background: var(--c-tinte-azul); }
 .carrusel__flecha:active { background: var(--c-azul-100); }
 
 
@@ -2042,7 +2093,7 @@ time { font-variant-numeric: tabular-nums; }
   transition: background var(--t-rapida);
 }
 .sugerencia[aria-selected="true"] {
-  background: var(--c-azul-50);
+  background: var(--c-tinte-azul);
   box-shadow: inset 3px 0 0 var(--c-azul-600);
 }
 .sugerencia__t { font-weight: var(--fw-semi); color: var(--c-ink); }
@@ -2111,7 +2162,7 @@ time { font-variant-numeric: tabular-nums; }
   cursor: pointer;
   transition: border-color var(--t-rapida), background var(--t-rapida), color var(--t-rapida);
 }
-.tema:hover { border-color: var(--c-azul-300); background: var(--c-azul-50); color: var(--c-azul-700); }
+.tema:hover { border-color: var(--c-azul-300); background: var(--c-tinte-azul); color: var(--c-azul-700); }
 .tema:active { background: var(--c-azul-100); }
 /* El hueco se reserva mientras no se sabe el tema, para que el encabezado no
    pegue un salto cuando aparece el botón. */
@@ -2178,6 +2229,11 @@ time { font-variant-numeric: tabular-nums; }
      entera, pero asoma mientras la foto carga y si alguna vez falla. */
   :root:not([data-theme="light"]) .ht {
     --ht-panel: 6 20 38;
+    /* La lámina de noche y las dos excepciones que la acompañan. */
+    --ht-lamina: radial-gradient(70% 90% at 70% 40%, #13263A 0%, #0D1B2C 55%, #07121E 100%);
+    --ht-em-tinta: var(--c-amarillo-400);
+    --ht-em-fondo: transparent;
+    --ht-boton-fondo: rgba(255, 255, 255, 0.08);
     background:
       radial-gradient(90rem 40rem at 110% -20%, rgba(46, 177, 255, 0.10), transparent 60%),
       linear-gradient(135deg, #061426, #0D2A4A);
@@ -2220,6 +2276,11 @@ time { font-variant-numeric: tabular-nums; }
 }
 :root[data-theme="dark"] .ht {
   --ht-panel: 6 20 38;
+  /* La lámina de noche y las dos excepciones que la acompañan. */
+  --ht-lamina: radial-gradient(70% 90% at 70% 40%, #13263A 0%, #0D1B2C 55%, #07121E 100%);
+  --ht-em-tinta: var(--c-amarillo-400);
+  --ht-em-fondo: transparent;
+  --ht-boton-fondo: rgba(255, 255, 255, 0.08);
   background:
     radial-gradient(90rem 40rem at 110% -20%, rgba(46, 177, 255, 0.10), transparent 60%),
     linear-gradient(135deg, #061426, #0D2A4A);
@@ -2239,6 +2300,19 @@ time { font-variant-numeric: tabular-nums; }
    404, contra un mínimo de 3— así que de noche toman el 500, que los lleva a
    5,46 y 6,27. El resto de los usos del 600 son fondos con texto blanco
    encima y no los toca el tema. */
+/* ---- Y el pétalo que los contiene ----
+   El pétalo —ese border-radius asimétrico— es de las pocas marcas propias que
+   tiene el diseño, y de noche no se veía: era --c-azul-50, o sea 1,03:1 contra
+   la tarjeta. Lo arregla --c-tinte-azul, que de noche vale el 200; el porqué
+   está en el comentario de ese token, en tokens.css.
+
+   Lo que sí se decidió acá es que ese valor y no uno más claro, porque el
+   pétalo y el ícono se pelean el mismo margen. Con el ícono en --c-azul-500:
+
+     fondo        vs tarjeta   ícono encima
+     #10263C        1,03:1       5,46:1   <- lo de antes, pétalo invisible
+     --c-azul-200   1,49:1       3,77:1   <- lo que da --c-tinte-azul
+     #245080        1,91:1       2,94:1   <- acá el ícono ya no llega a 3 */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .tarjeta__icono,
   :root:not([data-theme="light"]) .destino__icono { color: var(--c-azul-500); }
@@ -2451,7 +2525,7 @@ time { font-variant-numeric: tabular-nums; }
 .tema:hover,
 .boton-buscar:hover {
   border-color: var(--c-azul-500);
-  background: var(--c-azul-50);
+  background: var(--c-tinte-azul);
   color: var(--c-azul-700);
 }
 .boton-cidituc:hover { background: #0052CC; }
@@ -2507,23 +2581,47 @@ time { font-variant-numeric: tabular-nums; }
      donde el texto ya no puede estar, ni un rem antes. */
   --ht-texto: 38rem;
   --ht-fundido: 16rem;
-  /* ---- La tinta de cuando el fondo se vuelve papel ----
-     Estos cuatro NO salen de los tokens, y es a propósito. En la fase
-     interactiva, detrás de la columna queda .ht__fondo, que es un crema
-     escrito a mano y que NO cambia con el tema: es el mismo de día y de
-     noche, porque las quince figuritas tienen borde blanco y están dibujadas
-     para un fondo claro. Si la tinta siguiera al tema, de noche --c-ink es
-     #E6EEF8 y el título caería a 1,15:1 sobre ese crema —medido—. La tinta
-     sigue a la SUPERFICIE, no al tema, así que se escribe como la superficie.
+  /* ---- La tinta de la lámina ----
+     Todos apuntan a tokens de la paleta, así que se dan vuelta solos con el
+     tema. Eso es posible porque --ht-lamina también se da vuelta: de día la
+     lámina es crema y la tinta oscura, de noche es azul oscuro y la tinta
+     clara. Antes estaban escritos a mano, con valores fijos, porque la lámina
+     era crema en los dos temas y la tinta tenía que seguir a la SUPERFICIE y
+     no al tema. Ahora la superficie sigue al tema y la excepción sobra.
 
-     Cada uno es el token de tema claro que le corresponde, anotado para que
-     se pueda rastrear si mañana cambia la paleta. Los contrastes están
-     medidos contra #F4EFE4, que es el extremo del degradado que toca la
-     columna; contra el centro, más claro, todos suben. */
-  --ht-tinta:       #0A2E6E;  /* = --c-azul-900 claro     11,24:1 */
-  --ht-tinta-suave: #3D5165;  /* = --c-ink-soft claro      7,15:1 */
-  --ht-acento:      #0052CC;  /* = --c-azul-700 claro      5,95:1 */
-  --ht-borde-papel: #78899B;  /* = --c-borde-campo         3,13:1 */
+     Contrastes de día, medidos contra #F4EFE4, que es el extremo del degradado
+     que toca la columna —contra el centro, más claro, todos suben—:
+
+       --c-ink        título y texto de tarjeta ... 12,91:1
+       --c-ink-soft   antetítulo y bajada .........  7,14:1
+       --c-azul-700   rótulo, hover, canto fuerte ..  5,95:1
+       --c-borde-campo canto de tarjeta ............  3,13:1  (mínimo de 1.4.11)
+       --c-azul-800 sobre --c-celeste-100, el chip ..  8,05:1 */
+  --ht-tinta:         var(--c-ink);
+  --ht-tinta-suave:   var(--c-ink-soft);
+  --ht-acento:        var(--c-azul-700);
+  --ht-borde-papel:   var(--c-borde-campo);
+  --ht-tarjeta:       var(--c-blanco);
+  --ht-tarjeta-tinta: var(--c-ink);
+  --ht-tarjeta-tenue: var(--c-ink-muted);
+  --ht-petalo:        var(--c-tinte-azul);
+  --ht-chip-tinta:    var(--c-azul-800);
+  --ht-chip-fondo:    var(--c-celeste-100);
+
+  /* ---- Los tres que NO se pueden resolver con un token ----
+     La lámina y las dos cosas que dependen de si es papel o noche.
+
+     El resaltador del acento: sobre el crema el amarillo del logo no se puede
+     leer —1,37:1— así que pasa de tinta a fondo, con la letra oscura encima.
+     Sobre la lámina oscura no hace falta ninguna de las dos cosas: el amarillo
+     vuelve a ser tinta y el resaltador se apaga poniéndose transparente.
+
+     Y el fondo del botón, que de día tiene que tapar el crema y de noche
+     apenas insinuarse sobre el azul. */
+  --ht-lamina: radial-gradient(70% 90% at 70% 40%, #FFFDF5 0%, #FBF7EE 55%, #F4EFE4 100%);
+  --ht-em-tinta: var(--c-ink);
+  --ht-em-fondo: var(--c-amarillo-400);
+  --ht-boton-fondo: rgba(255, 255, 255, 0.55);
   /* min-height y no height: la columna mide 748px de contenido a 1440px de
      ancho. En una ventana de 900 de alto sobran 92px, pero en una de 768
      faltan 40 y con `height` las tarjetas quedarían recortadas. Así, en
@@ -2553,13 +2651,18 @@ time { font-variant-numeric: tabular-nums; }
 .ht[data-fase="intro"] .ht__escena { cursor: zoom-in; }
 .ht[data-fase="interactivo"] .ht__escena { cursor: zoom-out; }
 
+/* ---- La lámina donde se pegan las figuritas ----
+   De día es papel: crema con un rescoldo cálido, muestreado de los bordes de
+   la lámina original. De noche es la misma lámina de noche, y las figuritas
+   quedan mejor todavía: lo que las define es el borde blanco, y un borde
+   blanco sobre azul oscuro se recorta más que sobre crema.
+
+   Los dos degradados tienen la misma forma —radial, con el foco arriba a la
+   derecha— para que la luz venga siempre del mismo lado. */
 .ht__fondo {
   position: absolute;
   inset: 0;
-  /* El fondo del collage, muestreado de los bordes de la lámina: blanco con un
-     rescoldo cálido, no un blanco de oficina. */
-  background:
-    radial-gradient(70% 90% at 70% 40%, #FFFDF5 0%, #FBF7EE 55%, #F4EFE4 100%);
+  background: var(--ht-lamina);
 }
 
 .ht__foto,
@@ -2668,6 +2771,7 @@ time { font-variant-numeric: tabular-nums; }
    en los huecos —una corrida cancelada, un cambio de fase— gana el CSS, y ahí
    aparecen los parpadeos. La regla .ht[data-papel] .ht__panel de más abajo
    declara sólo el valor en REPOSO, para cuando no hay animación viva. */
+.ht .hero__antetitulo,
 .ht .hero__titulo,
 .ht .hero__titulo em,
 .ht .hero__bajada,
@@ -2857,23 +2961,24 @@ time { font-variant-numeric: tabular-nums; }
      Las dos sombras son horizontales a propósito: con spread en las cuatro
      direcciones, un título de dos renglones se pisa a sí mismo entre líneas. */
   .ht[data-papel] .hero__titulo em {
-    color: var(--ht-tinta);
-    background-color: var(--c-amarillo-400);
+    color: var(--ht-em-tinta);
+    background-color: var(--ht-em-fondo);
     box-shadow:
-      0.16em 0 0 var(--c-amarillo-400),
-      -0.16em 0 0 var(--c-amarillo-400);
+      0.16em 0 0 var(--ht-em-fondo),
+      -0.16em 0 0 var(--ht-em-fondo);
     /* Si el título se parte igual, que el resaltador se corte en los dos
        renglones y no quede una sola caja envolviendo el salto. */
     box-decoration-break: clone;
   }
 
+  .ht[data-papel] .hero__antetitulo,
   .ht[data-papel] .hero__bajada { color: var(--ht-tinta-suave); }
   .ht[data-papel] .hero__rotulo { color: var(--ht-acento); }
 
   .ht[data-papel] .ht__disparador {
     color: var(--ht-tinta);
     border-color: var(--ht-tinta);
-    background-color: rgba(255, 255, 255, 0.55);
+    background-color: var(--ht-boton-fondo);
   }
   .ht[data-papel] .ht__disparador:hover {
     background-color: rgba(255, 255, 255, 0.9);
@@ -2906,6 +3011,46 @@ time { font-variant-numeric: tabular-nums; }
      regla no molesta, porque --ht-borde-papel sobre un relleno oscuro sigue
      siendo un canto visible. */
   .ht[data-papel] .sugerencias { border-color: var(--ht-borde-papel); }
+
+  /* ---- Las superficies de la columna, en los dos temas ----
+     --c-azul-600 no aparece acá redefinido y es a propósito: es el azul del
+     logo y es el único de la escala que vale lo mismo de día y de noche, así
+     que sobre una tarjeta blanca funciona sin ayuda. Los demás se invierten y
+     por eso van fijos. */
+  .ht[data-papel] .destino {
+    background-color: var(--ht-tarjeta);
+    color: var(--ht-tarjeta-tinta);
+  }
+  /* :hover pone color: var(--c-azul-700), que de noche es celeste claro y
+     sobre la tarjeta blanca quedaría en 1,9:1. */
+  .ht[data-papel] .destino:hover { color: var(--ht-acento); }
+  .ht[data-papel] .destino__icono {
+    background-color: var(--ht-petalo);
+    color: var(--c-azul-600);
+  }
+
+  /* Los dos selectores, igual que en el bloque 21: el formulario a veces ES
+     .buscador-hero y a veces está adentro. Con uno solo, el campo se quedaba
+     azul marino sobre la hoja clara. */
+  .ht[data-papel] .buscador-hero form,
+  .ht[data-papel] form.buscador-hero {
+    background-color: var(--ht-tarjeta);
+    border-color: var(--ht-borde-papel);
+  }
+  .ht[data-papel] .buscador-hero input { color: var(--ht-tarjeta-tinta); }
+  .ht[data-papel] .buscador-hero input::placeholder { color: var(--ht-tarjeta-tenue); }
+
+  /* El desplegable de sugerencias es parte de la misma hoja. */
+  .ht[data-papel] .sugerencias { background-color: var(--ht-tarjeta); }
+  .ht[data-papel] .sugerencia[aria-selected="true"] { background-color: var(--ht-petalo); }
+  .ht[data-papel] .sugerencia__t { color: var(--ht-tarjeta-tinta); }
+  .ht[data-papel] .sugerencia__t b { color: var(--ht-acento); }
+  .ht[data-papel] .sugerencia__d,
+  .ht[data-papel] .sugerencias__vacio { color: var(--ht-tarjeta-tenue); }
+  .ht[data-papel] .sugerencia__chip {
+    color: var(--ht-chip-tinta);
+    background-color: var(--ht-chip-fondo);
+  }
 
   /* Las seis tarjetas se mueven con el viento en esta fase, así que se
      promueven a capa de composición, y SÓLO acá: es el mismo razonamiento que

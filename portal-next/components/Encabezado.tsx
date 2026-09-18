@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 
 import { Icono } from "./Iconos";
+import { LogoSMT } from "./LogoSMT";
 import { Tema } from "./Tema";
 import { CIDITUC, NAV } from "@/lib/navegacion";
 
@@ -105,13 +105,10 @@ export function Encabezado() {
       >
         <div className="contenedor header__inner">
           <Link className="header__logo" href="/" aria-label="Inicio — Municipalidad de San Miguel de Tucumán">
-            <Image
-              src="/img/logo-smt-pos.png"
-              alt="Ciudad San Miguel de Tucumán"
-              width={245}
-              height={80}
-              priority
-            />
+            {/* El enlace ya se nombra con su aria-label, así que el logo va con
+                alt vacío: repetirlo haría que un lector de pantalla anuncie el
+                nombre del municipio dos veces seguidas. */}
+            <LogoSMT ancho={245} alto={80} alt="" prioritario />
           </Link>
 
           <nav className="nav" aria-label="Navegación principal" ref={navRef}>
@@ -271,7 +268,7 @@ function PanelMovil({ cerrar }: { cerrar: () => void }) {
       <button className="panel-movil__fondo" type="button" onClick={cerrar} tabIndex={-1} aria-hidden="true" />
       <div className="panel-movil__caja" ref={caja}>
         <div className="panel-movil__cierre">
-          <Image src="/img/logo-smt-pos.png" alt="" width={130} height={42} />
+          <LogoSMT ancho={130} alto={42} alt="" />
           <button className="boton-buscar" type="button" onClick={cerrar} aria-label="Cerrar menú">
             <Icono nombre="cerrar" tamano={18} />
           </button>

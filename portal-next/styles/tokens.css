@@ -23,6 +23,26 @@
 
 :root {
   /* ---- Color: marca ---- */
+  /* ---- El tinte azul que tiene que PERCIBIRSE ----
+     Lo usan los hover, los estados activos y las etiquetas: todo lo que marca
+     algo tiñendo el fondo. Existe aparte de la escala porque lo que pide no es
+     un peldaño sino un resultado, y el peldaño que lo consigue no es el mismo
+     en los dos temas.
+
+     De día el 50 alcanza y sobra: #EDF4FF sobre blanco se ve sin gritar.
+     De noche NO, y no es cuestión de elegir mejor: en la escala oscura el 50 es
+     el tinte más sutil, y sobre una superficie oscura "sutil" quiere decir
+     invisible. Medido, #10263C da 1,03:1 contra --c-blanco, 1,15 contra
+     --c-fondo y 1,07 contra --c-fondo-alt. Ninguno de los catorce lugares que
+     lo usan mostraba nada.
+
+     Subir el valor del 50 tampoco servía: quedaría más claro que el 100 y la
+     escala quedaría dada vuelta para quien la lea. Por eso el rol se separa
+     del peldaño. De noche toma el 200, que da 1,49 / 1,66 / 1,55 contra las
+     tres superficies —se percibe sin convertirse en un bloque— y aguanta el
+     texto que se le apoya encima: --c-azul-700 en 4,79:1 y --c-ink en 9,08:1. */
+  --c-tinte-azul: var(--c-azul-50);
+
   --c-azul-50:  #EDF4FF;
   --c-azul-100: #D9E9FF;
   --c-azul-200: #B3D2FF;
@@ -220,6 +240,7 @@
        La escala se invierte de rol: el 700, que sobre blanco era el color de
        los enlaces, sobre oscuro sería ilegible. Los enlaces pasan a un azul
        claro y el 600 de marca se aclara para los botones. */
+    --c-tinte-azul: var(--c-azul-200);  /* ver el comentario del token en :root */
     --c-azul-50:  #10263C;
     --c-azul-100: #16324C;
     --c-azul-200: #1D4066;
@@ -295,6 +316,7 @@
      La escala se invierte de rol: el 700, que sobre blanco era el color de
      los enlaces, sobre oscuro sería ilegible. Los enlaces pasan a un azul
      claro y el 600 de marca se aclara para los botones. */
+  --c-tinte-azul: var(--c-azul-200);  /* ver el comentario del token en :root */
   --c-azul-50:  #10263C;
   --c-azul-100: #16324C;
   --c-azul-200: #1D4066;

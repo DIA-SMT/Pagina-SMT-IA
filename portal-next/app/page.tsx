@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 
@@ -6,6 +5,7 @@ import { Banners } from "@/components/Banners";
 import { Buscador } from "@/components/Buscador";
 import { HeroTucuman } from "@/components/HeroTucuman";
 import { FondoFotos } from "@/components/FondoFotos";
+import { TelonFotos, type FotoDelTelon } from "@/components/TelonFotos";
 import { Icono } from "@/components/Iconos";
 import { getBanners, getCategorias, getGaleria, getGalerias } from "@/lib/api";
 import { FOTOS_HERO } from "@/lib/hero";
@@ -116,6 +116,20 @@ async function sinRomper<T>(promesa: Promise<T>, respaldo: T, que: string): Prom
  * de vuelta y la sección no gana nada con más.
  */
 const FOTOS_DE_FONDO = 5;
+
+/**
+ * Cuántas fotos entran en una bajada del telón.
+ *
+ * El telón mide 2532px y su recorrido —animation-range: cover 0% cover 100%,
+ * o sea el alto más una pantalla— son 3432px a 1440x900. Con seis fotos le
+ * tocan 572px a cada una, poco menos de dos tercios de pantalla, unos seis
+ * clics de rueda. Con cinco eran 686. Más de seis y el pasaje se empieza a
+ * sentir como un pase de diapositivas en vez de una ciudad que cambia.
+ *
+ * Que sean seis NO significa que el visitante vea siempre las mismas seis:
+ * salen sorteadas de todas las disponibles en cada regeneración.
+ */
+const FOTOS_DEL_TELON = 6;
 const ANCHO_MINIMO = 1200;
 const PROPORCION_MINIMA = 1.2;
 
@@ -146,12 +160,59 @@ async function fotosParaElFondo(galerias: GaleriaResumen[]): Promise<Foto[]> {
   // cada regeneración. El resultado queda en caché un día.
   const medidas = await medirImagenes(candidatas.map((foto) => foto.imagen ?? ""));
 
-  return candidatas
-    .filter((_, i) => {
-      const m = medidas[i];
-      return m !== null && m.ancho >= ANCHO_MINIMO && m.ancho / m.alto >= PROPORCION_MINIMA;
-    })
-    .slice(0, FOTOS_DE_FONDO);
+  // Se devuelven TODAS las que pasan, sin recortar: quién se queda con
+  // cuántas lo deciden los dos consumidores, cada uno con su propio sorteo.
+  // El costo de red no cambia por esto —medirImagenes ya medía todas las
+  // candidatas y el recorte venía después— así que el servidor municipal
+  // recibe exactamente los mismos pedidos que antes.
+  return candidatas.filter((_, i) => {
+    const m = medidas[i];
+    return m !== null && m.ancho >= ANCHO_MINIMO && m.ancho / m.alto >= PROPORCION_MINIMA;
+  });
+}
+
+/**
+ * Baraja una copia. Fisher-Yates.
+ *
+ * Corre en el servidor, al generar la página, y no en el navegador: con
+ * revalidate = 300 el sorteo se repite cada cinco minutos, todo el mundo ve la
+ * misma tanda dentro de esa ventana, y no hace falta ni un byte de JavaScript
+ * ni arriesgar que el HTML del servidor no coincida con el del cliente.
+ */
+function barajar<T>(xs: T[]): T[] {
+  const a = [...xs];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+/**
+ * Las fotos del telón: un sorteo entre las locales y las de las galerías.
+ *
+ * La PRIMERA siempre es local, y eso no es un detalle estético. Las de galería
+ * vienen del servidor municipal, que tarda hasta 6,7 segundos por foto; la
+ * primera del telón es la que se ve apenas alguien llega a "Cómo moverte por
+ * la ciudad" y si tarda, lo que se ve es el azul plano de .telon__fondo. Las
+ * locales están en public/hero, las sirve el mismo host y pesan poco.
+ *
+ * Meter fotos que no elegimos nosotros es seguro acá porque el contraste del
+ * texto NO depende de la fotografía: lo sostiene la marquesina, que es una
+ * banda opaca al 0,86. Sobre un blanco puro —el peor caso concebible— deja el
+ * h2 en 8,6:1 y el kicker amarillo en 6,2:1. Es la misma clase de garantía por
+ * cota que el panel del hero, y es lo que permite que el municipio suba lo que
+ * quiera sin romper nada.
+ */
+function fotosDelTelon(deLasGalerias: Foto[]): FotoDelTelon[] {
+  const locales: FotoDelTelon[] = FOTOS_HERO.map((f) => ({ src: f.src, posicion: f.posicion }));
+  const remotas: FotoDelTelon[] = deLasGalerias.flatMap((f) =>
+    f.imagen ? [{ src: f.imagen }] : [],
+  );
+
+  const primera = barajar(locales)[0];
+  const resto = barajar([...locales.filter((f) => f.src !== primera.src), ...remotas]);
+  return [primera, ...resto].slice(0, FOTOS_DEL_TELON);
 }
 
 export default async function Portada() {
@@ -162,7 +223,9 @@ export default async function Portada() {
   ]);
 
   const transparencia = categorias.find((c) => c.id === 10);
-  const fotosDeFondo = await fotosParaElFondo(galerias);
+  const deLasGalerias = await fotosParaElFondo(galerias);
+  const fotosDeFondo = barajar(deLasGalerias).slice(0, FOTOS_DE_FONDO);
+  const fotosTelon = fotosDelTelon(deLasGalerias);
   // El índice del buscador viaja con el HTML: el servidor municipal tarda
   // hasta 6,7 segundos por pedido, así que consultarlo por tecla no es opción.
   const indice = await construirIndice();
@@ -185,11 +248,14 @@ export default async function Portada() {
           La transformación es decorativa: el buscador y las seis tarjetas se
           pueden usar mientras corre. */}
       <HeroTucuman>
+          <p className="hero__antetitulo">San Miguel de Tucumán</p>
           <h1 className="hero__titulo" id="titulo-buscar">
-            Tu ciudad, <em>más cerca</em>
+            La ciudad que <em>queremos</em>.
           </h1>
+          {/* Dice "de la ciudad" y no "de San Miguel de Tucumán" porque el
+              antetítulo, tres renglones más arriba, ya lo nombra. */}
           <p className="hero__bajada">
-            Encontrá trámites, servicios e información de San Miguel de Tucumán.
+            Encontrá trámites, servicios e información de la ciudad.
           </p>
 
           <Buscador indice={indice} />
@@ -299,28 +365,7 @@ export default async function Portada() {
           sí informan. */}
       <div className="telon">
         <div className="telon__fondo">
-          <div className="telon__fotos">
-            {FOTOS_HERO.slice(1, 6).map((foto) => (
-              <Image
-                key={foto.src}
-                src={foto.src}
-                alt=""
-                fill
-                loading="lazy"
-                /* No es 100vw: las fotos son 3:1 y el cajón es alto, así que
-                   object-fit cover las agranda hasta tapar el ALTO y quedan
-                   pintadas mucho más anchas que la pantalla. En un teléfono de
-                   360x800 se pintan a 2400px de ancho, y con 100vw el
-                   navegador elegía el archivo de 750w: 6,4 veces estirado. Con
-                   200vw baja a 3,3 y se paga medio archivo más. No se pide el
-                   tamaño exacto a propósito: serían 500 KB de fondo decorativo
-                   en móvil, que es el 60% del tráfico. */
-                sizes="(max-width: 48rem) 200vw, 100vw"
-                style={foto.posicion ? { objectPosition: foto.posicion } : undefined}
-              />
-            ))}
-            <div className="telon__velo" aria-hidden="true" />
-          </div>
+          <TelonFotos fotos={fotosTelon} />
         </div>
 
         <div className="telon__contenido">
