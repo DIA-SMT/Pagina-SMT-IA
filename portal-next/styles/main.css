@@ -213,7 +213,7 @@ strong { font-weight: 700; }
 
 /* 64rem es su propio umbral y no uno de los tres escalones de grilla: es el
    ancho a partir del cual entra el menú completo sin apretarse. Lo comparten
-   el encabezado, el hero y .solo-desktop. */
+   el encabezado, el hero y la aparición de la búsqueda en la cápsula. */
 @media (min-width: 64rem) {
   .boton-menu { display: none; }
 
@@ -371,32 +371,37 @@ strong { font-weight: 700; }
    "búsquedas frecuentes": aquéllas llevaban a una lista de resultados, éstos
    van derecho a la página. */
 
-.hero {
-  background:
-    radial-gradient(90rem 40rem at 110% -20%, rgba(46, 177, 255, 0.20), transparent 60%),
-    linear-gradient(135deg, var(--c-azul-900), var(--c-azul-700));
-  color: #fff;
-  /* Teléfono: la foto arriba como banda y la tarea debajo. */
-  display: grid;
-  grid-template-areas: "foto" "texto";
-}
+/* Acá vivían .hero, .hero__texto y .hero__foto, el hero partido anterior.
+   Los reemplazó <HeroTucuman>, que trae sus propias clases (.ht*, bloque 24),
+   y estas tres se quedaron sin un solo sujeto en el marcado: verificado con
+   grep sobre app/ y components/.
 
-.hero__texto {
-  grid-area: texto;
-  padding: clamp(1.75rem, 5vw, 3rem) var(--sp-4);
-  max-width: 40rem;
-  margin-inline: auto;
-  width: 100%;
-}
+   Lo que sigue SÍ se usa, y por eso sobrevive: el título, la bajada y el
+   rótulo son los mismos elementos, que ahora viven adentro de la columna del
+   hero nuevo. */
+
 .hero__titulo {
   font-weight: var(--fw-titular);
   line-height: var(--lh-display);
   font-size: clamp(1.9rem, 4.5vw, 2.8rem);
+  letter-spacing: -0.015em;
   color: #fff;
+  text-wrap: balance;
 }
+/* El acento va en amarillo pleno: es el color del logo y sobre el azul-900
+   del hero da 14,8:1. */
 .hero__titulo em { font-style: normal; color: var(--c-amarillo-400); }
-.hero__bajada { color: var(--c-celeste-100); margin-top: var(--sp-2); }
-.hero .buscador-hero { margin-top: var(--sp-5); max-width: none; }
+.hero__bajada {
+  color: var(--c-celeste-100);
+  margin-top: var(--sp-2);
+  font-size: var(--fs-md);
+  max-width: 44ch;
+}
+/* El buscador del hero ocupa todo el ancho de la columna, sin el tope de
+   34rem que tiene en el menú móvil y en /buscar. El selector decía .hero, que
+   es el hero anterior y ya no existe en el marcado: la regla quedó sin sujeto
+   y el campo volvía silenciosamente a 34rem, desalineado de las tarjetas. */
+.ht__columna .buscador-hero { margin-top: var(--sp-5); max-width: none; }
 .hero__rotulo {
   margin-top: clamp(1.5rem, 4vw, 2.25rem);
   font-size: var(--fs-xs);
@@ -406,40 +411,6 @@ strong { font-weight: 700; }
   color: var(--c-amarillo-400);
 }
 
-.hero__foto {
-  grid-area: foto;
-  position: relative;
-  overflow: clip;
-  /* Banda en teléfono; en escritorio el alto lo manda la columna de texto. */
-  aspect-ratio: 16 / 9;
-}
-.hero__foto img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-@media (min-width: 64rem) {
-  .hero {
-    grid-template-areas: "texto foto";
-    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
-    align-items: center;
-  }
-  .hero__texto {
-    max-width: 38rem;
-    margin-inline: 0;
-    justify-self: end;
-    padding-inline: clamp(1.5rem, 4vw, 3rem);
-  }
-  .hero__foto {
-    /* Sin aspect-ratio: la foto toma el alto de la columna de texto, así el
-       bloque no tiene un alto arbitrario y las dos mitades terminan juntas. */
-    aspect-ratio: auto;
-    align-self: stretch;
-    min-height: 100%;
-  }
-}
 
 /* ---- Los seis destinos ---- */
 
@@ -462,7 +433,7 @@ strong { font-weight: 700; }
   align-items: center;
   gap: var(--sp-3);
   /* Alto generoso: es el destino de 831 personas por día y la mayoría entra
-     desde el teléfono. Muy por encima del mínimo de 44 de WCAG 2.5.8. */
+     desde el teléfono. Muy por encima de los 24 que exige WCAG 2.5.8 en AA. */
   min-height: 3.5rem;
   height: 100%;
   padding: var(--sp-4);
@@ -509,43 +480,116 @@ strong { font-weight: 700; }
 .destino__flecha { flex: none; color: var(--c-azul-600); }
 
 /* ---- 05-bis El telón: la ciudad quieta ----
-   Las tres fotografías se quedan fijas ocupando la pantalla mientras los
-   servicios y las campañas les pasan por delante, y se van turnando a medida
-   que uno baja. Es position: sticky con el contenido tirado hacia arriba por
-   un margen negativo; NO background-attachment: fixed, que es la forma que
-   sale en los tutoriales y la única que no funciona en iOS.
+   Cinco fotografías se quedan fijas ocupando la pantalla mientras cuatro
+   secciones —sistemas, transporte, servicios y campañas— les pasan por
+   delante. Es position: sticky con el contenido tirado hacia arriba por un
+   margen negativo; NO background-attachment: fixed, que es la forma que sale
+   en los tutoriales y la única que no funciona en iOS.
 
-   El velo es fuerte y no un lavado, y eso no es gusto: acá sí hay texto sobre
-   la fotografía —los encabezados de las dos secciones—. Está medido sobre los
-   píxeles compuestos: se buscó el píxel MÁS CLARO de cada una de las tres
-   fotos y se compuso con el punto más flojo del degradado.
+   ---- POR QUÉ SE CAMBIÓ ----
+   El telón nació con un velo de azul al 0,78-0,85 sobre TODA la pantalla, y
+   ese número no salió de la nada: los encabezados de las cuatro secciones —un
+   h2 blanco, una bajada blanca y un kicker amarillo chiquito— caían directo
+   sobre la fotografía, así que había que dimensionarlo contra el píxel MÁS
+   CLARO de cada foto.
 
-     sin velo ............ 1,01:1  el blanco desaparece
-     velo al 0,70 ........ 5,31:1  pasa el blanco, el kicker amarillo no (3,8)
-     velo al 0,78 ........ 6,76:1  y el amarillo sube a 4,86:1
+   Ahí estaba la trampa, y se ve al medir los archivos enteros con canvas, a
+   resolución completa y no muestreados:
 
-   Por eso el piso del degradado es 0,78 y no 0,70: el que manda no es el
-   blanco de los títulos sino el amarillo del kicker, que es texto chico.
+     foto                       píxeles 255,255,255   sobre el total   lum. MEDIA
+     02-museo-independencia            325              0,024%           0,3231
+     03-fuente-de-los-leones           514              0,033%           0,0911
+     04-iglesia-catedral               178              0,013%           0,1508
+     06-puente-peatonal                133              0,008%           0,0818
+     11-parque-9-de-julio              249              0,019%           0,0779
 
-   Las tarjetas son opacas, así que su texto conserva el contraste que ya
-   tenía y no hay que tocarlas. */
-/* El fondo va TAMBIÉN acá y no sólo en .telon__fondo. En el teléfono la
-   barra del navegador se retrae al bajar y el viewport visible crece: si el
-   telón pegajoso midiera menos, por abajo asomaría el fondo claro de la
-   página con los títulos blancos encima. Con lvh no debería pasar nunca,
-   pero esta línea cuesta nada y cubre el redondeo. */
-.telon { position: relative; isolation: isolate; background: var(--c-azul-900); }
+   Las cinco tienen blanco puro —faroles, una mancha de cielo— pero son entre
+   133 y 514 píxeles sobre 1,3 millones. El velo estaba dimensionado por el
+   0,02% de la imagen y apagaba el otro 99,98%, que encima ya era oscuro:
+   cuatro de las cinco fotos tienen luminancia media por debajo de 0,16, son
+   nocturnas.
+
+   Y el número no tenía arreglo. Con velo global el blanco recién pasa 4,5:1
+   en 0,645 y el amarillo del kicker en 0,755: no existe ningún valor que
+   muestre la foto Y sostenga el texto.
+
+   Es la misma lección que el hero ya había aprendido y que el telón volvió a
+   romper: EL TEXTO NO CAE SOBRE LA FOTOGRAFÍA. Acá se resuelve igual que
+   allá, dándole al texto su propio soporte. Sólo que el hero parte la
+   pantalla en dos y el telón no puede: el contenido tiene que seguir pasando
+   por delante de la ciudad entera.
+
+   ---- LA MARQUESINA ----
+   Cada encabezado se apoya en una banda de azul institucional que entra desde
+   el borde izquierdo de la pantalla y se disuelve en la foto antes de llegar
+   a la mitad. No es una tarjeta: no tiene cuatro cantos, no tiene radio y no
+   tiene borde. Tiene dos líneas horizontales y un lado que se deshace. Es el
+   rótulo de un documental, no una caja. Y como es 0,86 y no opaca, la ciudad
+   se sigue viendo por detrás del título.
+
+   Con el contraste resuelto por estructura, el velo se queda sin trabajo y
+   baja a ser una tinta que hermana cinco fotos muy distintas entre sí:
+
+     velo global      0,78-0,85  ->  0,16-0,26
+     luz de la foto   19,2%      ->  80,3%       (4,19 veces)
+
+   Y el texto MEJORA. Medido sobre blanco puro, que es peor que cualquier
+   píxel real, con la tinta en su punto más flojo:
+
+                      antes (velo 0,78)   ahora    y si se borra la tinta
+     #fff ..............  6,69:1          9,20:1        8,59:1
+     #F4DC00 (kicker) ..  4,81:1          6,61:1        6,17:1
+
+   El amarillo del kicker, que era el que mandaba todo el velo anterior,
+   pasa de tener 0,31 de sobre el 4,5 de AA a tener 2,11. */
+
+/* El fondo va TAMBIÉN acá y no sólo en .telon__fondo. En el teléfono la barra
+   del navegador se retrae al bajar y el viewport visible crece: si el telón
+   pegajoso midiera menos, por abajo asomaría el fondo claro de la página con
+   los títulos blancos encima. Con lvh no debería pasar nunca, pero esta línea
+   cuesta nada y cubre el redondeo. */
+.telon {
+  position: relative;
+  isolation: isolate;
+  background: var(--c-azul-900);
+
+  /* Los tres colores del telón viven acá arriba y no repartidos por las
+     reglas. Es la misma regla que tokens.css se puso a sí mismo: los bloques
+     de tema redefinen VALORES, no componentes. Con esto el tema oscuro son
+     cuatro líneas en cada uno de sus dos bloques, en vez de reescribir el
+     degradado del velo entero dos veces como estaba pasando. */
+
+  /* 1) La tinta. Ya no sostiene ningún contraste: se puede poner en cero y no
+     falla nada, está verificado más abajo. Está en 0,16-0,26 porque las cinco
+     fotos no se parecen entre sí —sus luminancias medias van de 0,0779 a
+     0,3231— y sin una tinta común el telón cambia de temperatura cada vez que
+     una foto releva a la otra. Se conserva el 160deg y el cierre más oscuro
+     del original: lo único que cambió es la escala. */
+  --telon-velo: linear-gradient(160deg,
+    rgba(10, 46, 110, 0.20) 0%,
+    rgba(10, 46, 110, 0.16) 45%,
+    rgba(8, 25, 46, 0.26) 100%);
+
+  /* 2) La marquesina. 0,86 y no opaca a propósito: ese 14% que pasa deja ver
+     la ciudad POR DETRÁS del título, y es lo que hace que la banda se lea como
+     parte de la foto y no como una calcomanía pegada encima. Y no cuesta
+     contraste: sobre blanco puro y sin nada de velo debajo da 8,59:1 el blanco
+     y 6,17:1 el amarillo. */
+  --telon-marquesina: rgba(10, 46, 110, 0.86);
+
+  /* 3) El canto de todo objeto opaco que flota sobre la foto. Tiene que ser
+     OPACO; el porqué, con el barrido completo, está abajo. */
+  --telon-canto: var(--c-azul-900);
+}
 
 /* lvh y NO svh: svh es el viewport CHICO, con las barras del navegador
    desplegadas. Cuando la barra se retrae el viewport crece unos 60-115px y un
-   fondo de 100svh deja esa franja sin cubrir, justo abajo, que es donde el
-   ojo está leyendo mientras el contenido sube. Con lvh el fondo siempre
-   alcanza; lo que sobra queda debajo del pliegue, que es inocuo.
+   fondo de 100svh deja esa franja sin cubrir, justo abajo, que es donde el ojo
+   está leyendo mientras el contenido sube. Con lvh el fondo siempre alcanza.
 
    Tampoco dvh: se recalcularía en vivo en cada transición de la barra y el
-   margen negativo del contenido daría saltos. Los dos valores —el alto de
-   acá y el margin-top de .telon__contenido— tienen que moverse JUNTOS o el
-   contenido se desalinea del fondo. */
+   margen negativo del contenido daría saltos. Los dos valores —el alto de acá
+   y el margin-top de .telon__contenido— tienen que moverse JUNTOS. */
 .telon__fondo {
   position: sticky;
   top: 0;
@@ -562,9 +606,7 @@ strong { font-weight: 700; }
 .telon__fotos img:first-of-type { opacity: 1; }
 
 /* Sin cruce no hay segunda ni tercera foto: se quedan en opacity 0 para
-   siempre. Ocultarlas evita pintar dos capas invisibles, y con loading=lazy
-   los navegadores que respetan display:none tampoco las piden. No está
-   garantizado por especificación: el ahorro de bytes es probable, no seguro. */
+   siempre. Ocultarlas evita pintar dos capas invisibles. */
 @media (prefers-reduced-motion: reduce) {
   .telon__fotos img:not(:first-of-type) { display: none; }
 }
@@ -572,41 +614,170 @@ strong { font-weight: 700; }
   .telon__fotos img:not(:first-of-type) { display: none; }
 }
 
-.telon__velo {
-  position: absolute; inset: 0;
-  background: linear-gradient(160deg, rgba(10, 46, 110, 0.82) 0%, rgba(10, 46, 110, 0.78) 45%, rgba(8, 25, 46, 0.85) 100%);
+/* Durante un cruce se ven dos fotos a la vez, pero el compuesto es un promedio
+   pesado de las dos: nunca sale más claro que la más clara. Por eso alcanza
+   con medir el peor píxel de cada una por separado, que es lo que se hizo. */
+.telon__velo { position: absolute; inset: 0; background: var(--telon-velo); }
+
+.telon__contenido {
+  position: relative;
+  z-index: 1;
+  margin-top: -100lvh;
+
+  /* ---- Las tres medidas de la marquesina ----
+     Y una sola regla entre ellas: el texto se termina 6rem ANTES de que la
+     banda empiece a disolverse. No hay forma de que una letra caiga en el
+     degradado, ni con el título más largo, ni con la bajada más larga, ni en
+     ningún ancho de pantalla, porque las tres son rem y se mueven juntas. */
+  --marq-texto: 30rem;    /* hasta acá puede llegar una letra */
+  --marq-plena: 36rem;    /* hasta acá la banda es plena: 6rem de colchón */
+  --marq-fundido: 8rem;   /* y acá se deshace en la ciudad */
+  --marq-ancho: calc(var(--marq-plena) + var(--marq-fundido));
+}
+.telon__contenido .seccion { background: transparent; }
+
+/* ---- La banda ---- */
+.telon__contenido .seccion__cabecera {
+  position: relative;
+  /* Un escalón más que el resto del sitio (sp-7): lo que separa la banda de
+     las tarjetas son 2rem de ciudad, y con sp-7 quedaban 0,5rem y el bloque se
+     leía pegado. */
+  margin-bottom: var(--sp-8);
 }
 
-.telon__contenido { position: relative; z-index: 1; margin-top: -100lvh; }
+/* El tope del texto es lo que vuelve SEGURA a la banda, no lo que la vuelve
+   linda. Sin esto, una bajada larga o una pantalla angosta empujarían la
+   última palabra adentro del degradado y volveríamos a tener texto sobre
+   píxeles impredecibles, que es exactamente lo que vinimos a arreglar.
+   El > div es el envoltorio del kicker, el h2 y la bajada; el botón blanco es
+   el otro hijo del flex y queda afuera a propósito. */
+.telon__contenido .seccion__cabecera > div { max-width: var(--marq-texto); }
 
-/* Lo que no vive dentro de una tarjeta se pasa a blanco, igual que en las
-   secciones azules del portal. */
-.telon__contenido .seccion { background: transparent; }
-.telon__contenido .seccion__cabecera h2 { color: #fff; }
-.telon__contenido .seccion__cabecera p:not(.seccion__kicker) { color: #fff; }
-.telon__contenido .seccion__kicker { color: var(--c-amarillo-400); }
+.telon__contenido .seccion__cabecera::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  /* No es flex item: un ::before absoluto queda fuera del flujo del flex, así
+     que no desarma el space-between del encabezado. */
+
+  /* Se pasa de largo por arriba y por abajo del texto: la banda tiene que ser
+     una zona, no un renglón pintado detrás de las letras. */
+  inset-block: calc(var(--sp-6) * -1) calc(var(--sp-4) * -1);
+
+  /* IZQUIERDA: se va de la pantalla y no hace falta recortar nada. Lo que se
+     desborda hacia la IZQUIERDA en un sitio de izquierda a derecha no entra en
+     la región de scroll —el navegador no deja desplazarse a x negativo—, así
+     que acá no hace falta overflow: clip, que en Safari 15 todavía no existe.
+     Los 2rem de más absorben la barra de desplazamiento clásica de Windows,
+     que 50vw sí cuenta y 50% no. */
+  left: calc(50% - 50vw - var(--sp-6));
+
+  /* DERECHA: pegada al borde de la pantalla. 1,25rem es exactamente medio
+     canalón de .contenedor —width: min(100% - 2.5rem, ...)—, así que el borde
+     de la banda cae justo en el borde del viewport y ni un píxel más: lo que
+     se desborda a la DERECHA sí empuja la página y saca barra horizontal. */
+  right: -1.25rem;
+
+  background: var(--telon-marquesina);
+}
+
+/* A partir de 60rem hay lugar al costado del texto para que se vea algo, y la
+   banda se abre: termina a 44rem del borde del contenedor y las últimas 8rem
+   se disuelven en la foto. Abajo de eso cruza entera, que es lo correcto: en
+   un teléfono no hay "costado" que mostrar.
+
+   A 1440 la banda plena llega a 680 de 1440 y termina de disolverse en 808:
+   la ciudad se queda con el 43% derecho de la pantalla, limpio, a la altura
+   de cada encabezado.
+
+   El max() es un seguro, no decoración: la media query se evalúa con el
+   tamaño de letra inicial del navegador, así que si alguien lo tiene en 24px
+   el umbral se corre solo a 1440 y las proporciones se mantienen; pero si
+   además la pantalla cae justo en el filo, 44rem podría pasarse del
+   contenedor, y eso sin el max() es una barra de scroll horizontal. */
+@media (min-width: 60rem) {
+  .telon__contenido .seccion__cabecera::before {
+    right: max(-1.25rem, calc(100% - var(--marq-ancho)));
+    background: linear-gradient(to right,
+      var(--telon-marquesina) 0,
+      var(--telon-marquesina) calc(100% - var(--marq-fundido)),
+      transparent 100%);
+  }
+}
+
+/* Los colores del encabezado no cambian: lo que cambió es CONTRA QUÉ se miden.
+   Antes, contra el píxel más claro de una fotografía y con un velo encima
+   dimensionado para eso. Ahora, contra la marquesina, que es un color conocido
+   —en el peor caso imaginable, 39,71,127— y no depende de la foto. */
+.telon__contenido .seccion__cabecera h2 { color: #fff; }               /* 9,25:1 */
+.telon__contenido .seccion__cabecera p:not(.seccion__kicker) { color: #fff; }  /* 9,25:1 */
+.telon__contenido .seccion__kicker { color: var(--c-amarillo-400); }   /* 6,65:1 */
 .telon__contenido .seccion__kicker::before { background: var(--c-amarillo-400); }
 
-/* Los puntos del carrusel eran gris claro y azul-700 sobre página clara:
-   sobre el velo el activo desaparecía. */
+/* ---- El canto de lo que flota sobre la foto ----
+   Las tarjetas, los accesos, los banners y el botón blanco son opacos, así que
+   su TEXTO nunca estuvo en discusión: vive sobre su propio relleno. Lo que sí
+   estaba en discusión era su CONTORNO. WCAG 1.4.11 pide 3:1 entre el objeto y
+   lo que tiene al lado, y una tarjeta blanca sobre un cielo blanco da 1,41:1.
+   El borde de hoy, --c-borde-objeto (#D6E0EB), da 1,06:1: no salva nada. Con
+   el velo al 0,78 el problema estaba tapado; al bajarlo, aparece.
+
+   El canto TIENE que ser opaco, y esto no es opinión. Se barrieron los 256
+   grises posibles más nueve píxeles de color, comparando en cada uno el
+   relleno contra el fondo y el canto contra el fondo, y quedándose con el
+   mejor de los dos —alcanza con que UNO de los dos identifique el objeto—:
+
+     canto azul-900 opaco ......... peor caso 3,60:1   (píxel 155,155,155)
+     el mismo con alfa 0,70 ....... peor caso 2,84:1   FALLA
+     el mismo con alfa 0,55 ....... peor caso 2,44:1   FALLA
+     --c-borde-objeto de hoy ...... peor caso 1,41:1   FALLA
+
+   Con alfa, el canto se tiñe del mismo fondo del que se tiene que despegar y
+   en los medios tonos se le confunde. Opaco no: el relleno blanco cubre los
+   fondos oscuros, el canto azul cubre los claros, y las dos curvas se cruzan
+   en 3,60:1. No queda ningún píxel posible donde fallen los dos a la vez.
+
+   Y el número NO depende de la tinta: barrida de 0 a 0,26, el peor caso se
+   mueve entre 3,58 y 3,60. O sea que esto sigue en pie aunque mañana se
+   saque el velo entero. */
+.telon__contenido .tarjeta,
+.telon__contenido .acceso,
+.telon__contenido .banner { border-color: var(--telon-canto); }
+
+/* ---- Los controles del carrusel ----
+   Tres círculos blancos y una fila de puntos que quedaban flotando sobre la
+   foto: un círculo blanco sobre un cielo blanco no se ve, y el de pausa no es
+   decorativo —WCAG 2.2.2, nivel A, exige poder frenar lo que se mueve solo—.
+   Van sobre una pastilla del mismo azul: es una marquesina chiquita para
+   ellos, y el criterio del telón queda siendo uno solo.
+
+   Sobre la pastilla, en el peor caso: círculo blanco 9,20:1, punto inactivo
+   —blanco al 50%— 3,60:1, y el glifo #003E9C sobre el círculo 9,68:1. */
+.telon__contenido .carrusel__controles {
+  width: max-content;
+  max-width: 100%;
+  margin-inline: auto;
+  padding: var(--sp-2) var(--sp-4);
+  border-radius: var(--r-full);
+  background: var(--telon-marquesina);
+}
+
 /* Las flechas toman su fondo de --c-blanco, que de noche es una superficie
-   oscura: sobre el velo quedaban en 1,46:1 de relleno y sólo las sostenía el
-   borde, en 3,03:1. Acá se fija blanco de verdad y azul oscuro adentro, que
-   es lo mismo que ya hace .boton--blanco en las bandas azules. El de pausa no
-   es decorativo: WCAG 2.2.2 exige poder frenar el carrusel. */
+   oscura. Acá se fija blanco de verdad y azul oscuro adentro, que es lo mismo
+   que ya hace .boton--blanco en las bandas azules. Sin cambios respecto de
+   hoy, salvo que ahora se apoyan en la pastilla. */
 .telon__contenido .carrusel__flecha {
   background: #fff;
   border-color: #fff;
   color: #003E9C;
 }
 .telon__contenido .carrusel__flecha:hover { background: var(--c-celeste-50); border-color: var(--c-celeste-50); }
-
 .telon__contenido .carrusel__puntos button { background: rgba(255, 255, 255, 0.5); }
 .telon__contenido .carrusel__puntos button[aria-current] { background: #fff; }
 
 /* El movimiento: la ciudad respira y se va turnando mientras el contenido
-   sube. Todo con transform y opacity, que el navegador resuelve sin
-   recalcular la página. */
+   sube. Todo con transform y opacity, que el navegador resuelve sin recalcular
+   la página. La marquesina no participa: se pinta una vez. */
 .telon { view-timeline-name: --recorrido; view-timeline-axis: block; }
 
 @supports (animation-timeline: view()) {
@@ -625,69 +796,24 @@ strong { font-weight: 700; }
   }
 }
 
-/* 6%: alcanza para que no se sienta una lámina pegada y no llega a notarse
-   como efecto. */
 @keyframes telon-respirar { from { transform: scale(1); } to { transform: scale(1.06); } }
-/* Cinco turnos en vez de tres, porque el telón ahora abarca cuatro
-   secciones y con tres fotos cada una duraba demasiado.
-
-   El recorrido se parte en cinco tramos de 20% y cada foto se desvanece
-   sobre la siguiente durante 8%. Los cruces son largos y superpuestos a
-   propósito: nunca se ve un corte, se ve que la vista cambió sin que uno se
-   diera cuenta. */
 @keyframes telon-turno-1 { 0%, 16% { opacity: 1; } 24%, 100% { opacity: 0; } }
 @keyframes telon-turno-2 { 0%, 16% { opacity: 0; } 24%, 36% { opacity: 1; } 44%, 100% { opacity: 0; } }
 @keyframes telon-turno-3 { 0%, 36% { opacity: 0; } 44%, 56% { opacity: 1; } 64%, 100% { opacity: 0; } }
 @keyframes telon-turno-4 { 0%, 56% { opacity: 0; } 64%, 76% { opacity: 1; } 84%, 100% { opacity: 0; } }
 @keyframes telon-turno-5 { 0%, 76% { opacity: 0; } 84%, 100% { opacity: 1; } }
 
-.hero__titulo {
-  font-weight: var(--fw-titular);
-  line-height: var(--lh-display);
-  font-size: var(--fs-3xl);
-  letter-spacing: -0.015em;
-  color: #fff;
-  text-wrap: balance;
-  max-width: 20ch;
-}
-/* El acento va en amarillo pleno: es el color del logo y sobre el azul-900
-   del panel da 14,8:1. */
-.hero__titulo em { font-style: normal; color: var(--c-amarillo-400); }
-
-.hero__bajada {
-  margin-top: var(--sp-3);
-  font-size: var(--fs-md);
-  color: rgba(255, 255, 255, 0.92);
-  max-width: 44ch;
-}
-
 
 /* Estas reglas vivían en el bloque del hero anterior y se usan también fuera
-   de él (el buscador está en el menú móvil y en /buscar; los chips y la
-   corrección de grillas, en varias plantillas). Se conservan tal cual. */
+   de él: el buscador está en el menú móvil y en /buscar, y la corrección de
+   grillas, en varias plantillas. Se conservan tal cual. */
 
 /* Sin esto una celda de grilla toma el ancho de su contenido más largo y
    desborda la fila. Es la corrección estándar para grid y flex. */
 .grilla > *,
 .layout-ficha > *,
 .footer__grid > *,
-.hero__texto > * { min-width: 0; }
-
-.chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.4rem 0.9rem;
-  background: var(--c-azul-50);
-  color: var(--c-azul-800);
-  border: 1px solid var(--c-azul-100);
-  border-radius: var(--r-full);
-  font-size: var(--fs-sm);
-  font-weight: 600;
-  text-decoration: none;
-  transition: background var(--t-rapida), border-color var(--t-rapida);
-}
-.chip:hover { background: var(--c-azul-100); border-color: var(--c-azul-200); color: var(--c-azul-800); }
+.ht__columna > * { min-width: 0; }
 
 /* Buscador grande */
 .buscador-hero { margin-top: var(--sp-6); max-width: 34rem; }
@@ -1260,9 +1386,6 @@ form.buscador-hero:focus-within {
 }
 
 /* ---- 12 Utilidades y estados ---- */
-.solo-desktop { display: none; }
-@media (min-width: 64rem) { .solo-desktop { display: initial; } }
-
 .estado-vacio {
   text-align: center;
   padding: var(--sp-9) var(--sp-5);
@@ -1476,14 +1599,14 @@ a[data-externo]::after {
 /* ---- El sitio en el teléfono ----
    Tres cosas que faltaban y que son la mitad del tráfico de un portal
    municipal: respuesta al toque, movimiento sólo donde hay puntero de verdad,
-   y áreas de toque de 44px como pide WCAG 2.5.8. */
+   y áreas de toque de 44px. WCAG 2.5.8 exige 24 en AA; los 44 son 2.5.5,
+   que es AAA, y se toman como criterio propio del portal. */
 
 /* a) Respuesta al pulsado, por color y sin rebotes. El transform:none cancela
       el hover que iOS deja pegado después del toque. */
 .boton--primario:active { background: var(--c-azul-800); box-shadow: none; transform: none; }
 .boton--secundario:active,
 .boton--blanco:active,
-.chip:active,
 .filtro:active,
 .boton-buscar:active,
 .boton-menu:active { background: var(--c-azul-100); }
@@ -2019,12 +2142,20 @@ time { font-variant-numeric: tabular-nums; }
 
 /* .boton--blanco vive sobre las bandas azules y toma su fondo de --c-blanco,
    que de noche pasa a ser una superficie oscura: quedaba azul sobre azul.
-   Acá se fija blanco de verdad, que es lo que el nombre siempre prometió. */
+   Acá se fija blanco de verdad, que es lo que el nombre siempre prometió.
+
+   El border-color es del telón: ahí el botón queda a la DERECHA del
+   encabezado, o sea fuera de la marquesina y sobre la foto pelada, y necesita
+   el mismo canto que las tarjetas. El borde ya existía —.boton lo declara de
+   2px transparente— y sólo hay que darle color. En las bandas azules y en el
+   hero la variable no está definida y el borde se queda transparente, que es
+   lo que ya pasaba. */
 .seccion--azul .boton--blanco,
 .hero .boton--blanco,
 .telon__contenido .boton--blanco {
   background: #fff;
   color: #003E9C;
+  border-color: var(--telon-canto);
 }
 
 /* Las secciones azules y el pie ya eran oscuros. De noche, contra un fondo
@@ -2042,8 +2173,37 @@ time { font-variant-numeric: tabular-nums; }
       radial-gradient(90rem 40rem at 110% -20%, rgba(46, 177, 255, 0.10), transparent 60%),
       linear-gradient(135deg, #061426, #0D2A4A);
   }
-  :root:not([data-theme="light"]) .telon__velo {
-    background: linear-gradient(160deg, rgba(6, 20, 38, 0.86) 0%, rgba(6, 20, 38, 0.82) 45%, rgba(4, 12, 24, 0.90) 100%);
+  /* El hero de stickers, por el mismo motivo: su degradado toma --c-azul-700,
+     que de noche pasa a celeste claro. Se ve poco porque la fotografía lo tapa
+     entera, pero asoma mientras la foto carga y si alguna vez falla. */
+  :root:not([data-theme="light"]) .ht {
+    --ht-panel: 6 20 38;
+    background:
+      radial-gradient(90rem 40rem at 110% -20%, rgba(46, 177, 255, 0.10), transparent 60%),
+      linear-gradient(135deg, #061426, #0D2A4A);
+  }
+  /* El telón redefine VALORES y no componentes: los tres colores viven en
+     variables sobre .telon (bloque 05-bis) y acá sólo cambian de escala. Antes
+     esto reescribía el degradado del velo entero, dos veces.
+
+     De noche la tinta es más fuerte que de día —0,36-0,46 contra 0,16-0,26—
+     por el mismo motivo por el que las bandas azules bajan un escalón: contra
+     un fondo general de #08192E, una foto al 80% se lee como un cartel
+     encendido. Al 60% sigue siendo cuatro veces lo que dejaba pasar el velo
+     anterior.
+
+     El canto se DA VUELTA, y es el mismo razonamiento que los bordes de
+     tokens.css: de noche la tarjeta es #0F2438, una superficie oscura, así
+     que el relleno ya cubre los fondos claros y el que tiene que cubrir los
+     oscuros es el canto. Con #fff daría más contraste, pero una línea blanca
+     pura alrededor de cada tarjeta de noche se lee como un alambrado. */
+  :root:not([data-theme="light"]) .telon {
+    --telon-velo: linear-gradient(160deg,
+      rgba(6, 20, 38, 0.40) 0%,
+      rgba(6, 20, 38, 0.36) 45%,
+      rgba(4, 12, 24, 0.46) 100%);
+    --telon-marquesina: rgba(6, 20, 38, 0.86);
+    --telon-canto: var(--c-celeste-100);
   }
   :root:not([data-theme="light"]) .header { background: rgba(15, 36, 56, 0.92); }
 }
@@ -2058,8 +2218,19 @@ time { font-variant-numeric: tabular-nums; }
     radial-gradient(90rem 40rem at 110% -20%, rgba(46, 177, 255, 0.10), transparent 60%),
     linear-gradient(135deg, #061426, #0D2A4A);
 }
-:root[data-theme="dark"] .telon__velo {
-  background: linear-gradient(160deg, rgba(6, 20, 38, 0.86) 0%, rgba(6, 20, 38, 0.82) 45%, rgba(4, 12, 24, 0.90) 100%);
+:root[data-theme="dark"] .ht {
+  --ht-panel: 6 20 38;
+  background:
+    radial-gradient(90rem 40rem at 110% -20%, rgba(46, 177, 255, 0.10), transparent 60%),
+    linear-gradient(135deg, #061426, #0D2A4A);
+}
+:root[data-theme="dark"] .telon {
+  --telon-velo: linear-gradient(160deg,
+    rgba(6, 20, 38, 0.40) 0%,
+    rgba(6, 20, 38, 0.36) 45%,
+    rgba(4, 12, 24, 0.46) 100%);
+  --telon-marquesina: rgba(6, 20, 38, 0.86);
+  --telon-canto: var(--c-celeste-100);
 }
 :root[data-theme="dark"] .header { background: rgba(15, 36, 56, 0.92); }
 
@@ -2093,4 +2264,682 @@ time { font-variant-numeric: tabular-nums; }
 .documento:focus-visible,
 .carrusel .banner:focus-visible {
   box-shadow: 0 0 0 6px var(--foco-exterior);
+}
+
+
+/* ---- 22 El encabezado que se pliega ----
+   Se corre hacia arriba al bajar y vuelve al subir. De su borde inferior
+   cuelga una lengüeta que lo trae de vuelta desde cualquier parte.
+
+   La lengüeta va ANCLADA AL ENCABEZADO y no fija al viewport: con top 100%
+   queda justo debajo del borde inferior, así que cuando el encabezado se
+   corre su propio alto hacia arriba, ella aterriza exactamente en el borde de
+   la pantalla. Un solo elemento y ninguna posición que sincronizar.
+
+   Se anima `translate` y no `top` ni `height`: las dos últimas obligan al
+   navegador a recalcular la página en cada cuadro. */
+
+.header {
+  transition: translate var(--t-media) ease;
+}
+.header[data-plegado] {
+  translate: 0 -100%;
+}
+
+.header__lengueta {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  translate: -50% 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* Ancha y baja, como una pestaña de la que se tira. El área táctil llega a
+     44px por el padding de abajo, que cae sobre la página y no estorba. */
+  width: 3.5rem;
+  height: 1.5rem;
+  padding-bottom: 1.25rem;
+  box-sizing: content-box;
+  border: 1px solid var(--c-borde-objeto);
+  border-top: 0;
+  border-radius: 0 0 var(--r-md) var(--r-md);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  color: var(--c-azul-700);
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(23, 41, 60, 0.06);
+}
+/* El chevron mira hacia donde va a ir el encabezado: arriba si está abierto
+   —lo vas a plegar— y abajo si está plegado —lo vas a bajar—. Es la dirección
+   del gesto, no un estado.
+
+   El símbolo #i-chevron apunta hacia abajo, así que la rotación va al revés
+   de lo que uno escribiría de memoria: girado en reposo, derecho al plegarse. */
+.header__lengueta svg {
+  rotate: 180deg;
+  transition: rotate var(--t-media);
+}
+.header[data-plegado] .header__lengueta svg { rotate: 0deg; }
+.header__lengueta:hover { color: var(--c-azul-600); background: #fff; }
+
+@media (prefers-reduced-motion: reduce) {
+  .header,
+  .header__lengueta svg { transition: none; }
+}
+
+
+/* ---- 23 El encabezado, afinado ----
+   Se comparó contra una variante institucional en azul y ganó ésta: el azul
+   competía con el hero que arranca justo abajo y las dos piezas se peleaban.
+
+   Más bajo —de 4,5rem a 3,75rem— porque el encabezado es tránsito y no
+   destino, y con un solo separador: antes había borde inferior Y sombra
+   haciendo el mismo trabajo, y quedó la sombra, que es más liviana.
+
+   Acá también se arreglan cuatro cosas que estaban mal medidas o mal
+   agrupadas. Las cuatro se verificaron en el navegador, no a ojo. */
+
+.header { border-bottom: 0; }
+.header__inner { min-height: 3.75rem; }
+
+/* --- 1. La lupa estaba encajada en una esquina ---
+   .boton-buscar declara display: inline-flex en la línea 184, pero el enlace
+   llevaba además la utilidad .solo-desktop, que en la línea 1252 declara
+   display: initial. Las dos valen (0,1,0) y la utilidad está 1068 líneas más
+   abajo, así que ganaba por orden de documento. Para display, initial es
+   inline, y al ser ítem de un flex el navegador lo convierte en block: el
+   align-items y el justify-content del botón quedaban inertes.
+
+   Medido a 1280, el icono dentro de su caja de 44x44: 0px arriba, 24 abajo,
+   1 a la izquierda, 23 a la derecha. El botón de tema, que sí conserva su
+   flex, tenía 12 por lado. La lupa estaba en la esquina, no centrada.
+
+   La utilidad se fue del archivo: tenía un solo usuario en todo el repo y era
+   justamente éste. Una utilidad de display siempre le va a pelear el display
+   al componente, y el componente pierde si está declarado más arriba. La
+   visibilidad se resuelve acá, en el bloque del encabezado, y acotada a la
+   cápsula: .boton-buscar es TAMBIÉN el botón de cerrar del panel móvil, que
+   no se puede esconder. */
+.header__utilidades .boton-buscar { display: none; }
+@media (min-width: 64rem) {
+  .header__utilidades .boton-buscar { display: inline-flex; }
+}
+
+/* --- 2. La cápsula se tragaba a CiDiTuc ---
+   El borde, el fondo y el radio estaban en .header__acciones, que es el riel
+   de layout de las cuatro acciones. Medido a 1280: la cápsula iba de 1003 a
+   1240 y CiDiTuc arrancaba en 1101, o sea adentro. Una píldora azul llena
+   dentro de una funda blanca.
+
+   Ahora la cápsula es .header__utilidades y agrupa sólo lo que se parece
+   entre sí: dos utilidades, dos iconos, mismo peso. CiDiTuc queda afuera como
+   la única acción llena, separada por el gap del riel. */
+.header__acciones { gap: var(--sp-3); }
+.header__utilidades {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--c-borde-campo);
+  border-radius: var(--r-full);
+  padding: 0.2rem;
+  background: var(--c-blanco);
+}
+/* 2,75rem = 44px. Se probó con 2,4rem y el encabezado quedaba más prolijo,
+   pero bajaba el área táctil a 38px: compactar no puede salir del tamaño de
+   destino que usa todo el resto del portal. */
+.header__utilidades .tema,
+.header__utilidades .boton-buscar {
+  border: 0;
+  background: none;
+  height: 2.75rem;
+  /* width y NO sólo min-width: la regla base de .boton-buscar (línea 184)
+     declara width: 2.75rem, que es un ancho FIJO. Con sólo el mínimo puesto,
+     el botón se quedaba en 44px, el rótulo desbordaba y el SVG —que en un
+     flex se encoge por defecto— se aplastaba a 0x0. Medido. */
+  width: auto;
+  min-width: 2.75rem;
+  text-decoration: none;
+}
+/* Y el icono no se encoge aunque el contenido apriete: es lo único que
+   identifica al control cuando el rótulo no está. */
+.header__utilidades svg { flex: none; }
+/* Las dos mitades de un control segmentado: cada una redondeada del lado de
+   afuera y recta contra el filete. Con las dos en píldora completa se veían
+   dos botones apretados; el radio es lo que los vuelve una sola pieza. */
+.header__utilidades .tema { border-radius: var(--r-full) 0 0 var(--r-full); }
+.header__utilidades .boton-buscar {
+  border-radius: 0 var(--r-full) var(--r-full) 0;
+  border-left: 1px solid var(--c-borde-campo);
+  gap: var(--sp-2);
+}
+
+/* --- 3. La lupa dice qué es ---
+   Un icono pelado no se lee como control: no tiene nombre visible. De 80rem
+   para arriba aparece la palabra, que es lo que hacen gov.uk y el portal del
+   Ajuntament de Barcelona.
+
+   El umbral sale de medir, no del gusto: a 1024 el encabezado va exactamente
+   lleno —logo 114 + menú 588 + acciones 219 + dos gaps de 24 = 969, que es
+   justo el ancho del contenedor— y recién a 1280 sobran 196px. El rótulo
+   agrega unos 58 entre texto, gap y relleno.
+
+   El nombre accesible sigue siendo "Buscar en el portal" en los dos casos,
+   por el aria-label del enlace. Como "Buscar" está contenido en él, se cumple
+   2.5.3 (Label in Name) cuando el rótulo se ve. */
+.boton-buscar__texto { display: none; }
+@media (min-width: 80rem) {
+  .boton-buscar__texto { display: inline; font-size: var(--fs-sm); font-weight: var(--fw-semi); }
+  .header__utilidades .boton-buscar { padding-inline: var(--sp-3) var(--sp-4); }
+}
+
+/* --- 4. Dos hovers que empeoraban el contraste ---
+   Los tres números están medidos resolviendo los tokens en los dos temas.
+
+   a) El borde de .tema y .boton-buscar pasaba a --c-azul-300 al pasar el
+      mouse: 2,00:1 en claro y 2,30:1 en oscuro contra su propio relleno,
+      cuando en reposo daba 3,59:1. Un contorno que se vuelve MENOS visible
+      al interactuar, y por debajo del 3:1 que pide WCAG 1.4.11. El 500 es el
+      único de la escala que pasa en los dos temas: 3,59 y 5,46 contra el
+      relleno, 3,97 y 5,60 contra la superficie de al lado.
+   b) CiDiTuc pasaba a --c-azul-700 al pasar el mouse, y ese token de noche se
+      vuelve celeste claro porque está pensado para ir SOBRE fondo oscuro: el
+      texto blanco quedaba en 2,21:1, contra 4,83:1 en reposo. Azul fijo, que
+      es la misma solución que ya usan .boton--blanco y las flechas del
+      carrusel.
+   c) La flechita de enlace externo heredaba --c-ink-muted, que es un gris
+      para fondo claro, sobre el azul lleno del botón: 1,09:1 en claro y
+      1,86:1 en oscuro. Invisible. Toma el color del propio botón. */
+.tema:hover,
+.boton-buscar:hover {
+  border-color: var(--c-azul-500);
+  background: var(--c-azul-50);
+  color: var(--c-azul-700);
+}
+.boton-cidituc:hover { background: #0052CC; }
+.boton-cidituc[data-externo]::after { color: currentColor; }
+
+
+/* ---- 24 El hero de stickers ----
+   Tucumán fotográfico que se vuelve una lámina de figuritas y después queda
+   viva bajo el cursor. Tres estados: intro, transicion, interactivo.
+
+   ---- LA DECISIÓN QUE MANDA SOBRE TODAS LAS DEMÁS ----
+   La columna de la izquierda —título, bajada, buscador y las seis tarjetas más
+   consultadas— tiene su propio panel azul y NO se apoya nunca sobre la imagen.
+   No es gusto: está medido sobre los píxeles de la fotografía.
+
+   En la franja izquierda de la foto (del 0 al 42% del ancho):
+
+     color medio ............ 129,108,87   -> blanco a 4,98:1
+     píxel MÁS claro ........ blanco puro  -> blanco a 1,00:1
+     reparto ................ 43% por debajo de L 0,1, pero 17% por encima de 0,6
+
+   O sea: el promedio pasaría y el amanecer del ángulo superior izquierdo no.
+   Y no hay velo que lo arregle sin arruinar la foto: con un velo de azul-900
+   al 0,60 el blanco todavía da 3,89:1 y el amarillo del kicker 2,80:1. Habría
+   que pasar de 0,70, que es exactamente "oscurecer excesivamente la fotografía".
+
+   Encima el fondo cambia dos veces: el estado 1 es la foto y el estado 3 es el
+   fondo del collage, que muestreado en los bordes da 255,255,255. Sobre blanco,
+   el h1 blanco desaparece, el kicker amarillo queda en 1,2:1 y las tarjetas
+   blancas en 1,06:1.
+
+   Con el panel, nada de eso pasa y —esto es lo importante— NADA TIENE QUE
+   CAMBIAR DE COLOR durante la transformación: el panel se queda quieto y lo
+   que se transforma es la mitad derecha. Es la misma solución que la marquesina
+   del telón, girada 90 grados.
+
+   ---- QUÉ SE ANIMA ----
+   Sólo transform y opacity, más un blur breve durante la fase B que se apaga al
+   terminar. Nada de máscaras que crezcan: repintar una capa del tamaño del hero
+   en cada cuadro es justo lo que no se puede hacer acá.  */
+
+.ht {
+  position: relative;
+  isolation: isolate;
+  /* El azul del panel, en componentes, para que las cuatro paradas del
+     degradado se muevan juntas. Estaba escrito a mano en dos de ellas y de
+     noche el panel se partía al 58%: las dos primeras paradas seguían al token
+     —que en oscuro baja a #0a2238— y las dos últimas se quedaban en el azul
+     claro. Medido, el corte daba 1,25:1, poco pero visible. */
+  --ht-panel: 10 46 110;
+  /* Hasta dónde puede llegar una letra, y en qué tramo se deshace el panel.
+     Las dos van juntas a propósito: el panel deja de ser sólido exactamente
+     donde el texto ya no puede estar, ni un rem antes. */
+  --ht-texto: 38rem;
+  --ht-fundido: 16rem;
+  /* ---- La tinta de cuando el fondo se vuelve papel ----
+     Estos cuatro NO salen de los tokens, y es a propósito. En la fase
+     interactiva, detrás de la columna queda .ht__fondo, que es un crema
+     escrito a mano y que NO cambia con el tema: es el mismo de día y de
+     noche, porque las quince figuritas tienen borde blanco y están dibujadas
+     para un fondo claro. Si la tinta siguiera al tema, de noche --c-ink es
+     #E6EEF8 y el título caería a 1,15:1 sobre ese crema —medido—. La tinta
+     sigue a la SUPERFICIE, no al tema, así que se escribe como la superficie.
+
+     Cada uno es el token de tema claro que le corresponde, anotado para que
+     se pueda rastrear si mañana cambia la paleta. Los contrastes están
+     medidos contra #F4EFE4, que es el extremo del degradado que toca la
+     columna; contra el centro, más claro, todos suben. */
+  --ht-tinta:       #0A2E6E;  /* = --c-azul-900 claro     11,24:1 */
+  --ht-tinta-suave: #3D5165;  /* = --c-ink-soft claro      7,15:1 */
+  --ht-acento:      #0052CC;  /* = --c-azul-700 claro      5,95:1 */
+  --ht-borde-papel: #78899B;  /* = --c-borde-campo         3,13:1 */
+  /* min-height y no height: la columna mide 748px de contenido a 1440px de
+     ancho. En una ventana de 900 de alto sobran 92px, pero en una de 768
+     faltan 40 y con `height` las tarjetas quedarían recortadas. Así, en
+     ventanas bajas el hero simplemente es más alto que la pantalla. */
+  min-height: calc(100dvh - var(--alto-header));
+  display: grid;
+  background:
+    radial-gradient(90rem 40rem at 110% -20%, rgba(46, 177, 255, 0.20), transparent 60%),
+    linear-gradient(135deg, var(--c-azul-900), var(--c-azul-700));
+  color: #fff;
+  overflow: clip;
+}
+
+/* ---- Teléfono: la foto es una banda arriba y la columna va debajo ----
+   Es el mismo reparto que ya tenía el hero partido, y se conserva a propósito:
+   en una pantalla angosta no hay "costado" donde poner una lámina de quince
+   figuritas, y la consigna pide que en celulares el estado final sea casi
+   estático. */
+.ht__escena {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  height: 34vh;
+  overflow: clip;
+  isolation: isolate;
+}
+/* El cursor dice que la imagen se puede explorar, y en qué sentido. */
+.ht[data-fase="intro"] .ht__escena { cursor: zoom-in; }
+.ht[data-fase="interactivo"] .ht__escena { cursor: zoom-out; }
+
+.ht__fondo {
+  position: absolute;
+  inset: 0;
+  /* El fondo del collage, muestreado de los bordes de la lámina: blanco con un
+     rescoldo cálido, no un blanco de oficina. */
+  background:
+    radial-gradient(70% 90% at 70% 40%, #FFFDF5 0%, #FBF7EE 55%, #F4EFE4 100%);
+}
+
+.ht__foto,
+.ht__collage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 45%;
+  display: block;
+  transform-origin: 62% 50%;
+}
+.ht__collage { object-fit: contain; opacity: 0; }
+
+/* La onda de la fase A. Un solo elemento chico escalado con transform: barato
+   de componer y suficiente para que el clic se sienta respondido. */
+.ht__onda {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  translate: -50% -50%;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.35) 45%, transparent 70%);
+}
+
+.ht__capas { position: absolute; inset: 0; pointer-events: none; }
+
+.ht__capa {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--w);
+  /* El centrado va en `translate` y no en `transform`: así la línea de tiempo
+     primero, y el viento después, pueden escribir `transform` sin pisarlo. Las
+     dos propiedades se componen, no compiten. */
+  translate: -50% -50%;
+  opacity: 0;
+}
+/* will-change SÓLO mientras algo se mueve. Estaba puesto siempre, y como las
+   capas se montan al hidratar, las quince quedaban promovidas a capa de
+   composición durante toda la visita aunque nadie tocara la escena: sumando
+   sus áreas son del orden de 11 MB de textura a 1440 con DPR 2 y 19,5 MB a
+   1920. En el estado intro no hay nada que componer. */
+.ht[data-fase="transicion"] .ht__capa,
+.ht[data-fase="interactivo"] .ht__capa { will-change: transform; }
+.ht__capa img { width: 100%; height: auto; display: block; }
+
+/* El panel de la columna. En teléfono no hace falta: la columna va debajo de
+   la banda, sobre el azul del propio hero. */
+.ht__panel { display: none; }
+
+.ht__columna {
+  position: relative;
+  z-index: 2;
+  padding: clamp(1.75rem, 5vw, 3rem) var(--sp-4);
+  max-width: 40rem;
+  margin-inline: auto;
+  width: 100%;
+}
+.ht__columna > * { min-width: 0; }
+
+/* El disparador accesible. Existe para el teclado, pero se ve siempre: si sólo
+   apareciera al tabular, quien usa mouse no se enteraría de que la imagen se
+   puede explorar. */
+.ht__disparador {
+  margin-top: var(--sp-5);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  min-height: 2.75rem;
+  padding: 0.6rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: var(--r-full);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font: inherit;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semi);
+  cursor: pointer;
+  transition: color var(--t-rapida), background-color var(--t-rapida), border-color var(--t-rapida);
+}
+.ht__disparador::before { content: "✦"; font-size: 0.9em; }
+.ht__disparador:hover { background: rgba(255, 255, 255, 0.16); border-color: #fff; }
+/* Sólo se apaga mientras corre la transición, que es el único momento en
+   que no es una acción disponible. Después vuelve, con el nombre cambiado. */
+.ht__disparador:disabled { opacity: 0.45; pointer-events: none; }
+
+/* El cruce de tinta. Va acá y no en cada regla porque las cuatro cambian a la
+   vez y por el mismo motivo.
+
+   Va en --t-rapida (150ms) y no en --t-media: el cruce es EL momento malo, el
+   único en que ni la tinta clara ni la oscura tienen 4,5:1, así que cuanto
+   menos dure, mejor. Con el panel cayendo en 200ms y la tinta cruzando en
+   150ms alineados en el ms 1800, la ventana floja es de unos 150ms dentro de
+   una animación de 2300 que además la persona pidió.
+
+   --t-rapida pasa a 0ms bajo prefers-reduced-motion —está en tokens.css— así
+   que quien pidió no moverse ve el cambio seco, sin repetir la media query. */
+/* .ht__panel NO está en esta lista, y es a propósito. Su opacidad la maneja
+   entera la línea de tiempo con WAAPI, que es la única que sabe en qué
+   milisegundo se va la fotografía. Si además tuviera una transition de CSS,
+   la propiedad tendría dos dueños: mientras la animación vive gana ella, pero
+   en los huecos —una corrida cancelada, un cambio de fase— gana el CSS, y ahí
+   aparecen los parpadeos. La regla .ht[data-papel] .ht__panel de más abajo
+   declara sólo el valor en REPOSO, para cuando no hay animación viva. */
+.ht .hero__titulo,
+.ht .hero__titulo em,
+.ht .hero__bajada,
+.ht .hero__rotulo {
+  transition:
+    color var(--t-rapida),
+    background-color var(--t-rapida),
+    opacity var(--t-rapida);
+}
+
+/* ---- Escritorio: la foto a sangre y la columna encima, sobre su panel ---- */
+@media (min-width: 64rem) {
+  .ht__escena {
+    position: absolute;
+    inset: 0;
+    aspect-ratio: auto;
+    height: auto;
+  }
+
+  /* El panel: sólido en el borde izquierdo y disuelto antes del 42%, que es la
+     zona segura que declara el manifiesto de los stickers. El texto termina
+     mucho antes: la columna mide 38rem como máximo. */
+  /* ---- El panel: un vidrio, no una pared ----
+     Empezó siendo azul sólido y tapaba media fotografía. Ahora deja pasar la
+     imagen y le baja la luz, que es distinto.
+
+     El truco es backdrop-filter: brightness() MULTIPLICA cada canal de lo que
+     hay detrás, así que acota el máximo posible sin importar qué foto sea. Con
+     0,4 el peor píxel imaginable —blanco puro, que es justo lo que tiene esta
+     foto en el amanecer— queda en 102, y con el tinte encima en rgb(91,95,103).
+     Sobre ese fondo:
+
+       #fff (título y bajada) ...... 6,39:1
+       --c-celeste-100 ............. 5,32:1
+       #F4DC00 (el rótulo) ......... 4,59:1
+
+     Los tres pasan AA, y el número no depende de la fotografía: si mañana
+     entra otra, el techo sigue siendo el mismo porque brightness acota por
+     multiplicación, no por promedio.
+
+     ---- POR QUÉ EL TINTE BAJÓ DE 0,30 A 0,12 ----
+     Porque el panel se leía como una pared azul y tapaba los colores de la
+     ciudad, que es de lo que se trata la fotografía. Sacándole tinte, lo que
+     queda es sombra y no azul: la foto conserva su color, sólo baja de luz.
+
+     0,12 no es un gusto, es el borde exacto. Barriendo el tinte contra el
+     peor píxel concebible, el que primero se cae es el rótulo amarillo:
+
+       tinte 0,30 -> blanco 7,50  celeste 6,24  amarillo 5,38   pasa
+       tinte 0,20 -> blanco 6,86  celeste 5,71  amarillo 4,93   pasa
+       tinte 0,12 -> blanco 6,39  celeste 5,32  amarillo 4,59   pasa, al filo
+       tinte 0,08 -> blanco 6,17  celeste 5,13  amarillo 4,43   NO
+       sin tinte  -> blanco 5,74  celeste 4,78  amarillo 4,12   NO
+
+     Subir el brillo en vez de bajar el tinte no sirve: con 0,45 se pierde la
+     garantía aunque sobre ESTA foto todavía mida bien, y perder la garantía
+     es cambiar un número medido por un número que depende de la foto.
+
+     Sin blur, o con muy poco: la idea es VER la ciudad a través del panel, no
+     una mancha. El blur además sólo ayudaría al contraste —promedia las altas
+     luces— así que no ponerlo es el caso conservador, que es el que se midió.
+
+     La máscara es lo que evita mover el corte en vez de sacarlo: hace que el
+     elemento ENTERO —el tinte y el filtro— se disuelva junto, y arranca a
+     disolverse justo donde el texto ya no llega. */
+  .ht__panel {
+    display: block;
+    position: absolute;
+    inset-block: 0;
+    left: 0;
+    width: calc(var(--ht-texto) + var(--ht-fundido));
+    max-width: 66%;
+    z-index: 1;
+    /* El panel es decoración con aria-hidden y estaba comiéndose los clics:
+       va por encima de la escena, llega hasta el 66% y la columna termina en
+       el 52,6%, así que quedaban 256px —el 18% del hero— donde tocar la
+       fotografía no hacía nada y ni siquiera cambiaba el cursor, porque la
+       regla del cursor cuelga de .ht__escena. */
+    pointer-events: none;
+    background: rgb(var(--ht-panel) / 0.12);
+    /* SIN escribir -webkit- a mano. Acá se perdió un rato: Lightning CSS, que
+       es el que compila el CSS de este proyecto, agrega los prefijos solo. Si
+       uno además los escribe DESPUÉS de la propiedad estándar, el compilador
+       dedupla y se queda con el último, o sea con el prefijado, y tira el
+       bueno. Y Chrome no entiende -webkit-backdrop-filter —lo verifiqué:
+       CSS.supports('-webkit-backdrop-filter','blur(10px)') da false— así que
+       el panel se quedaba sin filtro y el texto ilegible. El encabezado
+       funciona justamente porque ahí nunca se escribió el prefijo. */
+    backdrop-filter: brightness(0.4) saturate(1.1);
+    mask-image: linear-gradient(to right, #000 0, #000 var(--ht-texto), transparent 100%);
+  }
+
+  /* Donde no haya backdrop-filter, el panel vuelve a ser opaco. No es una
+     degradación estética: sin el filtro, un tinte al 30% deja el blanco en
+     1,4:1 sobre el amanecer. Antes que un texto ilegible, una pared. */
+  @supports not ((backdrop-filter: brightness(1)) or (-webkit-backdrop-filter: brightness(1))) {
+    .ht__panel { background: rgb(var(--ht-panel) / 0.96); }
+  }
+
+  .ht__columna {
+    /* 52,6% y no 42%. El 42 es la zona segura de los STICKERS —de ahí sale
+       ZONA_SEGURA_DERECHA— y se coló acá por confusión: es el límite que no
+       puede cruzar una figurita, no el ancho que necesita la columna.
+
+       El hero partido anterior le daba a esta misma columna 1/1,9 del ancho,
+       o sea 52,6%. A 1440 los dos dan 512px de contenido y por eso la
+       medición no lo vio, pero abajo se abre: a 1024 el 42% deja 342px de
+       contenido y las cinco tarjetas chicas caen a 165px, con "Carnet de
+       sanidad" partido en TRES renglones. Con 52,6% vuelven a los 457 de
+       antes. El panel las sigue cubriendo: su tramo sólido llega a 38rem y el
+       texto nunca pasa de ahí. */
+    width: min(52.6%, 38rem);
+    margin-inline: 0;
+    justify-self: start;
+    align-self: center;
+    padding-inline: clamp(1.5rem, 4vw, 3rem);
+  }
+
+  /* ---- Cuando el fondo se vuelve papel ----
+     En la fase interactiva la fotografía ya no está. Detrás de la columna
+     queda .ht__fondo, que es un crema NUESTRO y no una imagen, y un fondo
+     conocido no necesita panel: el panel se va y la tinta se da vuelta.
+
+     Es lo que se pidió —"que el fondo sea todo con la misma transparencia que
+     la derecha"— y acá sí se puede, porque el problema nunca fue el panel
+     sino no saber qué había detrás. Sobre la fotografía no se puede: medido
+     sobre los píxeles reales, el título blanco tiene detrás una luminancia
+     MEDIA de 0,551 —el cielo del amanecer— y da 1,75:1 de promedio, no en un
+     rincón. Por eso el panel sigue existiendo mientras la foto esté.
+
+     ---- LO QUE HAY DETRÁS DE LA COLUMNA, POR ANCHO ----
+     Casi siempre crema y nada más, pero no siempre, y conviene tenerlo escrito
+     porque el número que uno esperaría —ZONA_SEGURA_DERECHA, 42%— no es el que
+     manda. Esa constante se dimensionó contra el tramo sólido del panel
+     (--ht-texto, 38rem) y la columna mide min(52,6%, 38rem): los dos coinciden
+     recién cuando 52,6% ≥ 38rem, o sea arriba de 1156px, y la figurita más
+     izquierda —casa-gobierno, en el 53% con ancho 19vw— se corre con el ancho.
+
+     Medido, caja contra caja, la distancia de casa-gobierno al borde derecho
+     del contenido de la columna:
+
+       1600 ... 128px de aire      1280 ... 11px de solape
+       1440 ...  72px de aire      1200 ... 46px de solape
+       1366 ...  26px de aire      1024 ... 60px de solape
+
+     El cruce está en los ~1306px. PERO ese solape es de CAJAS y no de tinta, y
+     mirándolo no se ve: las figuritas son WebP con alfa y su borde izquierdo es
+     margen transparente, la bajada corta el renglón antes del borde de su caja,
+     y las otras dos que solapan —mapa-tucuman y locro— caen enteras detrás de
+     tarjetas opacas. Verificado a ojo en 1024, 1200, 1280, 1366, 1440 y 1600.
+
+     O sea que no hace falta ningún umbral, pero sí hace falta volver a mirar
+     esto si cambia la lámina, si casa-gobierno se corre, o si la columna se
+     ensancha otra vez.
+
+     Los colores salen de --ht-tinta y compañía, declaradas arriba en .ht:
+     son fijas a propósito porque la superficie es fija. Ver el comentario
+     de allá.
+
+     ---- POR QUÉ data-papel Y NO data-fase="interactivo" ----
+     Porque no son el mismo instante. La fase pasa a "interactivo" cuando
+     termina TODO, en el ms 2300, pero el fondo detrás de la columna deja de
+     ser fotografía mucho antes. Colgadas de la fase, estas reglas llegaban
+     tarde: entre que el panel se iba y la letra se oscurecía quedaba texto
+     blanco sobre crema. Medido en la captura del ms 1900: el título apenas se
+     insinuaba y la bajada no se veía en absoluto.
+
+     data-papel lo pone el componente en el instante que marca el metrónomo de
+     la corrida —ver components/heroTucuman/transformacion.ts— que corre en el
+     mismo reloj que el panel. Así el fondo y la tinta cruzan juntos. */
+  .ht[data-papel] .ht__panel { opacity: 0; }
+
+  .ht[data-papel] .hero__titulo { color: var(--ht-tinta); }
+
+  /* El amarillo del logo no puede ser TINTA sobre el crema: da 1,37:1. Así que
+     pasa de tinta a resaltador —fondo amarillo, letra azul, 9,26:1— que además
+     es exactamente el gesto que le corresponde a una lámina de figuritas.
+
+     El aire de los costados lo pinta una SOMBRA y no un padding, y eso no es
+     un capricho. Con padding-inline: 0.14em el título mide más ancho en la
+     fase interactiva que en la intro, y a 1024 eso alcanzaba para tirarlo al
+     segundo renglón: medido, pasaba de 48px de alto a 97, y la bajada, el
+     buscador y las seis tarjetas bajaban 49px de golpe justo cuando termina
+     la animación. Una sombra exterior pinta afuera de la caja sin tocar el
+     ancho, así que el título ocupa exactamente lo mismo en las dos fases.
+
+     Las dos sombras son horizontales a propósito: con spread en las cuatro
+     direcciones, un título de dos renglones se pisa a sí mismo entre líneas. */
+  .ht[data-papel] .hero__titulo em {
+    color: var(--ht-tinta);
+    background-color: var(--c-amarillo-400);
+    box-shadow:
+      0.16em 0 0 var(--c-amarillo-400),
+      -0.16em 0 0 var(--c-amarillo-400);
+    /* Si el título se parte igual, que el resaltador se corte en los dos
+       renglones y no quede una sola caja envolviendo el salto. */
+    box-decoration-break: clone;
+  }
+
+  .ht[data-papel] .hero__bajada { color: var(--ht-tinta-suave); }
+  .ht[data-papel] .hero__rotulo { color: var(--ht-acento); }
+
+  .ht[data-papel] .ht__disparador {
+    color: var(--ht-tinta);
+    border-color: var(--ht-tinta);
+    background-color: rgba(255, 255, 255, 0.55);
+  }
+  .ht[data-papel] .ht__disparador:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* El canto de las tarjetas es lo ÚNICO que las separa del crema: el relleno
+     blanco contra #F4EFE4 da 1,15:1, o sea nada. Con --c-borde-objeto, que es
+     el de siempre, daría 1,32:1; con --c-borde-campo da 3,13:1, que es el
+     mínimo que pide 1.4.11 para el borde de un control. La sombra sube un
+     escalón porque ayuda a que se despeguen, aunque no cuente para el cálculo. */
+  .ht[data-papel] .destino {
+    border-color: var(--ht-borde-papel);
+    box-shadow: var(--sombra-2);
+  }
+  /* Las tres de abajo existen SÓLO para no pisar reglas que ya estaban. Con
+     dos clases y un atributo, .ht[data-papel] .destino tiene más
+     especificidad que .destino:hover, que [data-principal] .destino y —esto es
+     lo grave— que .destino:focus-visible, así que sin estas tres el halo del
+     foco desaparecía justo en la fase que le agrega movimiento a la página.
+     Es el mismo bug de cascada que ya mordió cuatro veces en este archivo. */
+  .ht[data-papel] .destino:hover { border-color: var(--ht-acento); }
+  .ht[data-papel] [data-principal] .destino { border-color: var(--ht-acento); }
+  .ht[data-papel] .destino:focus-visible { box-shadow: 0 0 0 6px var(--foco-exterior); }
+
+  /* El desplegable de sugerencias del buscador cae sobre el crema igual que
+     las tarjetas, y con el mismo resultado: relleno blanco 1,15:1 y canto
+     --c-borde-objeto 1,32:1. Es un control con el que se navega con flechas,
+     así que su borde también tiene que llegar a 3:1. De noche no hace falta
+     tocarlo —ahí --c-blanco es #0F2438 y el panel se separa solo— pero la
+     regla no molesta, porque --ht-borde-papel sobre un relleno oscuro sigue
+     siendo un canto visible. */
+  .ht[data-papel] .sugerencias { border-color: var(--ht-borde-papel); }
+
+  /* Las seis tarjetas se mueven con el viento en esta fase, así que se
+     promueven a capa de composición, y SÓLO acá: es el mismo razonamiento que
+     el will-change de las figuritas de más arriba. Seis cajas de unos 250x60
+     son del orden de 180 KB de textura con DPR 2, que no tiene sentido pagar
+     mientras la columna está quieta sobre la fotografía.
+
+     Va en translate y no en transform a propósito: el viento escribe translate
+     y rotate, y transform se lo deja al :hover. Nombrar la propiedad correcta
+     importa, porque will-change: transform no promete nada sobre translate.
+
+     La lista es la misma que PIEZAS_DE_LA_COLUMNA en lib/heroTucuman.ts, que es
+     de donde el componente saca a quién mover. Si allá se agrega una, acá hay
+     que agregarla: no se promueve sola. */
+  .ht[data-papel] .hero__titulo,
+  .ht[data-papel] .hero__bajada,
+  .ht[data-papel] .buscador-vivo,
+  .ht[data-papel] .hero__rotulo,
+  .ht[data-papel] .destino,
+  .ht[data-papel] .ht__disparador { will-change: translate; }
+}
+
+/* ---- Movimiento reducido ----
+   Se conserva la composición final entera; lo que se saca es el viaje. */
+@media (prefers-reduced-motion: reduce) {
+  .ht__onda { display: none; }
+  /* Acá no hay viento en ningún momento, así que no hay nada que promover.
+     Misma especificidad que las reglas de arriba pero declaradas más abajo,
+     que es lo que las hace ganar. */
+  .ht[data-fase] .ht__capa { will-change: auto; }
+  .ht[data-papel] .hero__titulo,
+  .ht[data-papel] .hero__bajada,
+  .ht[data-papel] .buscador-vivo,
+  .ht[data-papel] .hero__rotulo,
+  .ht[data-papel] .destino,
+  .ht[data-papel] .ht__disparador { will-change: auto; }
 }

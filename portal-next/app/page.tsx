@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 
 import { Banners } from "@/components/Banners";
 import { Buscador } from "@/components/Buscador";
+import { HeroTucuman } from "@/components/HeroTucuman";
 import { FondoFotos } from "@/components/FondoFotos";
 import { Icono } from "@/components/Iconos";
 import { getBanners, getCategorias, getGaleria, getGalerias } from "@/lib/api";
@@ -168,21 +169,22 @@ export default async function Portada() {
 
   return (
     <>
-      {/* A. Hero: buscar y la ciudad ----------------------------------------
-          Partido: a la izquierda la tarea, a la derecha la ciudad.
+      {/* A. Hero: Tucumán se vuelve figuritas -------------------------------
+          Tres estados encadenados: una fotografía de la ciudad, un clic que la
+          convierte en una lámina de stickers, y esa lámina viva bajo el cursor.
+          La máquina de estados y el porqué de cada decisión están en
+          components/HeroTucuman.tsx; las quince capas, en lib/heroTucuman.ts.
 
-          El texto NUNCA cae sobre la fotografía. Es la lección de los heros
-          anteriores: sobre una foto el contraste depende de qué píxel quedó
-          atrás —sobre un amanecer el blanco daba 2,8:1— y con la foto en su
-          propia mitad vuelve a ser un número conocido.
+          Lo que NO cambia es esta columna. El texto sigue sin caer nunca sobre
+          la fotografía —la lección de los heros anteriores, que acá se paga con
+          un panel azul propio— y los seis destinos siguen siendo lo primero que
+          se ve, en orden de demanda medida: el primero ocupa el doble porque se
+          lleva casi una de cada cuatro visitas del portal. El detalle está en
+          lib/navegacion.ts, sobre DESTACADOS.
 
-          Los seis destinos reemplazan a las viejas "búsquedas frecuentes":
-          aquéllas llevaban a una lista de resultados, éstos van derecho a la
-          página. Están en orden de demanda medida y el primero ocupa el doble
-          porque se lleva casi una de cada cuatro visitas del portal; el
-          detalle está en lib/navegacion.ts, sobre DESTACADOS. */}
-      <section className="hero" aria-labelledby="titulo-buscar">
-        <div className="hero__texto">
+          La transformación es decorativa: el buscador y las seis tarjetas se
+          pueden usar mientras corre. */}
+      <HeroTucuman>
           <h1 className="hero__titulo" id="titulo-buscar">
             Tu ciudad, <em>más cerca</em>
           </h1>
@@ -212,39 +214,83 @@ export default async function Portada() {
               </li>
             ))}
           </ul>
-        </div>
+      </HeroTucuman>
 
-        <div className="hero__foto">
-          <Image
-            src={FOTOS_HERO[0].src}
-            alt={FOTOS_HERO[0].alt}
-            width={2000}
-            height={667}
-            priority
-            sizes="(min-width: 64rem) 46vw, 100vw"
-            style={
-              FOTOS_HERO[0].posicion ? { objectPosition: FOTOS_HERO[0].posicion } : undefined
-            }
-          />
+      {/* B. Sistemas en línea ------------------------------------------------
+          Fuera del telón y sobre blanco: acá abajo arranca el fondo de ciudad
+          y conviene que empiece en transporte. Esta sección es la puerta a
+          los sistemas externos —Guía de Trámites, CiDiTuc, DIM— y se lee
+          mejor sin una fotografía atrás.
+
+          Lo que queda de ACCESOS después de sacar lo que el hero ya muestra:
+          el filtro es por URL, así que si mañana cambian los seis destacados
+          esta sección se reacomoda sola y nunca repite una tarjeta.
+
+          Lo que sobrevive son, sobre todo, los sistemas externos —Guía de
+          Trámites, CiDiTuc, DIM— que no aparecen en nuestro log porque viven
+          en otros dominios, y que por eso no podían competir por un lugar en
+          el hero ordenado por demanda medida. */}
+      <section className="seccion seccion--blanca" aria-labelledby="titulo-accesos">
+        <div className="contenedor">
+          <div className="seccion__cabecera">
+            <div>
+              <p className="seccion__kicker">Trámites en línea</p>
+              <h2 id="titulo-accesos">Sistemas del municipio</h2>
+              <p>Las plataformas donde se hacen las gestiones y los pagos.</p>
+            </div>
+          </div>
+
+          <div className="grilla grilla--3">
+            {ACCESOS.filter((a) => !DESTACADOS.some((d) => d.url === a.url)).map((acceso) =>
+              acceso.externo ? (
+                <a
+                  className="acceso"
+                  key={acceso.url}
+                  href={acceso.url}
+                  rel="noopener"
+                  target="_blank"
+                  data-externo
+                >
+                  <span className="acceso__icono">
+                    <Icono nombre={acceso.icono} tamano={22} />
+                  </span>
+                  <span>
+                    {acceso.titulo}
+                    <span className="visualmente-oculto"> (se abre en otra pestaña)</span>
+                    <small>{acceso.detalle}</small>
+                  </span>
+                </a>
+              ) : (
+                <Link className="acceso" key={acceso.url} href={acceso.url}>
+                  <span className="acceso__icono">
+                    <Icono nombre={acceso.icono} tamano={22} />
+                  </span>
+                  <span>
+                    {acceso.titulo}
+                    <small>{acceso.detalle}</small>
+                  </span>
+                </Link>
+              ),
+            )}
+          </div>
         </div>
       </section>
 
-      {/* B. El telón: la ciudad quieta y el contenido por delante ----------
+      {/* C. El telón: la ciudad quieta y el contenido por delante ----------
           Las fotografías se quedan fijas ocupando la pantalla mientras el
           contenido les pasa por encima, y se van turnando a medida que uno
           baja. Es position: sticky, no background-attachment: fixed, que es
           la forma que sale en los tutoriales y la única que no anda en iOS.
 
-          Abarca cuatro secciones —sistemas, transporte, servicios y
-          campañas— y no sólo las dos últimas: es el tramo en que el vecino
-          está resolviendo algo, y tenerlo todo sobre la misma ciudad lo
-          vuelve un solo bloque en vez de cuatro franjas sueltas.
+          Abarca TRES secciones —transporte, servicios y campañas— y no
+          cuatro: el telón arranca donde el vecino pasa de "qué plataforma
+          uso" a "qué necesito resolver".
 
-          Las tarjetas son opacas, así que su texto conserva el contraste
-          que ya tenía. El que sí cambia es el de los encabezados de
-          sección, que quedan sobre la fotografía: por eso el velo de azul
-          institucional es fuerte y no un lavado. Está medido sobre los
-          píxeles compuestos, no sobre el color nominal.
+          Las tarjetas son opacas, así que su texto conserva el contraste que
+          ya tenía. El que vive sobre la fotografía es el de los encabezados
+          de sección, y para eso está la marquesina: una banda de azul que
+          entra desde el borde y se disuelve antes de la mitad. El detalle,
+          con los números medidos, está en el bloque 05-bis de main.css.
 
           Alt vacío en todas, igual que en FondoFotos: acá la ciudad es el
           fondo de una sección de trámites. Describir el atardecer en medio
@@ -278,63 +324,7 @@ export default async function Portada() {
         </div>
 
         <div className="telon__contenido">
-        {/* B.1. Sistemas en línea ------------------------------------------------
-            Lo que queda de ACCESOS después de sacar lo que el hero ya muestra:
-            el filtro es por URL, así que si mañana cambian los seis destacados
-            esta sección se reacomoda sola y nunca repite una tarjeta.
-
-            Lo que sobrevive son, sobre todo, los sistemas externos —Guía de
-            Trámites, CiDiTuc, DIM— que no aparecen en nuestro log porque viven
-            en otros dominios, y que por eso no podían competir por un lugar en
-            el hero ordenado por demanda medida. */}
-        <section className="seccion" aria-labelledby="titulo-accesos">
-          <div className="contenedor">
-            <div className="seccion__cabecera">
-              <div>
-                <p className="seccion__kicker">Trámites en línea</p>
-                <h2 id="titulo-accesos">Sistemas del municipio</h2>
-                <p>Las plataformas donde se hacen las gestiones y los pagos.</p>
-              </div>
-            </div>
-
-            <div className="grilla grilla--3">
-              {ACCESOS.filter((a) => !DESTACADOS.some((d) => d.url === a.url)).map((acceso) =>
-                acceso.externo ? (
-                  <a
-                    className="acceso"
-                    key={acceso.url}
-                    href={acceso.url}
-                    rel="noopener"
-                    target="_blank"
-                    data-externo
-                  >
-                    <span className="acceso__icono">
-                      <Icono nombre={acceso.icono} tamano={22} />
-                    </span>
-                    <span>
-                      {acceso.titulo}
-                      <span className="visualmente-oculto"> (se abre en otra pestaña)</span>
-                      <small>{acceso.detalle}</small>
-                    </span>
-                  </a>
-                ) : (
-                  <Link className="acceso" key={acceso.url} href={acceso.url}>
-                    <span className="acceso__icono">
-                      <Icono nombre={acceso.icono} tamano={22} />
-                    </span>
-                    <span>
-                      {acceso.titulo}
-                      <small>{acceso.detalle}</small>
-                    </span>
-                  </Link>
-                ),
-              )}
-            </div>
-          </div>
-        </section>
-
-
-        {/* B.2. Cómo moverte por la ciudad -------------------------------- */}
+        {/* C.1. Cómo moverte por la ciudad -------------------------------- */}
         {/* El agujero más grande que mostró el log del servidor. Medido el lunes
             14/09/2026, día hábil completo y sin bots: colectivos 161 visitas
             diarias, SUBE 59, registros del transporte individual 44, SUBEM 37.
@@ -371,7 +361,7 @@ export default async function Portada() {
           </div>
         </section>
 
-        {/* B.3. Servicios por temática ------------------------------------- */}
+        {/* C.2. Servicios por temática ------------------------------------- */}
         <section className="seccion" aria-labelledby="titulo-servicios">
           <div className="contenedor">
             <div className="seccion__cabecera">
@@ -403,7 +393,7 @@ export default async function Portada() {
           </div>
         </section>
 
-        {/* B.4. Campañas y accesos ----------------------------------------- */}
+        {/* C.3. Campañas y accesos ----------------------------------------- */}
         {/* Campañas que administra el municipio desde Voyager. Van después de los
             servicios: el trabajo principal del portal es encontrar un trámite,
             y esto es comunicación con fecha de vencimiento. Comparten el telón
@@ -412,7 +402,62 @@ export default async function Portada() {
         </div>
       </div>
 
-      {/* D. Conocé la ciudad --------------------------------------------- */}
+      {/* D. Transparencia y participación --------------------------------- */}
+      <section className="seccion seccion--blanca" aria-labelledby="titulo-transparencia">
+        <div className="contenedor">
+          <div className="seccion__cabecera">
+            <div>
+              <p className="seccion__kicker">Gobierno abierto</p>
+              <h2 id="titulo-transparencia">Transparencia y participación</h2>
+            </div>
+          </div>
+
+          <div className="grilla grilla--3">
+            <article className="tarjeta">
+              <span className="tarjeta__icono">
+                <Icono nombre="transparencia" tamano={24} />
+              </span>
+              <h3>
+                <Link href="/tramites/10">
+                  {transparencia?.titulo ?? "Transparencia y Participación"}
+                </Link>
+              </h3>
+              <p>
+                {transparencia?.texto ??
+                  "Rendición de cuentas, acceso a la información pública y participación ciudadana."}
+              </p>
+            </article>
+
+            <article className="tarjeta">
+              <span className="tarjeta__icono">
+                <Icono nombre="documento" tamano={24} />
+              </span>
+              <h3>
+                <a href={DATOS_ABIERTOS} rel="noopener" target="_blank" data-externo>
+                  SMT en Datos
+                  <span className="visualmente-oculto"> (se abre en otra pestaña)</span>
+                </a>
+              </h3>
+              <p>Datos abiertos de la gestión municipal, para consultar y descargar.</p>
+            </article>
+
+            <article className="tarjeta">
+              <span className="tarjeta__icono">
+                <Icono nombre="normativa" tamano={24} />
+              </span>
+              <h3>
+                <a href={LICITACIONES} rel="noopener" target="_blank" data-externo>
+                  Licitaciones
+                  <span className="visualmente-oculto"> (se abre en otra pestaña)</span>
+                </a>
+              </h3>
+              <p>Llamados a licitación y pliegos de la Municipalidad.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      {/* E. Conocé la ciudad --------------------------------------------- */}
       {/* Lleva su propio fondo de fotos, y son otras: las del telón de arriba
           son las siete piezas de public/hero/, éstas salen de las galerías que
           carga el municipio. */}
@@ -470,61 +515,6 @@ export default async function Portada() {
               <Icono nombre="externo" tamano={16} />
               <span className="visualmente-oculto"> (se abre en otra pestaña)</span>
             </a>
-          </div>
-        </div>
-      </section>
-
-      {/* E. Transparencia y participación --------------------------------- */}
-      <section className="seccion seccion--blanca" aria-labelledby="titulo-transparencia">
-        <div className="contenedor">
-          <div className="seccion__cabecera">
-            <div>
-              <p className="seccion__kicker">Gobierno abierto</p>
-              <h2 id="titulo-transparencia">Transparencia y participación</h2>
-            </div>
-          </div>
-
-          <div className="grilla grilla--3">
-            <article className="tarjeta">
-              <span className="tarjeta__icono">
-                <Icono nombre="transparencia" tamano={24} />
-              </span>
-              <h3>
-                <Link href="/tramites/10">
-                  {transparencia?.titulo ?? "Transparencia y Participación"}
-                </Link>
-              </h3>
-              <p>
-                {transparencia?.texto ??
-                  "Rendición de cuentas, acceso a la información pública y participación ciudadana."}
-              </p>
-            </article>
-
-            <article className="tarjeta">
-              <span className="tarjeta__icono">
-                <Icono nombre="documento" tamano={24} />
-              </span>
-              <h3>
-                <a href={DATOS_ABIERTOS} rel="noopener" target="_blank" data-externo>
-                  SMT en Datos
-                  <span className="visualmente-oculto"> (se abre en otra pestaña)</span>
-                </a>
-              </h3>
-              <p>Datos abiertos de la gestión municipal, para consultar y descargar.</p>
-            </article>
-
-            <article className="tarjeta">
-              <span className="tarjeta__icono">
-                <Icono nombre="normativa" tamano={24} />
-              </span>
-              <h3>
-                <a href={LICITACIONES} rel="noopener" target="_blank" data-externo>
-                  Licitaciones
-                  <span className="visualmente-oculto"> (se abre en otra pestaña)</span>
-                </a>
-              </h3>
-              <p>Llamados a licitación y pliegos de la Municipalidad.</p>
-            </article>
           </div>
         </div>
       </section>
