@@ -1,5 +1,6 @@
 {
-  "version": 1,
+  "version": 2,
+  "revision": "referencias-fotograficas-2026-09",
   "coordinateSystem": "center-percent",
   "desktopSafeTextZone": {
     "leftPercent": 0,
@@ -7,6 +8,7 @@
   },
   "mobileFallback": "mobile/collage-mobile.webp",
   "reference": "reference/collage-referencia.png",
+  "correctionReferences": "reference/correcciones/",
   "assets": [
     {
       "id": "titulo-tucuman",

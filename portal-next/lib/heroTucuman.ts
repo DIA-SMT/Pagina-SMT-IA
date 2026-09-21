@@ -256,8 +256,21 @@ export const CAPAS: CapaHero[] = [
 export const FOTO = {
   webp: "/hero-tucuman/foto-inicial.webp",
   avif: "/hero-tucuman/foto-inicial.avif",
-  ancho: 1672,
-  alto: 941,
+  /*
+   * El tamaño SERVIDO, no el del maestro. El PNG maestro de la versión 2 es 4K
+   * y pesa 10,8 MB; lo que se sirve son 1920x1080, que salen de
+   * scripts/preparar-hero-tucuman.mjs.
+   *
+   * Estos dos números hacen dos trabajos: son los atributos width y height del
+   * <img>, o sea lo que reserva el espacio y evita el salto de maquetación, y
+   * son la proporción con la que se traducen las poses de entrada. Si cambia el
+   * ancho servido hay que cambiarlos acá.
+   *
+   * 1920x1080 es 16:9 exacto, que es lo que .ht__escena declara con
+   * aspect-ratio. La versión anterior era 1672x941 = 1,7768, algo corrida.
+   */
+  ancho: 1920,
+  alto: 1080,
   alt:
     "Postal de Tucumán: el Cristo Bendicente sobre el cerro, la Casa de Gobierno, " +
     "la Casa Histórica de la Independencia, el Monumento al Bicentenario, el valle " +
