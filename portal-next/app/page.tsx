@@ -37,6 +37,49 @@ const DATOS_ABIERTOS = "https://smtendatos.gob.ar/";
 const LICITACIONES = "https://licitaciones.smt.gob.ar/";
 
 /**
+ * Las dos categorías de trámites que ya tienen su propia sección en la portada.
+ *
+ * Están nombradas y no escritas a mano en cada lugar porque se usan en dos
+ * puntos cada una: el botón de la sección y el filtro del índice. Con el número
+ * suelto, cambiar una dejaba la otra apuntando a otro lado sin que nada avise.
+ */
+const CATEGORIA_TRANSPORTE = 7;
+const CATEGORIA_TRANSPARENCIA = 10;
+
+/**
+ * Un destino, en forma comparable.
+ *
+ * El mismo contenido llega escrito de tres maneras distintas: `/p/colectivos`
+ * desde nuestras listas, `https://smt.gob.ar/colectivos` desde un banner que el
+ * municipio cargó apuntando al sitio viejo, y con los espacios en %20 cuando el
+ * slug los tiene. Las tres tienen que dar la misma clave o el filtro no sirve
+ * de nada.
+ */
+function clave(url: string): string {
+  let u = url.trim().replace(/^https?:\/\/(www\.)?smt\.gob\.ar/i, "");
+  try {
+    u = decodeURIComponent(u);
+  } catch {
+    /* Si viene mal codificada se compara cruda, que es mejor que romper. */
+  }
+  u = u.replace(/\/+$/, "").toLowerCase();
+  return u === "" ? "/" : u;
+}
+
+/**
+ * Anota un destino como "ya está en la portada".
+ *
+ * Las páginas de contenido se anotan DOS veces: el sitio nuevo las sirve en
+ * `/p/colectivos` y el viejo las servía en `/colectivos`. Un banner del CMS
+ * que todavía apunte al viejo tiene que reconocerse como la misma página.
+ */
+function anotar(conjunto: Set<string>, url: string): void {
+  const k = clave(url);
+  conjunto.add(k);
+  if (k.startsWith("/p/")) conjunto.add(k.slice(2));
+}
+
+/**
  * Los cuatro destinos de transporte con más demanda medida.
  *
  * Las descripciones no las escribimos nosotros: salen de lo que dice cada
@@ -222,14 +265,116 @@ export default async function Portada() {
     sinRomper<Banner[]>(getBanners(), [], "los banners"),
   ]);
 
-  const transparencia = categorias.find((c) => c.id === 10);
+  // El índice del buscador viaja con el HTML: el servidor municipal tarda
+  // hasta 6,7 segundos por pedido, así que consultarlo por tecla no es opción.
+  // Se construye acá arriba y no más abajo porque además lo usa el arreglo de
+  // los banners: tiene TODAS las rutas que el portal sirve de verdad.
+  const indice = await construirIndice();
+  const transparencia = categorias.find((c) => c.id === CATEGORIA_TRANSPARENCIA);
+
+  /* ---- Cada destino, un solo lugar ----
+     La sección de sistemas ya filtraba contra DESTACADOS para no repetir una
+     tarjeta. El principio estaba bien y no estaba aplicado en el resto: medida
+     la portada, tenía 50 enlaces para 44 destinos. Se repetían colectivos, la
+     Guía de Trámites, CiDiTuc/multas, SMT en Datos y dos categorías de
+     trámites.
+
+     La repetición es lo que más cansa de una página larga, y no la longitud:
+     scrolleás, ves de nuevo "Recorridos de colectivos" y no sabés si avanzaste
+     o estás dando vueltas. Acá se junta todo lo que la portada ya enlaza para
+     que lo que viene del CMS pueda filtrarse contra eso. */
+  const yaEnLaPortada = new Set<string>();
+  for (const d of DESTACADOS) anotar(yaEnLaPortada, d.url);
+  for (const a of ACCESOS) anotar(yaEnLaPortada, a.url);
+  for (const t of TRANSPORTE) anotar(yaEnLaPortada, t.url);
+  for (const u of [
+    `/tramites/${CATEGORIA_TRANSPORTE}`,
+    `/tramites/${CATEGORIA_TRANSPARENCIA}`,
+    GUIA_TRAMITES,
+    DATOS_ABIERTOS,
+    LICITACIONES,
+    MAPA,
+    "/p/historia",
+    "/p/circuitos-turisticos",
+    "/p/lugares-de-interes",
+  ]) {
+    anotar(yaEnLaPortada, u);
+  }
+
+  /* Los banners son campañas con fecha de vencimiento; cuando una apunta a algo
+     que la portada ya ofrece más arriba, no agrega nada. Se cayeron tres
+     medidos: CiDiTuc/multas, SMT en Datos y tres que todavía mandaban al sitio
+     viejo (turno-asistencia, SUBEM y los registros de transporte), que son las
+     mismas páginas que el portal nuevo ya sirve. */
+  /* ---- Los banners que todavía apuntan al sitio viejo ----
+     El CMS tiene campañas cargadas con la URL vieja, https://smt.gob.ar/algo.
+     Son páginas que el portal NUEVO ya sirve, así que el banner mandaba a la
+     gente de vuelta al sitio que estamos reemplazando.
+
+     Se reescriben y no se borran: la campaña es contenido que el municipio
+     quiso publicar, y lo que está mal es a dónde apunta, no que exista. Sólo
+     se reescribe cuando la ruta nueva EXISTE, y eso se comprueba contra el
+     índice del buscador, que ya se construyó y tiene las rutas de todas las
+     fichas, categorías, áreas y páginas de contenido. Si mañana el municipio
+     publica una página nueva, esto se entera solo. */
+  const rutasDelPortal = new Set(indice.map((e) => clave(e.u)));
+  const alPortalNuevo = (enlace: string): string => {
+    const m = /^https?:\/\/(www\.)?smt\.gob\.ar(\/.*)?$/i.exec(enlace.trim());
+    if (!m) return enlace;
+    const resto = (m[2] ?? "").replace(/\/+$/, "");
+    if (resto === "") return enlace;
+    const candidata = resto.startsWith("/p/") ? resto : `/p${resto}`;
+    return rutasDelPortal.has(clave(candidata)) ? candidata : enlace;
+  };
+
+  const bannersReescritos: string[] = [];
+  const bannersApuntados = banners.map((b) => {
+    const enlace = typeof b.link === "string" ? b.link.trim() : "";
+    if (enlace === "") return b;
+    const nuevo = alPortalNuevo(enlace);
+    if (nuevo === enlace) return b;
+    bannersReescritos.push(`${enlace} -> ${nuevo}`);
+    return { ...b, link: nuevo };
+  });
+  if (bannersReescritos.length > 0) {
+    console.warn(
+      `Portada: ${bannersReescritos.length} banner(s) apuntaban al sitio viejo y se redirigieron al portal nuevo: ${bannersReescritos.join(", ")}`,
+    );
+  }
+
+  const bannersEscondidos: string[] = [];
+  const bannersSinRepetir = bannersApuntados.filter((b) => {
+    const enlace = typeof b.link === "string" ? b.link.trim() : "";
+    if (enlace === "") return true; // un banner sin enlace es informativo
+    const k = clave(enlace);
+    if (yaEnLaPortada.has(k)) {
+      bannersEscondidos.push(enlace);
+      return false;
+    }
+    // Y se anota, así dos banners al mismo destino tampoco se repiten entre
+    // ellos. No es hipotético: el CMS tiene hoy tres campañas distintas que
+    // apuntan las tres a la página de la SUBE.
+    yaEnLaPortada.add(k);
+    return true;
+  });
+  /* Se avisa por el log del servidor, y no en silencio. Este filtro corre sobre
+     contenido que carga el municipio desde Voyager: alguien puede subir una
+     campaña, no verla aparecer y no tener forma de saber por qué. El aviso sale
+     donde quien administra el contenido lo va a buscar, y no molesta a nadie
+     que esté visitando la página. */
+  if (bannersEscondidos.length > 0) {
+    console.warn(
+      `Portada: ${bannersEscondidos.length} banner(s) no se muestran porque su destino ya está enlazado más arriba: ${bannersEscondidos.join(", ")}`,
+    );
+  }
+
+  /* Y el índice de categorías, sin las dos que tienen sección propia. */
+  const categoriasDelIndice = categorias.filter(
+    (c) => c.id !== CATEGORIA_TRANSPORTE && c.id !== CATEGORIA_TRANSPARENCIA,
+  );
   const deLasGalerias = await fotosParaElFondo(galerias);
   const fotosDeFondo = barajar(deLasGalerias).slice(0, FOTOS_DE_FONDO);
   const fotosTelon = fotosDelTelon(deLasGalerias);
-  // El índice del buscador viaja con el HTML: el servidor municipal tarda
-  // hasta 6,7 segundos por pedido, así que consultarlo por tecla no es opción.
-  const indice = await construirIndice();
-
   return (
     <>
       {/* A. Hero: Tucumán se vuelve figuritas -------------------------------
@@ -385,7 +530,7 @@ export default async function Portada() {
                 <h2 id="titulo-transporte">Cómo moverte por la ciudad</h2>
                 <p>Los recorridos, la tarjeta y los trámites del transporte público.</p>
               </div>
-              <Link className="boton boton--blanco" href="/tramites/7">
+              <Link className="boton boton--blanco" href={`/tramites/${CATEGORIA_TRANSPORTE}`}>
                 Ver todos los trámites de transporte
               </Link>
             </div>
@@ -406,7 +551,21 @@ export default async function Portada() {
           </div>
         </section>
 
-        {/* C.2. Servicios por temática ------------------------------------- */}
+        {/* C.2. Servicios por temática -------------------------------------
+            Era una grilla de catorce tarjetas con ícono y bajada, y ocupaba
+            3.558px en teléfono: cuatro pantallas y media, la sección más alta
+            de la portada. Las catorce categorías juntas suman 425 visitas
+            diarias; licencia de conducir, sola, junta 831. O sea que lo más
+            grande de la página era lo que menos se usaba.
+
+            Ahora es lo que siempre fue: un índice. Las categorías siguen todas
+            acá y a un toque de distancia —no se escondió ninguna—, pero como
+            renglones y no como tarjetas destacadas. Baja de 3.558 a unos 620px
+            en teléfono sin sacar un solo destino.
+
+            Van sin la bajada de cada categoría a propósito: el título dice a
+            dónde va —"Gestión Tributaria y Comercial", "Educación y
+            Formación"— y la bajada del CMS repite lo mismo con más palabras. */}
         <section className="seccion" aria-labelledby="titulo-servicios">
           <div className="contenedor">
             <div className="seccion__cabecera">
@@ -415,26 +574,23 @@ export default async function Portada() {
                 <h2 id="titulo-servicios">Servicios por temática</h2>
                 <p>Elegí una categoría para ver los trámites que incluye y cómo hacerlos.</p>
               </div>
-              <a className="boton boton--blanco" href={GUIA_TRAMITES} rel="noopener" target="_blank">
-                Guía de Trámites
-                <Icono nombre="externo" tamano={16} />
-                <span className="visualmente-oculto"> (se abre en otra pestaña)</span>
-              </a>
+              {/* Acá había un botón a la Guía de Trámites, y era el sexto
+                  destino repetido de la portada: la Guía ya tiene su tarjeta en
+                  "Sistemas del municipio", mil píxeles más arriba, que es su
+                  lugar —esa sección es justamente la de las plataformas
+                  externas— y además se ve antes. */}
             </div>
 
-            <div className="grilla grilla--4">
-              {categorias.map((categoria) => (
-                <article className="tarjeta" key={categoria.id}>
-                  <span className="tarjeta__icono">
-                    <Icono nombre={iconoDesdeFontAwesome(categoria.icono)} tamano={24} />
-                  </span>
-                  <h3>
-                    <Link href={`/tramites/${categoria.id}`}>{categoria.titulo}</Link>
-                  </h3>
-                  {categoria.texto && <p>{categoria.texto}</p>}
-                </article>
+            <ul className="indice">
+              {categoriasDelIndice.map((categoria) => (
+                <li key={categoria.id}>
+                  <Link href={`/tramites/${categoria.id}`}>
+                    <Icono nombre={iconoDesdeFontAwesome(categoria.icono)} tamano={20} />
+                    <span>{categoria.titulo}</span>
+                  </Link>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </section>
 
@@ -443,7 +599,7 @@ export default async function Portada() {
             servicios: el trabajo principal del portal es encontrar un trámite,
             y esto es comunicación con fecha de vencimiento. Comparten el telón
             con los servicios porque son el mismo tramo de la portada. */}
-        <Banners banners={banners} />
+        <Banners banners={bannersSinRepetir} />
         </div>
       </div>
 
@@ -463,7 +619,7 @@ export default async function Portada() {
                 <Icono nombre="transparencia" tamano={24} />
               </span>
               <h3>
-                <Link href="/tramites/10">
+                <Link href={`/tramites/${CATEGORIA_TRANSPARENCIA}`}>
                   {transparencia?.titulo ?? "Transparencia y Participación"}
                 </Link>
               </h3>
@@ -518,24 +674,35 @@ export default async function Portada() {
             </div>
           </div>
 
+          {/* Las galerías, como índice y no como grilla de tarjetas.
+              Ocupaban 946px en teléfono —el 63% de esta sección— para nueve
+              visitas diarias en todo el sitio, que es el número más chico de
+              todo el log. Y la ironía es que eran tarjetas de una sección de
+              IMÁGENES que no mostraban ninguna imagen: un ícono genérico, el
+              nombre y el conteo.
+
+              Las fotos de esta sección no se tocan: son el fondo, que es
+              justamente lo que se pidió que se viera más y por lo que el velo
+              bajó de 0,92 a 0,46. Lo que se achica es el texto de arriba. */}
           {galerias.length > 0 && (
-            <div className="grilla grilla--3">
+            <ul className="indice">
               {galerias.map((galeria) => (
-                <article className="tarjeta" key={galeria.id}>
-                  <span className="tarjeta__icono">
-                    <Icono nombre="imagen" tamano={24} />
-                  </span>
-                  <h3>
-                    <Link href={`/galeria/${galeria.id}`}>
-                      {galeria.nombre ?? "Galería de imágenes"}
-                    </Link>
-                  </h3>
-                  <p>
-                    {galeria.fotos} {galeria.fotos === 1 ? "foto" : "fotos"}
-                  </p>
-                </article>
+                <li key={galeria.id}>
+                  <Link href={`/galeria/${galeria.id}`}>
+                    <Icono nombre="imagen" tamano={20} />
+                    <span>{galeria.nombre ?? "Galería de imágenes"}</span>{" "}
+                    {/* El espacio explícito no es decorativo: sin él, el nombre
+                        y el conteo quedan pegados en el árbol de accesibilidad
+                        —"Fotos de SMT14 fotos"— porque la separación visual la
+                        hace un margin-left:auto, que el lector de pantalla no
+                        ve. JSX descarta el salto de línea entre etiquetas. */}
+                    <small>
+                      {galeria.fotos} {galeria.fotos === 1 ? "foto" : "fotos"}
+                    </small>
+                  </Link>
+                </li>
               ))}
-            </div>
+            </ul>
           )}
 
           <div

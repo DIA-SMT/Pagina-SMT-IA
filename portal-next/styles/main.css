@@ -1978,6 +1978,72 @@ time { font-variant-numeric: tabular-nums; }
 }
 .seccion--fotos .seccion__cabecera p:not(.seccion__kicker) { color: #fff; }
 
+/* ---- 27 El índice ----
+   Una lista de destinos como renglones: un ícono chico, el nombre, y a lo sumo
+   un dato al costado. La usan dos secciones que antes tenían grillas de
+   tarjetas desproporcionadas para lo que se usan.
+
+   Las catorce categorías de trámites ocupaban 3.558px en teléfono para 425
+   visitas diarias entre todas. Las cinco galerías, 946px para nueve visitas
+   diarias en todo el sitio, y encima con tarjetas que no muestran ninguna
+   foto: un ícono genérico y el conteo.
+
+   Fondo opaco y no translúcido porque esta sección vive sobre el telón, o sea
+   sobre una fotografía que el municipio elige y nosotros no vemos. Es la misma
+   garantía por cota que usan las tarjetas de al lado: el contraste del texto no
+   puede depender de qué foto haya detrás.
+
+   La grilla crece de una a tres columnas. En teléfono va a una sola a
+   propósito: los nombres son largos —"Gestión Tributaria y Comercial",
+   "Transparencia y Participación"— y en dos columnas a 390px se parten en tres
+   renglones cada uno, que es más alto que ponerlos uno abajo del otro. */
+.indice {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--sp-2);
+}
+@media (min-width: 40rem) {
+  .indice { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 64rem) {
+  .indice { grid-template-columns: repeat(3, 1fr); }
+}
+.indice a {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  /* 2,75rem es el mínimo de toque, y acá no hace falta una regla aparte para
+     puntero grueso: un índice se toca en cualquier dispositivo. */
+  min-height: 2.75rem;
+  height: 100%;
+  padding: var(--sp-2) var(--sp-4);
+  border: 1px solid var(--c-borde);
+  border-radius: var(--r-sm);
+  background: var(--c-blanco);
+  color: var(--c-ink);
+  font-weight: var(--fw-media);
+  text-decoration: none;
+  transition: border-color var(--t-rapida), background var(--t-rapida);
+}
+.indice a svg { flex: none; color: var(--c-azul-700); }
+/* El dato de la derecha —"128 fotos"— empujado al borde con margin-left auto y
+   no con space-between, para que el nombre y el ícono queden juntos. */
+.indice a small {
+  margin-left: auto;
+  padding-left: var(--sp-3);
+  font-size: var(--fs-xs);
+  color: var(--c-ink-muted);
+  white-space: nowrap;
+}
+@media (hover: hover) {
+  .indice a:hover {
+    border-color: var(--c-azul-600);
+    background: var(--c-celeste-100);
+  }
+}
+
 /* ---- 26 La franja de emergencias ----
    Una banda clara entre el contenido y el pie. Hace dos cosas a la vez: separa
    —el pie es un azul continuo y antes los teléfonos eran una columna más ahí
