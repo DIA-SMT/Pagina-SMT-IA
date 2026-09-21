@@ -19,7 +19,17 @@ export const metadata: Metadata = {
     locale: "es_AR",
     siteName: "Ciudad San Miguel de Tucumán",
   },
-  icons: { icon: "/img/favicon.png" },
+  /*
+   * Los iconos NO se declaran acá. Los pone Next solo, por el nombre de los
+   * archivos que están en app/: favicon.ico, icon.png y apple-icon.png. Los
+   * genera scripts/preparar-iconos.mjs a partir del isotipo.
+   *
+   * Antes esta línea decía icons: { icon: "/img/favicon.png" } y convivía con
+   * app/favicon.ico, así que el <head> salía con DOS <link rel="icon"> y cuál
+   * ganaba dependía del navegador. Peor: el .ico era el que trae create-next-app
+   * —el círculo negro con el triángulo— y ése es justamente el que el navegador
+   * pide por su cuenta a /favicon.ico y el que queda en marcadores e historial.
+   */
 };
 
 /**
