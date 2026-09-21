@@ -45,12 +45,40 @@ await mkdir(`${DESTINO}/capas`, { recursive: true });
 // 1. Las quince capas, tal cual: ya vienen en WebP con alfa y a ~1400px, que
 //    es más de lo que cualquiera de ellas mide en pantalla (la más grande, el
 //    rótulo, llega a 680px de ancho máximo según el manifiesto).
+//
+//    Con una salvedad que apareció en la versión 2 del paquete: dos de los
+//    quince WebP llegaron con CERO bytes —08-empanadas y 12-naturaleza-tucumana,
+//    y la primera es justamente una de las seis capas corregidas—. El PNG
+//    maestro de las dos estaba bien, así que cuando el WebP falta o viene vacío
+//    se genera desde el PNG en vez de copiar un archivo roto. No es redibujar
+//    nada: es el mismo dibujo, reencodeado, porque el empaquetado falló.
 let totalCapas = 0;
+const regenerados = [];
 for (const f of (await readdir(`${ORIGEN}/webp`)).sort()) {
   if (!f.endsWith(".webp")) continue;
-  await copyFile(`${ORIGEN}/webp/${f}`, `${DESTINO}/capas/${f}`);
-  totalCapas += (await stat(`${DESTINO}/capas/${f}`)).size;
-  console.log(`  capa  ${f}`);
+  const origen = `${ORIGEN}/webp/${f}`;
+  const destino = `${DESTINO}/capas/${f}`;
+  const vacio = (await stat(origen)).size === 0;
+
+  if (vacio) {
+    const png = `${ORIGEN}/png/${f.replace(/\.webp$/, ".png")}`;
+    // Calidad 72 y no la que uno pondría a ojo: se eligió igualando la
+    // compresión del propio paquete. Las trece capas que llegaron bien pesan
+    // 133 kB por megapíxel en promedio, y 72 es la calidad que deja a estas dos
+    // en ese orden. Con 88 quedaban al doble de peso por píxel que sus vecinas,
+    // sin ganancia visible: en pantalla se ven a un cuarto de su tamaño.
+    await sharp(png).webp({ quality: 72, effort: 6 }).toFile(destino);
+    regenerados.push(f);
+  } else {
+    await copyFile(origen, destino);
+  }
+
+  const peso = (await stat(destino)).size;
+  totalCapas += peso;
+  console.log(`  capa  ${f}${vacio ? "   (REGENERADA desde el PNG: el WebP del paquete venía vacío)" : ""}`);
+}
+if (regenerados.length > 0) {
+  console.log(`\n  AVISO: ${regenerados.length} WebP del paquete venían en 0 bytes y se regeneraron desde su PNG maestro: ${regenerados.join(", ")}`);
 }
 console.log(`  -> ${kB(totalCapas)} en capas\n`);
 
@@ -59,19 +87,34 @@ await copyFile(`${ORIGEN}/mobile/collage-mobile.webp`, `${DESTINO}/collage-movil
 console.log(`  movil collage-movil.webp  ${kB((await stat(`${DESTINO}/collage-movil.webp`)).size)}`);
 
 // 3. La fotografía inicial. Es el elemento LCP de la portada, así que se
-//    convierte con cuidado: AVIF primero, WebP como respaldo. El PNG original
-//    pesa 2,8 MB y no se sirve nunca.
+//    convierte con cuidado: AVIF primero, WebP como respaldo. El PNG maestro no
+//    se sirve nunca —la versión 2 pesa 10,8 MB— y se queda afuera del repo.
+//
+//    Se REDIMENSIONA a 1920 de ancho. El maestro viene en 4K y servir 3840px de
+//    LCP a un portal municipal no tiene sentido: medido sobre este mismo
+//    archivo, a 1672px el AVIF pesa 219 kB, a 1920 son 258, a 2400 son 330 y a
+//    2880, 403. 1920 cubre la pantalla de escritorio más común sin pagar el
+//    doble, y además da un 16:9 exacto, que es la proporción que .ht__escena
+//    declara con aspect-ratio. El archivo anterior era 1672x941 = 1,7768, algo
+//    corrido de 16:9.
+const ANCHO_SERVIDO = 1920;
 const meta = await sharp(FOTO_ORIGEN).metadata();
-console.log(`\n  foto original: ${meta.width}x${meta.height} ${kB((await stat(FOTO_ORIGEN)).size)}`);
+console.log(`\n  foto maestra: ${meta.width}x${meta.height} ${kB((await stat(FOTO_ORIGEN)).size)}`);
 
 for (const [ext, opciones] of [
   ["webp", { quality: 82, effort: 6 }],
   ["avif", { quality: 58, effort: 6 }],
 ]) {
   const salida = `${DESTINO}/foto-inicial.${ext}`;
-  await sharp(FOTO_ORIGEN)[ext](opciones).toFile(salida);
+  await sharp(FOTO_ORIGEN).resize(ANCHO_SERVIDO)[ext](opciones).toFile(salida);
   console.log(`  foto  foto-inicial.${ext}  ${kB((await stat(salida)).size)}`);
 }
+console.log(
+  `\n  RECORDATORIO: si el ancho servido cambia, hay que actualizar FOTO.ancho\n` +
+    `  y FOTO.alto en lib/heroTucuman.ts. De ahí salen los atributos width y\n` +
+    `  height del <img>, que son los que evitan el salto de maquetación, y la\n` +
+    `  proporción con la que se traducen las poses de entrada.`,
+);
 
 // 4. El manifiesto, copiado para que quede versionado junto al código que lo
 //    consume. lib/heroTucuman.ts lo traduce a tipos y le agrega las poses de

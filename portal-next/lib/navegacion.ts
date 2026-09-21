@@ -128,7 +128,18 @@ export const DESTACADOS = [
   { titulo: "Turno de Asistencia Pública", url: "/p/turno-asistencia", icono: "salud" },
   { titulo: "Recorridos de colectivos", url: "/p/colectivos", icono: "transporte" },
   { titulo: "Consulta y pago de infracciones", url: "/fichas/70", icono: "multas" },
-  { titulo: "Habilitación comercial", url: "/fichas/5", icono: "comercio" },
+  // Sexto lugar: 85 visitas diarias. Estaba Habilitación Municipal (ficha 5),
+  // con 33, o sea que el único puesto de esta lista que NO seguía la demanda
+  // era el último. Por encima de la habilitación había tres fichas y se eligió
+  // la más consultada de las tres. Las otras dos: Portal de Atención Ciudadana
+  // (ficha 7, 70 visitas) y Ciudadano Digital (ficha 77, 60), que además ya
+  // tiene su tarjeta en ACCESOS como CiDiTuc y habría sido un destino repetido.
+  //
+  // El costo es que la lista se queda sin su única entrada para comercios.
+  // Se aceptó porque el rótulo de la sección dice "Lo que más se consulta" y
+  // ordenarla por otra cosa sería mentir sobre el dato; la habilitación sigue
+  // a un toque, en su categoría.
+  { titulo: "Servicio de Población Animal", url: "/fichas/81", icono: "salud" },
 ];
 
 export const ACCESOS = [
