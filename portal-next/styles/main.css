@@ -1434,7 +1434,10 @@ form.buscador-hero:focus-within {
 .estado-vacio h3 { font-size: var(--fs-md); color: var(--c-ink); margin-bottom: var(--sp-2); }
 
 .pagina-error {
-  min-height: 60vh;
+  /* Mismo motivo que la banda del hero: con vh, en iPhone la pantalla de error
+     reserva más alto del que se ve y el mensaje queda centrado más abajo de lo
+     previsto. Es un min-height, así que svh sólo garantiza que entre. */
+  min-height: 60svh;
   display: grid;
   place-content: center;
   text-align: center;
@@ -1468,7 +1471,21 @@ form.buscador-hero:focus-within {
    el placeholder queda cortado. Se compacta el boton para devolverle ancho. */
 @media (max-width: 26rem) {
   .buscador-hero form { padding: 0.25rem; }
-  .buscador-hero input { padding: 0.6rem 0.7rem; font-size: var(--fs-sm); }
+  /* ---- 16px CLAVADOS, y no --fs-sm ----
+     Safari en iPhone hace zoom a la página cuando se enfoca un campo cuyo texto
+     mide MENOS de 16px. No es una preferencia ni se puede desactivar desde el
+     CSS: es del sistema. --fs-sm son 15px, o sea que acá faltaba uno.
+
+     Lo que se veía: tocabas el buscador del hero y la página entera saltaba
+     de escala, el encabezado se salía por los costados y al terminar de
+     escribir quedaba ahí, ampliada. Pasaba en todos los iPhone salvo el Pro
+     Max, porque esta regla vive en (max-width: 26rem) = 416px y el Pro Max
+     mide 430. O sea que fallaba justo en los más usados.
+
+     La otra salida —maximum-scale=1 en el viewport— arregla el síntoma
+     impidiendo TODO zoom, incluido el que alguien necesita para leer. Eso es
+     romper 1.4.4. Un píxel de tipografía sale mucho más barato. */
+  .buscador-hero input { padding: 0.6rem 0.7rem; font-size: 1rem; }
   .buscador-hero .boton { padding: 0.6rem 0.9rem; font-size: var(--fs-xs); gap: 0.3rem; }
   .buscador-hero .boton svg { width: 16px; height: 16px; }
 }
@@ -1669,6 +1686,31 @@ a[data-externo]::after {
   .tel-emergencia { min-height: 2.75rem; }
   .footer ul { gap: 0; }
   .footer ul a { display: flex; align-items: center; min-height: 2.75rem; }
+
+  /* Los teléfonos del bloque de identidad no están en ningún <ul>, así que la
+     regla de arriba no los alcanzaba: medían 19px de alto. Son números para
+     marcar —el conmutador del municipio y los dos de Asistencia Pública— o sea
+     exactamente la clase de enlace que alguien toca desde un teléfono.
+
+     Cada uno vive en su propia fila de la grilla, así que darles alto propio no
+     empuja nada de costado; lo único que crece es el alto del pie. La grilla
+     baja a --sp-1 para compensar: con 44px por fila, los 8px de separación
+     anterior sobran.
+
+     Se resuelve con alto y no con padding en el enlace en línea. El padding
+     vertical de un elemento en línea SÍ se toca pero NO cambia la altura de la
+     línea, así que las áreas de dos filas contiguas se superponían: a 27px de
+     paso y 44px de área, tocar entre dos números marcaba el otro. En un
+     teléfono de emergencia eso no es un detalle. */
+  .footer__direccion { gap: var(--sp-1); }
+  .footer__direccion a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+
+  /* Tres controles que se quedaban en 43px: un píxel por debajo del mínimo de
+     Apple. Son el botón del menú —la única navegación que hay en teléfono—, el
+     salto al contenido y los botones generales. */
+  .boton,
+  .boton-menu,
+  .saltar-contenido { min-height: 2.75rem; }
   .footer__redes a { width: 2.75rem; height: 2.75rem; }
   .paginacion a,
   .paginacion span { min-width: 2.75rem; height: 2.75rem; }
@@ -2745,7 +2787,18 @@ time { font-variant-numeric: tabular-nums; }
 .ht__escena {
   position: relative;
   aspect-ratio: 16 / 9;
-  height: 34vh;
+  /* svh y no vh: en Safari de iPhone, vh mide contra el viewport GRANDE, el que
+     queda cuando las barras del navegador se esconden. Al cargar, las barras
+     están, así que 34vh es más alto que el 34% de lo que de verdad se ve, y la
+     banda de la foto empuja el buscador hacia abajo. Medido en un iPhone 13
+     (844px): 34vh son 287px y 34svh, 239. Cuarenta y ocho píxeles, que es casi
+     el alto del campo de búsqueda.
+
+     svh y no dvh: dvh se recalcula en vivo cada vez que la barra aparece o se
+     esconde, así que la banda cambiaría de alto mientras alguien scrollea y
+     todo lo de abajo se movería con ella. Acá conviene el viewport chico, que
+     es el peor caso y no se mueve nunca. */
+  height: 34svh;
   overflow: clip;
   isolation: isolate;
 }
@@ -2806,13 +2859,33 @@ time { font-variant-numeric: tabular-nums; }
   translate: -50% -50%;
   opacity: 0;
 }
-/* will-change SÓLO mientras algo se mueve. Estaba puesto siempre, y como las
-   capas se montan al hidratar, las quince quedaban promovidas a capa de
-   composición durante toda la visita aunque nadie tocara la escena: sumando
-   sus áreas son del orden de 11 MB de textura a 1440 con DPR 2 y 19,5 MB a
-   1920. En el estado intro no hay nada que componer. */
-.ht[data-fase="transicion"] .ht__capa,
-.ht[data-fase="interactivo"] .ht__capa { will-change: transform; }
+/* ---- La caja de adentro ----
+   Cada figurita son DOS cajas con un dueño cada una: `.ht__capa` es de la
+   línea de tiempo de la transformación —la entrada desde la fotografía y la
+   salida— y `.ht__cuerpo` es de la física. Las dos escriben `transform`, que
+   es justo lo que no se puede compartir, y así no lo comparten.
+
+   No cambia la maquetación: es un bloque que ocupa el ancho del padre, con la
+   imagen adentro igual que antes. El centro de giro es el suyo, que coincide
+   con el de la figurita porque la llena.
+
+   El centrado sigue en `translate` sobre la caja de AFUERA y no acá: las tres
+   propiedades —translate, transform de afuera y transform de adentro— se
+   componen y ninguna pisa a la otra. */
+.ht__cuerpo { display: block; }
+
+/* will-change SÓLO mientras algo se mueve, y SÓLO en la caja que se mueve en
+   ese momento. Estaba puesto siempre, y como las capas se montan al hidratar,
+   las quince quedaban promovidas a capa de composición durante toda la visita
+   aunque nadie tocara la escena: sumando sus áreas son del orden de 11 MB de
+   textura a 1440 con DPR 2 y 19,5 MB a 1920. En el estado intro no hay nada
+   que componer.
+
+   Durante la transformación se mueve la de afuera; después, sólo la de
+   adentro. Poniéndolo en las dos a la vez se promoverían treinta cajas en vez
+   de quince y el ahorro de arriba se perdería. */
+.ht[data-fase="transicion"] .ht__capa { will-change: transform; }
+.ht[data-fase="interactivo"] .ht__cuerpo { will-change: transform; }
 .ht__capa img { width: 100%; height: auto; display: block; }
 
 /* El panel de la columna. En teléfono no hace falta: la columna va debajo de
@@ -2852,8 +2925,22 @@ time { font-variant-numeric: tabular-nums; }
 .ht__disparador::before { content: "✦"; font-size: 0.9em; }
 .ht__disparador:hover { background: rgba(255, 255, 255, 0.16); border-color: #fff; }
 /* Sólo se apaga mientras corre la transición, que es el único momento en
-   que no es una acción disponible. Después vuelve, con el nombre cambiado. */
-.ht__disparador:disabled { opacity: 0.45; pointer-events: none; }
+   que no es una acción disponible. Después vuelve, con el nombre cambiado.
+
+   Cuelga de aria-disabled y no de :disabled porque el botón ya no usa el
+   atributo nativo: con disabled, el navegador le sacaba el foco al teclado en
+   el mismo render que lo apagaba.
+
+   Y sin pointer-events: none, que era lo que acompañaba al atributo nativo. Un
+   control con aria-disabled tiene que seguir siendo enfocable y alcanzable
+   —ésa es toda la gracia—; lo que impide el doble disparo son las guardas de
+   transformar() y restaurar(), no el CSS. */
+.ht__disparador[aria-disabled="true"] { opacity: 0.45; cursor: default; }
+/* Y el hover no enciende un control que está apagado. */
+.ht__disparador[aria-disabled="true"]:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.55);
+}
 
 /* El cruce de tinta. Va acá y no en cada regla porque las cuatro cambian a la
    vez y por el mismo motivo.
@@ -3182,7 +3269,8 @@ time { font-variant-numeric: tabular-nums; }
   /* Acá no hay viento en ningún momento, así que no hay nada que promover.
      Misma especificidad que las reglas de arriba pero declaradas más abajo,
      que es lo que las hace ganar. */
-  .ht[data-fase] .ht__capa { will-change: auto; }
+  .ht[data-fase] .ht__capa,
+  .ht[data-fase] .ht__cuerpo { will-change: auto; }
   .ht[data-papel] .hero__titulo,
   .ht[data-papel] .hero__bajada,
   .ht[data-papel] .buscador-vivo,

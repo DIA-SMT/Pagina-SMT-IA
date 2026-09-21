@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { flushSync } from "react-dom";
 
 import {
   CAPAS,
@@ -56,36 +57,72 @@ type Fase = "intro" | "transicion" | "interactivo";
 /**
  * El dispositivo se lee con useSyncExternalStore y no con un useState dentro de
  * un efecto, que es lo que pide la regla react-hooks/set-state-in-effect y lo
- * que ya hacen Tema.tsx y el encabezado. La instantánea es un string de dos
+ * que ya hacen Tema.tsx y el encabezado. La instantánea es un string de tres
  * letras y no un objeto, porque el hook compara por identidad y un objeto nuevo
  * en cada lectura sería un bucle infinito.
+ *
+ * ---- SON TRES PREGUNTAS DISTINTAS Y ANTES ERAN DOS ----
+ * El ANCHO decide el maquetado, el PUNTERO decide si hay física, y el
+ * movimiento reducido decide si hay animación. Antes el ancho y el puntero
+ * viajaban juntos en una sola consulta —"(max-width: 63.999rem), (pointer:
+ * coarse)"— y eso rompía el hero en cualquier pantalla táctil grande.
+ *
+ * Qué pasaba: el CSS cambia de maquetado en (min-width: 64rem), a secas. Un
+ * iPad en horizontal mide 1024, 1180 o 1366 y tiene puntero grueso, así que
+ * caía en los dos lados a la vez: el CSS le daba el hero de escritorio —la
+ * escena a sangre, el panel y la columna al 52%— y el JS tomaba la rama móvil,
+ * que no monta las quince capas y funde a la lámina aplanada. Esa lámina es de
+ * 1440x810 con object-fit: contain, estirada sobre todo el hero y con su mitad
+ * izquierda tapada por el panel. Y como el camino móvil resuelve papel en
+ * false, nunca se activaba data-papel: el panel oscuro se quedaba encima del
+ * fondo crema y la tinta no se daba vuelta. Lo mismo en cualquier notebook con
+ * pantalla táctil.
+ *
+ * Ahora el ancho manda solo en el maquetado, igual que el CSS, y el puntero
+ * grueso apaga nada más la física del cursor: un iPad en horizontal ve el
+ * collage de escritorio con su entrada completa, y no lo persigue ninguna
+ * ráfaga porque no hay cursor que la levante.
  */
+const ANGOSTO = "(max-width: 63.999rem)";
+const GRUESO = "(pointer: coarse)";
+const QUIETO = "(prefers-reduced-motion: reduce)";
+
 function suscribirMedios(avisar: () => void) {
-  const ancho = window.matchMedia("(max-width: 63.999rem), (pointer: coarse)");
-  const quieto = window.matchMedia("(prefers-reduced-motion: reduce)");
-  ancho.addEventListener("change", avisar);
-  quieto.addEventListener("change", avisar);
+  const consultas = [ANGOSTO, GRUESO, QUIETO].map((q) => window.matchMedia(q));
+  for (const c of consultas) c.addEventListener("change", avisar);
   return () => {
-    ancho.removeEventListener("change", avisar);
-    quieto.removeEventListener("change", avisar);
+    for (const c of consultas) c.removeEventListener("change", avisar);
   };
 }
 const leerMedios = () =>
-  (window.matchMedia("(max-width: 63.999rem), (pointer: coarse)").matches ? "m" : "d") +
-  (window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "q" : "-");
-/** En el servidor no hay medios: se asume escritorio con movimiento. */
-const mediosEnElServidor = () => "d-";
+  (window.matchMedia(ANGOSTO).matches ? "m" : "d") +
+  (window.matchMedia(QUIETO).matches ? "q" : "-") +
+  (window.matchMedia(GRUESO).matches ? "g" : "-");
+/** En el servidor no hay medios: se asume escritorio, con mouse y movimiento. */
+const mediosEnElServidor = () => "d--";
 
 /**
  * Devuelve las capas a su estado de reposo: sin transform y sin opacidad en
  * línea, o sea mandando lo que dice el CSS. Va suelta y no adentro del
  * componente porque se usa en los dos sentidos y porque el compilador de React
  * no deja mutar dentro de un hook algo que llegó como argumento de otro.
+ *
+ * Limpia las DOS cajas de cada figurita. La de afuera la escribe la línea de
+ * tiempo de la transformación; la de adentro, la física. Son dueños distintos
+ * de propiedades distintas y ninguno pisa al otro, pero volver al reposo es
+ * volver las dos a cero.
  */
-function soltarCapas(capas: Map<string, HTMLElement>, opacidad?: string) {
+function soltarCapas(
+  capas: Map<string, HTMLElement>,
+  cuerpos: Map<string, HTMLElement>,
+  opacidad?: string,
+) {
   for (const el of capas.values()) {
     el.style.transform = "";
     el.style.opacity = opacidad ?? "";
+  }
+  for (const el of cuerpos.values()) {
+    el.style.transform = "";
   }
 }
 
@@ -98,7 +135,13 @@ export function HeroTucuman({ children }: { children: React.ReactNode }) {
   const [fase, setFase] = useState<Fase>("intro");
   const montado = useSyncExternalStore(sinCambios, enElCliente, enElServidor);
   const medios = useSyncExternalStore(suscribirMedios, leerMedios, mediosEnElServidor);
-  const modo = { movil: medios[0] === "m", quieto: medios[1] === "q" };
+  const modo = {
+    /** Maquetado angosto: la banda de foto arriba y la columna debajo. */
+    movil: medios[0] === "m",
+    quieto: medios[1] === "q",
+    /** Sin mouse. No cambia el maquetado: sólo apaga la física del cursor. */
+    grueso: medios[2] === "g",
+  };
   /** El vecino tocó antes de que estuvieran los recursos. */
   const [esperando, setEsperando] = useState(false);
   /** Lo mismo que `listo`, pero legible desde un callback sin esperar al render. */
@@ -131,8 +174,6 @@ export function HeroTucuman({ children }: { children: React.ReactNode }) {
    * —que las tiene en sus dependencias— se relanzaría cada vez.
    */
   const faseRef = useRef<Fase>("intro");
-  /** La precarga ya se lanzó; no se lanza dos veces. */
-  const precargandoRef = useRef(false);
   /** Para que un toque temprano pueda adelantar la precarga en vez de esperarla. */
   const arrancarPrecargaRef = useRef<(() => void) | null>(null);
 
@@ -147,6 +188,21 @@ export function HeroTucuman({ children }: { children: React.ReactNode }) {
   const columnaRef = useRef<HTMLDivElement>(null);
   const collageRef = useRef<HTMLImageElement>(null);
   const capasRef = useRef<Map<string, HTMLElement>>(new Map());
+  /**
+   * La caja INTERIOR de cada figurita, que es donde escribe la física.
+   *
+   * Existe para que dos animaciones no se peleen el mismo `transform`. La
+   * línea de tiempo de la transformación escribe el de `.ht__capa`; el bucle
+   * físico, el de `.ht__cuerpo`. Antes convivían en el mismo elemento y la
+   * única defensa era temporal —la física no arrancaba hasta que la entrada
+   * terminara, y había que cancelar las animaciones a mano para que su
+   * `fill: both` soltara la propiedad—. Ahora no pueden pisarse ni por error.
+   *
+   * De paso sale gratis lo otro: como la caja de afuera no se mueve durante la
+   * física, su rectángulo ES la posición de reposo y medirla no requiere
+   * descontarle el desplazamiento del cuadro anterior.
+   */
+  const cuerposRef = useRef<Map<string, HTMLElement>>(new Map());
   const vientoRef = useRef<Viento | null>(null);
   const animacionesRef = useRef<Animation[]>([]);
   /**
@@ -191,7 +247,7 @@ export function HeroTucuman({ children }: { children: React.ReactNode }) {
       // Si venimos de una vuelta, las capas quedaron con la opacidad y el
       // transform que les dejó aquella animación. Se limpian antes de arrancar
       // para que la ida empiece siempre desde el mismo lugar.
-      soltarCapas(capasRef.current);
+      soltarCapas(capasRef.current, cuerposRef.current);
 
       const caja = hero.getBoundingClientRect();
       const clic = punto ?? { x: caja.width * 0.62, y: caja.height * 0.5 };
@@ -239,7 +295,7 @@ export function HeroTucuman({ children }: { children: React.ReactNode }) {
         // viento no podría escribir sobre el mismo elemento. Las de la escena
         // conservan su estado final —la foto tiene que quedarse en opacidad 0—.
         for (const a of corrida.animacionesDeCapas) a.cancel();
-        soltarCapas(capasRef.current, "1");
+        soltarCapas(capasRef.current, cuerposRef.current, "1");
         ocupadoRef.current = false;
         faseRef.current = "interactivo";
         setFase("interactivo");
@@ -272,12 +328,19 @@ export function HeroTucuman({ children }: { children: React.ReactNode }) {
     animacionesRef.current = [];
 
     ocupadoRef.current = true;
+    // El viento se mata A MANO y no se espera a la limpieza del efecto: esa
+    // limpieza corre recién después del próximo render, y mientras tanto el
+    // bucle seguiría escribiendo.
+    //
+    // Pero NO se borra el desplazamiento de las figuritas, y eso es nuevo. La
+    // animación de regreso anima la caja de AFUERA —se van hacia abajo,
+    // encogiéndose y con desenfoque— y la de adentro conserva el
+    // desplazamiento que tuviera. O sea que cada figurita se desvanece desde
+    // donde quedó y no desde el lugar donde nació: borrándolo, las quince
+    // pegaban un salto al sitio original justo antes de empezar a irse.
+    // Lo limpia soltarCapas al final, cuando ya son invisibles.
     vientoRef.current?.destruir();
     vientoRef.current = null;
-    // Y se borran los transform en línea que dejó el viento: la animación de
-    // regreso arranca desde la posición de reposo, no desde donde quedó la
-    // última ráfaga.
-    soltarCapas(capasRef.current, "1");
 
     faseRef.current = "transicion";
     setFase("transicion");
@@ -303,8 +366,9 @@ export function HeroTucuman({ children }: { children: React.ReactNode }) {
     });
     corrida.terminado.then(() => {
       for (const a of corrida.animacionesDeCapas) a.cancel();
-      // Las capas vuelven a estar invisibles, como manda el CSS en reposo.
-      soltarCapas(capasRef.current);
+      // Las capas vuelven a estar invisibles, como manda el CSS en reposo, y
+      // recién acá se borra el desplazamiento que la física les había dejado.
+      soltarCapas(capasRef.current, cuerposRef.current);
       ocupadoRef.current = false;
       faseRef.current = "intro";
       setFase("intro");
@@ -316,13 +380,37 @@ export function HeroTucuman({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (!montado) return;
     let vivo = true;
+    /**
+     * "Ya se pidió", pero SÓLO para esta corrida del efecto.
+     *
+     * Antes era una ref del componente, o sea una bandera que sobrevivía a
+     * todas las corridas y que nadie bajaba nunca. Bastaba con que cambiara un
+     * medio mientras los 2,9 MB estaban en vuelo —arrastrar el borde de la
+     * ventana cruzando 64rem, rotar una tablet, conectar una pantalla táctil,
+     * activar "reducir movimiento"— para romper el hero por el resto de la
+     * visita: la limpieza ponía vivo=false y el .then de la corrida vieja se
+     * abortaba sin tocar listoRef ni setListo, y la corrida NUEVA se encontraba
+     * la bandera en true y no pedía nada. Las quince capas no se montaban
+     * jamás y el botón quedaba clavado en "Preparando…" sin reintento ni
+     * forma de salir salvo recargar.
+     *
+     * Siendo local, cada corrida vuelve a pedir —y con el juego de archivos
+     * correcto, que puede haber cambiado a COLLAGE_MOVIL—. Lo que evita pedir
+     * dos veces de más es listoRef, que es la verdad duradera: si la precarga
+     * ya terminó alguna vez, no se vuelven a decodificar los quince WebP.
+     *
+     * Las tres llamadas que compiten —requestIdleCallback, el reloj de respaldo
+     * y arrancarPrecargaRef— viven todas dentro de la misma corrida, así que
+     * comparten esta misma bandera y siguen protegidas.
+     */
+    let lanzada = false;
     const archivos = modo.movil
       ? [COLLAGE_MOVIL]
       : CAPAS.map((c) => `/hero-tucuman/capas/${c.archivo}`);
 
     const pedir = () => {
-      if (precargandoRef.current || !vivo) return;
-      precargandoRef.current = true;
+      if (lanzada || listoRef.current || !vivo) return;
+      lanzada = true;
       return Promise.all(
         archivos.map(
           (src) =>
@@ -340,10 +428,30 @@ export function HeroTucuman({ children }: { children: React.ReactNode }) {
       ).then(() => {
         if (!vivo) return;
         listoRef.current = true;
-        setListo(true);
         // Si tocó temprano, arranca sola. Llamarla desde el then de una promesa
         // no es "setState dentro de un efecto": el pedido lo hizo la persona.
-        if (pendienteRef.current) transformar();
+        //
+        // Pero PRIMERO hay que montar las quince capas, y por eso va flushSync.
+        // setListo no es síncrono: React agenda el render y lo aplica DESPUÉS
+        // de esta pila, así que transformar() leía capasRef vacío, armaba la
+        // corrida con cero figuritas y no se creaba ni una animación. Se veía
+        // la fotografía desvanecerse sobre la lámina vacía durante 2,3
+        // segundos y recién al final aparecían las quince de golpe, sin
+        // entrada, sin escalonado y sin viajar desde su equivalente
+        // fotográfico. Justo en el camino que el componente diseñó a propósito
+        // para quien toca antes de tiempo.
+        //
+        // flushSync aplica el render acá mismo, así que los ref callbacks de
+        // las capas ya corrieron cuando arranca la línea de tiempo. No es un
+        // uso indebido: sólo está prohibido llamarlo durante el render o el
+        // commit, y esto es el then de una promesa.
+        if (pendienteRef.current) {
+          pendienteRef.current = false;
+          flushSync(() => setListo(true));
+          transformar();
+        } else {
+          setListo(true);
+        }
       });
     };
     arrancarPrecargaRef.current = pedir;
@@ -374,29 +482,48 @@ export function HeroTucuman({ children }: { children: React.ReactNode }) {
   // El viento: sólo en escritorio, sólo con movimiento permitido y sólo cuando
   // la transformación terminó del todo.
   useEffect(() => {
-    if (fase !== "interactivo" || modo.movil || modo.quieto) return;
+    // El puntero grueso entra ACÁ y en ningún otro lado: en una pantalla
+    // táctil el collage se arma igual, con su entrada completa, y lo único que
+    // no existe es la física del cursor. No hay cursor que levante una ráfaga,
+    // y un bucle de rAF corriendo para nadie es batería regalada.
+    if (fase !== "interactivo" || modo.movil || modo.quieto || modo.grueso) return;
     const hero = heroRef.current;
     if (!hero) return;
 
+    // ---- Las quince figuritas, con el modelo libre ----
+    // Escriben en la caja de ADENTRO y se miden por la de afuera: la de afuera
+    // es de la línea de tiempo de la transformación y no se mueve mientras
+    // corre la física, así que su rectángulo es la posición de reposo sin
+    // tener que descontarle nada.
     const piezas: PiezaViento[] = [];
     for (const capa of CAPAS) {
       const el = capasRef.current.get(capa.id);
-      if (el) {
+      const cuerpo = cuerposRef.current.get(capa.id);
+      if (el && cuerpo) {
         piezas.push({
-          el,
+          el: cuerpo,
+          ancla: el,
           fisica: capa.fisica,
+          modelo: "libre",
+          rol: capa.rol,
           respetaZonaSegura: true,
           seAquieta: false,
           propiedad: "transform",
+          limpiaAlDestruir: false,
         });
       }
     }
 
     // ---- La columna entera también ondea ----
-    // Con el mismo viento que las figuritas, que es lo que se pidió, pero con
-    // el pozo de calma puesto: la fuerza se apaga cuando el cursor entra en la
-    // columna. Sin eso el empuje ALEJA del cursor y las tarjetas se escaparían
-    // justo cuando alguien va a tocarlas —son los seis destinos más
+    // Con el MISMO bucle que las figuritas pero con la otra ley: resorte
+    // amortiguado, que es la que tenía todo el hero antes. Ondean cuando pasa
+    // una ráfaga y vuelven enseguida a su renglón, y tienen que volver: son
+    // texto que se lee y controles que se apuntan. La libertad del modelo
+    // nuevo —irse y quedarse donde quedó— es justo lo que acá no se puede.
+    //
+    // Además llevan el pozo de calma: la fuerza se apaga cuando el cursor entra
+    // en la columna. Sin eso el empuje ALEJA del cursor y las tarjetas se
+    // escaparían justo cuando alguien va a tocarlas —son los seis destinos más
     // consultados, el primero con 831 visitas por día—. Se eligió entre cuatro
     // modelos probándolos con un cronómetro, no discutiéndolos.
     const columna = columnaRef.current;
@@ -406,16 +533,59 @@ export function HeroTucuman({ children }: { children: React.ReactNode }) {
           piezas.push({
             el,
             fisica,
+            modelo: "resorte",
             respetaZonaSegura: false,
             seAquieta: true,
             propiedad: "translate",
+            limpiaAlDestruir: true,
           });
         }
       }
     }
 
-    const limite = () =>
-      (hero.getBoundingClientRect().width * (ZONA_SEGURA_DERECHA + COLCHON_ZONA_SEGURA)) / 100;
+    // El Map se toma acá y no en la limpieza: es siempre el MISMO objeto —los
+    // ref callbacks le hacen set y delete, nunca lo reemplazan— así que leerlo
+    // ahora o después da lo mismo, y de paso la regla exhaustive-deps se queda
+    // tranquila en vez de avisar por un .current leído en una limpieza.
+    const cuerpos = cuerposRef.current;
+
+    /**
+     * Hasta dónde puede llegar el borde izquierdo de una figurita.
+     *
+     * El 43% del hero solo no alcanza, y está medido: la columna mide
+     * min(52,6%, 38rem), así que entre 1024 y ~1330px de ancho el 43% cae
+     * ADENTRO de ella. El contenido queda expuesto 56px a 1024, 60 a 1100 y
+     * 51 a 1200; recién desde 1366 el porcentaje va por fuera. En ese tramo
+     * una figurita se podía parar encima del título y de la bajada, que en
+     * modo lámina no tienen panel detrás ni fondo propio.
+     *
+     * Así que el tope es el mayor de los dos: el porcentaje —que sigue
+     * mandando en pantallas anchas, donde la columna se queda fija en 608px y
+     * dejaría demasiado campo libre— y el borde derecho REAL del contenido.
+     *
+     * Se mide el contenido y no la caja de la columna: a 1024 la caja termina
+     * en 531 y el contenido en 490, o sea que usar la caja regalaría 41px de
+     * campo de juego sin motivo. Los selectores son los mismos que ondean con
+     * el modelo resorte, así que no hay una segunda lista que mantener.
+     *
+     * Corre en medir(), no por cuadro: al encender y cuando el ResizeObserver
+     * avisa.
+     */
+    const limite = () => {
+      const caja = hero.getBoundingClientRect();
+      const porPorcentaje = (caja.width * (ZONA_SEGURA_DERECHA + COLCHON_ZONA_SEGURA)) / 100;
+      const columna = columnaRef.current;
+      if (!columna) return porPorcentaje;
+      let contenido = 0;
+      for (const { selector } of PIEZAS_DE_LA_COLUMNA) {
+        for (const el of columna.querySelectorAll<HTMLElement>(selector)) {
+          const r = el.getBoundingClientRect();
+          if (r.width > 0) contenido = Math.max(contenido, r.right - caja.left);
+        }
+      }
+      const colchon = (caja.width * COLCHON_ZONA_SEGURA) / 100;
+      return Math.max(porPorcentaje, contenido + colchon);
+    };
 
     const viento = crearViento(hero, piezas, limite, () => columnaRef.current);
     vientoRef.current = viento;
@@ -442,17 +612,47 @@ export function HeroTucuman({ children }: { children: React.ReactNode }) {
 
     document.addEventListener("visibilitychange", decidir);
 
-    const alRedimensionar = () => viento.medir();
-    window.addEventListener("resize", alRedimensionar, { passive: true });
+    // Los límites se recalculan con un ResizeObserver y no con el resize de
+    // la ventana, que era lo que había. No es lo mismo: el hero puede cambiar
+    // de tamaño sin que la ventana se mueva —al terminar de cargar las fuentes,
+    // al abrirse el desplegable de sugerencias, al aparecer una barra de
+    // desplazamiento— y con el oyente de ventana todo eso pasaba inadvertido y
+    // las quince figuritas quedaban midiendo contra un hero que ya no existía.
+    //
+    // Mira las dos cajas que importan: el hero, de donde salen los bordes, y la
+    // columna, de donde sale el límite de la zona segura y el pozo de calma.
+    const medidor = new ResizeObserver(() => viento.medir());
+    medidor.observe(hero);
+    if (columna) medidor.observe(columna);
 
     return () => {
       observador.disconnect();
+      medidor.disconnect();
       document.removeEventListener("visibilitychange", decidir);
-      window.removeEventListener("resize", alRedimensionar);
       viento.destruir();
       vientoRef.current = null;
+
+      // ---- Y el desplazamiento, si no hay quién se lo lleve ----
+      // destruir() NO borra el transform de las figuritas a propósito: cuando
+      // esta limpieza viene de restaurar(), la animación de regreso las
+      // desvanece desde donde quedaron y soltarCapas limpia al final.
+      //
+      // Pero esta limpieza también corre por un cambio de medio —alguien activa
+      // "reducir movimiento", conecta una pantalla táctil, angosta la ventana
+      // por debajo de 64rem— y ahí NO hay animación de regreso ninguna. Sin
+      // esto, las quince quedaban congeladas fuera de su sitio justo cuando se
+      // pidió que no hubiera movimiento, y al volver a habilitarlo el viento
+      // nuevo medía desde el ancla, arrancaba en cero y las quince pegaban un
+      // salto al origen en un solo cuadro.
+      //
+      // ocupadoRef distingue los dos casos sin necesidad de una bandera nueva:
+      // vale true exactamente mientras hay una transición corriendo, y
+      // restaurar() lo pone en true justo antes de matar el viento.
+      if (!ocupadoRef.current) {
+        for (const cuerpo of cuerpos.values()) cuerpo.style.transform = "";
+      }
     };
-  }, [fase, modo.movil, modo.quieto]);
+  }, [fase, modo.movil, modo.quieto, modo.grueso]);
 
   return (
     <section
@@ -521,13 +721,25 @@ export function HeroTucuman({ children }: { children: React.ReactNode }) {
                   } as React.CSSProperties
                 }
               >
-          {/* eslint-disable-next-line @next/next/no-img-element --
-              Las quince capas NO pasan por next/image a proposito: ya vienen
-              optimizadas del paquete (WebP con alfa, ~1400px, 2,9 MB las quince),
-              el optimizador las volveria a comprimir sin ganancia, y cada <Image>
-              agrega un envoltorio con posicion propia que pelearia con el transform
-              que les escriben la linea de tiempo y el viento. */}
-                <img src={`/hero-tucuman/capas/${capa.archivo}`} alt="" aria-hidden="true" />
+                {/* La caja de adentro. Existe para repartir la propiedad
+                    `transform`: la de afuera es de la línea de tiempo de la
+                    transformación —la entrada y la salida— y ésta es de la
+                    física. Dos dueños, dos elementos, cero conflicto. */}
+                <div
+                  className="ht__cuerpo"
+                  ref={(el) => {
+                    if (el) cuerposRef.current.set(capa.id, el);
+                    else cuerposRef.current.delete(capa.id);
+                  }}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element --
+                      Las quince capas NO pasan por next/image a proposito: ya vienen
+                      optimizadas del paquete (WebP con alfa, ~1400px, 2,9 MB las quince),
+                      el optimizador las volveria a comprimir sin ganancia, y cada <Image>
+                      agrega un envoltorio con posicion propia que pelearia con el transform
+                      que les escriben la linea de tiempo y la fisica. */}
+                  <img src={`/hero-tucuman/capas/${capa.archivo}`} alt="" aria-hidden="true" />
+                </div>
               </div>
             ))}
           </div>
@@ -555,7 +767,22 @@ export function HeroTucuman({ children }: { children: React.ReactNode }) {
           type="button"
           className="ht__disparador"
           onClick={() => (fase === "interactivo" ? restaurar() : transformar())}
-          disabled={fase === "transicion"}
+          /* aria-disabled y no disabled, y no es un detalle de purista.
+             Con el atributo nativo, el mismo render que lo apaga se lo aplica
+             al elemento que TIENE el foco, y la regla de arreglo de foco del
+             HTML lo manda al <body>: quien llegó por teclado se queda sin foco
+             en ningún lado durante los 2,3 segundos de la ida, y al volver el
+             botón a habilitarse el foco no se restituye. Hay que tabular otra
+             vez desde el principio del documento —salto de contenido,
+             encabezado, menú y toda la columna— para llegar al mismo control.
+             Y de paso no se anuncia que el botón pasó a llamarse "Volver a la
+             foto".
+
+             Dejarlo clicable es seguro: el doble disparo ya lo bloquean los
+             refs, no el atributo. transformar() sale en su primera línea si
+             ocupadoRef está puesto o si la fase no es "intro", y restaurar()
+             tiene la guarda simétrica. */
+          aria-disabled={fase === "transicion"}
           aria-describedby="ht-ayuda"
         >
           {esperando
