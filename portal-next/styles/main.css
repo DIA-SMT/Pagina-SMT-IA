@@ -1332,6 +1332,62 @@ form.buscador-hero:focus-within {
   border-radius: 0 100% 0 100%;
   pointer-events: none;
 }
+
+/* ---- La marca de agua del edificio ----
+   El dibujo del Palacio Municipal, apoyado abajo y a lo ancho, detrás de todo.
+
+   ---- LA OPACIDAD ESTÁ MEDIDA, NO ELEGIDA A OJO ----
+   El dibujo es casi blanco en sus zonas densas —su píxel más claro, pesado por
+   su propio alfa, da rgb(253,253,253)— así que ACLARA el fondo. Y el texto del
+   pie es claro sobre azul oscuro: aclarar el fondo acerca los dos y baja el
+   contraste. Se dimensiona contra ese peor píxel, igual que el velo del telón.
+
+   El que manda es la línea legal, que va al 75% de opacidad y es la más floja:
+
+     opacidad   legal sobre el pie claro   sobre el oscuro
+       0,10            5,35:1                  7,36:1
+       0,14            4,84:1                  6,62:1
+       0,20            4,16:1  ← no pasa       5,56:1
+
+   O sea que el techo está en ~0,16 y no en un número redondo cualquiera.
+
+   ---- Y POR QUÉ CADA TEMA LLEVA UNA DISTINTA ----
+   La misma opacidad no se ve igual en los dos: sobre el azul de día el dibujo
+   aparece a 0,10, y sobre el casi negro de noche a 0,10 apenas se insinúa.
+   Maquetando los dos temas con tres opacidades, de día 0,10 ya es una marca de
+   agua clara y 0,16 empieza a competir con el texto; de noche 0,16 es lo que
+   de día son 0,10. Así que son dos valores, no uno.
+
+   Va en ::after porque ::before ya lo ocupa el pétalo. Y lleva z-index: 0 con
+   el contenido en 1: entre elementos posicionados sin z-index gana el último
+   del árbol, y ::after pinta después que el contenido, así que sin esto la
+   marca quedaría ENCIMA del texto. */
+.footer::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  left: 50%;
+  bottom: 0;
+  translate: -50% 0;
+  width: min(100%, 87.5rem);
+  aspect-ratio: 1600 / 534;
+  background: url("/img/pie-edificio.webp") bottom center / contain no-repeat;
+  opacity: 0.1;
+  pointer-events: none;
+}
+/* De noche el mismo dibujo se pierde: el fondo es casi negro. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .footer::after { opacity: 0.16; }
+}
+:root[data-theme="dark"] .footer::after { opacity: 0.16; }
+
+/* El contenido, por encima de la marca. */
+.footer > .contenedor { position: relative; z-index: 1; }
+
+/* Impresa, la marca no aporta nada y se lleva tinta. */
+@media print {
+  .footer::after { display: none; }
+}
 .footer__grid {
   display: grid;
   gap: var(--sp-7);
